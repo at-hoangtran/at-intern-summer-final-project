@@ -1,0 +1,28 @@
+- provide :title, "Hệ thông bán hàng trực tuyến"
+div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"
+  div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 .no-padding"
+    div class="thumbnail mobile"
+      div class="bt"
+        div class="image-m pull-left"
+          = "#"
+        div class="intro pull-right"
+          h1
+            small.title-mobile
+              = "nil"
+          li
+            = "nil"
+          span class="label label-info"
+            | Khuyễn mãi
+          li
+            span class="glyphicon glyphicon-hand-right"
+            |  Củ sạc
+          li
+            span class="glyphicon glyphicon-hand-right"
+            |  Tai nghe bluetooth
+          li
+            span class="glyphicon glyphicon-hand-right"
+            |  Túi sách
+      span class="btn label-warning"
+        strong
+          = "200" + " đ"
+      = link_to "Thêm vào giỏ", "#", class: "btn btn-success pull-right add", method: :patch
