@@ -18,3 +18,6 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# TODO Comment out this rule if environment variables can be committed
+.env
