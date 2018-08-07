@@ -1,0 +1,18 @@
+= javascript_include_tag "include/validation/password_reset/edit_password"
+- provide :title, "Cập nhật mật khẩu"
+.row
+  .col-md-6.col-md-offset-3
+    .panel.panel-default
+      .panel-heading
+        = "Cập nhật mật khẩu"
+      .panel-body
+        = form_for :username, url: nil, html: { id: "frmResetPasswordEdit", class: "form-horizontal", :method => :put } do |f|
+          = f.hidden_field :reset_password_token
+          .control-group
+            = f.label :password, "Mật khẩu mới", { class: "control-label", for: "password" }
+            = f.password_field :password, { id: "password", class: "form-control", placeholder: "Nhập mật khẩu mới..." }
+          .control-group
+            = f.label :password_confirmation, "Nhập lại mật khẩu", { class: "control-label", for: "password_confirmation" }
+            = f.password_field :password_confirmation, { id: "password_confirmation", class: "form-control", placeholder: "Nhập lại mật khẩu..." }
+          br
+          = f.submit "Hoàn tất", class: "form-control btn btn-primary"

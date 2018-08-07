@@ -1,0 +1,29 @@
+#AuthModal.modal.fade.bs-example-modal-lg[tabindex="-1" role="dialog" aria-labelledby="myModalLabel"]
+  .modal-dialog.modal-sm[role="document"]
+    .modal-content
+      .modal-header
+        h4#myModalLabel.modal-title
+          ul.nav.nav-tabs
+            li.active
+              a[data-toggle="tab" href="#login"]
+                | Đăng nhập
+            li
+              a[data-toggle="tab" href="#register"]
+                | Đăng ký
+            li.nopassword
+              a[data-toggle="tab" href="#nopassword"]
+      .modal-body
+        .tab-content
+          #login.tab-pane.fade.in.active
+            = render 'sessions/new'
+          #register.tab-pane.fade
+            = render 'users/new'
+          #nopassword.tab-pane.fade
+            = render 'password_resets/new'
+      .modal-footer
+        button.btn.btn-primary.pull-left[type="button"]
+          i.fa.fa-facebook.pr-1
+          |  Facebook
+        button.btn.btn-danger.pull-right[type="button"]
+          i.fa.fa-google-plus.pr-1
+          |  Google +
