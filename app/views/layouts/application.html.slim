@@ -17,9 +17,11 @@ html
       = yield
       = render "layouts/modules/introduce"
     = render "layouts/modules/footer"
+    = render "layouts/modules/modal_auth"
     - if flash
       - flash.each do |type, message|
           javascript:
             $('.top-right').notify({
               message: { text: "#{message}" }
             }).show();
+

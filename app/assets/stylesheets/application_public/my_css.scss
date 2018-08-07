@@ -94,3 +94,25 @@ input[type="password"] {
 .notifications{
   z-index: 999;
 }
+
+.remember_me {
+  margin-left: 2%;
+}
+
+#password_l, #password_r, #password_confirmation {
+  height: 34px;
+}
+
+p.nopassword {
+  color: #337ab7;
+  cursor: pointer;
+}
+
+li.nopassword {
+  display: none;
+}
+
+.g-recaptcha {
+  transform: scale(0.9);
+  transform-origin: 0 0;
+}

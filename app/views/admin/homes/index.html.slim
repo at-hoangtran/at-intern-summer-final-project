@@ -1,0 +1,100 @@
+- provide :title, "Trang quản trị - Dashboard"
+.col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
+  .row
+    ol.breadcrumb
+      li
+        a[href="#"]
+          svg.glyph.stroked.home
+            use[xlink:href="#stroked-home"]
+      li.active
+        | Home
+  .row
+    .col-lg-12
+      h1.page-header
+        | Dashboard
+  .row
+    .col-xs-12.col-md-6.col-lg-3
+      .panel.panel-blue.panel-widget
+        .row.no-padding
+          .col-sm-3.col-lg-5.widget-left
+            i.fa.fa-calendar.fa-4x
+          .col-sm-9.col-lg-7.widget-right
+            .large
+              |  2
+            .text-muted
+              |  tổng đơn hàng
+    .col-xs-12.col-md-6.col-lg-3
+      .panel.panel-red.panel-widget
+        .row.no-padding
+          .col-sm-3.col-lg-5.widget-left
+            i.fa.fa-cart-plus.fa-4x
+          .col-sm-9.col-lg-7.widget-right
+            .large
+              |  2
+            .text-muted
+              |  Đơn hàng mới
+    .col-xs-12.col-md-6.col-lg-3
+      .panel.panel-orange.panel-widget
+        .row.no-padding
+          .col-sm-3.col-lg-5.widget-left
+            i.fa.fa-shopping-basket.fa-4x
+          .col-sm-9.col-lg-7.widget-right
+            .large
+              |  2
+            .text-muted
+              |  Sản phẩm
+    .col-xs-12.col-md-6.col-lg-3
+      .panel.panel-teal.panel-widget
+        .row.no-padding
+          .col-sm-3.col-lg-5.widget-left
+            i.fa.fa-users.fa-4x
+          .col-sm-9.col-lg-7.widget-right
+            .large
+              |  2
+            .text-muted
+              |  Khách hàng
+  .row
+    .col-lg-12
+      .panel.panel-default
+        .panel-heading
+          |  Tổng quan trang cửa hàng
+        .panel-body
+          .canvas-wrapper
+            canvas#line-chart.main-chart[height="100" width="600"]
+  .row
+    .col-xs-6.col-md-3
+      .panel.panel-default
+        .panel-body.easypiechart-panel
+          h4
+            | Đơn hàng mới
+          #easypiechart-blue.easypiechart[data-percent="92"]
+            span.percent
+              | 92%
+    .col-xs-6.col-md-3
+      .panel.panel-default
+        .panel-body.easypiechart-panel
+          h4
+            | Đán giá mới
+          #easypiechart-orange.easypiechart[data-percent="65"]
+            span.percent
+              | 65%
+    .col-xs-6.col-md-3
+      .panel.panel-default
+        .panel-body.easypiechart-panel
+          h4
+            | Khách hàng mới
+          #easypiechart-teal.easypiechart[data-percent="56"]
+            span.percent
+              | 56%
+    .col-xs-6.col-md-3
+      .panel.panel-default
+        .panel-body.easypiechart-panel
+          h4
+            | Lượt truy cập
+          #easypiechart-red.easypiechart[data-percent="27"]
+            span.percent
+              | 27%
+  .row
+    .col-md-8
+      small
+        | Coppyright 2017
