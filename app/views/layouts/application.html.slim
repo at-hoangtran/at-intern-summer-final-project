@@ -11,8 +11,15 @@ html
     = stylesheet_link_tag "application_public/application", media: "all", "data-turbolinks-track": "reload"
     = javascript_include_tag "application_public/application", "data-turbolinks-track": "reload"
   body
+    .notifications.top-right
     = render "layouts/modules/header"
     .container
       = yield
       = render "layouts/modules/introduce"
     = render "layouts/modules/footer"
+    - if flash
+      - flash.each do |type, message|
+          javascript:
+            $('.top-right').notify({
+              message: { text: "#{message}" }
+            }).show();

@@ -1,4 +1,11 @@
-// dropdown menu hover
+function openNav() {
+  document.getElementById("mySidenav").style.width = "55%";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
 $(function() {
   $(".dropdown").hover(function() {
     $('.dropdown-menu', this).stop(true, true).fadeIn("fast");

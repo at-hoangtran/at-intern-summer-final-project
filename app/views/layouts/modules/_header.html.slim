@@ -35,3 +35,17 @@ nav#main-Nav.navbar.navbar-default.navbar-top[role="navigation"]
           - else
             li
               = link_to "Đăng nhập", "#"
+#mySidenav.sidenav
+  a.closebtn[href="javascript:void(0)" onclick="closeNav()"]
+    | ×
+    = t ".close"
+  a[href="#"]
+    = t ".phone"
+  a[href="#"]
+    = t ".laptop"
+  a[href="#"]
+    = t ".pc"
+  a[href="#"]
+    span.glyphicon.glyphicon-shopping-cart
+      span.badge
+    = t ".cart"
