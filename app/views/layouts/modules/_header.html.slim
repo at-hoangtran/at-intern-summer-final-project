@@ -1,0 +1,51 @@
+nav#main-Nav.navbar.navbar-default.navbar-top[role="navigation"]
+  .container
+    .row
+      .navbar-header
+        span#grouped-one.visible-xs.pull-left[onclick="openNav()"]
+          | ☰
+        span#grouped-two.visible-xs.pull-right
+
+      #main-mav-top.collapse.navbar-collapse
+        ul.nav.navbar-nav
+          li
+            = link_to content_tag(:b, nil, class: "glyphicon glyphicon-home") + " Trang chủ", root_url, :id => "mlinkhome"
+        ul.nav.navbar-nav.pull-right
+          li.dropdown
+            a.dropdown-toggle[data-toggle="dropdown"]
+              span.glyphicon.glyphicon-shopping-cart
+                span.badge
+                  = "0"
+              = " Giỏ hàng"
+              b.caret
+            ul#cartview.dropdown-menu
+
+          - if true
+            li.dropdown
+              a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-expanded="false"]
+                span.caret
+              ul.dropdown-menu[role="menu"]
+                - if true
+                  li
+                    = link_to "Trang quản trị", "#"
+                li
+                  = link_to "Thông tin cá nhân", "#"
+                li
+                  = link_to content_tag(:i, " Đăng xuất", class: "fa fa-btn fa-sign-out"), logout_path, method: :delete
+          - else
+            li
+              = link_to "Đăng nhập", "#"
+#mySidenav.sidenav
+  a.closebtn[href="javascript:void(0)" onclick="closeNav()"]
+    | ×
+    = t ".close"
+  a[href="#"]
+    = t ".phone"
+  a[href="#"]
+    = t ".laptop"
+  a[href="#"]
+    = t ".pc"
+  a[href="#"]
+    span.glyphicon.glyphicon-shopping-cart
+      span.badge
+    = t ".cart"

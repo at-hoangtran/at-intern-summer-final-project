@@ -1,0 +1,7 @@
+= javascript_include_tag "include/validation/password_reset/send_email"
+= form_for :user, url: nil, html: {id: "frmResetPassword", class: "form-horizontal", :method => :post } do |f|
+  .control-group
+    = f.label :email, "Email", { class: "control-label", for: "email_rpw" }
+    = f.email_field :email, { id: "email_rpw", class: "form-control", placeholder: "Nhập email" }
+  br
+  = f.submit "Gửi", class: "form-control btn btn-primary"

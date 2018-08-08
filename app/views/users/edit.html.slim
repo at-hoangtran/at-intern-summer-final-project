@@ -1,0 +1,41 @@
+= javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=true&libraries=places"
+= javascript_include_tag "include/lib/jquery.placepicker"
+= javascript_include_tag "include/lib/placepicker-my"
+- provide :title, t(".title")
+.row
+  .col-md-6.col-md-offset-3
+    .panel.panel-default
+      .panel-heading
+        = t ".title"
+      .panel-body
+        = form_for "#", url: "#", :html => {:id => "frmEitProfile", :class => "form-horizontal", :method => :put} do |f|
+          .control-group
+            = f.label :name, "Tên", { class: "control-label", for: "name" }
+            = f.text_field :name, { id: "name", class: "form-control", placeholder: "Nhập tên ..." }
+          .control-group
+            = f.label :email, t(".l_email"), { class: "control-label", for: "email" }
+            = f.email_field :email, { id: "email", class: "form-control", placeholder: t(".pla_email") }
+          .control-group
+            = f.label :password, t(".l_password"), { class: "control-label", for: "password" }
+            = f.password_field :password, { id: "password", class: "form-control", placeholder: t(".pla_password") }
+          .control-group
+            = f.label :password_confirmation, t(".confirm"), { class: "control-label", for: "password_confirmation" }
+            = f.password_field :password_confirmation, { id: "password_confirmation", class: "form-control", placeholder: t(".pla_confirm") }
+          .control-group
+            = f.label :current_password, t(".l_current_password"), { class: "control-label", for: "current_password" }
+            = f.password_field :current_password, { id: "current_password", class: "form-control", placeholder: t(".pla_current_password") }
+          .control-group
+            = f.label :address, t(".l_address"), { class: "control-label", for: "advanced-placepicker" }
+            = f.text_field :address, { id: "advanced-placepicker", class: "form-control", 'data-map-container-id': "collapseTwo", placeholder: t(".pla_address") }
+          #collapseTwo.collapse
+            .another-map-class.thumbnail
+          .control-group
+            = f.label :phone, t(".l_phone"), { class: "control-label", for: "phone" }
+            = f.text_field :phone, { id: "home", class: "form-control", placeholder: t(".pla_phone") }
+          br
+          = f.submit t(".submit"), class: "form-control btn btn-primary"
+        h3
+          = t(".cancelAccount")
+        p
+          = t(".areyou")
+          = button_to t(".btnCancelAccount"), "#", class: "btn btn-primary",data: { confirm: t(".confirm_delete") }, method: :delete

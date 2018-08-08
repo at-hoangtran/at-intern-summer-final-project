@@ -1,0 +1,13 @@
+= javascript_include_tag "include/validation/register/register"
+= form_for :user, url: nil, html: { id: "frmRegister", class: "form-horizontal", :method => :post } do |f|
+  .control-group
+    = f.label :email, "Email", { class: "control-label", for: "email_r" }
+    = f.email_field :email, { id: "email_r", class: "form-control", placeholder: "Nhập email..." }
+  .control-group
+    = f.label :password, "Mật khẩu", { class: "control-label", for: "password_r" }
+    = f.password_field :password, { id: "password_r", class: "form-control", placeholder: "Nhập mật khẩu..." }
+  .control-group
+    = f.label :password_confirmation, "Nhập lại mật khẩu", { class: "control-label", for: "password_confirmation" }
+    = f.password_field :password_confirmation, { id: "password_confirmation", class: "form-control", placeholder: "Nhập mật khẩu..." }
+  br
+  = f.submit "Đăng ký", class: "form-control btn btn-primary"

@@ -1,0 +1,15 @@
+= javascript_include_tag "include/validation/login/login"
+= form_for :session, url: login_path, html: { id: "frmLogin", class: "form-horizontal" }, remote: true do |f|
+  .control-group
+    = f.label :email, "Email", { class: "control-label", for: "email_l" }
+    = f.email_field :email, { id: "email_l", class: "form-control", placeholder: "Nhập email..." }
+  .control-group
+    = f.label :password, "Mật khẩu", { class: "control-label", for: "password_l" }
+    = f.password_field :password, { id: "password_l", class: "form-control", placeholder: "Nhập mật khẩu..." }
+  .control-group
+    = f.check_box :remember_me
+    = f.label :remember_me, "Khi nhớ đăng nhập", class: 'remember_me'
+  p.nopassword
+    = "Quên mật khẩu"
+  = f.submit "Đăng nhập", class: "form-control btn btn-primary"
+
