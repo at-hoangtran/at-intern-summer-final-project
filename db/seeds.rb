@@ -7,7 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 10.times do |u|
-  User.create!(name: "User - #{u}", email: "User-#{u}@gmail.com")
+  name = Faker::Name.name
+  mail = Faker::Internet.email
+  User.create!(name: name, email: email)
 end
 
-User.create!(name: "Admin", email: "admin@gmail.com")
+User.create!(name: 'Admin', email: 'admin@gmail.com')
