@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
-  def new
-  end
+  def new; end
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
@@ -11,7 +10,6 @@ class SessionsController < ApplicationController
       flash.now[:danger] = 'Invalid email/password combination'
       redirect_to root_path
     end
-    
   end
 
   def destroy

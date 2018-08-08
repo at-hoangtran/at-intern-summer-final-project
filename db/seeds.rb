@@ -10,4 +10,4 @@
   User.create!(name: "User - #{u}", email: "User-#{u}@gmail.com")
 end
 
-User.create!(name: "Admin", email: "admin@gmail.com")
+User.create!(name: 'Admin', email: 'admin@gmail.com')
