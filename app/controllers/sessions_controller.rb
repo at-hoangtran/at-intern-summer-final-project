@@ -13,6 +13,14 @@ class SessionsController < ApplicationController
     end
   end
 
+  def login_google
+    @user = User.find_or_create_from_auth_hash(request.env["omniauth.auth"])
+    log_in @user
+  	session[:user_id] = @user.id
+  	redirect_to root_path
+  end
+  
+
   def destroy
     log_out if logged_in?
     redirect_to root_path

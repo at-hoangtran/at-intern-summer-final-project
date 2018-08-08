@@ -12,4 +12,6 @@ Rails.application.routes.draw do
     resources :products
     resources :orders
   end
+  get 'auth/:provider/callback', to: 'sessions#login_google'
+  get 'auth/failure', to: redirect('/')
 end
