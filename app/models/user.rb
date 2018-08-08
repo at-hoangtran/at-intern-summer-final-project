@@ -1,18 +1,17 @@
 class User < ApplicationRecord
-  attr_accessor :activation_token
   attr_accessor :remember_token
 
   before_save { email.downcase! } 
-  before_create :create_activation_digest
+
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   PHONE_REGEX = /\A(?:\+?\d{1,3}\s*-?)?\(?(?:\d{3})?\)?[- ]?\d{3}[- ]?\d{4}\z/
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true
-  validates :name,  presence: true, length: { maximum: 50 }
-  validates :phone, uniqueness: true, length: { maximum: 15 },
-                    format: { with: PHONE_REGEX }, numericality: true
+  # validates :name,  presence: true, length: { maximum: 50 }
+  # validates :phone, uniqueness: true, length: { maximum: 15 },
+  #                   format: { with: PHONE_REGEX }, numericality: true
 
   has_secure_password
 
