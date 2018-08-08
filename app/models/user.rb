@@ -2,8 +2,8 @@ class User < ApplicationRecord
   acts_as_paranoid
   has_secure_password
 
-  attr_accessor :activation_token
-  before_save :downcase_email
+  attr_accessor :activation_token, :remember_token
+  before_save { email.downcase! }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   PHONE_REGEX = /\A(?:\+?\d{1,3}\s*-?)?\(?(?:\d{3})?\)?[- ]?\d{3}[- ]?\d{4}\z/
@@ -29,16 +29,33 @@ class User < ApplicationRecord
   scope :search_name, -> search {where "name like ?", "%#{search}%"}
   enum role: [ :member, :admin ]
 
- # Returns the hash digest of the given string.
-  def User.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                 BCrypt::Engine.cost
-    BCrypt::Password.create(string, cost: cost)
+  # Returns the hash digest of the given string.
+  class << self
+    def digest(string)
+      cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                    BCrypt::Engine.cost
+      BCrypt::Password.create(string, cost: cost)
+    end
+
+    # Returns a random token.
+    def new_token
+      SecureRandom.urlsafe_base64
+    end
   end
 
-  private
+  def remember
+    self.remember_token = User.new_token
+    update_attribute(:remember_digest, User.digest(remember_token))
+  end
 
-    def downcase_email
-      self.email = email.downcase
-    end
+  # Returns true if the given token matches the digest.
+  def authenticated?(remember_token)
+    return false if remember_digest.nil?
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
+
+  # Forgets a user.
+  def forget
+    update_attribute(:remember_digest, nil)
+  end
 end

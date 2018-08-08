@@ -1,5 +1,3 @@
 class PublicPagesController < ApplicationController
-  def index
-
-  end
+  def index; end
 end
