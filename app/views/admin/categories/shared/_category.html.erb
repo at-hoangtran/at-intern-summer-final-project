@@ -1,0 +1,12 @@
+<li>
+  <% if category.subcategories.present? %>
+    <i class="indicator glyphicon glyphicon-folder-open" data-toggle="collapse" data-target="#taget<%= category.id %>" ></i>
+    <%= link_to category.name, edit_admin_category_path(category) %>
+    <ul class="collapse" id="taget<%= category.id %>" >
+      <%= render partial: "admin/categories/shared/category", collection: category.subcategories, as: "category" %>
+    </ul>
+  <% else %>
+    <i class="indicator glyphicon glyphicon-folder-close"></i>
+    <%= link_to category.name, edit_admin_category_path(category) %>
+  <% end %>
+</li>

@@ -21,6 +21,7 @@ gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'rubocop'
+gem 'bcrypt', '3.1.11'
 gem 'slim-rails', '3.1.1'
 gem 'faker', '1.7.3'
 gem 'will_paginate', '3.1.6'
@@ -44,6 +45,12 @@ gem 'bootstrap_notify'
 gem 'recaptcha', require: 'recaptcha/rails'
 
 gem 'paranoia', '~> 2.2'
+
+gem 'rmagick'
+gem 'carrierwave', :github => 'carrierwaveuploader/carrierwave'
+gem 'mini_magick', '4.7.0'
+gem 'jcrop-rails-v2'
+
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'

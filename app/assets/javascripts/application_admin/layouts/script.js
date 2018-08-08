@@ -1,5 +1,4 @@
-document.addEventListener("turbolinks:load", function() {
-  $(".error_msg").delay(3000).slideUp();
+$(document).ready(function() {
   $('#calendar').datepicker({});
   !function ($) {
       $(document).on("click","ul.nav li.parent > a > span.icon", function(){
@@ -16,15 +15,15 @@ document.addEventListener("turbolinks:load", function() {
     if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
   });
 
-  $("#img-add").hide();
-  $("#image").change(function () {
-    $("#img-add").show();
+  $(".img-add").hide();
+  $("#avatar").change(function () {
+    $(".img-add").show();
     if (this.files && this.files[0]) {
      var reader = new FileReader();
       reader.onload = function (e) {
-        $("#img").attr("width", "150");
-        $("#img").attr("height", "150");
-        $("#img").attr("src", e.target.result);
+        $(".img").attr("width", "150");
+        $(".img").attr("height", "150");
+        $(".img").attr("src", e.target.result);
       }
       reader.readAsDataURL(this.files[0]);
     }
@@ -35,14 +34,10 @@ document.addEventListener("turbolinks:load", function() {
     $('#preview').html("");
     var preview = document.querySelector('#preview');
     var files   = document.querySelector('input[type=file]').files;
-
     $("#rvimg").show();
-
     function readAndPreview(file) {
-
       if ( /\.(jpe?g|png|gif)$/i.test(file.name) ) {
         var reader = new FileReader();
-
         reader.addEventListener("load", function () {
           var image = new Image();
           image.height = 180;
@@ -53,12 +48,9 @@ document.addEventListener("turbolinks:load", function() {
           image.src = this.result;
           preview.appendChild( image );
         }, false);
-
         reader.readAsDataURL(file);
       }
-
     }
-
     if (files) {
       [].forEach.call(files, readAndPreview);
     }

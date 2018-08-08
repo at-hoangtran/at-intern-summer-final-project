@@ -987,3 +987,9 @@ ul {
   }
 }
 
+.top-right {
+  z-index: 1500;
+  position: fixed;
+  bottom: 0;
+  right: 12px;
+}

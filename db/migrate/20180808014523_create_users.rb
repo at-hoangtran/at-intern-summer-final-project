@@ -13,6 +13,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.datetime :reset_send_at
       t.string :address
       t.string :phone
+      t.string :avatar
       t.timestamps
     end
     add_index :users, :email, unique: true
