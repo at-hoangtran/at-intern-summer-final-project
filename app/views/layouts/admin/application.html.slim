@@ -18,3 +18,9 @@ html
     = render "layouts/admin/modules/top-nav"
     = render "layouts/admin/modules/left-nav"
     = yield
+    - if flash
+      - flash.each do |type, message|
+          javascript:
+            $('.top-right').notify({
+              message: { text: "#{message}" }
+            }).show();

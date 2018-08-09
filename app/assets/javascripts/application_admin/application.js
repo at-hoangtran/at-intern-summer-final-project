@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.turbolinks
+//= require jquery.Jcrop
 //= require bootstrap
 //= require turbolinks
 //= require jquery.validate
