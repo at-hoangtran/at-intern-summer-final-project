@@ -12,7 +12,12 @@ Rails.application.routes.draw do
     resources :users
     resources :categories
     resources :products
-    resources :orders
+    resources :orders do
+      member do
+        patch :approve
+        patch :reject
+      end
+    end
 
     delete 'delete_image/:id/:index/:size', to: 'products#destroy_image'
     get 'product/count_images/:id', to: 'products#count_image'

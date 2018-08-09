@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :products, dependent: :destroy
+  has_many :orders, dependent: :destroy
 
   attr_accessor :activation_token, :remember_token
   before_save { email.downcase! }
