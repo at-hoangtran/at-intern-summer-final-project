@@ -10,20 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180808101724) do
+ActiveRecord::Schema.define(version: 20180809161627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "action_details", force: :cascade do |t|
+  create_table "auction_details", force: :cascade do |t|
     t.integer  "auction_id"
     t.integer  "user_id"
     t.integer  "bid"
     t.integer  "status",     default: 0
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.index ["auction_id"], name: "index_action_details_on_auction_id", using: :btree
-    t.index ["user_id"], name: "index_action_details_on_user_id", using: :btree
+    t.datetime "deleted_at"
+    t.index ["auction_id"], name: "index_auction_details_on_auction_id", using: :btree
+    t.index ["deleted_at"], name: "index_auction_details_on_deleted_at", using: :btree
+    t.index ["user_id"], name: "index_auction_details_on_user_id", using: :btree
   end
 
   create_table "auctions", force: :cascade do |t|
@@ -31,6 +33,8 @@ ActiveRecord::Schema.define(version: 20180808101724) do
     t.integer  "status",     default: 0
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_auctions_on_deleted_at", using: :btree
     t.index ["product_id"], name: "index_auctions_on_product_id", using: :btree
   end
 
@@ -43,15 +47,29 @@ ActiveRecord::Schema.define(version: 20180808101724) do
     t.index ["deleted_at"], name: "index_categories_on_deleted_at", using: :btree
   end
 
+  create_table "line_items", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "order_id"
+    t.integer  "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_line_items_on_deleted_at", using: :btree
+    t.index ["order_id"], name: "index_line_items_on_order_id", using: :btree
+    t.index ["product_id"], name: "index_line_items_on_product_id", using: :btree
+  end
+
   create_table "orders", force: :cascade do |t|
-    t.integer  "action_detail_id"
+    t.integer  "user_id"
     t.string   "address"
     t.string   "phone"
     t.integer  "total_price"
-    t.integer  "status"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.index ["action_detail_id"], name: "index_orders_on_action_detail_id", using: :btree
+    t.integer  "status",      default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_orders_on_deleted_at", using: :btree
+    t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
   create_table "products", force: :cascade do |t|
@@ -80,7 +98,9 @@ ActiveRecord::Schema.define(version: 20180808101724) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "auction_id"
+    t.datetime "deleted_at"
     t.index ["auction_id"], name: "index_timers_on_auction_id", using: :btree
+    t.index ["deleted_at"], name: "index_timers_on_deleted_at", using: :btree
     t.index ["product_id"], name: "index_timers_on_product_id", using: :btree
   end
 
@@ -108,10 +128,12 @@ ActiveRecord::Schema.define(version: 20180808101724) do
     t.index ["phone"], name: "index_users_on_phone", unique: true, using: :btree
   end
 
-  add_foreign_key "action_details", "auctions"
-  add_foreign_key "action_details", "users"
+  add_foreign_key "auction_details", "auctions"
+  add_foreign_key "auction_details", "users"
   add_foreign_key "auctions", "products"
-  add_foreign_key "orders", "action_details"
+  add_foreign_key "line_items", "orders"
+  add_foreign_key "line_items", "products"
+  add_foreign_key "orders", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
   add_foreign_key "timers", "auctions"
