@@ -59,13 +59,16 @@ ActiveRecord::Schema.define(version: 20180808101724) do
     t.integer  "price"
     t.integer  "quantity"
     t.string   "description"
-    t.string   "images",                   array: true
+    t.integer  "status",      default: 1
+    t.text     "images",      default: [],              array: true
     t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.datetime "deleted_at"
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["deleted_at"], name: "index_products_on_deleted_at", using: :btree
+    t.index ["user_id"], name: "index_products_on_user_id", using: :btree
   end
 
   create_table "timers", force: :cascade do |t|
@@ -110,6 +113,7 @@ ActiveRecord::Schema.define(version: 20180808101724) do
   add_foreign_key "auctions", "products"
   add_foreign_key "orders", "action_details"
   add_foreign_key "products", "categories"
+  add_foreign_key "products", "users"
   add_foreign_key "timers", "auctions"
   add_foreign_key "timers", "products"
 end

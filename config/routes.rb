@@ -12,5 +12,8 @@ Rails.application.routes.draw do
     resources :categories
     resources :products
     resources :orders
+
+    delete "delete_image/:id/:index/:size", to: "products#destroy_image"
+    get "product/count_images/:id", to: "products#count_image"
   end
 end

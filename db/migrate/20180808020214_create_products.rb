@@ -5,8 +5,10 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.integer :price
       t.integer :quantity
       t.string :description
-      t.string :images, array: true
+      t.integer :status, default: 1
+      t.text :images, array: true, default: []
       t.references :category, foreign_key: true
+      t.references :user, foreign_key: true
       t.timestamps
     end
   end

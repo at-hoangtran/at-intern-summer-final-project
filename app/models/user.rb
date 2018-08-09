@@ -2,6 +2,8 @@ class User < ApplicationRecord
   acts_as_paranoid
   has_secure_password
 
+  has_many :products, dependent: :destroy
+
   attr_accessor :activation_token, :remember_token
   before_save { email.downcase! }
 
@@ -26,7 +28,7 @@ class User < ApplicationRecord
   end
 
   default_scope ->{order(created_at: :desc)}
-  scope :search_name, -> search {where "name like ?", "%#{search}%"}
+  scope :search_name, -> search { where "name like ?", "%#{search}%" }
   enum role: [ :member, :admin ]
 
   # Returns the hash digest of the given string.

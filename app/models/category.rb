@@ -7,11 +7,11 @@ class Category < ApplicationRecord
 
   validates :name, presence: true
 
-  scope :search_name, -> search {where "name like ?", "%#{search}%"}
-  scope :by_name, ->(name){where name: name}
-  scope :by_id_not_match, ->(id){where.not id: id}
-  scope :by_parent_id_not_match, ->(parent_id){where.not parent_id: parent_id}
-  scope :by_parent_id_status, -> {where parent_id: nil}
+  scope :search_name, -> search { where "name like ?", "%#{search}%" }
+  scope :by_name, ->(name){ where name: name }
+  scope :by_id_not_match, ->(id){ where.not id: id }
+  scope :by_parent_id_not_match, ->(parent_id){ where.not parent_id: parent_id }
+  scope :by_parent_id_status, -> { where parent_id: nil }
 
   def descendants
     children.inject(children) do |all, subcat|
