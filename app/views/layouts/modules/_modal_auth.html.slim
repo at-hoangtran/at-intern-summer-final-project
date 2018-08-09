@@ -23,9 +23,7 @@
               = render 'password_resets/new'
         .modal-footer
           button.btn.btn-primary.pull-left[type="button"]
-            a> href="/auth/google_oauth2"
             i.fa.fa-facebook.pr-1
-         
-          button.btn.btn-danger.pull-right[type="button"]
-            i.fa.fa-google-plus.pr-1
-            |  Google +
+            |  Facebook
+          = link_to content_tag(:i, " Google +", class: "fa fa-google-plus pr-1"), google_path, class: "btn btn-danger pull-right"
+
