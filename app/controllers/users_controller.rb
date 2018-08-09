@@ -12,7 +12,8 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user
-      log_in @user
+      @user.send_activation_email
+      flash[:info] = 'Please check your email to activate your account.'
       redirect_to root_path
     else
       render :new
@@ -21,11 +22,11 @@ class UsersController < ApplicationController
 
   private
 
-  def find_user
-    @user = User.find_by(id: params[:id])
-  end
+    def find_user
+      @user = User.find_by(id: params[:id])
+    end
 
-  def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
-  end
+    def user_params
+      params.require(:user).permit(:email, :password, :password_confirmation)
+    end
 end
