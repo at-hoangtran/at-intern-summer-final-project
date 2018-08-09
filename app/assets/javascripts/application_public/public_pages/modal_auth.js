@@ -15,6 +15,6 @@ var modal_auth = {
   }
 }
 
-$(document).ready(function () {
+$(document).on('turbolinks:load', function() {
   modal_auth.initOnLoad();
 });
