@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  attr_accessor :remember_token, :activation_token
+  attr_accessor :remember_token, :activation_token, :reset_token
 
   before_save { email.downcase! }
   before_create :create_activation_digest
@@ -16,17 +16,21 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  validates :password, presence: true,
-                      length: { minimum: Settings.min_password_length },
-                      allow_nil: true
-  validates :password_confirmation, presence: true, length: { minimum: 6 },
-                      allow_nil: true
+  validates :password,
+            presence: true, allow_nil: true,
+            length: { minimum: Settings.min_password_length }
+  validates :password_confirmation,
+            presence: true, allow_nil: true,
+            length: { minimum: Settings.min_password_length }
 
   # Returns the hash digest of the given string.
   class << self
     def digest(string)
-      cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                    BCrypt::Engine.cost
+      if cost = ActiveModel::SecurePassword.min_cost
+        BCrypt::Engine::MIN_COST
+      else
+        BCrypt::Engine.cost
+      end
       BCrypt::Password.create(string, cost: cost)
     end
 
@@ -65,12 +69,26 @@ class User < ApplicationRecord
   def self.find_or_create_from_auth_hash(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
       user.provider = auth.provider
-      user.uid = auth.uid
-      user.name = auth.info.first_name + ' ' + auth.info.last_name
-      user.email = auth.info.email
+      user.uid      = auth.uid
+      user.name     = auth.info.first_name + ' ' + auth.info.last_name
+      user.email    = auth.info.email
       user.password = SecureRandom.urlsafe_base64
       user.save!
     end
+  end
+
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_attribute(:reset_digest,  User.digest(reset_token))
+    update_attribute(:reset_send_at, Time.zone.now)
+  end
+
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
+  end
+
+  def password_reset_expired?
+    reset_send_at < 2.hours.ago
   end
 
   private

@@ -8,7 +8,7 @@
 
 10.times do |u|
   name = Faker::Name.name
-  mail = Faker::Internet.email
+  email = Faker::Internet.email
   User.create!(name: name, email: email)
 end
 
