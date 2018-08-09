@@ -1,10 +1,10 @@
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
   $('#calendar').datepicker({});
   !function ($) {
-      $(document).on("click","ul.nav li.parent > a > span.icon", function(){
-          $(this).find('em:first').toggleClass("glyphicon-minus");
-      });
-      $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+    $(document).on("click","ul.nav li.parent > a > span.icon", function(){
+        $(this).find('em:first').toggleClass("glyphicon-minus");
+    });
+    $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
   }(window.jQuery);
 
   $(window).on('resize', function () {
@@ -55,6 +55,6 @@ $(document).ready(function() {
       [].forEach.call(files, readAndPreview);
     }
   });
-})
+});
 
 

@@ -14,3 +14,6 @@ Rails.application.config.assets.precompile +=
 
 Rails.application.config.assets.precompile +=
   %w(include/lib/*.js)
+
+Rails.application.config.assets.precompile +=
+  %w(include/admin/*.js)

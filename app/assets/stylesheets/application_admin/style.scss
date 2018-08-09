@@ -961,8 +961,6 @@ div {
   tbody {
     overflow-y: scroll;
     height: 330px;
-    //  <-- Select the height of the body
-  width: 100%;
     position: absolute;
   }
 }
@@ -992,4 +990,8 @@ ul {
   position: fixed;
   bottom: 0;
   right: 12px;
+}
+
+.delete-category {
+  margin-left: 1%;
 }

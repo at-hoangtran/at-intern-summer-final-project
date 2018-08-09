@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 20180808101724) do
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.integer  "parent_id"
-    t.integer  "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"

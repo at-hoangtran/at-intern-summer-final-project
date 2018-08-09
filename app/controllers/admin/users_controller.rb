@@ -22,13 +22,13 @@ class Admin::UsersController < ApplicationAdminController
         render :crop
       else
         respond_to do |format|
-          format.html { redirect_to admin_users_url ,
+          format.html { redirect_to admin_users_url,
             flash: { success: "Tạo mới thành công !" }}
         end
       end
     else
       respond_to do |format|
-        format.html { redirect_to admin_users_url ,
+        format.html { redirect_to admin_users_url,
           flash: { danger: "Tạo mới thất bại !" }}
       end
     end
@@ -44,13 +44,13 @@ class Admin::UsersController < ApplicationAdminController
         render :crop
       else
         respond_to do |format|
-          format.html { redirect_to admin_users_url ,
+          format.html { redirect_to admin_users_url,
             flash: { success: "Cập nhật thành công !" }}
         end
       end
     else
       respond_to do |format|
-        format.html { redirect_to admin_users_url ,
+        format.html { redirect_to admin_users_url,
           flash: { danger: "Cập nhật thất bại !" }}
       end
     end
@@ -59,11 +59,13 @@ class Admin::UsersController < ApplicationAdminController
   def destroy
     if @user.destroy
       respond_to do |format|
-        format.html { redirect_to admin_users_url , flash: { success: "Xóa thành công !" }}
+        format.html { redirect_to admin_users_url,
+          flash: { success: "Xóa thành công !" }}
       end
     else
       respond_to do |format|
-        format.html { redirect_to admin_users_url , flash: {danger: "Xóa thất bại !" }}
+        format.html { redirect_to admin_users_url,
+          flash: {danger: "Xóa thất bại !" }}
       end
     end
   end
