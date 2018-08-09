@@ -1,16 +1,15 @@
 class Admin::ProductsController < ApplicationAdminController
   include ProductsHelper
-  before_action :get_product, only: %i(edit update destroy destroy_image)
-  before_action :get_categorys, only: %i(new create edit update)
+  before_action :get_product, only: %i[edit update destroy destroy_image]
+  before_action :get_categorys, only: %i[new create edit update]
 
   def index
     @products =
-    if params[:term].nil?
-      Product.paginate(page: params[:page], :per_page => 5)
-    else
-      Product.search_name(params[:term]).paginate page: params[:page],
-      per_page: 5
-    end
+      if params[:term].nil?
+        Product.paginate(page: params[:page], per_page: 5)
+      else
+        Product.search_name(params[:term]).paginate(page: params[:page], per_page: 5)
+      end
   end
 
   def new
@@ -19,17 +18,21 @@ class Admin::ProductsController < ApplicationAdminController
 
   def create
     @product = current_user.products.build product_params
-    @product.price = addPrice product_params[:price]
+    @product.price = add_price product_params[:price]
     add_more_images(product_params[:images])
     if @product.save
       respond_to do |format|
-        format.html { redirect_to admin_products_url,
-          flash: { success: "Thêm sản phẩm thành công !" }}
+        format.html do
+          redirect_to admin_products_url,
+                      flash: { success: 'Thêm sản phẩm thành công !' }
+        end
       end
     else
       respond_to do |format|
-        format.html { redirect_to admin_products_url,
-          flash: { danger: "Thêm sản phẩm thất bại !" }}
+        format.html do
+          redirect_to admin_products_url,
+                      flash: { danger: 'Thêm sản phẩm thất bại !' }
+        end
       end
     end
   end
@@ -40,16 +43,20 @@ class Admin::ProductsController < ApplicationAdminController
 
   def update
     update_more_images(product_params[:images])
-    @product_change.price = addPrice product_params[:price]
+    @product_change.price = add_price product_params[:price]
     if update_product
       respond_to do |format|
-        format.html { redirect_to edit_admin_product_url(@product.id),
-          flash: { success: "Cập nhật thành công !" }}
+        format.html do
+          redirect_to edit_admin_product_url(@product.id),
+                      flash: { success: 'Cập nhật thành công !' }
+        end
       end
     else
       respond_to do |format|
-        format.html { redirect_to admin_products_url,
-          flash: { danger: "Cập nhật thất bại !"  }}
+        format.html do
+          redirect_to admin_products_url,
+                      flash: { danger: 'Cập nhật thất bại !' }
+        end
       end
     end
   end
@@ -79,11 +86,17 @@ class Admin::ProductsController < ApplicationAdminController
   def destroy
     if @product.destroy
       respond_to do |format|
-        format.html { redirect_to admin_products_url , :flash => { :success => t("admin.products.delete-complete") }}
+        format.html do
+          redirect_to admin_products_url,
+                      flash: { success: 'Xóa sản phẩm thành công !' }
+        end
       end
     else
       respond_to do |format|
-        format.html { redirect_to admin_products_url , :flash => { :danger => t("admin.products.delete-error") }}
+        format.html do
+          redirect_to admin_products_url,
+                      flash: { danger: 'Xóa sản phẩm thất bại !' }
+        end
       end
     end
   end
@@ -91,21 +104,27 @@ class Admin::ProductsController < ApplicationAdminController
   def destroy_image
     remove_image_at_index(params[:index].to_i)
     if @product.save
-      unless params[:size].to_i == 0
+      if params[:size].to_i.zero?
         respond_to do |format|
-          format.html { redirect_to edit_admin_product_url(@product.id),
-            flash: { success: "Xóa ảnh thành công !" }}
+          format.html do
+            redirect_to edit_admin_product_url(@product.id),
+                        flash: { danger: 'Bạn không thể xóa tất cả ảnh !' }
+          end
         end
       else
         respond_to do |format|
-          format.html { redirect_to edit_admin_product_url(@product.id),
-            flash: { :danger => "Bạn không thể xóa tất cả ảnh !" }}
+          format.html do
+            redirect_to edit_admin_product_url(@product.id),
+                        flash: { success: 'Xóa ảnh thành công !' }
+          end
         end
       end
     else
       respond_to do |format|
-        format.html { redirect_to edit_admin_product_url(@product.id),
-          flash: { danger: "Xóa ảnh thất bại !" }}
+        format.html do
+          redirect_to edit_admin_product_url(@product.id),
+                      flash: { danger: 'Xóa ảnh thất bại !' }
+        end
       end
     end
   end
@@ -113,7 +132,7 @@ class Admin::ProductsController < ApplicationAdminController
   def count_image
     @product = Product.find(params[:id])
     respond_to do |format|
-      format.json { render :json =>  @product.images.size}
+      format.json { render json: @product.images.size }
     end
   end
 
@@ -126,11 +145,11 @@ class Admin::ProductsController < ApplicationAdminController
     def get_product
       @product = Product.find(params[:id])
       @product_change = @product
-      @product || render(file: "public/404.html", status: 404, layout: true)
+      @product || render(file: 'public/404.html', status: 404, layout: true)
     end
 
     def product_params
-      params.require(:product).permit(:status, :name, :price, :quantity, :description, :category_id, {images: []})
+      params.require(:product).permit(:status, :name, :price, :quantity, :description, :category_id, images: [])
     end
 
     def add_more_images(new_images)

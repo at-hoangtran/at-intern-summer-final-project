@@ -11,11 +11,11 @@ class User < ApplicationRecord
   PHONE_REGEX = /\A(?:\+?\d{1,3}\s*-?)?\(?(?:\d{3})?\)?[- ]?\d{3}[- ]?\d{4}\z/
 
   validates :email, presence: true, length: { maximum: 255 },
-                     format: { with: VALID_EMAIL_REGEX },
-                     uniqueness: true
+                    format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: true
   validates :name,  presence: true, length: { maximum: 50 }
   validates :phone, uniqueness: true, length: { maximum: 15 },
-                     format: { with: PHONE_REGEX }, numericality: true
+                    format: { with: PHONE_REGEX }, numericality: true
 
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
@@ -27,9 +27,9 @@ class User < ApplicationRecord
     avatar.recreate_versions! if crop_x.present?
   end
 
-  default_scope ->{order(created_at: :desc)}
-  scope :search_name, -> search { where "name like ?", "%#{search}%" }
-  enum role: [ :member, :admin ]
+  default_scope -> { order(created_at: :desc) }
+  scope :search_name, ->(search) { where 'name like ?', "%#{search}%" }
+  enum role: %i[member admin]
 
   # Returns the hash digest of the given string.
   class << self

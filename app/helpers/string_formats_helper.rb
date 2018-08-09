@@ -1,13 +1,13 @@
 module StringFormatsHelper
-  def addPrice price
-    price.delete(",")
+  def add_price(price)
+    price.delete(',')
   end
 
-  def outPrice price
+  def out_price(price)
     price.reverse.scan(/.{1,3}/).join(',').reverse
   end
 
-  def formatDayTime daytime
-    daytime.strftime("%m/%d/%Y")
+  def format_day_time(daytime)
+    daytime.strftime('%m/%d/%Y')
   end
 end

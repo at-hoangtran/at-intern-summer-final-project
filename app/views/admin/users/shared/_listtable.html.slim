@@ -10,7 +10,7 @@ tr
   td
     = list.email
   td
-    = formatDayTime list.created_at
+    = format_day_time list.created_at
   td
     = list.admin? ? content_tag(:span, "Quản trị", class: "label label-primary") : content_tag(:span, "Thành viên", class: "label label-default")
   td

@@ -1,16 +1,16 @@
 class Admin::CategoriesController < ApplicationAdminController
   include CategoriesHelper
-  before_action :load_category, except: %i(index new create)
-  before_action :load_categories, only: %i(new create)
-  before_action :load_categories_by_not_match_id, only: %i(edit update show)
+  before_action :load_category, except: %i[index new create]
+  before_action :load_categories, only: %i[new create]
+  before_action :load_categories_by_not_match_id, only: %i[edit update show]
 
   def index
     @categories =
-    if params[:term].nil?
-      Category.by_parent_id_status.paginate(page: params[:page], :per_page => 5)
-    else
-      Category.by_parent_id_status.search_name(params[:term]).paginate page: params[:page], per_page: 5
-    end
+      if params[:term].nil?
+        Category.by_parent_id_status.paginate(page: params[:page], per_page: 5)
+      else
+        Category.by_parent_id_status.search_name(params[:term]).paginate(page: params[:page], per_page: 5)
+      end
   end
 
   def new
@@ -21,7 +21,7 @@ class Admin::CategoriesController < ApplicationAdminController
     @subcategories = Category.find_by(id: params[:id]).branch_ids
     @product_details = Product.all.by_category_id @subcategories
     respond_to do |format|
-      format.json { render json: @product_details.as_json(only: [:id, :images, :name, :quantity, :price], include: [{category: {only: [:id, :name]}}])}
+      format.json { render json: @product_details.as_json(only: %i[id images name quantity price], include: [{ category: { only: %i[id name] } }]) }
     end
   end
 
@@ -29,13 +29,17 @@ class Admin::CategoriesController < ApplicationAdminController
     @category = Category.new category_params
     if @category.save
       respond_to do |format|
-        format.html { redirect_to admin_categories_url,
-          flash: { success: "Tạo danh mục thành công !" }}
+        format.html do
+          redirect_to admin_categories_url,
+                      flash: { success: 'Tạo danh mục thành công !' }
+        end
       end
     else
       respond_to do |format|
-        format.html { redirect_to admin_categories_url,
-          flash: { danger: "Tạo danh mục thất bại !" }}
+        format.html do
+          redirect_to admin_categories_url,
+                      flash: { danger: 'Tạo danh mục thất bại !' }
+        end
       end
     end
   end
@@ -45,13 +49,17 @@ class Admin::CategoriesController < ApplicationAdminController
   def update
     if @category.update category_params
       respond_to do |format|
-        format.html { redirect_to admin_categories_url,
-          flash: { success: "Cập nhật thành công !" }}
+        format.html do
+          redirect_to admin_categories_url,
+                      flash: { success: 'Cập nhật thành công !' }
+        end
       end
     else
       respond_to do |format|
-        format.html { redirect_to admin_categories_url,
-          flash: { danger: "Cập nhật thất bại !" }}
+        format.html do
+          redirect_to admin_categories_url,
+                      flash: { danger: 'Cập nhật thất bại !' }
+        end
       end
     end
   end
@@ -59,13 +67,17 @@ class Admin::CategoriesController < ApplicationAdminController
   def destroy
     if @category.destroy
       respond_to do |format|
-        format.html { redirect_to admin_categories_url,
-          flash: { success: "Xóa thành công !" }}
+        format.html do
+          redirect_to admin_categories_url,
+                      flash: { success: 'Xóa thành công !' }
+        end
       end
     else
       respond_to do |format|
-        format.html { redirect_to admin_categories_url,
-          flash: { danger: "Xóa thất bại !"}}
+        format.html do
+          redirect_to admin_categories_url,
+                      flash: { danger: 'Xóa thất bại !' }
+        end
       end
     end
   end
@@ -86,6 +98,6 @@ class Admin::CategoriesController < ApplicationAdminController
 
     def load_category
       @category = Category.find_by id: params[:id]
-      @category || render(file: "public/404.html", status: 404, layout: true)
+      @category || render(file: 'public/404.html', status: 404, layout: true)
     end
 end
