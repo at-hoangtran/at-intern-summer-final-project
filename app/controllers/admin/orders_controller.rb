@@ -4,14 +4,14 @@ class Admin::OrdersController < ApplicationAdminController
 
   def index
     if params[:search].blank?
-      @orders = Order.paginate(page: params[:page], per_page: 5)
+      @orders = Order.not_cart.paginate(page: params[:page], per_page: 5)
     else
       @orders = Order.all
       search_name
       search_price
       search_day
       search_status
-      @orders = @orders.paginate(page: params[:page], per_page: 5)
+      @orders = @orders.not_cart.paginate(page: params[:page], per_page: 5)
     end
   end
 

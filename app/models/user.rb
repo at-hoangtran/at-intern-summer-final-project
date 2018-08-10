@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
   has_many :products, dependent: :destroy
   has_many :orders, dependent: :destroy
+  has_many :auction_details, dependent: :destroy
 
   attr_accessor :activation_token, :remember_token
   before_save { email.downcase! }

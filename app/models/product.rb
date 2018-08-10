@@ -1,6 +1,10 @@
 class Product < ApplicationRecord
+  acts_as_paranoid
+
   belongs_to :user
   belongs_to :category
+  has_many :timers, dependent: :destroy
+  has_many :auctions, dependent: :destroy
 
   default_scope -> { order(created_at: :desc) }
   scope :search_name, ->(search) { where 'name like ?', "%#{search}%" }
