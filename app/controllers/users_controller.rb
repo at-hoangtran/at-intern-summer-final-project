@@ -11,18 +11,29 @@ class UsersController < ApplicationController
 
   def create
     if @email
-      flash[:danger] = 'Email is exist!'
+      flash[:danger] = 'Email đã tồn tại'
       redirect_to root_path
     else
-      @user = User.create(user_params)
+      @user = User.create!(user_params)
       if @user
         @user.send_activation_email
-        flash[:info] = 'Please check your email to activate your account.'
+        flash[:info] = 'Vui lòng xác nhận email.'
         redirect_to root_path
       else
         render :new
       end
     end
+  end
+
+  def edit; end
+
+  def update
+    if @user.update_attributes(user_params)
+      flash.now[:success] = 'Cập nhật thông tin thành công'
+    else
+      flash.now[:danger] = 'Cập nhật thông tin thất bại'
+    end
+    render 'edit'
   end
 
   private
@@ -36,6 +47,13 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(
+        :name,
+        :email,
+        :password,
+        :password_confirmation,
+        :address,
+        :phone
+      )
     end
 end

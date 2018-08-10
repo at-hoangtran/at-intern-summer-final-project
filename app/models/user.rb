@@ -11,8 +11,8 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true
 
-  # validates :phone, uniqueness: true, length: { maximum: 15 },
-  #                   format: { with: PHONE_REGEX }, numericality: true
+  validates :phone, uniqueness: true, length: { maximum: 15 },
+                    format: { with: PHONE_REGEX }, numericality: true, allow_nil: true
 
   has_secure_password
 

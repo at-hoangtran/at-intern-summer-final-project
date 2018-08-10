@@ -49,6 +49,18 @@ div#panelsuccess {
   min-height: 1760px;
 }
 
+.btn-edit {
+  width: 150px;
+}
+
+.edit-left {
+  float: left;
+  display: none;
+}
+.edit-right {
+  float: right;
+}
+
 input.qty {
   width:30px;
   font-weight:bold;

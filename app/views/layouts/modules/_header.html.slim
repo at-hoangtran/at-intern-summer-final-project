@@ -31,7 +31,7 @@ nav#main-Nav.navbar.navbar-default.navbar-top[role="navigation"]
                   li
                     = link_to "Trang quản trị", "#"
                 li
-                  = link_to "Thông tin cá nhân", "#"
+                  = link_to "Thông tin cá nhân", edit_user_path(current_user)
                 li
                   = link_to content_tag(:i, " Đăng xuất", class: "fa fa-btn fa-sign-out"), logout_path, method: :delete
           - else
