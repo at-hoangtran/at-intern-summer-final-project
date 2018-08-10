@@ -10,26 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_180_807_064_956) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+ActiveRecord::Schema.define(version: 20180808081107) do
 
-  create_table 'users', force: :cascade do |t|
-    t.string   'name'
-    t.string   'email'
-    t.string   'password_digest'
-    t.string   'remember_digest'
-    t.string   'activation_digest'
-    t.boolean  'activated'
-    t.datetime 'activated_at'
-    t.string   'role'
-    t.string   'reset_digest'
-    t.datetime 'reset_send_at'
-    t.string   'address'
-    t.string   'phone'
-    t.datetime 'created_at',        null: false
-    t.datetime 'updated_at',        null: false
-    t.index ['email'], name: 'index_users_on_email', unique: true, using: :btree
-    t.index ['phone'], name: 'index_users_on_phone', unique: true, using: :btree
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "remember_digest"
+    t.string   "activation_digest"
+    t.boolean  "activated"
+    t.datetime "activated_at"
+    t.string   "role"
+    t.string   "reset_digest"
+    t.datetime "reset_send_at"
+    t.string   "address"
+    t.string   "phone"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "provider"
+    t.string   "uid"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["phone"], name: "index_users_on_phone", unique: true, using: :btree
   end
+
 end
