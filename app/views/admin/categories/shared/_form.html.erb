@@ -1,0 +1,21 @@
+<div class="control-group">
+  <%= f.label :name, t(".l_name"), { class: "control-label", for: "name" } %>
+  <%= f.text_field :name, { id: "name", class: "form-control", placeholder: t(".pla_name") } %>
+</div>
+
+<div class="control-group">
+  <%= f.label :parent_id, t(".l_parent_id"), { class: "control-label", for: "parent_id" } %>
+  <%= f.select :parent_id, options_for_select(load_categories, selected: @category.parent_id), {}, { id: "parent_id", class: "form-control" } %>
+</div>
+<br>
+<%= f.submit yield(:button_text), class: "btn btn-primary" %>
+
+<% if @category.count_prouduct_in_subcategory %>
+  <%=
+    button_tag(type: "button", class: "show-details btn btn-primary", "data-toggle": "modal", "data-target": "#detailsModal", "details-id": @category.id) do
+      raw('<i class="fa fa-trash fa-1x" aria-hidden="true"></i>')
+    end
+  %>
+<% else %>
+  <%= link_to raw('<i class="fa fa-trash fa-1x"></i>'), admin_category_path(@category), { class: "btn btn-primary", method: :delete, data: {confirm: "Bạn có chắc chắn chứ ?"}} %>
+<% end %>
