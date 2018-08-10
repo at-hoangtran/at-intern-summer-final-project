@@ -6,7 +6,7 @@ function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
 
-$(function() {
+$(document).on('turbolinks:load', function() {
   $(".dropdown").hover(function() {
     $('.dropdown-menu', this).stop(true, true).fadeIn("fast");
     $(this).toggleClass('open');
