@@ -92,7 +92,7 @@ input[type="password"] {
 }
 
 .notifications{
-  z-index: 999;
+  z-index: 2000;
 }
 
 .remember_me {
@@ -115,4 +115,9 @@ li.nopassword {
 .g-recaptcha {
   transform: scale(0.9);
   transform-origin: 0 0;
+}
+
+#frmResetsPassword {
+  width: 300px;
+  margin: auto
 }
