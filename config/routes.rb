@@ -18,7 +18,7 @@ Rails.application.routes.draw do
         patch :reject
       end
     end
-
+    resources :timers
     delete 'delete_image/:id/:index/:size', to: 'products#destroy_image'
     get 'product/count_images/:id', to: 'products#count_image'
   end

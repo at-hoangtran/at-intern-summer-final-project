@@ -20,4 +20,6 @@
 //= require sweetalert2
 //= require sweet-alert2-rails
 //= require bootstrap_notify
+//= require moment
+//= require bootstrap-datetimepicker
 //= require_tree .

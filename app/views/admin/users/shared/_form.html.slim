@@ -8,7 +8,10 @@
   = f.text_field :name, { id: "name", class: "form-control", placeholder: "Nhập họ và tên..." }
 .control-group
   = f.label :email, "Email", { class: "control-label", for: "email" }
-  = f.email_field :email, { id: "email", class: "form-control", placeholder: "Vui lòng nhập email..." }
+  - if f.object.id?
+    = f.email_field :email, { id: "email", class: "form-control", placeholder: "Vui lòng nhập email...", disabled: true }
+  - else
+    = f.email_field :email, { id: "email", class: "form-control", placeholder: "Vui lòng nhập email..." }
 .control-group
   = f.label :password, "Mật khẩu", { class: "control-label", for: "password" }
   = f.password_field :password, { id: "password", class: "form-control", placeholder: "Nhập mật khẩu..." }

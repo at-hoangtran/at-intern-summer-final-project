@@ -19,5 +19,6 @@
     .col-lg-12
       .panel.panel-default
         .panel-body
-          = form_for @user, url: admin_user_path(@user.id), html: {id: "frmAddUserEdit", class: "form-horizontal", method: :put, remote: true, authenticity_token: true} do |f|
-            = render partial: "admin/users/shared/form", locals: {f: f}
+          .col-lg-5
+            = form_for @user, url: admin_user_path(@user.id), html: {id: "frmAddUserEdit", class: "form-horizontal", method: :put, remote: true, authenticity_token: true} do |f|
+              = render partial: "admin/users/shared/form", locals: {f: f}

@@ -1,5 +1,4 @@
 $(document).on('turbolinks:load', function() {
-  $('#calendar').datepicker({});
   !function ($) {
     $(document).on("click","ul.nav li.parent > a > span.icon", function(){
         $(this).find('em:first').toggleClass("glyphicon-minus");
@@ -54,6 +53,14 @@ $(document).on('turbolinks:load', function() {
     if (files) {
       [].forEach.call(files, readAndPreview);
     }
+  });
+
+  $('.datetimepicker').datetimepicker({
+    format: 'HH:mm'
+  });
+
+  $('.datetimepicker-sounds').datetimepicker({
+    format: 'mm:ss'
   });
 });
 

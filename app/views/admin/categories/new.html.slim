@@ -17,5 +17,6 @@
     .col-lg-12
       .panel.panel-default
         .panel-body
-          = form_for @category, url: admin_categories_path, html: {id: "frmCategory", class: "form-horizontal"} do |f|
-            = render partial: "admin/categories/shared/form", locals: {f: f}
+          .col-lg-5
+            = form_for @category, url: admin_categories_path, html: {id: "frmCategory", class: "form-horizontal"} do |f|
+              = render partial: "admin/categories/shared/form", locals: {f: f}

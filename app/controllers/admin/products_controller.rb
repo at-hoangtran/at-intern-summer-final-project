@@ -138,6 +138,10 @@ class Admin::ProductsController < ApplicationAdminController
 
   private
 
+    def load_products
+      @products = Product.all
+    end
+
     def get_categorys
       @categories = Category.by_parent_id_not_match(nil)
     end

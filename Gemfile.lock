@@ -64,6 +64,8 @@ GEM
       sass (>= 3.3.4)
     bootstrap-will_paginate (1.0.0)
       will_paginate
+    bootstrap3-datetimepicker-rails (4.17.47)
+      momentjs-rails (>= 2.8.1)
     bootstrap_notify (0.0.5)
       jquery-rails
       rails (>= 3.2.8)
@@ -121,6 +123,8 @@ GEM
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
+    momentjs-rails (2.20.1)
+      railties (>= 3.1)
     multi_json (1.13.1)
     nio4r (2.3.1)
     nokogiri (1.8.4)
@@ -222,7 +226,7 @@ GEM
     turbolinks-source (5.1.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.17)
+    uglifier (4.1.18)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.4.0)
     web-console (3.6.2)
@@ -244,6 +248,7 @@ DEPENDENCIES
   bootstrap-glyphicons
   bootstrap-sass (= 3.3.7)
   bootstrap-will_paginate (= 1.0.0)
+  bootstrap3-datetimepicker-rails (~> 4.17.47)
   bootstrap_notify
   byebug
   carrierwave!
@@ -258,6 +263,7 @@ DEPENDENCIES
   jquery-validation-rails
   listen (~> 3.0.5)
   mini_magick (= 4.7.0)
+  momentjs-rails (>= 2.9.0)
   paranoia (~> 2.2)
   pg (~> 0.18)
   pry

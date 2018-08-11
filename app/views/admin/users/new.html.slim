@@ -9,15 +9,16 @@
       li
         = link_to content_tag(:i, " Home", class: "fa fa-home"), admin_users_path
       li.active
-        = "Tạo thành viên"
+        | Tạo thành viên
   .row
     .col-lg-12
       h1.page-header
         small
-          = "Tạo thành viên"
+          | Tạo thành viên
   .row
     .col-lg-12
       .panel.panel-default
         .panel-body
-          = form_for @user, url:  admin_users_path, html: { id: "frmAddUser", class: "form-horizontal" }, remote: true do |f|
-            = render partial: "admin/users/shared/form", locals: {f: f}
+          .col-lg-5
+            = form_for @user, url:  admin_users_path, html: { id: "frmAddUser", class: "form-horizontal" }, remote: true do |f|
+              = render partial: "admin/users/shared/form", locals: {f: f}
