@@ -1,21 +1,37 @@
 class User < ApplicationRecord
-  attr_accessor :remember_token
+  acts_as_paranoid
+  has_secure_password
 
+  has_many :products, dependent: :destroy
+  has_many :orders, dependent: :destroy
+  has_many :auction_details, dependent: :destroy
+
+  attr_accessor :activation_token, :remember_token
   before_save { email.downcase! }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   PHONE_REGEX = /\A(?:\+?\d{1,3}\s*-?)?\(?(?:\d{3})?\)?[- ]?\d{3}[- ]?\d{4}\z/
+
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true
-  # validates :name,  presence: true, length: { maximum: 50 }
-  # validates :phone, uniqueness: true, length: { maximum: 15 },
-  #                   format: { with: PHONE_REGEX }, numericality: true
-
-  has_secure_password
+  validates :name,  presence: true, length: { maximum: 50 }
+  validates :phone, uniqueness: true, length: { maximum: 15 },
+                    format: { with: PHONE_REGEX }, numericality: true
 
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
-  validates :password_confirmation, presence: true, length: { minimum: 6 }, allow_nil: true
+
+  mount_uploader :avatar, AvatarUploader
+  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  after_update :crop_avatar
+
+  def crop_avatar
+    avatar.recreate_versions! if crop_x.present?
+  end
+
+  default_scope -> { order(created_at: :desc) }
+  scope :search_name, ->(search) { where 'name like ?', "%#{search}%" }
+  enum role: %i[member admin]
 
   # Returns the hash digest of the given string.
   class << self

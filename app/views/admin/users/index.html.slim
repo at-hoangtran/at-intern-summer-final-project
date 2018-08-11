@@ -1,0 +1,42 @@
+- provide :search_text, admin_users_path
+.col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
+  .row
+    ol.breadcrumb
+      li
+        a[href="#"]
+          i.fa.fa-home
+      li.active
+        | Danh Sách Người Dùng
+  .row
+    .col-lg-12
+      .panel-heading
+        |  Danh Sách Người Dùng
+      .panel.panel-default
+        .panel-body
+          .table-responsive
+            table.table.table-hover
+              thead
+                tr
+                  th
+                    | ID
+                  th
+                    | Tên Thành Viên
+                  th
+                    | Địa chỉ
+                  th
+                    | Điện thoại
+                  th
+                    | Email
+                  th
+                    | Ngày đăng ký
+                  th
+                    | Quyền
+                  th
+                    | Trạng thái
+                  th[colspan="2"]
+                    | Action
+              tbody
+                = render partial: "admin/users/shared/listtable", collection: @users, as: "list"
+            = will_paginate
+            br
+            = link_to content_tag(:i, nil, class: "fa fa-plus-square fa-1x"), new_admin_user_url, class: "btn btn-primary"
