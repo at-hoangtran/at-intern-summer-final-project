@@ -1,0 +1,15 @@
+.control-group
+  = f.label :name, "Tên", { class: "control-label", for: "name" }
+  = f.text_field :name, { id: "name", class: "form-control", placeholder: "Vui lòng nhập tên..." }
+.control-group
+  = f.label :parent_id, "Thư mục cha", { class: "control-label", for: "parent_id" }
+  = f.select :parent_id, options_for_select(load_categories, selected: @category.parent_id), {}, { id: "parent_id", class: "form-control" }
+br
+= f.submit yield(:button_text), class: "btn btn-primary"
+
+- if @category.id
+  - if @category.prouduct_in_subcategory
+    = button_tag(type: "button", class: "show-details btn btn-danger delete-category", "data-toggle": "modal", "data-target": "#detailsModal", "details-id": @category.id) do
+      = content_tag(:i, nil, class: "fa fa-trash fa-1x")
+  - else
+    = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_category_path(@category), { class: "btn btn-danger delete-category", method: :delete, data: {confirm: "Bạn có chắc chắn chứ ?" }}

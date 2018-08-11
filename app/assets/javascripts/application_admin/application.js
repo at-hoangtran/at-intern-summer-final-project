@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.turbolinks
+//= require jquery.Jcrop
 //= require bootstrap
 //= require turbolinks
 //= require jquery.validate
@@ -20,4 +20,6 @@
 //= require sweetalert2
 //= require sweet-alert2-rails
 //= require bootstrap_notify
+//= require moment
+//= require bootstrap-datetimepicker
 //= require_tree .
