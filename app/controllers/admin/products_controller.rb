@@ -136,6 +136,16 @@ class Admin::ProductsController < ApplicationAdminController
     end
   end
 
+  def export_file
+    @products = Product.all
+
+    respond_to do |format|
+      format.xlsx do
+        send_data ExportProduct.export_file @products
+      end
+    end
+  end
+
   private
 
     def load_products
