@@ -1,0 +1,10 @@
+.col-lg-9
+  .col-lg-3.pull-right
+    = f.select :status, options_for_select([["Chọn", nil], ["Đang đấu gía", :running], ["Đã kết thúc", :finished]], selected: set_status), {}, { id: "status", class: "form-control" }
+    = f.submit "Tìm kiếm", class: "form-control btn btn-primary"
+  .col-lg-3.pull-right
+    = f.text_field :mintime, { type: "time", id: "mintime", class: "form-control", value: set_mintime}
+    = f.text_field :maxtime, { type: "time", id: "maxtime", class: "form-control", value: set_maxtime}
+  .col-lg-4.pull-right
+    = f.text_field :name, { id: "name", class: "form-control", placeholder: "Nhập tên sản phẩm", value: set_name }
+

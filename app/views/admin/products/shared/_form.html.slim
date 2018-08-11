@@ -5,7 +5,7 @@
 - unless f.object.id.blank?
   .control-group
     = f.label :status, "Trạng Thái", { class: "control-label", for: "status" }
-    = select_status f
+    = select_status_product f
 .control-group
   = f.label :name, "Tên sản phẩm", { class: "control-label", for: "name" }
   = f.text_field :name, { id: "name", class: "form-control", placeholder: "Nhập tên sản phẩm..." }

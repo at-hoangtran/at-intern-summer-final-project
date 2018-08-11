@@ -19,6 +19,8 @@ Rails.application.routes.draw do
       end
     end
     resources :timers
+    resources :auctions
+    resources :auction_details, only: %i[destroy]
     delete 'delete_image/:id/:index/:size', to: 'products#destroy_image'
     get 'product/count_images/:id', to: 'products#count_image'
   end

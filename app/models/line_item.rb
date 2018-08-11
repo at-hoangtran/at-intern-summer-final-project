@@ -6,5 +6,6 @@ class LineItem < ApplicationRecord
 
   validates :amount, presence: true
 
+  default_scope -> { order(created_at: :desc) }
   scope :by_order_id, ->(id) { where order_id: id }
 end
