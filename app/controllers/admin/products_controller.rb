@@ -136,6 +136,20 @@ class Admin::ProductsController < ApplicationAdminController
     end
   end
 
+  def import
+    render :import
+  end
+
+  def import_file
+    Product.import(params[:file])
+    respond_to do |format|
+      format.html do
+        redirect_to admin_products_url,
+                    flash: { success: 'Import file thành công !' }
+      end
+    end
+  end
+
   def export_file
     @products = Product.all
 

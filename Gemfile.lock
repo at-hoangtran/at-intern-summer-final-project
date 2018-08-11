@@ -177,6 +177,9 @@ GEM
     recaptcha (4.11.1)
       json
     rmagick (2.16.0)
+    roo (2.7.1)
+      nokogiri (~> 1)
+      rubyzip (~> 1.1, < 2.0.0)
     rubocop (0.58.2)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -276,6 +279,7 @@ DEPENDENCIES
   rails-assets-sweetalert2 (~> 5.1.1)!
   recaptcha
   rmagick
+  roo (~> 2.7.0)
   rubocop
   rubyXL
   sass-rails (~> 5.0)
