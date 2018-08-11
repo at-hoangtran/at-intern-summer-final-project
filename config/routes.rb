@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :timers
     resources :auctions
     resources :auction_details, only: %i[destroy]
+    get 'product/export_file', to: 'products#export_file'
     delete 'delete_image/:id/:index/:size', to: 'products#destroy_image'
     get 'product/count_images/:id', to: 'products#count_image'
   end
