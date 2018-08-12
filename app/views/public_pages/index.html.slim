@@ -1,28 +1,47 @@
 - provide :title, "Hệ thông bán hàng trực tuyến"
 .col-xs-12.col-sm-12.col-md-12.col-lg-12
-  .col-xs-12.col-sm-4.col-md-4.col-lg-4.no-padding
+  .col-xs-12.col-sm-3.col-md-3.col-lg-3.no-padding
     .thumbnail.mobile
       .bt
-        .image-m.pull-left
-
-        .intro.pull-right
-          h1
-            small.title-mobile
-              = "nil"
-          li
-            = "nil"
-          span.label.label-info
-            | Khuyễn mãi
-          li
-            span.glyphicon.glyphicon-hand-right
-            |  Củ sạc
-          li
-            span.glyphicon.glyphicon-hand-right
-            |  Tai nghe bluetooth
-          li
-            span.glyphicon.glyphicon-hand-right
-            |  Túi sách
-      span.btn.label-warning
+        .image-m
+          = link_to image_tag("demo_product.jpg", alt: ""), "#"
+      br
+      span.btn.col-xs-12.label-warning
         strong
-          = "200" + " đ"
-      = link_to "Thêm vào giỏ", "#", class: "btn btn-success pull-right add", method: :patch
+          = content_tag(:i, " 2,000,000" + " đ", class: "fa fa-gavel price-time")
+      = content_tag(:i, "20:00", class: "glyphicon glyphicon-time clock-time")
+      = content_tag(:div, nil, class: "add fa fa-search-plus fa-5x")
+  .col-xs-12.col-sm-3.col-md-3.col-lg-3.no-padding
+    .thumbnail.mobile
+      .bt
+        .image-m
+          = link_to image_tag("demo_product.jpg", alt: ""), "#"
+      br
+      span.btn.col-xs-12.label-warning
+        strong
+          = content_tag(:i, " 2,000,000" + " đ", class: "fa fa-gavel price-time")
+      = content_tag(:i, "20:00", class: "glyphicon glyphicon-time clock-time")
+      = content_tag(:div, nil, class: "add fa fa-search-plus fa-5x")
+  .col-xs-12.col-sm-3.col-md-3.col-lg-3.no-padding
+    .thumbnail.mobile
+      .bt
+        .image-m
+          = link_to image_tag("demo_product.jpg", alt: ""), "#"
+      br
+      span.btn.col-xs-12.label-warning
+        strong
+          = content_tag(:i, " 2,000,000" + " đ", class: "fa fa-gavel price-time")
+      = content_tag(:i, "20:00", class: "glyphicon glyphicon-time clock-time")
+      = content_tag(:div, nil, class: "add fa fa-search-plus fa-5x")
+  .col-xs-12.col-sm-3.col-md-3.col-lg-3.no-padding
+    .thumbnail.mobile
+      .bt
+        .image-m
+          = link_to image_tag("demo_product.jpg", alt: ""), "#"
+      br
+      span.btn.col-xs-12.label-warning
+        strong
+          = content_tag(:i, " 2,000,000" + " đ", class: "fa fa-gavel price-time")
+      = content_tag(:i, "20:00", class: "glyphicon glyphicon-time clock-time")
+      = content_tag(:div, nil, class: "add fa fa-search-plus fa-5x")
+

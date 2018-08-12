@@ -27,4 +27,6 @@ Rails.application.routes.draw do
     delete 'delete_image/:id/:index/:size', to: 'products#destroy_image'
     get 'product/count_images/:id', to: 'products#count_image'
   end
+  # Serve websocket cable requests in-process
+  mount ActionCable.server => '/cable'
 end

@@ -141,6 +141,8 @@ GEM
       method_source (~> 0.9.0)
     puma (3.12.0)
     rack (2.0.5)
+    rack-cache (1.8.0)
+      rack (>= 0.4)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.7)
@@ -176,6 +178,28 @@ GEM
       ffi (>= 0.5.0, < 2)
     recaptcha (4.11.1)
       json
+    redis (3.3.5)
+    redis-actionpack (5.0.2)
+      actionpack (>= 4.0, < 6)
+      redis-rack (>= 1, < 3)
+      redis-store (>= 1.1.0, < 2)
+    redis-activesupport (5.0.7)
+      activesupport (>= 3, < 6)
+      redis-store (>= 1.3, < 2)
+    redis-namespace (1.6.0)
+      redis (>= 3.0.4)
+    redis-rack (2.0.4)
+      rack (>= 1.5, < 3)
+      redis-store (>= 1.2, < 2)
+    redis-rack-cache (2.0.2)
+      rack-cache (>= 1.6, < 2)
+      redis-store (>= 1.2, < 2)
+    redis-rails (5.0.2)
+      redis-actionpack (>= 5.0, < 6)
+      redis-activesupport (>= 5.0, < 6)
+      redis-store (>= 1.2, < 2)
+    redis-store (1.5.0)
+      redis (>= 2.2, < 5)
     rmagick (2.16.0)
     roo (2.7.1)
       nokogiri (~> 1)
@@ -278,6 +302,10 @@ DEPENDENCIES
   rails (~> 5.0.6)
   rails-assets-sweetalert2 (~> 5.1.1)!
   recaptcha
+  redis (~> 3.0)
+  redis-namespace
+  redis-rack-cache
+  redis-rails
   rmagick
   roo (~> 2.7.0)
   rubocop
