@@ -1,5 +1,7 @@
 class Admin::CategoriesController < ApplicationAdminController
   include CategoriesHelper
+  before_action :logged_in_user
+  before_action :check_admin
   before_action :load_category, except: %i[index new create]
   before_action :load_categories, only: %i[new create]
   before_action :load_categories_by_not_match_id, only: %i[edit update show]

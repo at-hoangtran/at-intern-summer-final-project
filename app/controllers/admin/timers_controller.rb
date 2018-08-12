@@ -1,5 +1,7 @@
 class Admin::TimersController < ApplicationAdminController
   include TimersHelper
+  before_action :logged_in_user
+  before_action :check_admin
   before_action :get_products, only: %i[new edit]
   before_action :load_timer_id, only: %i[edit update destroy]
 

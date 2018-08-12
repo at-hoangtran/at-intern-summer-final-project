@@ -1,5 +1,7 @@
 class Admin::AuctionsController < ApplicationAdminController
   include AuctionsHelper
+  before_action :logged_in_user
+  before_action :check_admin
   before_action :load_auction_id, only: %i[destroy]
 
   def index

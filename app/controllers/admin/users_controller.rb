@@ -1,4 +1,7 @@
 class Admin::UsersController < ApplicationAdminController
+  before_action :logged_in_user
+  before_action :check_admin
+  before_action :correct_user, only: %i[edit update]
   before_action :load_user_id, only: %i[edit destroy update]
 
   def index

@@ -2,9 +2,14 @@ $(document).ready(function() {
   $("#frmRegister").validate({
     ignore: [],
     rules: {
+      "user[name]": {
+        required: true,
+        maxlength: 255,
+        minlength: 6,
+      },
       "user[email]": {
         required: true,
-        maxlength: 50,
+        maxlength: 255,
         minlength: 6,
         email: true,
         remote:"/users/check_email"
@@ -20,6 +25,12 @@ $(document).ready(function() {
       }
     },
     messages: {
+      "user[name]":{
+        required: "Vui lòng nhập họ tên !",
+        maxlength: "name quá 255 ký tự !",
+        minlength: "name phải tối thiểu 6 ký tự !"
+        // remote: "Email này đã tồn tại !"
+      },
       "user[email]":{
         required: "Vui lòng nhập email !",
         email: "Email bạn không hợp lệ !",

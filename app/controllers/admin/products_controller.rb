@@ -1,5 +1,7 @@
 class Admin::ProductsController < ApplicationAdminController
   include ProductsHelper
+  before_action :logged_in_user
+  before_action :check_admin
   before_action :get_product, only: %i[edit update destroy destroy_image]
   before_action :get_categorys, only: %i[new create edit update]
 

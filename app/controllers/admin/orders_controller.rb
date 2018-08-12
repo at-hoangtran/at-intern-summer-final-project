@@ -1,5 +1,7 @@
 class Admin::OrdersController < ApplicationAdminController
   include OrdersHelper
+  before_action :logged_in_user
+  before_action :check_admin
   before_action :load_order_id, only: %i[approve reject]
 
   def index
