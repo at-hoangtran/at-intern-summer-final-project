@@ -18,11 +18,20 @@ module TimersHelper
   end
 
   def select_products(obj)
-    obj.select :product_id, options_for_select(load_products, selected: obj.object.product_id), {}, id: 'product_id', class: 'form-control'
+    obj.select :product_id,
+               options_for_select(load_products, selected: obj.object.product_id),
+               {},
+               id: 'product_id',
+               class: 'form-control'
   end
 
   def select_status(obj)
-    obj.select :status, options_for_select([['Chưa bán', :waiting], ['Đang bán', :run]], selected: (obj.object.waiting? == true ? :waiting : :run)), {}, id: 'status', class: 'form-control'
+    obj.select :status,
+               options_for_select([['Chưa bán', :waiting], ['Đang bán', :run]],
+                                  selected: (obj.object.waiting? == true ? :waiting : :run)),
+               {},
+               id: 'status',
+               class: 'form-control'
   end
 
   def format_time(time)

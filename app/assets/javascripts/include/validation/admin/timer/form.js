@@ -35,7 +35,7 @@ $(document).ready(function() {
       "timer[start_at]":{
         required: "Vui lòng chọn thời gian bắt đầu !",
         stime: "Thời gian bắt đầu phải nhỏ hơn thời gian kết thúc !",
-        mxtime: "Vui lòng chọn khung giờ từ (5h AM - 23h PM)"
+        mxtime: "Vui lòng chọn khung giờ từ (8h AM - 22h PM)"
       },
       "timer[end_at]":{
         required: "Vui lòng chọn thời gian kết thúc !",
@@ -70,7 +70,7 @@ $(document).ready(function() {
 
 $.validator.addMethod("mxtime", function (value, element) {
   var hours = value.split(":")[0];
-  if (hours < 5 || hours > 23) {
+  if (hours < 8 || hours > 22) {
     return false;
   }
   return true;

@@ -11,7 +11,10 @@ class Admin::CategoriesController < ApplicationAdminController
       if params[:term].nil?
         Category.by_parent_id_status.paginate(page: params[:page], per_page: 5)
       else
-        Category.by_parent_id_status.search_name(params[:term]).paginate(page: params[:page], per_page: 5)
+        Category.by_parent_id_status.search_name(params[:term]).paginate(
+          page: params[:page],
+          per_page: 5
+        )
       end
   end
 
@@ -23,7 +26,12 @@ class Admin::CategoriesController < ApplicationAdminController
     @subcategories = Category.find_by(id: params[:id]).branch_ids
     @product_details = Product.all.by_category_id @subcategories
     respond_to do |format|
-      format.json { render json: @product_details.as_json(only: %i[id images name quantity price], include: [{ category: { only: %i[id name] } }]) }
+      format.json do
+        render json: @product_details.as_json(
+          only: %i[id images name quantity price],
+          include: [{ category: { only: %i[id name] } }]
+        )
+      end
     end
   end
 

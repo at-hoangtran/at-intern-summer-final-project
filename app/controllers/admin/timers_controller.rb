@@ -131,14 +131,13 @@ class Admin::TimersController < ApplicationAdminController
     end
 
     def search_status
-      if params[:search][:status].present?
-        status = params[:search][:status]
-        if status == 'waiting'
-          @timers = @timers.search_status 0
-        elsif status == 'run'
-          @timers = @timers.search_status 1
-        end
-      end
+      return unless params[:search][:status].present?
+      status = params[:search][:status]
+      @timers = if status == 'waiting'
+                  @timers.search_status 0
+                else
+                  @timers.search_status 1
+                end
     end
 
     def timer_params

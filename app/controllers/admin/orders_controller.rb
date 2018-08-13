@@ -20,7 +20,15 @@ class Admin::OrdersController < ApplicationAdminController
   def show
     @line_item = LineItem.by_order_id params[:id]
     respond_to do |format|
-      format.json { render json: @line_item.as_json(only: %i[id amount], include: [{ product: { only: %i[id images name quantity] } }, { order: { only: %i[id status] } }]) }
+      format.json do
+        render json: @line_item.as_json(
+          only: %i[id amount],
+          include: [
+            { product: { only: %i[id images name quantity] } },
+            { order: { only: %i[id status] } }
+          ]
+        )
+      end
     end
   end
 
@@ -69,15 +77,14 @@ class Admin::OrdersController < ApplicationAdminController
     end
 
     def search_status
-      if params[:search][:status].present?
-        status = params[:search][:status]
-        if status == 'notdefined'
-          @orders = @orders.search_status 1
-        elsif status == 'defined'
-          @orders = @orders.search_status 2
-        elsif status == 'cancel'
-          @orders = @orders.search_status 3
-        end
-      end
+      return unless params[:search][:status].present?
+      status = params[:search][:status]
+      @orders = if status == 'notdefined'
+                  @orders.search_status 1
+                elsif status == 'defined'
+                  @orders.search_status 2
+                elsif status == 'cancel'
+                  @orders.search_status 3
+                end
     end
 end

@@ -4,8 +4,7 @@
     ol.breadcrumb
       li
         a[href="#"]
-          svg.glyph.stroked.home
-            use[xlink:href="#stroked-home"]
+          i.fa.fa-home
       li.active
         | Home
   .row
@@ -20,19 +19,19 @@
             i.fa.fa-calendar.fa-4x
           .col-sm-9.col-lg-7.widget-right
             .large
-              |  2
+              = content_tag(:span, @orders)
             .text-muted
-              |  tổng đơn hàng
+              |  Tổng đơn hàng
     .col-xs-12.col-md-6.col-lg-3
       .panel.panel-red.panel-widget
         .row.no-padding
           .col-sm-3.col-lg-5.widget-left
-            i.fa.fa-cart-plus.fa-4x
+            i.fa.fa-gavel.fa-4x
           .col-sm-9.col-lg-7.widget-right
             .large
-              |  2
+              = content_tag(:span, @auctions)
             .text-muted
-              |  Đơn hàng mới
+              |  Phiên đấu gía
     .col-xs-12.col-md-6.col-lg-3
       .panel.panel-orange.panel-widget
         .row.no-padding
@@ -40,7 +39,7 @@
             i.fa.fa-shopping-basket.fa-4x
           .col-sm-9.col-lg-7.widget-right
             .large
-              |  2
+              = content_tag(:span, @products)
             .text-muted
               |  Sản phẩm
     .col-xs-12.col-md-6.col-lg-3
@@ -50,9 +49,9 @@
             i.fa.fa-users.fa-4x
           .col-sm-9.col-lg-7.widget-right
             .large
-              |  2
+              = content_tag(:span,  @users)
             .text-muted
-              |  Khách hàng
+              |  Thành viên
   .row
     .col-lg-12
       .panel.panel-default

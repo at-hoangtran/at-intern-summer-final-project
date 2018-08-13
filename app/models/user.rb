@@ -36,9 +36,6 @@ class User < ApplicationRecord
   validates :password,
             presence: true, allow_nil: true,
             length: { minimum: Settings.min_password_length }
-  validates :password_confirmation,
-            presence: true, allow_nil: true,
-            length: { minimum: Settings.min_password_length }
   validates :name,  presence: true, length: { maximum: 255 }
 
   # Returns the hash digest of the given string.
@@ -91,6 +88,8 @@ class User < ApplicationRecord
       user.name     = auth.info.first_name + ' ' + auth.info.last_name
       user.email    = auth.info.email
       user.password = SecureRandom.urlsafe_base64
+      user.activated = true
+      user.activated_at = Time.zone.now
       user.save!
     end
   end

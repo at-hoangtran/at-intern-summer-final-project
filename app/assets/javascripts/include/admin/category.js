@@ -17,7 +17,7 @@ var category = {
           var template = $('#data-template').html();
           $.each(response, function (i, item) {
             images = item.images.length
-            images = images > 0 ? images[0].url : null;
+            images = images > 0 ? item.images[0].url : null;
             html += Mustache.render(template, {
               ID: item.id,
               IMAGE: images,

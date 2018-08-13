@@ -17,4 +17,4 @@ tr
     = button_tag(type: "button", class: "show-details btn btn-primary", "data-toggle": "modal", "data-target": "#detailsModal", "details-id": list.id) do
       = content_tag(:i, nil, class: "fa fa-eye")
   td
-    = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_timer_path(list.id), class: "btn btn-danger", method: :delete, data: { confirm: "Bạn có chắc chắn muốn xóa" }, remote: true
+    = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_timer_path(list.id), class: "btn btn-danger", method: :delete, data: { confirm: "Bạn có chắc không?" }, remote: true

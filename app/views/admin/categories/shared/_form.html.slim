@@ -12,4 +12,4 @@ br
     = button_tag(type: "button", class: "show-details btn btn-danger delete-category", "data-toggle": "modal", "data-target": "#detailsModal", "details-id": @category.id) do
       = content_tag(:i, nil, class: "fa fa-trash fa-1x")
   - else
-    = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_category_path(@category), { class: "btn btn-danger delete-category", method: :delete, data: {confirm: "Bạn có chắc chắn chứ ?" }}
+    = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_category_path(@category), { class: "btn btn-danger delete-category", method: :delete, data: {confirm: "Bạn có chắc không?" }}

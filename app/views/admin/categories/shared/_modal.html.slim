@@ -29,7 +29,7 @@
       .modal-footer
         button.btn.btn-default[type="button" data-dismiss="modal"]
           | Close
-        = link_to "Xóa danh sách và tất cả các sản phẩm phụ thuộc", admin_category_path(@category), class: "btn btn-danger", id: "btn-remove-category", method: :delete, data: {confirm: "Bạn chắc chắn chứ ?"}
+        = link_to "Xóa danh sách và tất cả các sản phẩm phụ thuộc", admin_category_path(@category), class: "btn btn-danger", id: "btn-remove-category", method: :delete, data: {confirm: "Bạn có chắc không?"}
 
   script#data-template[type="x-tmpl-mustache"]
     tr

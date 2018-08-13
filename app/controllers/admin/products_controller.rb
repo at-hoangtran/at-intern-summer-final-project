@@ -179,7 +179,15 @@ class Admin::ProductsController < ApplicationAdminController
     end
 
     def product_params
-      params.require(:product).permit(:status, :name, :price, :quantity, :description, :category_id, images: [])
+      params.require(:product).permit(
+        :status,
+        :name,
+        :price,
+        :quantity,
+        :description,
+        :category_id,
+        images: []
+      )
     end
 
     def add_more_images(new_images)

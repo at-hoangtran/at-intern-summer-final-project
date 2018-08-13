@@ -48,13 +48,13 @@ var auction_details = {
   },
   confirmDelete: function (id_load, id, self) {
     swal({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: 'Bạn có chắc không?',
       type: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Có, xóa nó',
+      cancelButtonText: 'Không'
     }).then((result) => {
       auction_details.requestAjaxDelete(id_load, id, self);
     });
