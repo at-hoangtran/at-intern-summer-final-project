@@ -63,4 +63,6 @@ Rails.application.configure do
     authentication: 'plain',
     enable_starttls_auto: true
   }
+
+  config.action_cable.url = "ws://localhost:3000/cable"
 end

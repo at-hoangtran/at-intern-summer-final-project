@@ -37,4 +37,6 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   resources :account_activations, only: [:edit]
   resources :password_resets, only: %i[new create edit update]
+  # Serve websocket cable requests in-process
+  mount ActionCable.server => '/cable'
 end
