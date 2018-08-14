@@ -12,8 +12,7 @@
 //
 //= require jquery
 //= require jquery-ui
-//= require jquery_ujs 
-//= require jquery.turbolinks
+//= require jquery_ujs
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require turbolinks

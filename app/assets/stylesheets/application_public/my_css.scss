@@ -116,3 +116,16 @@ li.nopassword {
   transform: scale(0.9);
   transform-origin: 0 0;
 }
+
+.price-time {
+  font-size: 1.2em;
+  color: #ffffff;
+}
+
+.clock-time {
+  color: #EA4335;
+  font-size: 1.5em;
+  position: absolute;
+  top: 7px;
+  left: 7px;
+}

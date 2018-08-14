@@ -4,15 +4,19 @@
       = render "layouts/admin/modules/search"
   ul.nav.menu
     li.active
-      = link_to raw('<i class="fa fa-home"></i> ' + t(".home")), admin_root_path
+      = link_to content_tag(:i, " Home", class: "fa fa-home"), admin_root_path
     li#danhmuc
-      = link_to raw('<i class="fa fa-list"></i> ' + "Danh mục"), admin_categories_path
+      = link_to content_tag(:i, " Danh mục", class: "fa fa-list"), admin_categories_path
     li#sanpham
-      = link_to raw('<i class="fa fa-archive"></i> ' + "Sản phẩm"), admin_products_path
+      = link_to content_tag(:i, " Sản phẩm", class: "fa fa-archive"), admin_products_path
     li#dondathang
-      = link_to raw('<i class="fa fa-calendar"></i> ' + "Đơn đặt hàng"), admin_orders_path
+      = link_to content_tag(:i, " Đơn đặt hàng", class: "fa fa-calendar"), admin_orders_path
     li
-      = link_to raw('<i class="fa fa-user"></i> ' + "Thành Viên"), admin_users_path
+      = link_to content_tag(:i, " Thành viên", class: "fa fa-user"), admin_users_path
+    li
+      = link_to content_tag(:i, " Thời gian đấu gía", class: "fa fa-clock-o"), admin_timers_path
+    li
+      = link_to content_tag(:i, " Phiên đấu gía", class: "fa fa-gavel"), admin_auctions_path
     li.divider[role="presentation"]
     li
       a[href="#"]

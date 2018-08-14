@@ -8,6 +8,7 @@ html
     meta[name="viewport" content="width=device-width, initial-scale=1"]
     link[rel="icon" href="#{asset_url('logo.png')}" alt="logo" width="50" height="20"]
     = csrf_meta_tags
+    = action_cable_meta_tag
     = stylesheet_link_tag "application_public/application", media: "all", "data-turbolinks-track": "reload"
     = javascript_include_tag "application_public/application", "data-turbolinks-track": "reload"
   body
