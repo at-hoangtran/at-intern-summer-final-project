@@ -1,6 +1,9 @@
 = javascript_include_tag "include/validation/register/register"
 = form_for :user, url: users_path, html: { id: "frmRegister", class: "form-horizontal", :method => :post } do |f|
   .control-group
+    = f.label :name, "Họ tên", { class: "control-label", for: "name_r" }
+    = f.text_field :name, { id: "name_r", class: "form-control", placeholder: "Nhập họ tên..." }
+  .control-group
     = f.label :email, "Email", { class: "control-label", for: "email_r" }
     = f.email_field :email, { id: "email_r", class: "form-control", placeholder: "Nhập email..." }
   .control-group

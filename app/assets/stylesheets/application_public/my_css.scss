@@ -49,6 +49,18 @@ div#panelsuccess {
   min-height: 1760px;
 }
 
+.btn-edit {
+  width: 150px;
+}
+
+.edit-left {
+  float: left;
+  display: none;
+}
+.edit-right {
+  float: right;
+}
+
 input.qty {
   width:30px;
   font-weight:bold;
@@ -92,7 +104,7 @@ input[type="password"] {
 }
 
 .notifications{
-  z-index: 999;
+  z-index: 2000;
 }
 
 .remember_me {
@@ -115,4 +127,22 @@ li.nopassword {
 .g-recaptcha {
   transform: scale(0.9);
   transform-origin: 0 0;
+}
+
+#frmResetsPassword {
+  width: 300px;
+  margin: auto
+}
+
+.price-time {
+  font-size: 1.2em;
+  color: #ffffff;
+}
+
+.clock-time {
+  color: #EA4335;
+  font-size: 1.5em;
+  position: absolute;
+  top: 7px;
+  left: 7px;
 }
