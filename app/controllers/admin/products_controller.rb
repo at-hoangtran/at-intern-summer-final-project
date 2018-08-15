@@ -65,7 +65,6 @@ class Admin::ProductsController < ApplicationAdminController
 
   def update_product
     product = Product.new.tap do |elemt|
-      elemt.status      = product_params[:status]
       elemt.name        = product_params[:name]
       elemt.price       = @product_change.price
       elemt.quantity    = product_params[:quantity]
@@ -75,7 +74,6 @@ class Admin::ProductsController < ApplicationAdminController
     end
 
     @product.update_attributes(
-      status: product.status,
       name: product.name,
       price: product.price,
       quantity: product.quantity,
@@ -180,7 +178,6 @@ class Admin::ProductsController < ApplicationAdminController
 
     def product_params
       params.require(:product).permit(
-        :status,
         :name,
         :price,
         :quantity,

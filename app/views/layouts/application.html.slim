@@ -1,6 +1,6 @@
 doctype html
 html
-  head
+  head[data-timer-id="#{params[:id]}"]
     title
       = full_title yield(:title)
     meta[charset="utf-8"]
@@ -25,4 +25,3 @@ html
             $('.top-right').notify({
               message: { text: "#{message}" }
             }).show();
-

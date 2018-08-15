@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'users/check_email', to: 'users#check_email'
 
   root to: 'public_pages#index'
+  resources :public_pages
   resources :users
   resources :sessions
   namespace :admin do
@@ -31,6 +32,7 @@ Rails.application.routes.draw do
     get 'product/export_file', to: 'products#export_file'
     delete 'delete_image/:id/:index/:size', to: 'products#destroy_image'
     get 'product/count_images/:id', to: 'products#count_image'
+    delete 'timer/destroy_cache', to: 'timers#destroy_cache'
   end
   get '/auth/google_oauth2', as: 'google'
   get 'auth/:provider/callback', to: 'sessions#login_google'

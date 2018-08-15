@@ -13,8 +13,6 @@ class Product < ApplicationRecord
   scope :by_not_buy, -> { where.not status: :nobuy }
   scope :by_quantiry, ->(quantity) { where 'quantity > ?', quantity }
 
-  enum status: %i[nobuy buy]
-
   validates :name, presence: true
   validates :description, presence: true
   validates :category_id, presence: true

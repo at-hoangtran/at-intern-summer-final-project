@@ -17,11 +17,6 @@ tr
     - else
       = content_tag(:span, "Vẩn Còn Hàng", class: "Vẩn Còn Hàng")
   td
-    - if product.buy?
-      = content_tag(:span, "Bán hàng", class: "label label-info")
-    - else
-      = content_tag(:span, "Ừng Bán", class: "label label-warning")
-  td
     = link_to content_tag(:i, nil, class: "fa fa-edit fa-1x"), edit_admin_product_path(product.id), class: "btn btn-warning"
   td
     = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_product_path(product.id), class: "btn btn-danger", method: :delete, data: { confirm: "Bạn có chắc không?" }, remote: true

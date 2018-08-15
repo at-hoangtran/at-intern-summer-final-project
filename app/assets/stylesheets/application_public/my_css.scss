@@ -146,3 +146,45 @@ li.nopassword {
   top: 7px;
   left: 7px;
 }
+
+.price-refresh {
+  display: none;
+  color: #fff;
+}
+
+.price-time-show {
+  display: none;
+}
+
+.col-centered {
+  float: none;
+  margin: 0 auto;
+}
+
+/* ============ show public ============ */
+.details-timer {
+  text-align: center;
+}
+
+.clock-time-show {
+  font-size: 3em;
+  color: #EA4335;
+}
+
+.price-box {
+  margin-top: 10%;
+  text-align: left;
+}
+
+.price-center {
+  text-align: center;
+}
+
+.price-crt-text {
+  font-size: 1.7em;
+  color: #46a185;
+}
+
+.price-btn-submit {
+  background-color: #46a185;
+}

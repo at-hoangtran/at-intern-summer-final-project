@@ -1,3 +1,5 @@
+require 'timers/timer_data'
+
 class Admin::TimersController < ApplicationAdminController
   include TimersHelper
   before_action :logged_in_user
@@ -26,6 +28,7 @@ class Admin::TimersController < ApplicationAdminController
     @timer.period = "00:#{str_time[0]}:#{str_time[1]}"
     @timer.step = add_price timer_params[:step]
     if @timer.save
+      TimerData.add(@timer)
       respond_to do |format|
         format.html do
           redirect_to admin_timers_url,
@@ -83,6 +86,8 @@ class Admin::TimersController < ApplicationAdminController
     str_time = timer_tmp.period.strftime('%H:%M').split(':')
     timer_tmp.period = "00:#{str_time[0]}:#{str_time[1]}"
 
+    TimerData.update(timer_tmp, @timer)
+
     @timer.update_attributes(
       product_id: timer_tmp.product_id,
       start_at: timer_tmp.start_at,
@@ -94,7 +99,9 @@ class Admin::TimersController < ApplicationAdminController
   end
 
   def destroy
+    obj_user = @timer
     if @timer.destroy
+      TimerData.delete(obj_user)
       respond_to do |format|
         format.html do
           redirect_to admin_timers_url,
@@ -107,6 +114,16 @@ class Admin::TimersController < ApplicationAdminController
           redirect_to admin_timers_url,
                       flash: { danger: 'Xóa thất bại !' }
         end
+      end
+    end
+  end
+
+  def destroy_cache
+    TimerData.delete_all
+    respond_to do |format|
+      format.html do
+        redirect_to admin_timers_url,
+                    flash: { success: 'Xóa cache thành công !' }
       end
     end
   end

@@ -22,7 +22,7 @@ module TimersHelper
                options_for_select(load_products, selected: obj.object.product_id),
                {},
                id: 'product_id',
-               class: 'form-control'
+               class: 'form-control', readonly: obj.object.run?
   end
 
   def select_status(obj)
@@ -44,5 +44,9 @@ module TimersHelper
 
   def print_period(time)
     time.strftime('%M').to_i.positive?
+  end
+
+  def format_m_to_s(timer)
+    timer.split(':').map { |a| a.to_i }.inject(0) { |a, b| a * 60 + b }
   end
 end

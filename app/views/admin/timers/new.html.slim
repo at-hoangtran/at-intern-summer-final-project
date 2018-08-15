@@ -17,6 +17,6 @@
       .panel.panel-default
         .panel-body
           .col-lg-5
-            = form_for @timer, url:  admin_timers_path, html: { id: "frmTimer", class: "form-horizontal" }, remote: true do |f|
+            = form_for @timer, url:  admin_timers_path, html: { id: "frmTimer", class: "form-horizontal" } do |f|
               = render partial: "admin/timers/shared/form", locals: {f: f}
 = javascript_include_tag "include/lib/simple.money.format"

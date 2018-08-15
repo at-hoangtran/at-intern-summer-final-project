@@ -2,10 +2,6 @@
 .control-group
   = f.label :category_id, "Danh mục", { class: "control-label", for: "category_id" }
   = select_categories f
-- unless f.object.id.blank?
-  .control-group
-    = f.label :status, "Trạng Thái", { class: "control-label", for: "status" }
-    = select_status_product f
 .control-group
   = f.label :name, "Tên sản phẩm", { class: "control-label", for: "name" }
   = f.text_field :name, { id: "name", class: "form-control", placeholder: "Nhập tên sản phẩm..." }

@@ -6,17 +6,6 @@ module ProductsHelper
                id: 'category_id', class: 'form-control'
   end
 
-  def select_status_product(obj)
-    obj.select :status,
-               options_for_select(
-                 [['Đang Bán', :buy],
-                  ['Ừng Bán', :nobuy]],
-                 selected: (obj.object.buy? == true ? :buy : :nobuy)
-               ),
-               {},
-               id: 'status', class: 'form-control'
-  end
-
   def load_products
     (@products.collect { |u| [u.name, u.id] } << ['No parent', nil]).reverse
   end

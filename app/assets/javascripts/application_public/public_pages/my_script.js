@@ -25,9 +25,21 @@ $(document).on('turbolinks:load', function() {
     $('b', this).toggleClass("caret caret-up");
   });
 
-  
+  $('#price-input').bootstrapNumber();
 });
 
 $(document).on('turbolinks:load', function() {
   updateUserForm();
+});
+
+function formatPrice(price) {
+  return price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+}
+
+function fmtMSS(s) {
+  return(s - (s%=60)) / 60 + (9 < s ? ':':':0') + s
+}
+
+$('.carousel').carousel({
+  interval: false
 });
