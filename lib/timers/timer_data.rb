@@ -15,7 +15,7 @@ class TimerData
       product_price: e.product.price,
       product_description: e.product.description,
       product_quantity: e.product.quantity,
-      product_image: e.product.images.first.url,
+      product_image: e.product.images,
       product_category: e.product.category_id
     }
     $redis.set(e.id, hash_tmp.to_json)
@@ -34,7 +34,7 @@ class TimerData
       key_timer['product_price']       = obj.product.price
       key_timer['product_description'] = obj.product.description
       key_timer['product_quantity']    = obj.product.quantity
-      key_timer['product_image']       = obj.product.images.first.url
+      key_timer['product_image']       = obj.product.images
       key_timer['product_category']    = obj.product.category_id
       key_timer['period']              = timer
     end

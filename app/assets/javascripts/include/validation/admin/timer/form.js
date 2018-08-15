@@ -18,7 +18,8 @@ $(document).ready(function() {
       "timer[end_at]": {
         required: true,
         edtime: true,
-        mxtime: true
+        mxtime: true,
+        min20: true
       },
       "timer[period]": {
         required: true,
@@ -40,7 +41,8 @@ $(document).ready(function() {
       "timer[end_at]":{
         required: "Vui lòng chọn thời gian kết thúc !",
         edtime: "Thời gian kết thúc phải lớn hơn thời gian bắt đầu !",
-        mxtime: "Vui lòng chọn khung giờ từ (5h AM - 23h PM)"
+        mxtime: "Vui lòng chọn khung giờ từ (5h AM - 23h PM)",
+        min20: "Khoảng thời gian bắt đầu và kết thúc phải lớn hơn 20s!"
       },
       "timer[period]":{
         required: "Vui lòng chọn thời gian đếm ngược !",
@@ -68,6 +70,11 @@ $(document).ready(function() {
   });
 });
 
+$(document).on('turbolinks:load', function() {
+  time.start = fmtMSS($('input[name="timer[start_at]"]').val());
+  time.end = fmtMSS($('input[name="timer[end_at]"]').val());
+});
+
 $.validator.addMethod("mxtime", function (value, element) {
   var hours = value.split(":")[0];
   if (hours < 8 || hours > 22) {
@@ -77,10 +84,10 @@ $.validator.addMethod("mxtime", function (value, element) {
 });
 
 $.validator.addMethod("stime", function (value, element) {
-  var hours = value.split(":")[0];
-  time.start = hours;
+  var timer = fmtMSS(value)
+  time.start = timer;
   if (time.end !== null) {
-    if (time.start > time.end) {
+    if (time.start > time.end || time.end === time.start) {
       return false;
     }
   }
@@ -88,10 +95,21 @@ $.validator.addMethod("stime", function (value, element) {
 });
 
 $.validator.addMethod("edtime", function (value, element) {
-  var hours = value.split(":")[0];
-  time.end = hours;
+  var timer = fmtMSS(value);
+  time.end = timer;
   if (time.start !== null) {
-    if (time.end < time.start) {
+    subtimer = (time.end - time.start) >= 20;
+    if (time.end < time.start || time.end === time.start) {
+      return false;
+    }
+  }
+  return true;
+});
+
+$.validator.addMethod('min20', function (value, element) {
+  if (time.start !== null) {
+    subtimer = (time.end - time.start) < 20;
+    if (subtimer) {
       return false;
     }
   }
@@ -108,3 +126,8 @@ $.validator.addMethod("period", function (value, element) {
   }
   return true;
 });
+
+function fmtMSS(s) {
+  var a = s.split(':');
+  return (+a[0]) * 60 * 60 + (+a[1]);
+}

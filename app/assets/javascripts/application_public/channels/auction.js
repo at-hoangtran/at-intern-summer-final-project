@@ -15,9 +15,11 @@ App.auction = App.cable.subscriptions.create(
       period = fmtMSS(data['period']);
       price  = formatPrice(data['product_price']);
       images = data.product_image;
-      description = data["product_description"];
+      description  = data['product_description'];
+      product_name = data['product_name'];
       $('.clock-time-show').html(period);
       $('.price-crt').html(price);
+      $('.title-product').html(product_name);
       images.forEach(function(item, index) {
         $('.item img:eq('+ index +')').attr('src', item.url);
         $('.carousel-indicators li img:eq('+ index +')').attr('src', item.url);

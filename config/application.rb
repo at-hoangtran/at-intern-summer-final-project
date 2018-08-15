@@ -22,6 +22,7 @@ module FinalProject
       config.after_initialize do
         Rails.application.load_tasks
         Rake::Task['start:setIntervel'].invoke
+        Rake::Task['after_start:setIntervel'].invoke
       end
     end
 
