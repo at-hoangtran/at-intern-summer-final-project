@@ -24,8 +24,6 @@ $(document).on('turbolinks:load', function() {
     $(this).toggleClass('open');
     $('b', this).toggleClass("caret caret-up");
   });
-
-  $('#price-input').bootstrapNumber();
 });
 
 $(document).on('turbolinks:load', function() {

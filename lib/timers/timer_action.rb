@@ -19,7 +19,7 @@ class TimerAction
 
   def reset_timer_price(key_timer)
     key_timer['period'] = load_period_default(key_timer['id'])
-    key_timer['price'] = load_price_defailt(key_timer['id'])
+    key_timer['product_price'] = load_price_defailt(key_timer['id'])
     $redis.set(key_timer['id'], key_timer.to_json)
   end
 

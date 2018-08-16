@@ -57,7 +57,14 @@
                             .form-group.price-box
                               label.control-label
                                 | Đấu giá ngay:
-                              input#price-input.form-control[type="number" value="1" min="1" max="10"]
+                              .input-group
+                                span.input-group-btn
+                                  button.btn.btn-default.btn-sub[type="button"]
+                                    | -
+                                input#price-input.form-control[min="1" type="text" value="" style="text-align: center;" readonly]
+                                span.input-group-btn
+                                  button.btn.btn-default.btn-add[type="button"]
+                                    | +
                         .row
                           .col-md-12.price-box
                             span.btn.col-xs-12.label-warning.price-btn-submit
