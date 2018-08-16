@@ -9,6 +9,7 @@ namespace :start do
   desc 'TODO'
   task setIntervel: :environment do
     TimerData.load_data_db_to_redis
+
     set_interval(1) do |n|
       arr = []
       key_timer = $redis.keys('*')

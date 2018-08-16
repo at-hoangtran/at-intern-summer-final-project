@@ -1,0 +1,14 @@
+tr
+  td
+    = image_tag(line_item.product.images.first.url, class: "img-thumbnail img-cart")
+  td
+    = line_item.product.name
+  td
+    | Số lượng: 1
+  td.product-price
+    = out_price line_item.amount.to_s
+  td
+    = link_to content_tag(:i, nil, class: "glyphicon glyphicon-remove"), cart_path(line_item.id), class: "btn btn-danger", method: :delete, data: { confirm: "Bạn có chắc không?" }
+
+
+
