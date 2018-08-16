@@ -1,0 +1,22 @@
+tr
+  td
+    = product.id
+  td
+    = product.name
+  td
+    = (out_price product.price.to_s) + " đ"
+  td
+    = product.quantity.to_s + " cái"
+  td
+    = image_tag(product.images.first.url, class: "img-thumbnail", width: 100)
+  td
+    = product.category.name
+  td
+    - if product.quantity < 1
+      = content_tag(:span, "Đã Hết Hàng", class: "label label-warning")
+    - else
+      = content_tag(:span, "Vẩn Còn Hàng", class: "Vẩn Còn Hàng")
+  td
+    = link_to content_tag(:i, nil, class: "fa fa-edit fa-1x"), edit_admin_product_path(product.id), class: "btn btn-warning"
+  td
+    = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_product_path(product.id), class: "btn btn-danger", method: :delete, data: { confirm: "Bạn có chắc không?" }, remote: true

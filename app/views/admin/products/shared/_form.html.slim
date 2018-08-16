@@ -1,0 +1,30 @@
+= f.hidden_field :id
+.control-group
+  = f.label :category_id, "Danh mục", { class: "control-label", for: "category_id" }
+  = select_categories f
+.control-group
+  = f.label :name, "Tên sản phẩm", { class: "control-label", for: "name" }
+  = f.text_field :name, { id: "name", class: "form-control", placeholder: "Nhập tên sản phẩm..." }
+.control-group
+  = f.label :price, "Gia", { class: "control-label", for: "price" }
+  = f.text_field :price, { id: "price", class: "price form-control", placeholder: "Nhập gía sản phẩm..." }
+.control-group
+  = f.label :quantity, "Số lượng", { class: "control-label", for: "quantity" }
+  = f.number_field :quantity, { id: "quantity", class: "form-control",   placeholder: "Nhập số lượng sản phẩm..." }
+.control-group
+  = f.label :description, "Mô tả", { class: "control-label", for: "description" }
+  = f.text_area :description, { id: "description", class: "form-control", rows: 6, placeholder: "Nhập mô tả sản phẩm..." }
+.padding-image.control-group
+  - if f.object.images?
+    = label_tag :review_image, "Xem Ảnh", { class: "control-label" }
+  .padding-image.col-md-12
+    - if f.object.images?
+      = render partial: "admin/products/shared/images", collection: f.object.images, locals: { id_product: f.object, size: (f.object.images.size - 1)}
+    - else
+      = label_tag :review_image, "Xem Ảnh", { id: "rvimg", class: "control-label" }
+      #preview
+.control-group
+  = f.label :images, "Ảnh sản phẩm"
+  = f.file_field :images, multiple: true, class: "form-control", id: "upload-image"
+br
+= f.submit yield(:button_text), class: "btn btn-primary"

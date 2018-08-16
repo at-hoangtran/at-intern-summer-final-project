@@ -11,3 +11,12 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile +=
   %w[include/validation/**/*.js]
+
+Rails.application.config.assets.precompile +=
+  %w[include/lib/*.js]
+
+Rails.application.config.assets.precompile +=
+  %w[include/admin/*.js]
+
+Rails.application.config.assets.precompile +=
+  %w[include/public/*.js]

@@ -183,7 +183,7 @@
   z-index: 11111111111;
 }
 .mobile {
-  height: 260px;
+  height: 275px;
   position: relative;
   .bt {
     height: 210px;
@@ -216,23 +216,17 @@
     }
   }
   &:hover {
-    .ct {
-      opacity: 1;
-    }
-    .bt {
-      opacity: 0;
-    }
     .add {
       opacity: 1;
       transition: all ease 1.9s;
     }
   }
   .image-m {
-    width: 40%;
-    height: 200px;
+    width: 100%;
+    height: 250px;
     img {
-      width: 95%;
-      height: 155px;
+      width: 100%;
+      height: 220px;
       margin: auto;
     }
   }
@@ -256,6 +250,9 @@
 .add {
   opacity: 0;
   transition: all ease 0.9s;
+  position: absolute;
+  top: 94px;
+  left: 110px;
 }
 .gioithieu {
   li {

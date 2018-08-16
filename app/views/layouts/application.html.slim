@@ -1,6 +1,6 @@
 doctype html
 html
-  head
+  head[data-timer-id="#{params[:id]}"]
     title
       = full_title yield(:title)
     meta[charset="utf-8"]
@@ -8,6 +8,7 @@ html
     meta[name="viewport" content="width=device-width, initial-scale=1"]
     link[rel="icon" href="#{asset_url('logo.png')}" alt="logo" width="50" height="20"]
     = csrf_meta_tags
+    = action_cable_meta_tag
     = stylesheet_link_tag "application_public/application", media: "all", "data-turbolinks-track": "reload"
     = javascript_include_tag "application_public/application", "data-turbolinks-track": "reload"
   body
@@ -24,4 +25,5 @@ html
             $('.top-right').notify({
               message: { text: "#{message}" }
             }).show();
-
+    = javascript_include_tag "include/public/auctions"
+    = javascript_include_tag "include/public/auction"
