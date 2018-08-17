@@ -31,7 +31,7 @@ module TimersHelper
                                   selected: (obj.object.waiting? == true ? :waiting : :run)),
                {},
                id: 'status',
-               class: 'form-control'
+               class: 'form-control', disabled: (obj.object.product.quantity < 1)
   end
 
   def format_time(time)

@@ -24,12 +24,12 @@ class TimerAction
   end
 
   def load_period_default(id)
-    timer = Timer.find(id)
+    timer = Timer.find_by(id: id)
     format_m_to_s(format_time_sounds(timer.period))
   end
 
   def load_price_defailt(id)
-    timer = Timer.find(id)
+    timer = Timer.find_by(id: id)
     timer.product.price
   end
 end

@@ -23,23 +23,14 @@ class TimerData
 
   def self.update(obj, crr)
     timer = JSON.load($redis.get(crr.id))
-    timer = format_m_to_s(format_time_sounds(obj.period))
-
-    if crr.waiting? && obj.run?
-      timer['start_at']            = obj.start_at
-      timer['end_at']              = obj.end_at
-      timer['product_id']          = obj.product_id
-      timer['product_name']        = obj.product.name
-      timer['product_price']       = obj.product.price
-      timer['product_description'] = obj.product.description
-      timer['product_quantity']    = obj.product.quantity
-      timer['product_image']       = obj.product.images
-      timer['product_category']    = obj.product.category_id
-      timer['period']              = timer
+    if obj.run?
+      if timer.nil? || crr.waiting?
+        obj.id = crr.id
+        TimerData.add(obj)
+      end
+    else
+      $redis.del(crr.id) unless timer.nil?
     end
-
-    timer['status'] = obj.status
-    $redis.set(crr.id, timer.to_json)
   end
 
   def self.delete(obj)

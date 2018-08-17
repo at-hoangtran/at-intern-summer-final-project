@@ -1,4 +1,16 @@
 module AuctionsHelper
+  def set_mindate
+    if params[:search].present?
+      params[:search][:minday] if params[:search][:minday].present?
+    end
+  end
+
+  def set_maxdate
+    if params[:search].present?
+      params[:search][:maxday] if params[:search][:maxday].present?
+    end
+  end
+
   def set_mintime
     if params[:search].present?
       params[:search][:mintime] if params[:search][:mintime].present?

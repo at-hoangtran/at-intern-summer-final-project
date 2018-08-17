@@ -12,7 +12,5 @@ class Order < ApplicationRecord
   scope :search_day, ->(minday, maxday) { where 'created_at BETWEEN ? AND ?', minday, maxday }
   scope :search_status, ->(status) { where 'status = ?', status }
   scope :not_cart, -> { where.not status: :cart }
-
-  validates :total_price, presence: true
-  validates :status, presence: true
+  scope :cart, -> { where status: :cart }
 end

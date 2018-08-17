@@ -130,7 +130,7 @@ class Admin::ProductsController < ApplicationAdminController
   end
 
   def count_image
-    @product = Product.find(params[:id])
+    @product = Product.find_by(id: params[:id])
     respond_to do |format|
       format.json { render json: @product.images.size }
     end
@@ -171,7 +171,7 @@ class Admin::ProductsController < ApplicationAdminController
     end
 
     def get_product
-      @product = Product.find(params[:id])
+      @product = Product.find_by(id: params[:id])
       @product_change = @product
       @product || render(file: 'public/404.html', status: 404, layout: true)
     end

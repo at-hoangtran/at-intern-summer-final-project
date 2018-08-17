@@ -1,5 +1,7 @@
 tr
   td
+    = format_day_time list.created_at
+  td
     = format_time(list.timer.start_at) + " giờ"
   td
     = format_time(list.timer.end_at) + " giờ"
@@ -11,7 +13,7 @@ tr
   td
     = list.product.name
   td
-    = content_tag(:span, "Đang đấu gía", class: "label label-warning") if list.running?
+    = content_tag(:span, "Đang đấu giá", class: "label label-warning") if list.running?
     = content_tag(:span, "Đã kết thúc", class: "label label-info") if list.finished?
   td
     = button_tag(type: "button", class: "show-details btn btn-primary", "data-toggle": "modal", "data-target": "#detailsModal", "details-id": list.id) do

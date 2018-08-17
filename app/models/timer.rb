@@ -1,5 +1,6 @@
 class Timer < ApplicationRecord
   acts_as_paranoid
+  after_destroy :destroy_redis
   belongs_to :product
   has_many :auctions, dependent: :destroy
 
@@ -13,4 +14,7 @@ class Timer < ApplicationRecord
   validates :end_at, presence: true
   validates :period, presence: true
   validates :step, presence: true
+  def destroy_redis
+    $redis.del(self.id)
+  end
 end

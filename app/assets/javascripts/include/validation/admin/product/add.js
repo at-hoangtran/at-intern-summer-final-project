@@ -10,7 +10,8 @@ $(document).ready(function() {
       },
       "product[price]": {
         required: true,
-        number: true
+        number: true,
+        minprice: 0
       },
       "product[quantity]": {
         required: true,
@@ -38,12 +39,13 @@ $(document).ready(function() {
       },
       "product[price]": {
         required: "Vui lòng nhập gía !",
-        number: "Vui lòng nhập số !"
+        number: "Vui lòng nhập số !",
+        minprice: "Vui lòng nhập tiền không được âm !"
       },
       "product[quantity]": {
         required: "Vui lòng nhập số lượng !",
         number: "Vui lòng nhập số lượng !",
-        minsize: "Số lượng tối thiểu 0 !"
+        minsize: "Số lượng tối thiểu 1 sản phẩm !"
       },
       "product[description]": {
         required: "Vui lòng nhập mô tả !",
@@ -79,6 +81,12 @@ $.validator.addMethod("minsize", function (value, element, param) {
   if (value > param) return true;
   return false;
 });
+
+$.validator.addMethod("minprice", function (value, element, param) {
+  if (value > param) return true;
+  return false;
+});
+
 
 $.validator.addMethod("mximg", function (value, element) {
   var file = element.files.length;
