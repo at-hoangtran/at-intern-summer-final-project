@@ -1,0 +1,44 @@
+= javascript_include_tag "include/admin/auction_details"
+.col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
+  .row
+    ol.breadcrumb
+      li
+        a[href="#"]
+          i.fa.fa-home
+      li.active
+        | Danh Sách Phiên Đấu Giá
+  .row
+    .col-lg-12
+      .panel-heading
+        .col-lg-3
+          | Danh Sách Phiên Đấu Giá
+        = form_for :search, url: admin_auctions_path, method: :get do |f|
+          = render partial: "admin/auctions/shared/search", locals: {f: f}
+      br
+      br
+      .panel.panel-default
+        .panel-body
+          .table-responsive
+            table.table.table-hover
+              thead
+                tr
+                  th
+                    | Ngày đấu giá
+                  th
+                    | Thời gian bắt đầu
+                  th
+                    | Thời gian kết thúc
+                  th
+                    | Thời gian đếm ngược
+                  th
+                    | Bước tăng tiền
+                  th
+                    | Tên sản phẩm
+                  th
+                    | Trạng thái
+                  th
+                    | Action
+              tbody
+                = render partial: "admin/auctions/shared/listtable", collection: @auctions, as: "list"
+            = will_paginate
+            = render "admin/auctions/shared/modal"
