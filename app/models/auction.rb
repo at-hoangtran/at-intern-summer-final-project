@@ -8,6 +8,6 @@ class Auction < ApplicationRecord
   scope :search_name, ->(search) { where 'name like ?', "%#{search}%" }
   scope :search_time, ->(mintime, maxtime) { where 'start_at BETWEEN ? AND ?', mintime, maxtime }
   scope :search_status, ->(status) { where 'status = ?', status }
-
+  scope :timer_product, ->(timer_id, product_id) { where timer_id: timer_id, product_id: product_id }
   enum status: %i[running finished]
 end

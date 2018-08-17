@@ -2,25 +2,25 @@ require 'timers/timer_submit'
 
 class TimerAction
   def sub_timer(key)
-    key_timer = JSON.load($redis.get(key))
-    key_timer['period'] = key_timer['period'] - 1
-    $redis.set(key, key_timer.to_json)
+    timer = JSON.load($redis.get(key))
+    timer['period'] = timer['period'] - 1
+    $redis.set(key, timer.to_json)
   end
 
   def end_timer(key)
-    key_timer = JSON.load($redis.get(key))
-    period = key_timer['period']
+    timer = JSON.load($redis.get(key))
+    period = timer['period']
     if period.negative?
       timer_submit = TimerSubmit.new
-      timer_submit.submit
-      reset_timer_price(key_timer)
+      timer_submit.submit(timer)
+      reset_timer_price(timer)
     end
   end
 
-  def reset_timer_price(key_timer)
-    key_timer['period'] = load_period_default(key_timer['id'])
-    key_timer['product_price'] = load_price_defailt(key_timer['id'])
-    $redis.set(key_timer['id'], key_timer.to_json)
+  def reset_timer_price(timer)
+    timer['period'] = load_period_default(timer['id'])
+    timer['product_price'] = load_price_defailt(timer['id'])
+    $redis.set(timer['id'], timer.to_json)
   end
 
   def load_period_default(id)

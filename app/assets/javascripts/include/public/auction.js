@@ -1,9 +1,7 @@
 var auction = {
   current_price: 0,
   tmp_price: 0,
-  AppOnLoad: function() {
-
-  },
+  step: 0,
   loadElementToHtml: function(data) {
     data         = data.obj;
     period       = fmtMSS(data['period']);
@@ -21,6 +19,7 @@ var auction = {
     });
     $('.description').html(description);
     auction.loadDefaultPriceInput(data['product_price'], step);
+    auction.refreshPage(data['period']);
   },
   loadDefaultPriceInput: function(price, step) {
     if (price !== auction.current_price) {
@@ -28,7 +27,7 @@ var auction = {
       auction.tmp_price = price;
       $('#price-input').val(formatPrice(price) + " Đ");
       auction.eventAddBtnPrice(price, step);
-      auction.eventSubmitPrice(step);
+      auction.step = step;
     }
   },
   eventAddBtnPrice: function(price, step) {
@@ -49,16 +48,40 @@ var auction = {
       }
     });
   },
-  eventSubmitPrice: function(step) {
+  eventSubmitPrice: function() {
     $('.price-btn-submit').on('click', function() {
       if (auction.tmp_price === auction.current_price) {
-        auction.tmp_price += step;
+        auction.tmp_price += auction.step;
       }
       data = {
-        price: auction.tmp_price
+        price: auction.tmp_price,
+        user_id: auction.loadIdCurrentUser()
       };
       App.auction.send(data)
     });
+  },
+  refreshPage: function(period) {
+    if (period == 0) {
+      $('.loadbid').children().remove();
+      $('.user-win').html("");
+    }
+  },
+  loadIdCurrentUser: function () {
+    user_id = null;
+    $.ajax({
+      url: '/current_user',
+      type: 'GET',
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'JSON',
+      async: false,
+      success: function (response) {
+        user_id = response;
+      },
+      error: function (err) {
+        console.log(err);
+      }
+    });
+    return user_id;
   },
   conntected: function() {
     swal.close()
@@ -73,5 +96,5 @@ var auction = {
 }
 
 $(document).on('turbolinks:load', function() {
-  auction.AppOnLoad();
+  auction.eventSubmitPrice();
 });

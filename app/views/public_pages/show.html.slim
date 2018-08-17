@@ -69,6 +69,30 @@
                           .col-md-12.price-box
                             span.btn.col-xs-12.label-warning.price-btn-submit
                               = content_tag(:i, " Đấu giá ngay", class: "fa fa-gavel price-time")
+                        .row
+                          .col-md-12
+                            .form-group.price-box
+                              label.control-label
+                                | Người thắng hiện tại:
+                              br
+                                = content_tag(:i, nil, class: "fa fa-trophy")
+                                = content_tag(:span, nil, class: "user-win")
+
+                    .row
+                      .col-xs-12.col-sm-12.col-md-12.col-lg-12
+                        table.table
+                          thead
+                            tr
+                              th
+                                | Tài khoản
+                              th
+                                | Giá dự thầu
+                              th
+                                | Tổng giá thầu
+                              th
+                                | Thời gian đấu giá
+                          tbody.loadbid
+                            = render partial: "public_pages/shared/bid", collection: @bid, as: "bid"
 
                 hr
                 .row
@@ -123,3 +147,15 @@
           a[href="#" title=""]
             | Like
           |  facebook của MyWeb để cập nhật tin mới nhất
+
+script#data-template[type="x-tmpl-mustache"]
+  tr
+    td
+      | {{NAME}}
+    td
+      | {{BID}}
+    td
+      | 1
+    td
+      | {{DAYTIME}}
+

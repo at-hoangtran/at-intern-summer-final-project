@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   get 'users/check_email', to: 'users#check_email'
+  get 'current_user' => 'users#current_user_id'
 
   root to: 'public_pages#index'
   resources :public_pages
