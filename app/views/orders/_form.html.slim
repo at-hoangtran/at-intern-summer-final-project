@@ -4,7 +4,14 @@
     = f.text_field :user_name, { class: "form-control", placeholder: "#{current_user.name}" }
   .control-group
     = f.label :address, "Địa chỉ", { class: "control-label order-label" }
-    = f.text_field :address, { class: "form-control order-field" }
+    = f.text_field :address, { class: "form-control order-field", placeholder: "#{current_user.address}" }
   .control-group
     = f.label :phone, "Số điện thoại", { class: "control-label order-label" }
-    = f.text_field :phone, { class: "form-control order-field" }
+    = f.text_field :phone, { class: "form-control order-field",placeholder: "#{current_user.phone}" }
+  .control-group
+    = f.label "Chọn hình thức thanh toán", { class: "control-label order-label payment" }
+    = radio_button_tag("color", "$")
+    = radio_button_tag("color", "#")
+  .control-group
+    = button_tag(type: "submit", class: "btn btn-warning btn-lg btn-pay") do
+      =content_tag(:i, " Đặt hàng", class: "fa fa-shopping-cart")

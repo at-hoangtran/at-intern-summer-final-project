@@ -21,28 +21,29 @@ var order = {
       contentType: 'application/json; charset=utf-8',
       dataType: 'JSON',
       success: function (response) {
-        var html = '';
-        var template = $('#data-template').html();
-        var totalPri = 0;
-        $.each(response, function (i, item) {
-          html += Mustache.render(template, {
-            ID: item.id,
-            IMAGE: item.product.images[0].url,
-            NAME: item.product.name,
-            PRICE: order.formatPrice(item.amount) + ' đ',
-            STATUS: (item.product.quantity) < 1 ? true : false,
-            STATUS1: (item.product.quantity) > 1 ? true : false
-          });
-          totalPri += item.amount;
-        });
-        $('tbody#viewLoad').html(html);
-        $('strong#totalPri').html('Tổng tiền: '
-          + order.formatPrice(totalPri) + ' đ');
-        if (response[0].order.status === 'notdefined') {
-          $('a#btn-xn, a#btn-h').attr('disabled', false);
-        } else {
-          $('#btn-xn, #btn-h').attr('disabled', true);
-        }
+        console.log(response);
+        // var html = '';
+        // var template = $('#data-template').html();
+        // var totalPri = 0;
+        // $.each(response, function (i, item) {
+        //   html += Mustache.render(template, {
+        //     ID: item.id,
+        //     IMAGE: item.product.images[0].url,
+        //     NAME: item.product.name,
+        //     PRICE: order.formatPrice(item.amount) + ' đ',
+        //     STATUS: (item.product.quantity) < 1 ? true : false,
+        //     STATUS1: (item.product.quantity) > 1 ? true : false
+        //   });
+        //   totalPri += item.amount;
+        // });
+        // $('tbody#viewLoad').html(html);
+        // $('strong#totalPri').html('Tổng tiền: '
+        //   + order.formatPrice(totalPri) + ' đ');
+        // if (response[0].order.status === 'notdefined') {
+        //   $('a#btn-xn, a#btn-h').attr('disabled', false);
+        // } else {
+        //   $('#btn-xn, #btn-h').attr('disabled', true);
+        // }
       },
       error: function (err) {
         console.log(err);
