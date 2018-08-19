@@ -37,6 +37,11 @@ ul#cartview {
   min-width: 350px;
 }
 
+hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 /* === card, order, detail === */
 
 span.chevright {
@@ -207,14 +212,37 @@ li.nopassword {
   color: #16a085;
 }
 
-.order-label {
-  float: left;
-}
-
-.order-field {
-  float: right;
-}
-
 .payment {
   text-transform: uppercase;
+  span.user-win {
+    margin-left: 2%;
+  }
+}
+
+.form_checkout {
+  margin: auto;
+  width: 400px;
+}
+
+.btn-order {
+  margin-top: 20px;
+}
+
+.panel-content {
+  padding: 0 10%;
+}
+
+.phone-support {
+  font-weight: bold;
+  font-size: 19px;
+}
+
+.order-info {
+  float: right;
+  // padding-right: 10%;
+}
+
+.sum-pay {
+  color: #125e85;
+  font-weight: bold
 }

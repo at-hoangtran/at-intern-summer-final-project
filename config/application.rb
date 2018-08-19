@@ -15,8 +15,8 @@ module FinalProject
     # -- all .rb files in that directory are automatically loaded.
     config.autoload_paths << "#{Rails.root}/lib"
     config.action_view.embed_authenticity_token_in_remote_forms = true
-    config.time_zone = "UTC"
-    config.active_record.default_timezone = :utc
+    config.time_zone = 'Asia/Ho_Chi_Minh'
+    config.active_record.default_timezone = :local # Or :utc
 
     if defined?(Rails::Server)
       config.after_initialize do

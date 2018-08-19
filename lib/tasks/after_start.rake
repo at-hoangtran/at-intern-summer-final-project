@@ -4,8 +4,8 @@ namespace :after_start do
     set_interval(1) do |n|
       key_timer = $redis.keys('*')
       key_timer.each do |key|
-        key_timer = JSON.load($redis.get(key))
-        ActionCable.server.broadcast("auction_#{key}", obj: key_timer)
+        timer = JSON.load($redis.get(key))
+        ActionCable.server.broadcast("auction_#{key}", obj: timer)
       end
     end
   end

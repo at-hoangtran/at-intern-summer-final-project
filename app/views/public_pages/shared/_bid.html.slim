@@ -1,0 +1,9 @@
+tr
+  td
+    = bid.user.name
+  td
+    = out_price(bid.bid.to_s) + " đ"
+  td
+    | 1
+  td
+    = format_daytime bid.created_at

@@ -6,12 +6,12 @@
         a[href="#"]
           i.fa.fa-home
       li.active
-        | Danh Sách Phiên Đấu Gía
+        | Danh Sách Phiên Đấu Giá
   .row
     .col-lg-12
       .panel-heading
         .col-lg-3
-          | Danh Sách Phiên Đấu Gía
+          | Danh Sách Phiên Đấu Giá
         = form_for :search, url: admin_auctions_path, method: :get do |f|
           = render partial: "admin/auctions/shared/search", locals: {f: f}
       br
@@ -22,6 +22,8 @@
             table.table.table-hover
               thead
                 tr
+                  th
+                    | Ngày đấu giá
                   th
                     | Thời gian bắt đầu
                   th

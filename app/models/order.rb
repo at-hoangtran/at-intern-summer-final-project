@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
   acts_as_paranoid
+  PHONE_REGEX = /\A(?:\+?\d{1,3}\s*-?)?\(?(?:\d{3})?\)?[- ]?\d{3}[- ]?\d{4}\z/
 
   has_many :line_items, dependent: :destroy
   belongs_to :user
@@ -12,7 +13,8 @@ class Order < ApplicationRecord
   scope :search_day, ->(minday, maxday) { where 'created_at BETWEEN ? AND ?', minday, maxday }
   scope :search_status, ->(status) { where 'status = ?', status }
   scope :not_cart, -> { where.not status: :cart }
+  scope :cart, -> { where status: :cart }
 
-  validates :total_price, presence: true
-  validates :status, presence: true
+  # validates :address, presence: true
+  # validates :phone, format: { with: PHONE_REGEX }, presence: true, numericality: true
 end

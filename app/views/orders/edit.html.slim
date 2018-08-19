@@ -20,39 +20,34 @@
       .panel.panel-info
         .panel-heading
           h3.panel-title.text-center
-            | Sự kiện HOT
+            | Liên hệ hỗ trợ
         .panel-body.no-padding
-          a[href="#" title=""]
-            |  <img alt="" height="100%" src="" width="100%" />
-          br
-          a[href="#" title=""]
-            |  <img alt="" height="100%" src="" width="100%" />
-          br
-          a[href="#" title=""]
-            |  <img alt="" height="100%" src="" width="100%" />
-          a[href="#" title=""]
-            |  <img alt="" height="100%" src="" width="100%" />
-          a[href="#" title=""]
-            |  <img alt="" height="100%" src="" width="100%" />
+          p.panel-content
+            | Nếu có thắc mắc hoặc câu hỏi vui lòng liên hệ:
+          p.panel-content.phone-support
+            | 01664419659
       .panel.panel-info
         .panel-heading
-          h3.panel-title
-            | Thống kê
+          h3.panel-title.text-center
+            | Tổng kết đơn hàng
         .panel-body
-          p
-            | Số bài viết: 124556
-          p
-            | Số Thành Viên : 12435
-          p
-            | Số Thành Viên Online: 2435
-          p
-            | Số Người Đang Xem : 435
-      .panel.panel-info
-        .panel-heading
-          h3.panel-title
-            | Fans Pages
-        .panel-body
-          |  Hãy
-          a[href="#" title=""]
-            | Like
-          |  facebook của MyWeb để cập nhật tin mới nhất
+          p.panel-content
+            | Số mặt hàng
+            span.order-info
+              | #{size_cart}
+          hr
+          p.panel-content
+            | Tổng tiền
+            span.order-info
+              = out_price(@total_price.to_s)
+          hr
+          p.panel-content
+            | Phí giao hàng
+            span.order-info
+              = out_price(29000.to_s)
+          hr
+          p.panel-content.sum-pay
+            | Tổng tiền thanh toán
+            span.order-info
+              = out_price((@total_price + 29000).to_s)
+      

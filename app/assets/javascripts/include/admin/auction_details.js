@@ -28,8 +28,8 @@ var auction_details = {
             ID: item.id,
             NAME: item.user.name,
             BID: auction_details.formatPrice(item.bid) + ' đ',
-            STATUS: (item.status) === 0 ? true : false,
-            STATUS1: (item.status) === 1 ? true : false
+            STATUS: (item.status) === 'loser' ? true : false,
+            STATUS1: (item.status) === 'win' ? true : false
           });
         });
         $('tbody#viewLoad').html(html);

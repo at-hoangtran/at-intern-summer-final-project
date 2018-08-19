@@ -10,9 +10,8 @@ module ApplicationHelper
 
   def size_cart
     return unless logged_in?
-    if Order.find_by(user_id: current_user.id)
-      @size_cart = Order.find_by(user_id: current_user.id).line_items.size
-    end
+    @orders = Order.cart.find_by(user_id: current_user.id)
+    @size_cart = @orders.line_items.size if @orders
   end
 
   def set_interval(delay)

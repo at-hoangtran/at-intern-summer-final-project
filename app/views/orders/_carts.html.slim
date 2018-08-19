@@ -8,7 +8,5 @@ tr
   td.product-price
     = out_price line_item.amount.to_s
   td
-    = link_to content_tag(:i, nil, class: "glyphicon glyphicon-remove"), cart_path(line_item.id), class: "btn btn-danger", method: :delete, data: { confirm: "Bạn có chắc không?" }
-
-
+    = link_to content_tag(:i, nil, class: "glyphicon glyphicon-remove"), order_path(line_item.id), class: "btn btn-danger", method: :delete, data: { confirm: "Bạn có chắc không?" }
 

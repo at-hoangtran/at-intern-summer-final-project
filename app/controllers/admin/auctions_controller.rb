@@ -8,6 +8,7 @@ class Admin::AuctionsController < ApplicationAdminController
     @auctions = Auction.includes(:product).includes(:timer)
     unless params[:search].blank?
       search_name
+      search_day
       search_time
       search_status
     end
@@ -54,6 +55,14 @@ class Admin::AuctionsController < ApplicationAdminController
     def search_name
       if params[:search][:name].present?
         @auctions = @auctions.joins(:product).search_name params[:search][:name]
+      end
+    end
+
+    def search_day
+      if params[:search][:minday].present? && params[:search][:maxday].present?
+        minday = params[:search][:minday]
+        maxday = params[:search][:maxday]
+        @auctions = @auctions.search_day minday, maxday
       end
     end
 

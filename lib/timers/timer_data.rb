@@ -22,25 +22,15 @@ class TimerData
   end
 
   def self.update(obj, crr)
-    key_timer = JSON.load($redis.get(crr.id))
-    timer = format_m_to_s(format_time_sounds(obj.period))
-
-    if crr.waiting? && obj.run?
-      key_timer['start_at']            = obj.start_at
-      key_timer['end_at']              = obj.end_at
-      key_timer['step']                = obj.step
-      key_timer['product_id']          = obj.product_id
-      key_timer['product_name']        = obj.product.name
-      key_timer['product_price']       = obj.product.price
-      key_timer['product_description'] = obj.product.description
-      key_timer['product_quantity']    = obj.product.quantity
-      key_timer['product_image']       = obj.product.images
-      key_timer['product_category']    = obj.product.category_id
-      key_timer['period']              = timer
+    timer = JSON.load($redis.get(crr.id))
+    if obj.run?
+      if timer.nil? || crr.waiting?
+        obj.id = crr.id
+        TimerData.add(obj)
+      end
+    else
+      $redis.del(crr.id) unless timer.nil?
     end
-
-    key_timer['status'] = obj.status
-    $redis.set(crr.id, key_timer.to_json)
   end
 
   def self.delete(obj)
@@ -48,8 +38,8 @@ class TimerData
   end
 
   def self.delete_all
-    key_timer = $redis.keys('*')
-    key_timer.each do |key|
+    timer = $redis.keys('*')
+    timer.each do |key|
       $redis.del key
     end
     TimerData.load_data_db_to_redis

@@ -20,8 +20,4 @@ class ApplicationController < ActionController::Base
     @user = User.find_by(id: params[:id])
     redirect_to(root_url) unless @user == current_user
   end
-
-  def size_cart
-    @size_cart = Order.find_by(user_id: current_user.id).line_items.size
-  end
 end

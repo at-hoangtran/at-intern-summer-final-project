@@ -3,6 +3,7 @@ class AuctionDetail < ApplicationRecord
   belongs_to :user
   belongs_to :auction
 
-  default_scope -> { order(created_at: :desc) }
+  default_scope -> { order(bid: :desc) }
   scope :by_auction_detail_id, ->(id) { where auction_id: id }
+  enum status: %i[loser win]
 end

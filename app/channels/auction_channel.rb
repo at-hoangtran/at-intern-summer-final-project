@@ -1,4 +1,4 @@
-require 'actions/action'
+require 'auctions/auction'
 
 class AuctionChannel < ApplicationCable::Channel
   def subscribed
@@ -6,6 +6,6 @@ class AuctionChannel < ApplicationCable::Channel
   end
 
   def receive(data)
-    Action.bid(data, params[:timer_id])
+    Auction.bid(data, params[:timer_id])
   end
 end

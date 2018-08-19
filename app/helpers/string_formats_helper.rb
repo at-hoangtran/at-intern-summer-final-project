@@ -10,4 +10,8 @@ module StringFormatsHelper
   def format_day_time(daytime)
     daytime.strftime('%m/%d/%Y')
   end
+
+  def format_daytime(daytime)
+    daytime.strftime('%d/%m/%Y - %H:%M:%S')
+  end
 end

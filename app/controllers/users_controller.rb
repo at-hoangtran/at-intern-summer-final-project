@@ -32,6 +32,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def current_user_id
+    respond_to do |format|
+      format.json { render json: current_user.id }
+    end
+  end
+
   def edit; end
 
   def update
