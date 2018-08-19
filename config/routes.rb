@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :public_pages
   resources :users
   resources :sessions
+  resources :categories, only: %(show)
   namespace :admin do
     root to: 'homes#index'
     resources :users

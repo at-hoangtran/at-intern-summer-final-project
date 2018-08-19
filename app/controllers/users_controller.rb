@@ -10,18 +10,22 @@ class UsersController < ApplicationController
   end
 
   def create
-    if @email
-      flash[:danger] = 'Email đã tồn tại'
-      redirect_to root_path
-    else
-      @user = User.create!(user_params)
-      if @user
-        @user.send_activation_email
-        flash[:info] = 'Vui lòng xác nhận email.'
+    if verify_recaptcha
+      if @email
+        flash[:danger] = 'Email đã tồn tại'
         redirect_to root_path
       else
-        render :new
+        @user = User.create!(user_params)
+        if @user
+          @user.send_activation_email
+          flash[:info] = 'Vui lòng xác nhận email.'
+          redirect_to root_path
+        else
+          render :new
+        end
       end
+    else
+      redirect_to root_path
     end
   end
 

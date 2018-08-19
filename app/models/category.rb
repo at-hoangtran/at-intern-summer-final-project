@@ -19,6 +19,10 @@ class Category < ApplicationRecord
     end
   end
 
+  def ancestors
+    [parent, parent.try(:ancestors)].compact.flatten
+  end
+
   def self_and_descendants
     [self] + descendants
   end

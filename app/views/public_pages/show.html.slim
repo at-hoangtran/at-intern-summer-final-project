@@ -1,5 +1,7 @@
+- provide :title, "Xem chi tiết đấu giá"
+= javascript_include_tag "include/public/comments_fb/comments_fb"
 .col-xs-12.col-sm-12.col-md-12.col-lg-12
-  .col-xs-11.col-centered
+  .col-xs-11.col-centered.head-timer[data-timer-id="#{params[:id]}"]
     .col-xs-12.col-sm-8.col-md-8.col-lg-8
       h3.panel-title
         span.glyphicon.glyphicon-home
@@ -7,7 +9,7 @@
             | Home
         span.chevright.glyphicon.glyphicon-chevron-right
         a.title-product[href="#" title=""]
-          | Samsung s2
+          | Loading
       .col-xs-12.col-sm-12.col-md-12.col-lg-12.no-padding
         .row
           .col-xs-12.col-sm-12.col-md-12.col-lg-12
@@ -17,7 +19,7 @@
                   .col-xs-12.col-sm-12.col-md-12.col-lg-12.no-padding
                     h3.pro-detail-title
                       a.title-product[href="#" title=""]
-                        | Samsung s2
+                        | Loading
                     hr
                     .row
                       .col-xs-12.col-sm-7.col-md-7.col-lg-7
@@ -66,9 +68,10 @@
                                   button.btn.btn-default.btn-add[type="button"]
                                     | +
                         .row
-                          .col-md-12.price-box
+                          .col-md-12.price-box.btn-price-timer[load-id=""]
                             span.btn.col-xs-12.label-warning.price-btn-submit
                               = content_tag(:i, " Đấu giá ngay", class: "fa fa-gavel price-time")
+                              = content_tag(:i, nil, class: "fa fa-refresh price-refresh fa-spin")
                         .row
                           .col-md-12
                             .form-group.price-box
@@ -107,48 +110,12 @@
                           tr
                             td
                               span.description
-    .col-xs-12.col-sm-4.col-md-4.col-lg-4.no-padding
-      .panel.panel-info
-        .panel-heading
-          h3.panel-title.text-center
-            | Sự kiện HOT
-        .panel-body.no-padding
-          a[href="#" title=""]
-            |  <img alt="" height="100%" src="" width="100%" />
-          br
-          a[href="#" title=""]
-            |  <img alt="" height="100%" src="" width="100%" />
-          br
-          a[href="#" title=""]
-            |  <img alt="" height="100%" src="" width="100%" />
-          a[href="#" title=""]
-            |  <img alt="" height="100%" src="" width="100%" />
-          a[href="#" title=""]
-            |  <img alt="" height="100%" src="" width="100%" />
-      .panel.panel-info
-        .panel-heading
-          h3.panel-title
-            | Thống kê
-        .panel-body
-          p
-            | Số bài viết: 124556
-          p
-            | Số Thành Viên : 12435
-          p
-            | Số Thành Viên Online: 2435
-          p
-            | Số Người Đang Xem : 435
-      .panel.panel-info
-        .panel-heading
-          h3.panel-title
-            | Fans Pages
-        .panel-body
-          |  Hãy
-          a[href="#" title=""]
-            | Like
-          |  facebook của MyWeb để cập nhật tin mới nhất
-
-script#data-template[type="x-tmpl-mustache"]
+                hr
+                .row
+                  .col-xs-12.col-sm-12.col-md-12.col-lg-12
+                    .fb-comments[data-num-posts="2" data-width="100%"]
+    = render 'public_pages/shared/column_right'
+script#data-template-details[type="x-tmpl-mustache"]
   tr
     td
       | {{NAME}}

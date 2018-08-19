@@ -1,6 +1,6 @@
 doctype html
 html
-  head[data-timer-id="#{params[:id]}"]
+  head
     title
       = full_title yield(:title)
     meta[charset="utf-8"]
@@ -14,7 +14,7 @@ html
   body
     .notifications.top-right
     = render "layouts/modules/header"
-    .container
+    .container.margin-product
       = yield
       = render "layouts/modules/introduce"
     = render "layouts/modules/footer"
@@ -27,3 +27,5 @@ html
             }).show();
     = javascript_include_tag "include/public/auctions"
     = javascript_include_tag "include/public/auction"
+    = javascript_include_tag "include/public/categories"
+    = javascript_include_tag "include/public/auction_seconds_end"

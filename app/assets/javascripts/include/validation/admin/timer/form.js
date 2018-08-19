@@ -19,7 +19,7 @@ $(document).ready(function() {
         required: true,
         edtime: true,
         mxtime: true,
-        min20: true
+        min2: true
       },
       "timer[period]": {
         required: true,
@@ -42,7 +42,7 @@ $(document).ready(function() {
         required: "Vui lòng chọn thời gian kết thúc !",
         edtime: "Thời gian kết thúc phải lớn hơn thời gian bắt đầu !",
         mxtime: "Vui lòng chọn khung giờ từ (5h AM - 23h PM)",
-        min20: "Khoảng thời gian bắt đầu và kết thúc phải lớn hơn 20s!"
+        min2: "Khoảng thời gian bắt đầu và kết thúc phải lớn hơn 2p!"
       },
       "timer[period]":{
         required: "Vui lòng chọn thời gian đếm ngược !",
@@ -98,7 +98,6 @@ $.validator.addMethod("edtime", function (value, element) {
   var timer = fmtMSS(value);
   time.end = timer;
   if (time.start !== null) {
-    subtimer = (time.end - time.start) >= 20;
     if (time.end < time.start || time.end === time.start) {
       return false;
     }
@@ -106,9 +105,9 @@ $.validator.addMethod("edtime", function (value, element) {
   return true;
 });
 
-$.validator.addMethod('min20', function (value, element) {
+$.validator.addMethod('min2', function (value, element) {
   if (time.start !== null) {
-    subtimer = (time.end - time.start) < 20;
+    subtimer = (time.end - time.start) < 2;
     if (subtimer) {
       return false;
     }

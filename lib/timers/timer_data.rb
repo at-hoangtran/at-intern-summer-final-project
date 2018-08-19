@@ -16,7 +16,7 @@ class TimerData
       product_description: e.product.description,
       product_quantity: e.product.quantity,
       product_image: e.product.images,
-      product_category: e.product.category_id
+      product_category: e.product.category.ancestors.pluck(:id).last
     }
     $redis.set(e.id, hash_tmp.to_json)
   end
@@ -29,6 +29,8 @@ class TimerData
         TimerData.add(obj)
       end
     else
+      ActionCable.server.broadcast("redirect_home_#{crr.id}",
+                                   obj: 3)
       $redis.del(crr.id) unless timer.nil?
     end
   end
@@ -63,7 +65,7 @@ class TimerData
         product_quantity: e.product.quantity,
         product_description: e.product.description,
         product_image: e.product.images,
-        product_category: e.product.category_id
+        product_category: e.product.category.ancestors.pluck(:id).last
       }
       $redis.set(e.id, hash_tmp.to_json) if timer_id.nil?
     end

@@ -18,6 +18,8 @@ var auction = {
       $('.carousel-indicators li img:eq('+ index +')').attr('src', item.url);
     });
     $('.description').html(description);
+    $('.description').html(description);
+    $('.btn-price-timer').attr("load-id", data['id']);
     auction.loadDefaultPriceInput(data['product_price'], step);
     auction.refreshPage(data['period']);
   },

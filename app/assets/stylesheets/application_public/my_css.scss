@@ -7,8 +7,10 @@
 /* === customer header === */
 nav#main-Nav {
   background-color: #16a085;
-  margin-bottom: 5px;
   font-size: 13px;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
 }
 
 span#grouped-one {
@@ -29,6 +31,8 @@ span#grouped-two {
 a#mlinkhome {
   color: #FFFFFF;
   background-color: #2c3e50;
+  font-variant: small-caps;
+  font-size: 1.5em;
 }
 
 ul#cartview {
@@ -99,7 +103,7 @@ span#glysave {
   margin-left: 0;
 }
 
-input[type="password"] {
+input[type="password"], #password {
   height: 35px;
 }
 
@@ -192,3 +196,54 @@ li.nopassword {
 span.user-win {
   margin-left: 2%;
 }
+
+.pn-heading {
+  background-color: #16a085;
+  color: #fff;
+}
+
+.banner-menu {
+  border-bottom: 1px solid #2c3e50;
+}
+
+.margin-product {
+  margin-top: 1%;
+}
+
+.category-menu {
+  min-height: 6px;
+}
+
+.category-menu .navbar-nav > li > a {
+  line-height: 6px;
+}
+
+.spm {
+  overflow-y: scroll;
+  height: 350px;
+}
+
+.nav-index {
+  background-color: #16a085;
+  border-left: 10px solid #2c3e50;
+  padding: 1% 0 1% 1%;
+  color: #ffffff;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 1.5%;
+}
+
+.footer {
+  font-weight: bold;
+}
+
+.back-to-top {
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display:none;
+  background-color: #16a085;
+  border-color: #16a085;
+}
+

@@ -6,6 +6,8 @@ App.auctions = App.cable.subscriptions.create('AuctionsChannel', {
     auctions.disconnected();
   },
   received: function(data) {
+    categories.loadElementToHtml(data);
+    auction_seconds_end.loadElementToHtml(data);
     auctions.loadElementToHtml(data);
   }
 });

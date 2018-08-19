@@ -13,18 +13,20 @@ var auctions = {
           PRICE: formatPrice(item.product_price),
           TIMER: fmtMSS(item.period)
         });
-        auctions.loading_auction(item.period);
       });
       $('.load-data').html(html);
+      $.each(data.obj, function (i, item) {
+        auctions.loading_auction(item.id ,item.period);
+      });
     }
   },
-  loading_auction: function(seconds) {
+  loading_auction: function(id, seconds) {
     if (seconds < 1) {
-      $('.price-time').hide();
-      $('.price-refresh').show();
+      $('[load-id="'+ id +'"] .price-time').hide();
+      $('[load-id="'+ id +'"] .price-refresh').show();
     } else {
-      $('.price-time').show();
-      $('.price-refresh').hide();
+      $('[load-id="'+ id +'"] .price-time').show();
+      $('[load-id="'+ id +'"] .price-refresh').hide();
     }
   },
   conntected: function() {

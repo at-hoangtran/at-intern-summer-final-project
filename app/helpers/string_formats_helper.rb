@@ -7,11 +7,11 @@ module StringFormatsHelper
     price.reverse.scan(/.{1,3}/).join(',').reverse
   end
 
-  def format_day_time(daytime)
-    daytime.strftime('%m/%d/%Y')
+  def format_day(day)
+    day.strftime('%m/%d/%Y')
   end
 
-  def format_daytime(daytime)
+  def format_day_time(daytime)
     daytime.strftime('%d/%m/%Y - %H:%M:%S')
   end
 end

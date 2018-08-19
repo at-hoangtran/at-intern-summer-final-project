@@ -1,6 +1,6 @@
-include StringFormatsHelper
+require 'helpers_rb/helpers_rb'
 
-class Auction
+class Auction_sk
   def self.bid(data, key)
     timer   = JSON.load($redis.get(key))
     auction = Auction.timer_product(key, timer['product_id'])
@@ -13,11 +13,12 @@ class Auction
           user_id: user_id,
           bid: data['price']
         )
-        Auction.append_bid(key, auction)
-        Auction.set_auction(timer, data, key)
+        Auction_sk.append_bid(key, auction)
+        Auction_sk.set_auction(timer, data, key)
       else
         if auction_dls.user_id == user_id
-          ActionCable.server.broadcast("message_bid_#{key}", obj: auction_dls.bid)
+          ActionCable.server.broadcast("message_bid_#{key}",
+                                       obj: auction_dls.bid)
         else
           auction_dls = auction.auction_details
           user = auction_dls.find_by(user_id: user_id)
@@ -29,8 +30,8 @@ class Auction
           else
             user.update_attributes(bid: data['price'], created_at: DateTime.now)
           end
-          Auction.append_bid(key, auction)
-          Auction.set_auction(timer, data, key)
+          Auction_sk.append_bid(key, auction)
+          Auction_sk.set_auction(timer, data, key)
         end
       end
     end
@@ -49,7 +50,7 @@ class Auction
       hash_tmp = {
         name: obj.user.name,
         bid: obj.bid,
-        created_at: format_daytime(obj.created_at)
+        created_at: HelpersRb.format_day_time(obj.created_at)
       }
       arr << hash_tmp
     end
