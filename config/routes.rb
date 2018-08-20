@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'carts/index'
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
   resources :public_pages
   resources :users
   resources :sessions
+  resources :carts, only: %i[index destroy]
   namespace :admin do
     root to: 'homes#index'
     resources :users

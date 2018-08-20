@@ -8,6 +8,13 @@ module ApplicationHelper
     end
   end
 
+  def size_cart
+    return unless logged_in?
+    if Order.find_by(user_id: current_user.id)
+      @size_cart = Order.find_by(user_id: current_user.id).line_items.size
+    end
+  end
+
   def set_interval(delay)
     mutex = Mutex.new
     Thread.new do
