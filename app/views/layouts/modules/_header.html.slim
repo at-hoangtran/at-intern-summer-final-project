@@ -11,12 +11,8 @@ nav#main-Nav.navbar.navbar-top.banner-menu[role="navigation"]
           li
             = link_to content_tag(:b, nil, class: "glyphicon glyphicon-home") + " AuctionHouse", root_url, :id => "mlinkhome"
         ul.nav.navbar-nav.pull-right
-          li.dropdown
-            a.dropdown-toggle[data-toggle="dropdown"]
-              span.glyphicon.glyphicon-shopping-cart
-                span.badge.reset
-                  | 0
-              = " Giỏ hàng "
+          li
+            = link_to raw('<span class="glyphicon glyphicon-shopping-cart"><span class="badge reset">0</span>Giỏ-Hàng</span>'), "#"
           - if logged_in?
             li.dropdown
               a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-expanded="false"]
@@ -40,6 +36,9 @@ nav#main-Nav.navbar.navbar-top.category-menu[role="navigation"]
       #main-mav-top.navbar-collapse
         ul.nav.navbar-nav
           = render partial: "layouts/modules/category", collection: @categories, as: "category"
+        - if @search
+          .pull-right
+            input.form-control[type="text" class="input-search" placeholder="Tìm kiếm" aria-label="Search"]
 
 #mySidenav.sidenav
   a.closebtn[href="javascript:void(0)" onclick="closeNav()"]

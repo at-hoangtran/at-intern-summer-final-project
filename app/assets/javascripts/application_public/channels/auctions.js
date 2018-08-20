@@ -1,13 +1,24 @@
 App.auctions = App.cable.subscriptions.create('AuctionsChannel', {
   conntected: function() {
-    auctions.conntected();
+    loading_icon.conntected();
   },
   disconnected: function() {
-    auctions.disconnected();
+    loading_icon.disconnected();
   },
   received: function(data) {
-    categories.loadElementToHtml(data);
-    auction_seconds_end.loadElementToHtml(data);
-    auctions.loadElementToHtml(data);
+    if (search_index.status) {
+      search_index.loadElementToHtml(data);
+      $('.not-search').hide();
+      $('.search').show();
+    } else {
+      categories.loadElementToHtml(data);
+      auction_seconds_end.loadElementToHtml(data);
+      product_order_multiple.loadElementToHtml(data);
+      auctions.loadElementToHtml(data);
+      $('.not-search').show();
+      $('.search').hide();
+      console.log(search_index.status);
+    }
+    loading_icon.loadIcon(data);
   }
 });

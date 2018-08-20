@@ -20,19 +20,19 @@ var auction = {
     $('.description').html(description);
     $('.description').html(description);
     $('.btn-price-timer').attr("load-id", data['id']);
-    auction.loadDefaultPriceInput(data['product_price'], step);
-    auction.refreshPage(data['period']);
+    auction.load_default_price_input(data['product_price'], step);
+    auction.refresh_page(data['period']);
   },
-  loadDefaultPriceInput: function(price, step) {
+  load_default_price_input: function(price, step) {
     if (price !== auction.current_price) {
       auction.current_price = price;
       auction.tmp_price = price;
       $('#price-input').val(formatPrice(price) + " Đ");
-      auction.eventAddBtnPrice(price, step);
+      auction.event_add_btn_price(price, step);
       auction.step = step;
     }
   },
-  eventAddBtnPrice: function(price, step) {
+  event_add_btn_price: function(price, step) {
     $('.btn-sub').prop('disabled', true);
     $('.btn-sub').on('click', function() {
       auction.tmp_price -= step;
@@ -50,25 +50,25 @@ var auction = {
       }
     });
   },
-  eventSubmitPrice: function() {
+  event_submit_price: function() {
     $('.price-btn-submit').on('click', function() {
       if (auction.tmp_price === auction.current_price) {
         auction.tmp_price += auction.step;
       }
       data = {
         price: auction.tmp_price,
-        user_id: auction.loadIdCurrentUser()
+        user_id: auction.load_id_current_user()
       };
       App.auction.send(data)
     });
   },
-  refreshPage: function(period) {
+  refresh_page: function(period) {
     if (period == 0) {
       $('.loadbid').children().remove();
       $('.user-win').html("");
     }
   },
-  loadIdCurrentUser: function () {
+  load_id_current_user: function () {
     user_id = null;
     $.ajax({
       url: '/current_user',
@@ -98,5 +98,5 @@ var auction = {
 }
 
 $(document).on('turbolinks:load', function() {
-  auction.eventSubmitPrice();
+  auction.event_submit_price();
 });

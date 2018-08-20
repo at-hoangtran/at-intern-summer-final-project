@@ -8,10 +8,10 @@ $(document).on('turbolinks:load', function() {
       },
       {
         conntected: function() {
-          auction.conntected();
+          loading_icon.conntected();
         },
         disconnected: function() {
-          auction.disconnected();
+          loading_icon.disconnected();
         },
         received: function(data) {
           auction.loadElementToHtml(data);

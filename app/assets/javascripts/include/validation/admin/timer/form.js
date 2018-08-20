@@ -36,12 +36,12 @@ $(document).ready(function() {
       "timer[start_at]":{
         required: "Vui lòng chọn thời gian bắt đầu !",
         stime: "Thời gian bắt đầu phải nhỏ hơn thời gian kết thúc !",
-        mxtime: "Vui lòng chọn khung giờ từ (8h AM - 22h PM)"
+        mxtime: "Vui lòng chọn khung giờ từ (8h AM - 23h PM)"
       },
       "timer[end_at]":{
         required: "Vui lòng chọn thời gian kết thúc !",
         edtime: "Thời gian kết thúc phải lớn hơn thời gian bắt đầu !",
-        mxtime: "Vui lòng chọn khung giờ từ (5h AM - 23h PM)",
+        mxtime: "Vui lòng chọn khung giờ từ (8h AM - 23h PM)",
         min2: "Khoảng thời gian bắt đầu và kết thúc phải lớn hơn 2p!"
       },
       "timer[period]":{
@@ -76,8 +76,8 @@ $(document).on('turbolinks:load', function() {
 });
 
 $.validator.addMethod("mxtime", function (value, element) {
-  var hours = value.split(":")[0];
-  if (hours < 8 || hours > 22) {
+  var hours = fmtMSS(value)
+  if (hours < 28800 || hours > 82800) {
     return false;
   }
   return true;

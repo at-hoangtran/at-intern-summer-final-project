@@ -7,7 +7,7 @@ class Product < ApplicationRecord
   has_many :auctions, dependent: :destroy
 
   default_scope -> { order(created_at: :desc) }
-  scope :search_name, ->(search) { where 'name like ?', "%#{search}%" }
+  scope :search_name, ->(search) { where 'name iLIKE ?', "%#{search}%" }
   scope :by_category_id, ->(id) { where category_id: id }
   scope :by_remove_not_status, -> { where.not status: :remove }
   scope :by_not_buy, -> { where.not status: :nobuy }

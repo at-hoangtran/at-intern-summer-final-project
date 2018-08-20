@@ -231,6 +231,8 @@ span.user-win {
   font-size: 1.2em;
   font-weight: bold;
   margin-bottom: 1.5%;
+  width: 100%;
+  float: left;
 }
 
 .footer {
@@ -247,3 +249,8 @@ span.user-win {
   border-color: #16a085;
 }
 
+.input-search {
+  height: 30px;
+  margin-right: 20%;
+  margin-top: 1.3%;
+}

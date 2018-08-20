@@ -83,7 +83,7 @@ $.validator.addMethod("minsize", function (value, element, param) {
 });
 
 $.validator.addMethod("minprice", function (value, element, param) {
-  if (value > param) return true;
+  if (value.replace(/,/gi, '') > param) return true;
   return false;
 });
 

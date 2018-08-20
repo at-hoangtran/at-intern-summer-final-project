@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   get 'users/check_email', to: 'users#check_email'
   get 'current_user' => 'users#current_user_id'
+  get 'product_muti' => 'public_pages#product_order_multiple'
+  get 'search_index/:search' => 'public_pages#search_index'
 
   root to: 'public_pages#index'
   resources :public_pages

@@ -15,18 +15,6 @@ var auctions = {
         });
       });
       $('.load-data').html(html);
-      $.each(data.obj, function (i, item) {
-        auctions.loading_auction(item.id ,item.period);
-      });
-    }
-  },
-  loading_auction: function(id, seconds) {
-    if (seconds < 1) {
-      $('[load-id="'+ id +'"] .price-time').hide();
-      $('[load-id="'+ id +'"] .price-refresh').show();
-    } else {
-      $('[load-id="'+ id +'"] .price-time').show();
-      $('[load-id="'+ id +'"] .price-refresh').hide();
     }
   },
   conntected: function() {
