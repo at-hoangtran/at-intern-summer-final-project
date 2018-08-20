@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   resources :categories, only: %(show)
+  resources :auctions, only: %(index)
   namespace :admin do
     root to: 'homes#index'
     resources :users

@@ -16,7 +16,7 @@ class PublicPagesController < ApplicationController
   def product_order_multiple
     product_muti = ActiveRecord::Base.connection.execute(
       "select product_id from line_items
-      where DATE(created_at) = '2018-08-19'
+      where DATE(created_at) = '#{DateTime.now}'
       group by product_id HAVING COUNT(product_id) > 5"
     )
     respond_to do |format|

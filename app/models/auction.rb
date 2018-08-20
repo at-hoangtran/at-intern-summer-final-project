@@ -5,7 +5,7 @@ class Auction < ApplicationRecord
   has_many :auction_details, dependent: :destroy
 
   default_scope -> { order(created_at: :desc) }
-  scope :search_name, ->(search) { where 'name like ?', "%#{search}%" }
+  scope :search_name, ->(search) { where 'name iLIKE ?', "%#{search}%" }
   scope :search_time, ->(mintime, maxtime) { where 'start_at BETWEEN ? AND ?', mintime, maxtime }
   scope :search_day, ->(minday, maxday) { where 'created_at BETWEEN ? AND ?', minday, maxday }
   scope :search_status, ->(status) { where 'status = ?', status }

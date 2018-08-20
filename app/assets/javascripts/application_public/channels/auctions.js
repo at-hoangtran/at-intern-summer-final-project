@@ -17,7 +17,6 @@ App.auctions = App.cable.subscriptions.create('AuctionsChannel', {
       auctions.loadElementToHtml(data);
       $('.not-search').show();
       $('.search').hide();
-      console.log(search_index.status);
     }
     loading_icon.loadIcon(data);
   }

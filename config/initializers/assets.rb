@@ -20,3 +20,5 @@ Rails.application.config.assets.precompile +=
 
 Rails.application.config.assets.precompile +=
   %w[include/public/*.js]
+
+Rails.application.config.assets.precompile += %w[ckeditor/filebrowser/images/gal_del.png]

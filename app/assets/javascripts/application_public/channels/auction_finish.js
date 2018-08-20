@@ -8,7 +8,7 @@ $(document).on('turbolinks:load', function() {
       },
       {
         received: function(data) {
-          current_id = auction.loadIdCurrentUser();
+          current_id = auction.load_id_current_user();
           if (current_id === data.obj) {
             swal({
               html: '<img src="/assets/surprise-827a3d035ae' +

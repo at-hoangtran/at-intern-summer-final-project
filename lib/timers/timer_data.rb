@@ -1,8 +1,8 @@
-include TimersHelper
+require 'helpers_rb/helpers_rb'
 
 class TimerData
   def self.add(e)
-    timer = format_m_to_s(format_time_sounds(e.period))
+    timer = HelpersRb.format_m_to_s(HelpersRb.format_time_sounds(e.period))
     hash_tmp = {
       id: e.id,
       start_at: e.start_at,
@@ -51,7 +51,7 @@ class TimerData
     @timer = Timer.all.includes(:product)
     @timer.each do |e|
       timer_id = $redis.get(e.id)
-      timer    = format_m_to_s(format_time_sounds(e.period))
+      timer = HelpersRb.format_m_to_s(HelpersRb.format_time_sounds(e.period))
       hash_tmp = {
         id: e.id,
         start_at: e.start_at,

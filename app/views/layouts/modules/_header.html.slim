@@ -12,7 +12,9 @@ nav#main-Nav.navbar.navbar-top.banner-menu[role="navigation"]
             = link_to content_tag(:b, nil, class: "glyphicon glyphicon-home") + " AuctionHouse", root_url, :id => "mlinkhome"
         ul.nav.navbar-nav.pull-right
           li
-            = link_to raw('<span class="glyphicon glyphicon-shopping-cart"><span class="badge reset">0</span>Giỏ-Hàng</span>'), "#"
+            = link_to content_tag(:i, " (1)", class: "fa fa-cart-plus") + " Giỏ hàng", "#"
+          li
+            = link_to content_tag(:i, " Đấu giá của tôi", class: "fa fa-gavel"), auctions_path
           - if logged_in?
             li.dropdown
               a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-expanded="false"]
