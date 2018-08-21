@@ -1,4 +1,5 @@
 var history_orders = {
+  id_order: null,
   initOnLoad: function() {
     history_orders.event_tab_notdefined();
     $('.nav-tabs a').on('shown.bs.tab', function (e) {
@@ -16,6 +17,7 @@ var history_orders = {
       }
     });
     history_orders.show_modal();
+    history_orders.export_file();
   },
   event_tab_notdefined: function() {
     var html = '';
@@ -96,6 +98,7 @@ var history_orders = {
       var id = $(this).attr('data-order-id');
       $("#detailsModal").modal();
       history_orders.ajaxShowDetails(id);
+      history_orders.id_order = id;
     });
   },
   ajaxShowDetails: function(id) {
@@ -123,6 +126,12 @@ var history_orders = {
       error: function (err) {
         console.log(err);
       }
+    });
+  },
+  export_file: function(id) {
+    $("#btn-export").on('click', function() {
+      id = history_orders.id_order;
+      window.location = '/history_orders/' + id + '/export_file.xlsx';
     });
   },
   formatDateTime: function(datetime) {
