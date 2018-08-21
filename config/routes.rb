@@ -17,12 +17,16 @@ Rails.application.routes.draw do
   get 'auction_win', to: 'auctions#auction_win'
   get 'auction_loser', to: 'auctions#auction_loser'
 
+  get 'request_history_order/:status',
+      to: 'history_orders#request_order'
+
   root to: 'public_pages#index'
   resources :public_pages
   resources :users
   resources :sessions
   resources :categories, only: %(show)
   resources :auctions, only: %(index)
+  resources :history_orders, only: %(index)
   namespace :admin do
     root to: 'homes#index'
     resources :users

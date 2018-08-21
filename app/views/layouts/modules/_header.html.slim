@@ -28,6 +28,8 @@ nav#main-Nav.navbar.navbar-top.banner-menu[role="navigation"]
                 li
                   = link_to "Thông tin cá nhân", edit_user_path(current_user)
                 li
+                  = link_to "Lịch sử mua hàng", history_orders_path,data: { turbolinks: false }
+                li
                   = link_to content_tag(:i, " Đăng xuất", class: "fa fa-btn fa-sign-out"), logout_path, method: :delete
           - else
             li
