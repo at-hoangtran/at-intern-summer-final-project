@@ -7,6 +7,7 @@ module ApplicationCable
     end
 
     private
+
       def find_verified_user
         if verified_user = User.find_by(id: session[:user_id])
           verified_user

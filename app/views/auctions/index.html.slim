@@ -1,3 +1,4 @@
+- provide :title, "Đấu giá của tôi"
 = javascript_include_tag "include/public/my_auctions/my_auctions"
 .col-xs-12.col-sm-12.col-md-12.col-lg-12
   .container
@@ -15,7 +16,7 @@
           li
             a[data-toggle="tab" href="#auction_loser"]
               | Đấu giá thua
-        .tab-content.tab-auction
+        .tab-content.tab-auction.
           #auction_current.tab-pane.fade.in.active
             = render 'auctions/shared/auction_current'
           #auction_win.tab-pane.fade

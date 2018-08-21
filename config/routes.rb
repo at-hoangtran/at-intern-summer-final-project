@@ -9,9 +9,13 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   get 'users/check_email', to: 'users#check_email'
-  get 'current_user' => 'users#current_user_id'
-  get 'product_muti' => 'public_pages#product_order_multiple'
-  get 'search_index/:search' => 'public_pages#search_index'
+  get 'current_user', to: 'users#current_user_id'
+  get 'product_muti', to: 'public_pages#product_order_multiple'
+  get 'search_index/:search', to: 'public_pages#search_index'
+
+  get 'auction_current', to: 'auctions#auction_current'
+  get 'auction_win', to: 'auctions#auction_win'
+  get 'auction_loser', to: 'auctions#auction_loser'
 
   root to: 'public_pages#index'
   resources :public_pages
