@@ -37,6 +37,11 @@ ul#cartview {
   min-width: 350px;
 }
 
+hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 /* === card, order, detail === */
 
 span.chevright {
@@ -47,6 +52,18 @@ span.chevright {
 
 div#panelsuccess {
   min-height: 1760px;
+}
+
+.btn-edit {
+  width: 150px;
+}
+
+.edit-left {
+  float: left;
+  display: none;
+}
+.edit-right {
+  float: right;
 }
 
 input.qty {
@@ -92,7 +109,7 @@ input[type="password"] {
 }
 
 .notifications{
-  z-index: 999;
+  z-index: 2000;
 }
 
 .remember_me {
@@ -115,4 +132,117 @@ li.nopassword {
 .g-recaptcha {
   transform: scale(0.9);
   transform-origin: 0 0;
+}
+
+#frmResetsPassword {
+  width: 300px;
+  margin: auto
+}
+
+.price-time {
+  font-size: 1.2em;
+  color: #ffffff;
+}
+
+.clock-time {
+  color: #EA4335;
+  font-size: 1.5em;
+  position: absolute;
+  top: 7px;
+  left: 7px;
+}
+
+.price-refresh {
+  display: none;
+  color: #fff;
+}
+
+.price-time-show {
+  display: none;
+}
+
+.col-centered {
+  float: none;
+  margin: 0 auto;
+}
+
+/* ============ show public ============ */
+.details-timer {
+  text-align: center;
+}
+
+.clock-time-show {
+  font-size: 3em;
+  color: #EA4335;
+}
+
+.price-box {
+  margin-top: 10%;
+  text-align: left;
+}
+
+.price-center {
+  text-align: center;
+}
+
+.price-crt-text {
+  font-size: 1.7em;
+  color: #46a185;
+}
+
+.price-btn-submit {
+  background-color: #46a185;
+}
+
+.img-cart {
+  width: 70px;
+  height: 70px;
+}
+
+.btn-pay {
+  float: right;
+  margin-right: 2%; 
+}
+
+.product-price {
+  font-weight: bold;
+}
+
+.list-product-price {
+  color: #16a085;
+}
+
+.payment {
+  text-transform: uppercase;
+  span.user-win {
+    margin-left: 2%;
+  }
+}
+
+.form_checkout {
+  margin: auto;
+  width: 400px;
+}
+
+.btn-order {
+  margin-top: 20px;
+}
+
+.panel-content {
+  padding: 0 10%;
+}
+
+.phone-support {
+  font-weight: bold;
+  font-size: 19px;
+}
+
+.order-info {
+  float: right;
+  // padding-right: 10%;
+}
+
+.sum-pay {
+  color: #125e85;
+  font-weight: bold
 }

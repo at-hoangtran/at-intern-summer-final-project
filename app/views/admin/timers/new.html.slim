@@ -1,0 +1,22 @@
+= javascript_include_tag "include/validation/admin/timer/form"
+- provide :button_text, "Tạo mới"
+.col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
+  .row
+    ol.breadcrumb
+      li
+        = link_to content_tag(:i, " Home", class: "fa fa-home"), admin_timers_path
+      li.active
+        | Tạo thời gian
+  .row
+    .col-lg-12
+      h1.page-header
+        small
+          | Tạo thời gian
+  .row
+    .col-lg-12
+      .panel.panel-default
+        .panel-body
+          .col-lg-5
+            = form_for @timer, url:  admin_timers_path, html: { id: "frmTimer", class: "form-horizontal" } do |f|
+              = render partial: "admin/timers/shared/form", locals: {f: f}
+= javascript_include_tag "include/lib/simple.money.format"

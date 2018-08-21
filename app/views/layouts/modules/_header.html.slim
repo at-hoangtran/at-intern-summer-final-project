@@ -15,26 +15,35 @@ nav#main-Nav.navbar.navbar-default.navbar-top[role="navigation"]
             a.dropdown-toggle[data-toggle="dropdown"]
               span.glyphicon.glyphicon-shopping-cart
                 span.badge
-                  = "0"
-              = " Giỏ hàng"
-              b.caret
-            ul#cartview.dropdown-menu
-
-          - if true
+                  - if size_cart.nil?
+                    = "0"
+                  - else
+                    = "#{size_cart}"
+              = "Giỏ hàng"
+          / li.dropdown
+          /   = link_to content_tag(:i, "Giỏ hàng", class: "glyphicon glyphicon-shopping-cart"), carts_path
+          /   / span.badge
+          /   / - if size_cart.nil?
+          /   /   = "0"
+          /   / - else
+          /   /   = "#{size_cart}"
+          - if logged_in?
             li.dropdown
               a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-expanded="false"]
+                span
+                  = "Welcome #{current_user.name}"
                 span.caret
               ul.dropdown-menu[role="menu"]
-                - if true
+                - if admin?
                   li
-                    = link_to "Trang quản trị", "#"
+                    = link_to "Trang quản trị", admin_root_path
                 li
-                  = link_to "Thông tin cá nhân", "#"
+                  = link_to "Thông tin cá nhân", edit_user_path(current_user)
                 li
                   = link_to content_tag(:i, " Đăng xuất", class: "fa fa-btn fa-sign-out"), logout_path, method: :delete
           - else
             li
-              = link_to "Đăng nhập", "#"
+              = link_to "Đăng nhập"
 #mySidenav.sidenav
   a.closebtn[href="javascript:void(0)" onclick="closeNav()"]
     | ×
