@@ -13,6 +13,11 @@ class Admin::AuctionsController < ApplicationAdminController
       search_status
     end
     @auctions = @auctions.paginate(page: params[:page], per_page: 5)
+    @total_price = 0
+    @auctions.each do |obj|
+      @au_dls = obj.auction_details
+      @total_price += @au_dls.first.bid if @au_dls.first
+    end
   end
 
   def show

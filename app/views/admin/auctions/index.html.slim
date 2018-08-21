@@ -1,3 +1,4 @@
+- provide :title, "Trang quản trị - Quản lý phiên đấu giá"
 = javascript_include_tag "include/admin/auction_details"
 .col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
   .row
@@ -40,5 +41,10 @@
                     | Action
               tbody
                 = render partial: "admin/auctions/shared/listtable", collection: @auctions, as: "list"
+            div.col-md-5.pull-right.statistics
+              span.label.label-primary.pull-left
+                | Tổng phiên đấu giá : #{@auctions.size}
+              span.label.label-default.pull-right
+                | Tổng tiền bán được : #{out_price(@total_price.to_s)} đ
             = will_paginate
             = render "admin/auctions/shared/modal"
