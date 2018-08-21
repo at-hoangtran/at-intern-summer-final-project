@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
-  get 'orders/new'
 
-  get 'orders/create'
-
-  get 'carts/index'
-
+  mount Ckeditor::Engine => '/ckeditor'
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -14,13 +10,25 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   get 'users/check_email', to: 'users#check_email'
-  get 'current_user' => 'users#current_user_id'
+  get 'current_user', to: 'users#current_user_id'
+  get 'product_muti', to: 'public_pages#product_order_multiple'
+  get 'search_index/:search', to: 'public_pages#search_index'
+
+  get 'auction_current', to: 'auctions#auction_current'
+  get 'auction_win', to: 'auctions#auction_win'
+  get 'auction_loser', to: 'auctions#auction_loser'
+
+  get 'request_history_order/:status',
+      to: 'history_orders#request_order'
 
   root to: 'public_pages#index'
   resources :public_pages
   resources :users
   resources :sessions
   resources :orders
+  resources :categories, only: %(show)
+  resources :auctions, only: %(index)
+  resources :history_orders, only: %(index)
   namespace :admin do
     root to: 'homes#index'
     resources :users

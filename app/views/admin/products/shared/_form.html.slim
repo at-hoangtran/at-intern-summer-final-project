@@ -13,7 +13,7 @@
   = f.number_field :quantity, { id: "quantity", class: "form-control",   placeholder: "Nhập số lượng sản phẩm..." }
 .control-group
   = f.label :description, "Mô tả", { class: "control-label", for: "description" }
-  = f.text_area :description, { id: "description", class: "form-control", rows: 6, placeholder: "Nhập mô tả sản phẩm..." }
+  = f.text_area :description, { id: "description", class: "form-control ckeditor", rows: 6, placeholder: "Nhập mô tả sản phẩm..." }
 .padding-image.control-group
   - if f.object.images?
     = label_tag :review_image, "Xem Ảnh", { class: "control-label" }

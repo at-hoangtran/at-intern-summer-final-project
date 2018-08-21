@@ -1,17 +1,36 @@
-- provide :title, "Hệ thông bán hàng trực tuyến"
-.col-xs-12.col-sm-12.col-md-12.col-lg-12.load-data
+- provide :title, "Hệ thống đấu giá trực tuyến"
+.col-xs-12.col-sm-12.col-md-12.col-lg-12.search
+  .container.nav-index
+    | Kết quả tìm kiếm
+.col-xs-12.col-sm-12.col-md-12.col-lg-12.search
+  div.load-data-search
+.col-xs-12.col-sm-12.col-md-12.col-lg-12.not-search
+  .container.nav-index
+    | Kết thúc ngay
+.col-xs-12.col-sm-12.col-md-12.col-lg-12.not-search
+  div.load-data-seconds-end
+.col-xs-12.col-sm-12.col-md-12.col-lg-12.not-search
+  .container.nav-index
+    | Sản phẩm mua nhiều trong ngày
+.col-xs-12.col-sm-12.col-md-12.col-lg-12.not-search
+  div.load-data-product-order-multi
+.col-xs-12.col-sm-12.col-md-12.col-lg-12.not-search
+  .container.nav-index
+    | Tất cả sản phẩm
+.col-xs-12.col-sm-12.col-md-12.col-lg-12.not-search
+  div.load-data
+  script#data-template[type="x-tmpl-mustache"]
+    a[href="/public_pages/{{ID}}" data-turbolinks="false"]
+      .col-xs-12.col-sm-3.col-md-3.col-lg-3.no-padding
+        .thumbnail.mobile
+          .bt
+            .image-m
+              img[src="{{IMAGE}}"]
+          br
+          span.btn.col-xs-12.label-warning.price-btn-submit[load-id="{{ID}}"]
+            strong
+              = content_tag(:i, " {{PRICE}}" + " đ", class: "fa fa-gavel price-time")
+              = content_tag(:i, nil, class: "fa fa-refresh fa-spin price-refresh")
+          = content_tag(:i, "{{TIMER}}", class: "glyphicon glyphicon-time clock-time")
 
-script#data-template[type="x-tmpl-mustache"]
-  a[href="/public_pages/{{ID}}" data-turbolinks="false"]
-    .col-xs-12.col-sm-3.col-md-3.col-lg-3.no-padding
-      .thumbnail.mobile
-        .bt
-          .image-m
-            img[src="{{IMAGE}}"]
-        br
-        span.btn.col-xs-12.label-warning.price-btn-submit
-          strong
-            = content_tag(:i, " {{PRICE}}" + " đ", class: "fa fa-gavel price-time")
-            = content_tag(:span, nil, class: "fa fa-refresh price-refresh")
-        = content_tag(:i, "{{TIMER}}", class: "glyphicon glyphicon-time clock-time")
 

@@ -4,13 +4,15 @@ tr
   td
     = list.user.name
   td
+    = list.user_name
+  td
     = list.address
   td
     = list.phone
   td
     = list.user.email
   td
-    = format_day_time list.created_at
+    = format_day list.created_at
   td
     = (out_price list.total_price.to_s) + " đ"
   td

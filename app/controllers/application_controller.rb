@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   include StringFormatsHelper
   include SessionsHelper
 
+  before_action :menu_categories
+
   def logged_in_user
     unless logged_in?
       flash[:danger] = 'Vui lòng đăng nhập!'
@@ -19,5 +21,9 @@ class ApplicationController < ActionController::Base
   def correct_user
     @user = User.find_by(id: params[:id])
     redirect_to(root_url) unless @user == current_user
+  end
+
+  def menu_categories
+    @categories = Category.all.by_parent_id_status
   end
 end

@@ -21,7 +21,7 @@ class User < ApplicationRecord
   end
 
   default_scope -> { order(created_at: :desc) }
-  scope :search_name, ->(search) { where 'name like ?', "%#{search}%" }
+  scope :search_name, ->(search) { where 'name iLIKE ?', "%#{search}%" }
   enum role: %i[member admin]
   validates :email, presence: true,
                     length: { maximum: Settings.max_email_length },

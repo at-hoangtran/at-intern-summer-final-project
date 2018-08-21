@@ -1,0 +1,25 @@
+- provide :title, "Đấu giá của tôi"
+= javascript_include_tag "include/public/my_auctions/my_auctions"
+.col-xs-12.col-sm-12.col-md-12.col-lg-12
+  .container
+    .row
+      .col-xs-12.col-sm-9.col-md-9.col-lg-9.col-md-offset-1
+        h1.auction-my
+          | Đấu giá của tôi
+        ul.nav.nav-tabs
+          li.active
+            a[data-toggle="tab" href="#auction_current"]
+              | Giá thầu hiện tại
+          li
+            a[data-toggle="tab" href="#auction_win"]
+              | Đấu giá đã thắng
+          li
+            a[data-toggle="tab" href="#auction_loser"]
+              | Đấu giá thua
+        .tab-content.tab-auction.
+          #auction_current.tab-pane.fade.in.active
+            = render 'auctions/shared/auction_current'
+          #auction_win.tab-pane.fade
+            = render 'auctions/shared/auction_win'
+          #auction_loser.tab-pane.fade
+            = render 'auctions/shared/auction_loser'

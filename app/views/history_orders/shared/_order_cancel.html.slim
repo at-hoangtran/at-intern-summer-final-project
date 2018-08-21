@@ -1,0 +1,38 @@
+div.table-responsive
+  table#table-scl.table.table-striped.table-auction
+    thead
+      tr
+        th
+          | Trạng thái
+        th
+          | Tên khách hàng
+        th
+          | Địa chỉ
+        th
+          | Điện thoại
+        th
+          | Email
+        th
+          | Ngày đặt
+        th
+          | Thành tiền
+    tbody.table-auction.load-cancel-order
+
+
+script#data-cancel-order[type="x-tmpl-mustache"]
+  tr
+    td
+      = content_tag(:i, nil, class: "fa fa-times fa-2x icon-loser")
+    td
+      | {{KNAME}}
+    td
+      | {{ADDRESS}}
+    td
+      | {{PHONENUMBER}}
+    td
+      | {{EMAIL}}
+    td
+      | {{DATETIME}}
+    td
+      | {{PRICE}}
+

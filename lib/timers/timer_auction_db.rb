@@ -3,7 +3,7 @@ class TimerAuctionDb
     timer_id   = timer['id']
     product_id = timer['product_id']
 
-    auction = Auction.all.timer_product(timer_id, product_id)
+    auction = Auction.timer_product(timer_id, product_id)
 
     auction_size = auction.size
 
@@ -26,9 +26,15 @@ class TimerAuctionDb
   def close_auction(timer)
     timer_id   = timer['id']
     product_id = timer['product_id']
-    auction = Auction.all.timer_product(timer_id, product_id)
+    auction = Auction.timer_product(timer_id, product_id)
     auction = auction.first
-    auction.update_attribute(:status, :finished)
+    auction_dls = auction.auction_details
+    if auction_dls.size.positive?
+      auction.update_attribute(:status, :finished)
+      user_win(timer)
+    else
+      auction.really_destroy!
+    end
   end
 
   def user_win(timer)
@@ -42,7 +48,8 @@ class TimerAuctionDb
       auction_dls.update_attribute(:status, :win)
       sub_quantity(product, timer)
       create_order(product, auction_dls)
-      ActionCable.server.broadcast("auction_finish_#{timer_id}", obj: auction_dls.user_id)
+      ActionCable.server.broadcast("auction_finish_#{timer_id}",
+                                   obj: auction_dls.user_id)
     end
   end
 

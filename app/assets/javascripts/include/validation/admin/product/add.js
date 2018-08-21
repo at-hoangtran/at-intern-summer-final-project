@@ -20,8 +20,7 @@ $(document).ready(function() {
       },
       "product[description]": {
         required: true,
-        minlength: 70,
-        maxlength: 500
+        minlength: 70
       },
       "product[images][]": {
         required: true,
@@ -49,8 +48,7 @@ $(document).ready(function() {
       },
       "product[description]": {
         required: "Vui lòng nhập mô tả !",
-        minlength: "Mô tả tối thiểu 70 ký tự !",
-        maxlength: "Mô tả tối đa 500 ký tự !"
+        minlength: "Mô tả tối thiểu 70 ký tự !"
       },
       "product[images][]": {
         required: "Vui lòng chọn ảnh !",
@@ -83,7 +81,7 @@ $.validator.addMethod("minsize", function (value, element, param) {
 });
 
 $.validator.addMethod("minprice", function (value, element, param) {
-  if (value > param) return true;
+  if (value.replace(/,/gi, '') > param) return true;
   return false;
 });
 

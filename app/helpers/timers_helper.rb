@@ -49,4 +49,12 @@ module TimersHelper
   def format_m_to_s(timer)
     timer.split(':').map { |a| a.to_i }.inject(0) { |a, b| a * 60 + b }
   end
+
+  def check_time(time_start, time_end)
+    time_start = Time.parse(time_start.strftime('%H:%M'))
+    time_end   = Time.parse(time_end.strftime('%H:%M'))
+    time_now   = Time.now
+    return true if time_now >= time_start && time_now <= time_end
+    false
+  end
 end

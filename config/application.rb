@@ -13,7 +13,8 @@ module FinalProject
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-    config.autoload_paths << "#{Rails.root}/lib"
+    config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
     config.action_view.embed_authenticity_token_in_remote_forms = true
     config.time_zone = 'Asia/Ho_Chi_Minh'
     config.active_record.default_timezone = :local # Or :utc
@@ -22,7 +23,6 @@ module FinalProject
       config.after_initialize do
         Rails.application.load_tasks
         Rake::Task['start:setIntervel'].invoke
-        Rake::Task['after_start:setIntervel'].invoke
       end
     end
 

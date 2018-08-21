@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.Jcrop
+//= require ckeditor/init
 //= require bootstrap
 //= require turbolinks
 //= require jquery.validate

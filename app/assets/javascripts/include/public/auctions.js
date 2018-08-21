@@ -13,18 +13,8 @@ var auctions = {
           PRICE: formatPrice(item.product_price),
           TIMER: fmtMSS(item.period)
         });
-        auctions.loading_auction(item.period);
       });
       $('.load-data').html(html);
-    }
-  },
-  loading_auction: function(seconds) {
-    if (seconds < 1) {
-      $('.price-time').hide();
-      $('.price-refresh').show();
-    } else {
-      $('.price-time').show();
-      $('.price-refresh').hide();
     }
   },
   conntected: function() {

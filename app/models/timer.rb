@@ -15,6 +15,8 @@ class Timer < ApplicationRecord
   validates :period, presence: true
   validates :step, presence: true
   def destroy_redis
+    ActionCable.server.broadcast("redirect_home_#{self.id}",
+                                 obj: 3)
     $redis.del(self.id)
   end
 end
