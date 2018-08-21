@@ -1,0 +1,22 @@
+tr
+  td
+    = list.id
+  td
+    = list.user.name
+  td
+    = list.address
+  td
+    = list.phone
+  td
+    = list.user.email
+  td
+    = format_day list.created_at
+  td
+    = (out_price list.total_price.to_s) + " đ"
+  td
+    = content_tag(:span, "Chưa xác nhận", class: "label label-warning") if list.notdefined?
+    = content_tag(:span, "Đã xác nhận", class: "label label-info") if list.defined?
+    = content_tag(:span, "Đơn hàng hủy", class: "label label-danger") if list.cancel?
+  td
+    = button_tag(type: "button", class: "show-details btn btn-primary", "data-toggle": "modal", "data-target": "#detailsModal", "details-id": list.id) do
+      = content_tag(:i, nil, class: "fa fa-eye")

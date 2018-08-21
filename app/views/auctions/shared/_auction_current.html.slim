@@ -1,0 +1,32 @@
+div.table-responsive
+  table#table-scl.table.table-striped.table-auction
+    thead
+      tr
+        th
+          | Trạng thái
+        th
+          | Sản phẩm đấu giá
+        th
+          | Giá hiện tại của bạn
+        th
+          | Giá thầu
+        th
+          | Hoàn thành
+    tbody.table-auction.load-current-auction
+
+
+script#data-current-auction[type="x-tmpl-mustache"]
+  tr
+    td
+      = content_tag(:i, nil, class: "fa fa-check fa-2x icon-win")
+    td
+      a[href="/public_pages/{{ID}}" data-turbolinks="false"]
+        | {{NAME}}
+    td
+      | {{PRICE}}
+    td
+      | 1
+    td
+      | {{DATETIME}}
+
+
