@@ -1,4 +1,3 @@
-I18n.locale = "vi";
 $(document).ready(function() {
   $("#frmCategory").validate({
     ignore: [],
@@ -9,7 +8,7 @@ $(document).ready(function() {
     },
     messages: {
       "category[name]":{
-        required: I18n.t("javascript.validation.category.required")
+        required: "Vui lòng nhập tên danh mục !"
       }
     },
     highlight: function (element) {
@@ -22,9 +21,9 @@ $(document).ready(function() {
     errorClass: 'help-block',
     errorPlacement: function (error, element) {
       if (element.parent('.input-group').length) {
-          error.insertAfter(element.parent());
+        error.insertAfter(element.parent());
       } else {
-          error.insertAfter(element);
+        error.insertAfter(element);
       }
     }
   });

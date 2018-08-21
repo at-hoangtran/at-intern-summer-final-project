@@ -1,4 +1,3 @@
-I18n.locale = "vi";
 $(document).ready(function() {
   $("#frmAddProductEdit").validate({
     ignore: [],
@@ -11,11 +10,13 @@ $(document).ready(function() {
       },
       "product[price]": {
         required: true,
-        number: true
+        number: true,
+        minprice: 0
       },
       "product[quantity]": {
         required: true,
-        number: true
+        number: true,
+        minsize: 0
       },
       "product[description]": {
         required: true,
@@ -30,28 +31,30 @@ $(document).ready(function() {
     },
     messages: {
       "product[category_id]":{
-        required: I18n.t("javascript.validation.product.update.category_id.required")
+        required: "Vui lòng chọn danh mục !"
       },
       "product[name]":{
-        required: I18n.t("javascript.validation.product.update.name.required")
+        required: "Vui lòng nhập tên sản phẩm !"
       },
       "product[price]": {
-        required: I18n.t("javascript.validation.product.update.price.required"),
-        number: I18n.t("javascript.validation.product.update.price.number")
+        required: "Vui lòng nhập gía !",
+        number: "Vui lòng nhập số !",
+        minprice: "Vui lòng nhập tiền không được âm !"
       },
       "product[quantity]": {
-        required: I18n.t("javascript.validation.product.update.quantity.required"),
-        number: I18n.t("javascript.validation.product.update.quantity.number")
+        required: "Vui lòng nhập số lượng !",
+        number: "Vui lòng nhập số lượng !",
+        minsize: "Số lượng tối thiểu 1 sản phẩm !"
       },
       "product[description]": {
-        required: I18n.t("javascript.validation.product.update.description.required"),
-        minlength: I18n.t("javascript.validation.product.update.description.minlength"),
-        maxlength: I18n.t("javascript.validation.product.update.description.maxlength"),
+        required: "Vui lòng nhập mô tả !",
+        minlength: "Mô tả tối thiểu 70 ký tự !",
+        maxlength: "Mô tả tối đa 500 ký tự !"
       },
       "product[images][]": {
-        accept: I18n.t("javascript.validation.product.update.images.accept"),
-        filesize: I18n.t("javascript.validation.product.update.images.filesize"),
-        mximg: I18n.t("javascript.validation.product.update.images.mximg")
+        accept: "Kiểu tệp không hợp lệ !",
+        filesize: "File dung lượng tối đa không quá 3mb !",
+        mximg: "Vui lòng chọn tối thiểu 2 hình ảnh, tối đa 4 hình ảnh !"
       }
     },
     highlight: function (element) {
@@ -77,7 +80,7 @@ $.validator.addMethod("mximg", function (value, element) {
   var id   = $("#product_id").val();
   var count = 0;
   $.ajax({
-    url: '/admin/product/check_count_images/' + id,
+    url: '/admin/product/count_images/' + id,
     type: 'GET',
     contentType: 'application/json; charset=utf-8',
     dataType: 'JSON',
@@ -93,6 +96,15 @@ $.validator.addMethod("mximg", function (value, element) {
   return false;
 });
 
+$.validator.addMethod("minsize", function (value, element, param) {
+  if (value > param) return true;
+  return false;
+});
+
+$.validator.addMethod("minprice", function (value, element, param) {
+  if (value.replace(/,/gi, '') > param) return true;
+  return false;
+});
 
 
 $.validator.addMethod('filesize', function (value, element, param) {

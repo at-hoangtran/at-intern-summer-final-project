@@ -1,0 +1,25 @@
+- provide :title, "Trang quản trị - Sủa danh mục"
+= javascript_include_tag "include/validation/admin/category/form"
+= javascript_include_tag "include/admin/category"
+- provide :button_text, "Cập nhật"
+.col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
+  .row
+    ol.breadcrumb
+      li
+        = link_to content_tag(:i, "Home", class: "fa fa-home"), admin_categories_path
+      li.active
+        | Cập Nhật Danh Mục
+  .row
+    .col-lg-12
+      h1.page-header
+        small
+          | Cập Nhật Danh Mục
+  .row
+    .col-lg-12
+      .panel.panel-default
+        .panel-body
+          .col-lg-5
+            = form_for @category, url: admin_category_path, html: {id: "frmCategory",
+             	class: "form-horizontal"} do |f|
+              = render partial: "admin/categories/shared/form", locals: {f: f}
+            = render "admin/categories/shared/modal"
