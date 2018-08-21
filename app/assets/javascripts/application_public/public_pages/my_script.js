@@ -41,3 +41,17 @@ function fmtMSS(s) {
 $('.carousel').carousel({
   interval: false
 });
+
+
+$(document).on('turbolinks:load', function() {
+  $(".pay-live").on('click', function() {
+    $("#pay-live_").prop("checked", true);
+    $("#pay-online_").prop("checked", false);
+    $(".pay-info").show();
+  });
+  $(".pay-onl").on('click', function() {
+    $("#pay-online_").prop("checked", true);
+    $("#pay-live_").prop("checked", false);
+    $(".pay-info").hide();
+  });
+});

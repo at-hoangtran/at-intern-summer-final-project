@@ -2,7 +2,7 @@
 = form_for @order, url: order_path(@order.id), html: { id: "formOrder", class: "form-horizontal", :method => :patch } do |f|
   div.form_checkout
     .control-group
-      = f.label "Họ tên", { class: "control-label" }
+      = f.label "Họ tên người nhận", { class: "control-label" }
       = f.text_field :user_name, { class: "form-control order-field", placeholder: "#{current_user.name}" }
     .control-group
       = f.label :address, "Địa chỉ", { class: "control-label order-label" }
@@ -10,6 +10,31 @@
     .control-group
       = f.label :phone, "Số điện thoại", { class: "control-label order-label" }
       = f.text_field :phone, { class: "form-control order-field",placeholder: "#{current_user.phone}" }
+    .control-group
+      = f.label nil, "Vui lòng chọn hình thức thanh toán", { class: "control-label order-label" }
+    ul.control-group.payment-list
+      li.payment-item.pay-live
+        div.payment-title
+          | Nhận hàng thanh toán
+        div
+          i.fa.fa-money.fa-3x.payment-center
+        = check_box "pay-live", nil, { class: "check-box-payment"}
+      li.payment-item.pay-onl
+        div.payment-title
+          | ATM/Chuyển khoản
+        div
+          i.fa.fa-university.fa-3x.payment-center
+        = check_box "pay-online", nil, { class: "check-box-payment"}
+    div.pay-info
+      p.pay-info-live
+        | Giao Hàng Tiêu Chuẩn - giao hàng tận nơi.
+        br
+        | Thanh Toán Khi Nhận Hàng - thanh toán tiền mặt khi nhận hàng.
+        br
+        | Chúng tôi sẽ gửi đơn hàng của bạn đi trong 24 giờ.
+        br
+        | Chọn tiếp theo để xác nhận đơn hàng. 
+      
     div.btn-order
       .control-group
         = button_tag(type: "submit", class: "btn btn-warning btn-lg btn-pay") do

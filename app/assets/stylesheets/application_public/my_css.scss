@@ -246,3 +246,34 @@ li.nopassword {
   color: #125e85;
   font-weight: bold
 }
+
+.payment-item {
+  list-style-type: none;
+  width: 40%;
+  float: left;
+  margin: 15px 10px;
+  border: 2px solid gray;
+  text-align: center;
+}
+
+.check-box-payment {
+  /*// margin-left: 43%!important;*/
+  width: 25px;
+  height: 25px;
+}
+
+.payment-center {
+  margin:10px 0;
+}
+
+.pay-info {
+  border: 1px solid gray;
+  float: left;
+  margin: 10px;
+  display: none;
+}
+
+.pay-info-live {
+  margin: 5px;
+  color :#16a085;
+}
