@@ -1,3 +1,5 @@
+require 'timers/timer_data'
+
 class OrdersController < ApplicationController
   before_action :logged_in_user
   before_action :correct_order, only: %i[edit update]
@@ -25,6 +27,7 @@ class OrdersController < ApplicationController
     if @line_item.destroy
       product = @line_item.product
       product.update_attribute(:quantity, product.quantity + 1)
+      TimerData.add_quantity(product.id)
       redirect_to orders_path, flash: { success: 'Xóa sản phẩm thành công!' }
     else
       redirect_to orders_path, flash: { success: 'Xóa sản phẩm thất bại!' }
