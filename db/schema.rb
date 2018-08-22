@@ -92,7 +92,6 @@ ActiveRecord::Schema.define(version: 20180820141155) do
     t.integer  "price"
     t.integer  "quantity"
     t.string   "description"
-    t.integer  "status",      default: 1
     t.text     "images",      default: [],              array: true
     t.integer  "category_id"
     t.integer  "user_id"
