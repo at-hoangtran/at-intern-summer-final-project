@@ -53,6 +53,8 @@ gem 'redis-rack-cache'
 
 gem 'ckeditor'
 
+gem 'whenever', require: false
+
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
