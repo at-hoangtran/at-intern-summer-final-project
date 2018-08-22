@@ -1,0 +1,51 @@
+- provide :title, "Giỏ hàng"
+.col-xs-12.col-sm-12.col-md-12.col-lg-12
+  .col-xs-11.col-centered
+    .col-xs-12.col-sm-8.col-md-8.col-lg-8
+      h3.panel-title
+          span.glyphicon.glyphicon-home
+            = link_to "Home", root_path
+          span.chevright.glyphicon.glyphicon-chevron-right
+          span
+            | Giỏ hàng
+      .col-xs-12.col-sm-12.col-md-12.col-lg-12.no-padding
+        .row
+          .col-xs-12.col-sm-12.col-md-12.col-lg-12
+            .panel.panel-success
+            -if @line_items
+              -if @line_items.any?
+                .panel-body
+                  .table-responsive
+                    table.table.table-hover
+                      thead
+                        tr
+                          th
+                            | Sản phẩm
+                          th
+                          th
+                            | Số lượng
+                          th.list-product-price
+                            | Giá (VNĐ)
+                          th[colspan="2"]
+                            |
+                      tbody
+                        = render partial: "carts", collection: @line_items, as: "line_item"
+                      tfoot
+                        tr
+                          th[colspan="3"]
+                            | Tổng tiền
+                          td.product-price
+                              = out_price(@total_price.to_s) + " VNĐ"
+                          td
+                  = content_tag(:i, nil, class: "fa fa-truck fa-2x") + " Giao hàng từ 1 - 3 ngày | Chỉ từ 29.000đ"
+                  = link_to content_tag(:i, " Thanh toán", class: "fa fa-shopping-cart"), edit_order_path(current_user.id), class: "btn btn-warning btn-lg btn-pay"
+                  div
+                    = content_tag(:i, nil, class: "fa fa-money fa-2x" ) + "  "
+                    = content_tag(:i, nil, class: "fa fa-university fa-2x")
+              - else
+                p
+                  | Bạn hiện không có sản phẩm nào trong giỏ hàng
+            - else
+              p
+                | Bạn hiện không có sản phẩm nào trong giỏ hàng
+    = render 'public_pages/shared/column_right'

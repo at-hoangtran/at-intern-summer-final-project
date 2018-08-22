@@ -1,0 +1,26 @@
+.col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
+  .row
+    ol.breadcrumb
+      li
+        = link_to content_tag(:i, " Home", class: "fa fa-home"), admin_users_path
+      li.active
+        = "Chỉnh sửa ảnh"
+  .row
+    .col-lg-12
+      h1.page-header
+        small
+          = "Chỉnh sửa ảnh"
+  .row
+    .col-lg-12
+      .panel.panel-default
+        .panel-body
+          = image_tag @user.avatar_url(:large), id: "cropbox"
+          hr
+          div[style="width:100px; height:100px; overflow:hidden"]
+            = image_tag @user.avatar.url(:large), :id => "preview"
+          = form_for :user, url: admin_user_path(@user.id), method: :put do |f|
+            - %w[x y w h].each do |attribute|
+              = f.hidden_field "crop_#{attribute}"
+            hr
+            .actions
+              = f.button content_tag(:i, nil, class: "fa fa-cut"), type: :submit, class: "btn btn-danger"
