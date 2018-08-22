@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   resources :public_pages
   resources :users
   resources :sessions
+  resources :orders
   resources :categories, only: %(show)
   resources :auctions, only: %(index)
   resources :history_orders, only: %(index)

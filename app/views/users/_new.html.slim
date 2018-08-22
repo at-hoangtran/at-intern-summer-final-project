@@ -12,6 +12,5 @@
   .control-group
     = f.label :password_confirmation, "Nhập lại mật khẩu", { class: "control-label", for: "password_confirmation" }
     = f.password_field :password_confirmation, { id: "password_confirmation", class: "form-control", placeholder: "Nhập mật khẩu..." }
-    = recaptcha_tags
   br
   = f.submit "Đăng ký", class: "form-control btn btn-primary"

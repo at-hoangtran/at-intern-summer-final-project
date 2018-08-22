@@ -41,6 +41,11 @@ ul#cartview {
   min-width: 350px;
 }
 
+hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 /* === card, order, detail === */
 
 span.chevright {
@@ -193,10 +198,89 @@ li.nopassword {
   background-color: #46a185;
 }
 
-span.user-win {
-  margin-left: 2%;
+.img-cart {
+  width: 70px;
+  height: 70px;
 }
 
+.btn-pay {
+  float: right;
+  margin-right: 2%; 
+}
+
+.product-price {
+  font-weight: bold;
+}
+
+.list-product-price {
+  color: #16a085;
+}
+
+.payment {
+  text-transform: uppercase;
+  span.user-win {
+    margin-left: 2%;
+  }
+}
+
+.form_checkout {
+  margin: auto;
+  width: 400px;
+}
+
+.btn-order {
+  margin-top: 20px;
+}
+
+.panel-content {
+  padding: 0 10%;
+}
+
+.phone-support {
+  font-weight: bold;
+  font-size: 19px;
+}
+
+.order-info {
+  float: right;
+  // padding-right: 10%;
+}
+
+.sum-pay {
+  color: #125e85;
+  font-weight: bold
+}
+
+.payment-item {
+  list-style-type: none;
+  width: 40%;
+  float: left;
+  margin: 15px 10px;
+  border: 2px solid gray;
+  text-align: center;
+}
+
+.check-box-payment {
+  /*// margin-left: 43%!important;*/
+  width: 25px;
+  height: 25px;
+}
+
+.payment-center {
+  margin:10px 0;
+}
+
+.pay-info {
+  border: 1px solid gray;
+  float: left;
+  margin: 10px;
+  display: none;
+}
+
+.pay-info-live {
+  margin: 5px;
+  color :#16a085;
+}
 .pn-heading {
   background-color: #16a085;
   color: #fff;

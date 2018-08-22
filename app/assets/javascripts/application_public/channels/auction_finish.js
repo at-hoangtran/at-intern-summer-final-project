@@ -18,7 +18,7 @@ $(document).on('turbolinks:load', function() {
                     'giá thành công sản phẩm này !<br>'+
                     'Hãy nhập vào phía dưới' +
                     ' để kiểm tra giỏ hàng !' +
-                    '<br><a href="#">Giỏ hàng</a><br>' +
+                    '<br><a href="/orders">Giỏ hàng</a><br>' +
                     'Thông báo này sẽ được đóng trong 10 giây' +
                     ', chuyển bạn sang phiên đấu giá mới !',
               timer: 10000

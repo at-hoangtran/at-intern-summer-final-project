@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20180820141155) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.datetime "deleted_at"
+    t.string   "user_name"
     t.index ["deleted_at"], name: "index_orders_on_deleted_at", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
@@ -91,6 +92,7 @@ ActiveRecord::Schema.define(version: 20180820141155) do
     t.integer  "price"
     t.integer  "quantity"
     t.string   "description"
+    t.integer  "status",      default: 1
     t.text     "images",      default: [],              array: true
     t.integer  "category_id"
     t.integer  "user_id"

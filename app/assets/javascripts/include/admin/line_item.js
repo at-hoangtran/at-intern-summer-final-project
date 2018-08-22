@@ -21,6 +21,7 @@ var order = {
       contentType: 'application/json; charset=utf-8',
       dataType: 'JSON',
       success: function (response) {
+        // console.log(response);
         var html = '';
         var template = $('#data-template').html();
         var totalPri = 0;

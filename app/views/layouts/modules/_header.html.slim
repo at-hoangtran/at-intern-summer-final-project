@@ -11,8 +11,12 @@ nav#main-Nav.navbar.navbar-top.banner-menu[role="navigation"]
           li
             = link_to content_tag(:b, nil, class: "glyphicon glyphicon-home") + " AuctionHouse", root_url, :id => "mlinkhome"
         ul.nav.navbar-nav.pull-right
-          li
-            = link_to content_tag(:i, " (1)", class: "fa fa-cart-plus") + " Giỏ hàng", "#", data: { turbolinks: false }
+          - if size_cart.nil?
+            li
+              = link_to content_tag(:i, "(0)", class: "fa fa-cart-plus") + " Giỏ hàng", "/orders", data: { turbolinks: false }
+          - else
+            li
+              = link_to content_tag(:i, "(#{size_cart})", class: "fa fa-cart-plus") + " Giỏ hàng", "/orders", data: { turbolinks: false }
           li
             = link_to content_tag(:i, " Đấu giá của tôi", class: "fa fa-gavel"), auctions_path, data: { turbolinks: false }
           - if logged_in?
