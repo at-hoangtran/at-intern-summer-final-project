@@ -14,12 +14,16 @@ class TimerAuctionDb
           product_id: product_id,
           timer_id: timer_id
         )
+        timer['status_auction'] = 0
+        $redis.set(timer_id, timer.to_json)
       end
     else
       Auction.create!(
         product_id: product_id,
         timer_id: timer_id
       )
+      timer['status_auction'] = 0
+      $redis.set(timer_id, timer.to_json)
     end
   end
 
@@ -32,8 +36,12 @@ class TimerAuctionDb
     if auction_dls.size.positive?
       auction.update_attribute(:status, :finished)
       user_win(timer)
+      timer['status_auction'] = 1
+      $redis.set(timer_id, timer.to_json)
     else
       auction.really_destroy!
+      timer['status_auction'] = 1
+      $redis.set(timer_id, timer.to_json)
     end
   end
 
@@ -77,5 +85,11 @@ class TimerAuctionDb
       product_id: product.id,
       amount: auction_dls.bid
     )
+  end
+
+  def set_status_waiting(timer)
+    timer_model = Timer.find_by(id: timer['id'])
+    timer_model.update_attribute(:status, :waiting)
+    $redis.del(timer['id'])
   end
 end
