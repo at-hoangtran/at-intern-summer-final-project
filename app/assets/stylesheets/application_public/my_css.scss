@@ -273,11 +273,12 @@ li.nopassword {
 .pay-info {
   border: 1px solid gray;
   float: left;
-  margin: 10px;
+  margin: 10px auto;
   display: none;
+  width: 80%;
 }
 
-.pay-info-live {
+.pay-info-item {
   margin: 5px;
   color :#16a085;
 }

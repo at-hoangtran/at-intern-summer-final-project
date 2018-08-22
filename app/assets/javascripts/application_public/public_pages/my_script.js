@@ -64,14 +64,18 @@ $('.carousel').carousel({
 
 
 $(document).on('turbolinks:load', function() {
-  $(".pay-live").on('click', function() {
+  $(".payment-live").on('click', function() {
     $("#pay-live_").prop("checked", true);
     $("#pay-online_").prop("checked", false);
+    $(".pay-live").show();
     $(".pay-info").show();
+    $(".pay-online").hide();
   });
-  $(".pay-onl").on('click', function() {
+  $(".payment-onl").on('click', function() {
     $("#pay-online_").prop("checked", true);
     $("#pay-live_").prop("checked", false);
-    $(".pay-info").hide();
+    $(".pay-live").hide();
+    $(".pay-info").show();
+    $(".pay-online").show();
   });
 });
