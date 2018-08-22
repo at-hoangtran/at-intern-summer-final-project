@@ -58,6 +58,7 @@ class TimerAuctionDb
       create_order(product, auction_dls)
       ActionCable.server.broadcast("auction_finish_#{timer_id}",
                                    obj: auction_dls.user_id)
+      count_order(auction_dls.user_id)
     end
   end
 
@@ -92,5 +93,11 @@ class TimerAuctionDb
     timer_model.update_attribute(:status, :waiting)
     $redis.del(timer['id'])
     timer_model
+  end
+
+  def count_order(user_id)
+    order = Order.cart.find_by(user_id: user_id).line_items.size
+    ActionCable.server.broadcast("count_order_#{user_id}",
+                                 obj: order)
   end
 end
