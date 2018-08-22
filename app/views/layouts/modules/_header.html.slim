@@ -13,10 +13,10 @@ nav#main-Nav.navbar.navbar-top.banner-menu[role="navigation"]
         ul.nav.navbar-nav.pull-right
           - if size_cart.nil?
             li
-              = link_to content_tag(:i, "(0)", id: "count-order", class: "fa fa-cart-plus") + " Giỏ hàng", "/orders", data: { turbolinks: false }
+              = link_to content_tag(:i, " (0) ", id: "count-order", class: "fa fa-cart-plus") + " Giỏ hàng", "/orders", data: { turbolinks: false }
           - else
             li
-              = link_to content_tag(:i, "(#{size_cart})", id: "count-order", class: "fa fa-cart-plus") + " Giỏ hàng", "/orders", data: { turbolinks: false }
+              = link_to content_tag(:i, " (#{size_cart}) ", id: "count-order", class: "fa fa-cart-plus") + " Giỏ hàng", "/orders", data: { turbolinks: false }
           li
             = link_to content_tag(:i, " Đấu giá của tôi", class: "fa fa-gavel"), auctions_path, data: { turbolinks: false }
           - if logged_in?
