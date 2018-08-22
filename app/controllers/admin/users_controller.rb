@@ -18,6 +18,9 @@ class Admin::UsersController < ApplicationAdminController
 
   def create
     @user = User.new user_params
+    @user.activated = true
+    @user.activated_at = Time.zone.now
+    byebug
     if @user.save
       if params[:user][:avatar].present?
         render :crop

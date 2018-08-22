@@ -24,6 +24,8 @@
               span.label.label-danger.pull-right
                 strong#totalPri
       .modal-footer
+        = button_tag(type: "button", class: "btn btn-primary", id: "btn-export") do
+          = content_tag(:span, nil, class: "glyphicon glyphicon-save-file")
         button.btn.btn-default[type="button" data-dismiss="modal"]
           | Close
 

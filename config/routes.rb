@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   mount Ckeditor::Engine => '/ckeditor'
   get 'password_resets/new'
 
@@ -20,6 +19,8 @@ Rails.application.routes.draw do
 
   get 'request_history_order/:status',
       to: 'history_orders#request_order'
+
+  get 'history_orders/:id/export_file', to: 'history_orders#export_file'
 
   root to: 'public_pages#index'
   resources :public_pages
