@@ -81,9 +81,13 @@ var doughnutData = [{
 	highlight: "#f6495f",
 	label: "Red"
 }];
-document.addEventListener("turbolinks:load", function() {
-	var chart1 = document.getElementById("line-chart").getContext("2d");
-	window.myLine = new Chart(chart1).Line(lineChartData, {
-		responsive: true
-	});
+
+$(document).on('turbolinks:load', function() {
+	var chart1 = document.getElementById("line-chart")
+	if (chart1 !== null) {
+		chart1 = chart1.getContext("2d");
+		window.myLine = new Chart(chart1).Line(lineChartData, {
+			responsive: true
+		});
+	}
 });

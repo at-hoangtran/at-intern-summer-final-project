@@ -1,4 +1,4 @@
-nav#main-Nav.navbar.navbar-default.navbar-top[role="navigation"]
+nav#main-Nav.navbar.navbar-top.banner-menu[role="navigation"]
   .container
     .row
       .navbar-header
@@ -9,32 +9,45 @@ nav#main-Nav.navbar.navbar-default.navbar-top[role="navigation"]
       #main-mav-top.collapse.navbar-collapse
         ul.nav.navbar-nav
           li
-            = link_to content_tag(:b, nil, class: "glyphicon glyphicon-home") + " Trang chủ", root_url, :id => "mlinkhome"
+            = link_to content_tag(:b, nil, class: "glyphicon glyphicon-home") + " AuctionHouse", root_url, :id => "mlinkhome"
         ul.nav.navbar-nav.pull-right
-          li.dropdown
-            a.dropdown-toggle[data-toggle="dropdown"]
-              span.glyphicon.glyphicon-shopping-cart
-                span.badge
-                  = "0"
-              = " Giỏ hàng"
-              b.caret
-            ul#cartview.dropdown-menu
-
-          - if true
+          - if size_cart.nil?
+            li
+              = link_to content_tag(:i, "(0)", class: "fa fa-cart-plus") + " Giỏ hàng", "/orders", data: { turbolinks: false }
+          - else
+            li
+              = link_to content_tag(:i, "(#{size_cart})", class: "fa fa-cart-plus") + " Giỏ hàng", "/orders", data: { turbolinks: false }
+          li
+            = link_to content_tag(:i, " Đấu giá của tôi", class: "fa fa-gavel"), auctions_path, data: { turbolinks: false }
+          - if logged_in?
             li.dropdown
               a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-expanded="false"]
+                span
+                  = "Welcome #{current_user.name}"
                 span.caret
               ul.dropdown-menu[role="menu"]
-                - if true
+                - if admin?
                   li
-                    = link_to "Trang quản trị", "#"
+                    = link_to "Trang quản trị", admin_root_path
                 li
-                  = link_to "Thông tin cá nhân", "#"
+                  = link_to "Thông tin cá nhân", edit_user_path(current_user)
+                li
+                  = link_to "Lịch sử mua hàng", history_orders_path,data: { turbolinks: false }
                 li
                   = link_to content_tag(:i, " Đăng xuất", class: "fa fa-btn fa-sign-out"), logout_path, method: :delete
           - else
             li
-              = link_to "Đăng nhập", "#"
+              = link_to "Đăng nhập"
+nav#main-Nav.navbar.navbar-top.category-menu[role="navigation"]
+  .container
+    .row
+      #main-mav-top.navbar-collapse
+        ul.nav.navbar-nav
+          = render partial: "layouts/modules/category", collection: @categories, as: "category"
+        - if @search
+          .pull-right
+            input.form-control[type="text" class="input-search" placeholder="Tìm kiếm" aria-label="Search"]
+
 #mySidenav.sidenav
   a.closebtn[href="javascript:void(0)" onclick="closeNav()"]
     | ×
