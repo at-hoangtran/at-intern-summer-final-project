@@ -91,5 +91,6 @@ class TimerAuctionDb
     timer_model = Timer.find_by(id: timer['id'])
     timer_model.update_attribute(:status, :waiting)
     $redis.del(timer['id'])
+    timer_model
   end
 end

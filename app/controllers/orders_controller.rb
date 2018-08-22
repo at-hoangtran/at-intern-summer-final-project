@@ -23,6 +23,8 @@ class OrdersController < ApplicationController
 
   def destroy
     if @line_item.destroy
+      product = @line_item.product
+      product.update_attribute(:quantity, product.quantity + 1)
       redirect_to orders_path, flash: { success: 'Xóa sản phẩm thành công!' }
     else
       redirect_to orders_path, flash: { success: 'Xóa sản phẩm thất bại!' }

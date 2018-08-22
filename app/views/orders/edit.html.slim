@@ -1,3 +1,6 @@
+= javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=true&libraries=places"
+= javascript_include_tag "include/lib/jquery.placepicker"
+= javascript_include_tag "include/lib/placepicker-my"
 .col-xs-12.col-sm-12.col-md-12.col-lg-12
   .col-xs-11.col-centered
     .col-xs-12.col-sm-8.col-md-8.col-lg-8
@@ -50,4 +53,4 @@
             | Tổng tiền thanh toán
             span.order-info
               = out_price((@total_price + 29000).to_s)
-      
+

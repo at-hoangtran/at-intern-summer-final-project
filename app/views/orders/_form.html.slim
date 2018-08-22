@@ -6,7 +6,9 @@
       = f.text_field :user_name, { class: "form-control order-field", placeholder: "#{current_user.name}" }
     .control-group
       = f.label :address, "Địa chỉ", { class: "control-label order-label" }
-      = f.text_field :address, { class: "form-control order-field", placeholder: "#{current_user.address}" }
+      = f.text_field :address, { id: "advanced-placepicker",  class: "form-control order-field", 'data-map-container-id': "collapseTwo",  placeholder: "#{current_user.address}" }
+    #collapseTwo.collapse
+      .another-map-class.thumbnail
     .control-group
       = f.label :phone, "Số điện thoại", { class: "control-label order-label" }
       = f.text_field :phone, { class: "form-control order-field",placeholder: "#{current_user.phone}" }
@@ -33,8 +35,8 @@
         br
         | Chúng tôi sẽ gửi đơn hàng của bạn đi trong 24 giờ.
         br
-        | Chọn tiếp theo để xác nhận đơn hàng. 
-      
+        | Chọn tiếp theo để xác nhận đơn hàng.
+
     div.btn-order
       .control-group
         = button_tag(type: "submit", class: "btn btn-warning btn-lg btn-pay") do
