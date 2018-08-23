@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     resources :timers
     resources :auctions
     resources :auction_details, only: %i[destroy]
+    get 'chart_order', to: 'homes#chart_order'
     get 'product/import', to: 'products#import'
     post 'product/import_file', to: 'products#import_file'
     get 'product/export_file', to: 'products#export_file'
