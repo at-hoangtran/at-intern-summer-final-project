@@ -6,7 +6,7 @@ tr
   td
     | Số lượng: 1
   td.product-price
-    = out_price line_item.amount.to_s
+    = out_price(line_item.amount.to_s) + " đ"
   td
     = link_to content_tag(:i, nil, class: "glyphicon glyphicon-remove"), order_path(line_item.id), class: "btn btn-danger", method: :delete, data: { confirm: "Bạn có chắc không?" }
 

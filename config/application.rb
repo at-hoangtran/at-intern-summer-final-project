@@ -18,6 +18,7 @@ module FinalProject
     config.action_view.embed_authenticity_token_in_remote_forms = true
     config.time_zone = 'Asia/Ho_Chi_Minh'
     config.active_record.default_timezone = :local # Or :utc
+    config.exceptions_app = self.routes
 
     if defined?(Rails::Server)
       config.after_initialize do

@@ -7,8 +7,8 @@
         span.glyphicon.glyphicon-home
           =link_to "Home", root_path
         span.chevright.glyphicon.glyphicon-chevron-right
-        a.title-product[href="#" title=""]
-          | Loading
+        span.title-product
+          | Đấu giá
       .col-xs-12.col-sm-12.col-md-12.col-lg-12.no-padding
         .row
           .col-xs-12.col-sm-12.col-md-12.col-lg-12
@@ -77,7 +77,7 @@
                               label.control-label
                                 | Người thắng hiện tại:
                               br
-                                = content_tag(:i, nil, class: "fa fa-trophy")
+                                = content_tag(:i, nil, class: "fa fa-trophy") + " "
                                 = content_tag(:span, nil, class: "user-win")
 
                     .row

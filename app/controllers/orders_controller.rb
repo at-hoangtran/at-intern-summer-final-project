@@ -1,15 +1,19 @@
+require 'timers/timer_data'
+
 class OrdersController < ApplicationController
   before_action :logged_in_user
   before_action :correct_order, only: %i[edit update]
   before_action :correct_line_item, only: %i[destroy]
   before_action :total_price, only: %i[index edit update]
 
-  def index; end
+  def index
+  end
 
   def edit; end
 
   def update
     if update_status
+      byebug
       redirect_to root_path, flash: { success: 'Đặt hàng thành công!' }
     else
       render 'edit', flash: { danger: 'Vui lòng xem lại thông tin!' }
@@ -25,6 +29,7 @@ class OrdersController < ApplicationController
     if @line_item.destroy
       product = @line_item.product
       product.update_attribute(:quantity, product.quantity + 1)
+      TimerData.add_quantity(product.id)
       redirect_to orders_path, flash: { success: 'Xóa sản phẩm thành công!' }
     else
       redirect_to orders_path, flash: { success: 'Xóa sản phẩm thất bại!' }
@@ -34,7 +39,7 @@ class OrdersController < ApplicationController
   private
 
     def order_params
-      params.require(:order).permit(:user_name, :phone, :address)
+      params.require(:order).permit(:user_name, :phone, :address, :type_payment)
     end
 
     def correct_order

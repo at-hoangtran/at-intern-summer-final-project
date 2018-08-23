@@ -1,3 +1,7 @@
+- provide :title, "Nhập thông tin đơn hàng"
+= javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=true&libraries=places"
+= javascript_include_tag "include/lib/jquery.placepicker"
+= javascript_include_tag "include/lib/placepicker-my"
 .col-xs-12.col-sm-12.col-md-12.col-lg-12
   .col-xs-11.col-centered
     .col-xs-12.col-sm-8.col-md-8.col-lg-8
@@ -17,17 +21,18 @@
                 = render 'form'
                 br
     .col-xs-12.col-sm-4.col-md-4.col-lg-4.no-padding
-      .panel.panel-info
-        .panel-heading
+      .panel
+        .panel-heading.pn-heading
           h3.panel-title.text-center
             | Liên hệ hỗ trợ
         .panel-body.no-padding
+          br
           p.panel-content
             | Nếu có thắc mắc hoặc câu hỏi vui lòng liên hệ:
           p.panel-content.phone-support
             | 01664419659
-      .panel.panel-info
-        .panel-heading
+      .panel
+        .panel-heading.pn-heading
           h3.panel-title.text-center
             | Tổng kết đơn hàng
         .panel-body
@@ -39,15 +44,15 @@
           p.panel-content
             | Tổng tiền
             span.order-info
-              = out_price(@total_price.to_s)
+              = out_price(@total_price.to_s) + " đ"
           hr
           p.panel-content
             | Phí giao hàng
             span.order-info
-              = out_price(29000.to_s)
+              = out_price(29000.to_s) + " đ"
           hr
           p.panel-content.sum-pay
             | Tổng tiền thanh toán
             span.order-info
-              = out_price((@total_price + 29000).to_s)
-      
+              = out_price((@total_price + 29000).to_s) + " đ"
+

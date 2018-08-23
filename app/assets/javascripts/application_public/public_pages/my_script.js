@@ -9,6 +9,7 @@ function closeNav() {
 function updateUserForm() {
   $(".edit-user").on('click', function() {
     $('#frmEitProfile input[type="text"]').prop("disabled", false);
+    $('#frmEitProfile input[type="password"]').prop("disabled", false);
     $('.edit-user').hide();
     $('.edit-left').show();
   });
@@ -65,8 +66,8 @@ $('.carousel').carousel({
 
 $(document).on('turbolinks:load', function() {
   $(".payment-live").on('click', function() {
-    $("#pay-live_").prop("checked", true);
-    $("#pay-online_").prop("checked", false);
+    $(".check-off").prop("checked", true);
+    $(".check-onl").prop("checked", false);
     // $(".pay-live").show();
     $(".pay-live-info").show();
     $(".pay-online").hide();
@@ -75,8 +76,8 @@ $(document).on('turbolinks:load', function() {
     $(".btn-pay").show();
   });
   $(".payment-onl").on('click', function() {
-    $("#pay-online_").prop("checked", true);
-    $("#pay-live_").prop("checked", false);
+    $(".check-onl").prop("checked", true);
+    $(".check-off").prop("checked", false);
     $(".pay-info").hide();
     $(".btn-pay").hide();
     $(".bank-payment").show();

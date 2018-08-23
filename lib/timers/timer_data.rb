@@ -46,4 +46,15 @@ class TimerData
       $redis.del key
     end
   end
+
+  def self.add_quantity(product_id)
+    timer = $redis.keys('*')
+    timer.each do |key|
+      timer = JSON.load($redis.get(key))
+      if timer['product_id'] == product_id
+        timer['product_quantity'] = timer['product_quantity'] + 1
+        $redis.set(key, timer.to_json)
+      end
+    end
+  end
 end

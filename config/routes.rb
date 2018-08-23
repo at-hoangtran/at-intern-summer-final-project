@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     resources :timers
     resources :auctions
     resources :auction_details, only: %i[destroy]
+    get 'chart_order', to: 'homes#chart_order'
     get 'product/import', to: 'products#import'
     post 'product/import_file', to: 'products#import_file'
     get 'product/export_file', to: 'products#export_file'
@@ -56,6 +57,10 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   resources :account_activations, only: [:edit]
   resources :password_resets, only: %i[new create edit update]
+
+  match '/404', to: 'error/errors#not_found', via: :all
+  match '/500', to: 'error/errors#internal_server_error', via: :all
+
   # Serve websocket cable requests in-process
   mount ActionCable.server => '/cable'
 end

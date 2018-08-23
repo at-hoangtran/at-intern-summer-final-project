@@ -20,7 +20,7 @@ class TimerCondition
           AuctionDetails.push(timer)
           arr << timer
         else
-          timer_auction_db.set_status_waiting(timer)
+          timer_model = timer_auction_db.set_status_waiting(timer)
           ActionCable.server.broadcast("redirect_home_#{timer_model.id}", obj: 1)
         end
       else

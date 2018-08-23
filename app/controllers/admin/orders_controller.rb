@@ -1,3 +1,5 @@
+require 'timers/timer_data'
+
 class Admin::OrdersController < ApplicationAdminController
   include OrdersHelper
   before_action :logged_in_user
@@ -42,6 +44,7 @@ class Admin::OrdersController < ApplicationAdminController
     @line_item.each do |key|
       product = Product.find_by id: key.product_id
       product.update_attribute(:quantity, product.quantity + 1)
+      TimerData.add_quantity(product.id)
     end
     @order.update_attribute :status, :cancel
     render json: true
