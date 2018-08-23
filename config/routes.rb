@@ -48,6 +48,7 @@ Rails.application.routes.draw do
     get 'request_order', to: 'homes#request_order'
     get 'request_auction', to: 'homes#request_auction'
     get 'request_member', to: 'homes#request_member'
+    get 'request_online', to: 'homes#request_online'
     get 'product/import', to: 'products#import'
     post 'product/import_file', to: 'products#import_file'
     get 'product/export_file', to: 'products#export_file'

@@ -11,8 +11,7 @@ class Admin::HomesController < ApplicationAdminController
   def chart_order
     chart    = []
     wday     = DateTime.now.wday
-    crt_wday = wday
-    daytime = DateTime.now
+    daytime  = DateTime.now
 
     if wday == 1
       chart << Order.where(created_at: daytime).size
@@ -30,53 +29,35 @@ class Admin::HomesController < ApplicationAdminController
   end
 
   def request_order
-    arr = []
     daytime = DateTime.now
-    arr << Order.not_cart.where('DATE(created_at) = ?', daytime).size
-    arr << Order.not_cart.where('DATE(created_at) = ?', (daytime - 1)).size
-
-    arr << if arr[0] > arr[1]
-             ((2 - 1) * 100)
-           else
-             0
-           end
-
+    order   = Order.not_cart.where('DATE(created_at) = ?', daytime).size
     respond_to do |format|
-      format.json { render json: arr }
+      format.json { render json: order }
     end
   end
 
   def request_auction
-    arr = []
     daytime = DateTime.now
-    arr << Auction.search_status(1).where('DATE(created_at) = ?', daytime).size
-    arr << Auction.search_status(1).where('DATE(created_at) = ?', (daytime - 1)).size
-
-    arr << if arr[0] > arr[1]
-             ((2 - 1) * 100)
-           else
-             0
-           end
-
+    auction = Auction.search_status(1).where('DATE(created_at) = ?', daytime).size
     respond_to do |format|
-      format.json { render json: arr }
+      format.json { render json: auction }
     end
   end
 
   def request_member
-    arr = []
     daytime = DateTime.now
-    arr << User.where('DATE(created_at) = ?', daytime).size
-    arr << User.where('DATE(created_at) = ?', (daytime - 1)).size
+    member  = User.where('DATE(created_at) = ?', daytime).size
+    respond_to do |format|
+      format.json { render json: member }
+    end
+  end
 
-    arr << if arr[0] > arr[1]
-             ((2 - 1) * 100)
-           else
-             0
-           end
+  def request_online
+    ids = []
+    $redis_onlines.scan_each(match: 'user*') { |u| ids << u.gsub('user:', '') }
 
     respond_to do |format|
-      format.json { render json: arr }
+      format.json { render json: ids.length }
     end
   end
 end

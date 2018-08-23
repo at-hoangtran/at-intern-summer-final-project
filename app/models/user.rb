@@ -108,6 +108,10 @@ class User < ApplicationRecord
     reset_send_at < 2.hours.ago
   end
 
+  def online?
+    $redis_onlines.exists( "user:#{self.id}" )
+  end
+
   private
 
     def create_activation_digest

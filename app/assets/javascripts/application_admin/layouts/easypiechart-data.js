@@ -3,25 +3,24 @@ var easypiechart_data = {
     easypiechart_data.set_data_order();
     easypiechart_data.set_data_auction();
     easypiechart_data.set_data_member();
+    easypiechart_data.set_data_online();
     easypiechart_data.style_charts();
   },
   set_data_order: function() {
     order = easypiechart_data.request_order();
-    $('#easypiechart-blue').attr('data-percent', order[2]);
-    $('#order-eas .first').html(order[1]);
-    $('#order-eas .last').html(order[0]);
+    $('#order-eas').html(order);
   },
   set_data_auction: function() {
     auction = easypiechart_data.request_auction();
-    $('#easypiechart-orange').attr('data-percent', auction[2]);
-    $('#auction-eas .first').html(auction[1]);
-    $('#auction-eas .last').html(auction[0]);
+    $('#auction-eas').html(auction);
   },
   set_data_member: function() {
     member = easypiechart_data.request_member();
-    $('#easypiechart-teal').attr('data-percent', member[2]);
-    $('#member-eas .first').html(member[1]);
-    $('#member-eas .last').html(member[0]);
+    $('#member-eas').html(member);
+  },
+  set_data_online: function() {
+    online = easypiechart_data.request_online();
+    $('#online-eas').html(online);
   },
   request_order: function() {
     charts = null
@@ -61,6 +60,23 @@ var easypiechart_data = {
     charts = null
     $.ajax({
       url: '/admin/request_member',
+      type: 'GET',
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'JSON',
+      async: false,
+      success: function (response) {
+        charts = response
+      },
+      error: function (err) {
+        console.log(err);
+      }
+    });
+    return charts;
+  },
+  request_online: function() {
+    charts = null
+    $.ajax({
+      url: '/admin/request_online',
       type: 'GET',
       contentType: 'application/json; charset=utf-8',
       dataType: 'JSON',
