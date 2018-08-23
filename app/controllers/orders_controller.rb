@@ -23,6 +23,8 @@ class OrdersController < ApplicationController
 
   def destroy
     if @line_item.destroy
+      product = @line_item.product
+      product.update_attribute(:quantity, product.quantity + 1)
       redirect_to orders_path, flash: { success: 'Xóa sản phẩm thành công!' }
     else
       redirect_to orders_path, flash: { success: 'Xóa sản phẩm thất bại!' }
@@ -37,6 +39,9 @@ class OrdersController < ApplicationController
 
     def correct_order
       @order = Order.find_by(user_id: current_user.id)
+      unless @order.status == 'cart'
+        redirect_to root_path, flash: { danger: 'Đơn hàng đang được xử lý !' }
+      end
     end
 
     def correct_line_item

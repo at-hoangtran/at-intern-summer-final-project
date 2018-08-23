@@ -5,11 +5,15 @@ nav#main-Nav.navbar.navbar-top.banner-menu[role="navigation"]
         span#grouped-one.visible-xs.pull-left[onclick="openNav()"]
           | ☰
         span#grouped-two.visible-xs.pull-right
-
+      
       #main-mav-top.collapse.navbar-collapse
+        / = link_to image_tag("logo-1", alt: "Logo", class: "img-logo-header"), root_path
+        / span.title-header
+        /   | Online Auction
         ul.nav.navbar-nav
           li
             = link_to content_tag(:b, nil, class: "glyphicon glyphicon-home") + " AuctionHouse", root_url, :id => "mlinkhome"
+
         ul.nav.navbar-nav.pull-right
           - if size_cart.nil?
             li

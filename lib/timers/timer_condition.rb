@@ -24,9 +24,7 @@ class TimerCondition
           ActionCable.server.broadcast("redirect_home_#{timer_model.id}", obj: 1)
         end
       else
-        if !timer['product_quantity'].positive?
-          timer_auction_db.set_status_waiting(timer)
-        end
+        timer_auction_db.set_status_waiting(timer) unless timer['product_quantity'].positive?
         ActionCable.server.broadcast("redirect_home_#{timer['id']}", obj: 2)
       end
     end

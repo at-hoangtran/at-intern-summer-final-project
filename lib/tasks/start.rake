@@ -12,7 +12,7 @@ namespace :start do
         TimerCondition.new.main(key, arr)
       end
       ActionCable.server.broadcast 'auctions',
-                                     obj: arr
+                                   obj: arr
     end
   end
 end

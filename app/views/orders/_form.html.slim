@@ -3,13 +3,13 @@
   div.form_checkout
     .control-group
       = f.label "Họ tên người nhận", { class: "control-label" }
-      = f.text_field :user_name, { class: "form-control order-field", placeholder: "#{current_user.name}" }
+      = f.text_field :user_name, { class: "form-control order-field", placeholder: 'Nhập tên người nhận' }
     .control-group
       = f.label :address, "Địa chỉ", { class: "control-label order-label" }
-      = f.text_field :address, { class: "form-control order-field", placeholder: "#{current_user.address}" }
+      = f.text_field :address, { class: "form-control order-field", placeholder: "Nhập địa chỉ giao hàng" }
     .control-group
       = f.label :phone, "Số điện thoại", { class: "control-label order-label" }
-      = f.text_field :phone, { class: "form-control order-field",placeholder: "#{current_user.phone}" }
+      = f.text_field :phone, { class: "form-control order-field",placeholder: "Nhập số điện thoại" }
     .control-group
       = f.label nil, "Vui lòng chọn hình thức thanh toán", { class: "control-label order-label" }
     ul.control-group.payment-list
@@ -25,7 +25,7 @@
         div
           i.fa.fa-university.fa-3x.payment-center
         = check_box "pay-online", nil, { class: "check-box-payment"}
-    div.pay-info
+    div.pay-info.pay-live-info
       p.pay-info-item.pay-live
         | Giao Hàng Tiêu Chuẩn - giao hàng tận nơi.
         br
@@ -34,10 +34,12 @@
         | Chúng tôi sẽ gửi đơn hàng của bạn đi trong 24 giờ.
         br
         | Chọn đặt hàng để xác nhận đơn hàng.
-      p.pay-info-item.pay-online
-        | Chức năng đang trong quá trình cập nhật.
-        br
-        | Xin cảm ơn
+    div.bank-payment
+      h3.title-bank
+        | Chọn ngân hàng
+      div.bank-item.nganluong
+        a[target="_blank" href="https://www.nganluong.vn/button_payment.php?receiver=tranhuyhoang1011@gmail.com&product_name=AU#{@order.id}&price=#{@total_price}&return_url=(URL thanh toán thành công)&comments=Giao Hàng Tiêu Chuẩn - giao hàng tận nơi."]
+          img[src="https://www.nganluong.vn/css/newhome/img/button/safe-pay-3.png" border="0"]
     div.btn-order
       .control-group
         = button_tag(type: "submit", class: "btn btn-warning btn-lg btn-pay") do
