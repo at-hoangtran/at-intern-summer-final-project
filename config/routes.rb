@@ -45,6 +45,9 @@ Rails.application.routes.draw do
     resources :auctions
     resources :auction_details, only: %i[destroy]
     get 'chart_order', to: 'homes#chart_order'
+    get 'request_order', to: 'homes#request_order'
+    get 'request_auction', to: 'homes#request_auction'
+    get 'request_member', to: 'homes#request_member'
     get 'product/import', to: 'products#import'
     post 'product/import_file', to: 'products#import_file'
     get 'product/export_file', to: 'products#export_file'

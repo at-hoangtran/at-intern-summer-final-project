@@ -5,7 +5,6 @@ var chart_data = {
 	},
 	set_data_chart: function() {
 		chars = chart_data.request_order().reverse();
-		console.log(chars);
 		var lineChartData = {
 			labels: ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật"],
 			datasets: [{

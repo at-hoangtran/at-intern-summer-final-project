@@ -28,4 +28,55 @@ class Admin::HomesController < ApplicationAdminController
       format.json { render json: chart }
     end
   end
+
+  def request_order
+    arr = []
+    daytime = DateTime.now
+    arr << Order.not_cart.where('DATE(created_at) = ?', daytime).size
+    arr << Order.not_cart.where('DATE(created_at) = ?', (daytime - 1)).size
+
+    arr << if arr[0] > arr[1]
+             ((2 - 1) * 100)
+           else
+             0
+           end
+
+    respond_to do |format|
+      format.json { render json: arr }
+    end
+  end
+
+  def request_auction
+    arr = []
+    daytime = DateTime.now
+    arr << Auction.search_status(1).where('DATE(created_at) = ?', daytime).size
+    arr << Auction.search_status(1).where('DATE(created_at) = ?', (daytime - 1)).size
+
+    arr << if arr[0] > arr[1]
+             ((2 - 1) * 100)
+           else
+             0
+           end
+
+    respond_to do |format|
+      format.json { render json: arr }
+    end
+  end
+
+  def request_member
+    arr = []
+    daytime = DateTime.now
+    arr << User.where('DATE(created_at) = ?', daytime).size
+    arr << User.where('DATE(created_at) = ?', (daytime - 1)).size
+
+    arr << if arr[0] > arr[1]
+             ((2 - 1) * 100)
+           else
+             0
+           end
+
+    respond_to do |format|
+      format.json { render json: arr }
+    end
+  end
 end
