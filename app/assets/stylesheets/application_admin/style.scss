@@ -1003,3 +1003,12 @@ ul {
 .statistics {
   font-size: 1.2em;
 }
+
+.description-product {
+  position: relative;
+}
+
+#description-error {
+  position: absolute;
+  bottom: -35px;
+}

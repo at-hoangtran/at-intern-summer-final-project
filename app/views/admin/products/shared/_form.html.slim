@@ -11,9 +11,12 @@
 .control-group
   = f.label :quantity, "Số lượng", { class: "control-label", for: "quantity" }
   = f.number_field :quantity, { id: "quantity", class: "form-control",   placeholder: "Nhập số lượng sản phẩm..." }
-.control-group
+.control-group.description-product
   = f.label :description, "Mô tả", { class: "control-label", for: "description" }
-  = f.text_area :description, { id: "description", class: "form-control ckeditor", rows: 6, placeholder: "Nhập mô tả sản phẩm..." }
+  .description-input
+    = f.text_area :description, { id: "description", class: "form-control ckeditor", rows: 6, placeholder: "Nhập mô tả sản phẩm..." }
+br
+br
 .padding-image.control-group
   - if f.object.images?
     = label_tag :review_image, "Xem Ảnh", { class: "control-label" }
@@ -27,4 +30,4 @@
   = f.label :images, "Ảnh sản phẩm"
   = f.file_field :images, multiple: true, class: "form-control", id: "upload-image"
 br
-= f.submit yield(:button_text), class: "btn btn-primary"
+= f.submit yield(:button_text), class: "btn btn-primary submit-ckediter"
