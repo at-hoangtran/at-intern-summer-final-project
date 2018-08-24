@@ -1,0 +1,9 @@
+li
+  - if category.children.present?
+      i class="indicator glyphicon glyphicon-folder-open" data-toggle="collapse" data-target="#taget#{category.id}"
+      = link_to category.name, edit_admin_category_path(category)
+      ul class="collapse" id="taget#{category.id}"
+        = render partial: "admin/categories/shared/category", collection: category.children, as: "category"
+  - else
+      i.indicator.glyphicon.glyphicon-folder-close
+      = link_to category.name, edit_admin_category_path(category)

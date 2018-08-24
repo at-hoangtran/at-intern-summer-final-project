@@ -1,0 +1,33 @@
+require 'timers/timer_submit'
+
+class TimerAction
+  def sub_timer(timer)
+    timer['period'] = timer['period'] - 1
+    $redis.set(timer['id'], timer.to_json)
+  end
+
+  def end_timer(timer)
+    period = timer['period']
+    if period.negative?
+      timer_submit = TimerSubmit.new
+      timer_submit.submit(timer)
+      reset_timer_price(timer)
+    end
+  end
+
+  def reset_timer_price(timer)
+    timer['period'] = load_period_default(timer['id'])
+    timer['product_price'] = load_price_defailt(timer['id'])
+    $redis.set(timer['id'], timer.to_json)
+  end
+
+  def load_period_default(id)
+    timer = Timer.find_by(id: id)
+    HelpersRb.format_m_to_s(HelpersRb.format_time_sounds(timer.period))
+  end
+
+  def load_price_defailt(id)
+    timer = Timer.find_by(id: id)
+    timer.product.price
+  end
+end

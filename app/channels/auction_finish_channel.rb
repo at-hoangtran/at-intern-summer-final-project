@@ -1,0 +1,5 @@
+class AuctionFinishChannel < ApplicationCable::Channel
+  def subscribed
+    stream_from "auction_finish_#{params[:timer_id]}"
+  end
+end
