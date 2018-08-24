@@ -5,14 +5,11 @@ nav#main-Nav.navbar.navbar-top.banner-menu[role="navigation"]
         span#grouped-one.visible-xs.pull-left[onclick="openNav()"]
           | ☰
         span#grouped-two.visible-xs.pull-right
-      
+
       #main-mav-top.collapse.navbar-collapse
-        / = link_to image_tag("logo-1", alt: "Logo", class: "img-logo-header"), root_path
-        / span.title-header
-        /   | Online Auction
         ul.nav.navbar-nav
           li
-            = link_to content_tag(:b, nil, class: "glyphicon glyphicon-home") + " AuctionHouse", root_url, :id => "mlinkhome"
+            = link_to content_tag(:b, nil, class: "glyphicon glyphicon-home") + " AuctionHouse", root_url, :id => "mlinkhome", data: { turbolinks: false }
 
         ul.nav.navbar-nav.pull-right
           - if size_cart.nil?
@@ -22,7 +19,7 @@ nav#main-Nav.navbar.navbar-top.banner-menu[role="navigation"]
             li
               = link_to content_tag(:i, " (#{size_cart}) ", id: "count-order", class: "fa fa-cart-plus") + " Giỏ hàng", "/orders", data: { turbolinks: false }
           li
-            = link_to content_tag(:i, " Đấu giá của tôi", class: "fa fa-gavel"), auctions_path, data: { turbolinks: false }
+            = link_to content_tag(:i, nil, class: "fa fa-gavel") + " Đấu giá của tôi", auctions_path, data: { turbolinks: false }
           - if logged_in?
             li.dropdown
               a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-expanded="false"]
@@ -32,13 +29,13 @@ nav#main-Nav.navbar.navbar-top.banner-menu[role="navigation"]
               ul.dropdown-menu[role="menu"]
                 - if admin?
                   li
-                    = link_to "Trang quản trị", admin_root_path
+                    = link_to "Trang quản trị", admin_root_path, data: { turbolinks: false }
                 li
-                  = link_to "Thông tin cá nhân", edit_user_path(current_user)
+                  = link_to "Thông tin cá nhân", edit_user_path(current_user), data: { turbolinks: false }
                 li
                   = link_to "Lịch sử mua hàng", history_orders_path,data: { turbolinks: false }
                 li
-                  = link_to content_tag(:i, " Đăng xuất", class: "fa fa-btn fa-sign-out"), logout_path, method: :delete
+                  = link_to content_tag(:i, " Đăng xuất", class: "fa fa-btn fa-sign-out"), logout_path, method: :delete, data: { turbolinks: false }
           - else
             li
               = link_to "Đăng nhập"

@@ -17,4 +17,10 @@ module ApplicationHelper
   def ctr_access
     $redis_counter_access.keys.length
   end
+
+  def user_online
+    ids = []
+    $redis_onlines.scan_each(match: 'user*') { |u| ids << u.gsub('user:', '') }
+    ids.length
+  end
 end

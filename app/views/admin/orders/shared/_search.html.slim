@@ -1,7 +1,7 @@
 .col-lg-9
-  .col-lg-4
-    = f.text_field :name, { id: "name", class: "form-control", placeholder: "Nhập tên khách hàng", value: set_name }
   .col-lg-3
+    = f.text_field :name, { id: "name", class: "form-control", placeholder: "Nhập tên khách hàng", value: set_name }
+  .col-lg-2
     = f.text_field :min, { id: "minprice", class: "price form-control", placeholder: "Tiền tối thiểu", value: set_minprice }
     = f.text_field :max, { id: "maxprice", class: "price form-control", placeholder: "Tiền tối đa", value: set_maxprice }
   .col-lg-3
@@ -9,4 +9,6 @@
     = f.text_field :maxday, { type: "date", id: "maxday", class: "form-control", value: set_maxdate}
   .col-lg-2
     = f.select :status, options_for_select([["Chọn", nil], ["Chưa xác nhận", :notdefined], ["Xác nhận", :defined], ["Hủy", :cancel]], selected: set_status), {}, { id: "status", class: "form-control" }
+    = f.select :type_payment, options_for_select([["Chọn", nil], ["Trả sau", :default], ["Trả trước", :online]], selected: set_type_payment), {}, { id: "status", class: "form-control" }
+  .col-lg-2
     = f.submit "Tìm kiếm", class: "form-control btn btn-primary"

@@ -12,15 +12,5 @@ var loading_icon = {
       $('[load-id="'+ id +'"] .price-time').show();
       $('[load-id="'+ id +'"] .price-refresh').hide();
     }
-  },
-  conntected: function() {
-    swal.close()
-  },
-  disconnected: function() {
-    swal(
-      'Đã mất kết nối!',
-      'Vui lòng kiểm tra lại!',
-      'warning'
-    )
   }
 }

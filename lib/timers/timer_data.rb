@@ -17,7 +17,8 @@ class TimerData
       product_description: e.product.description,
       product_quantity: e.product.quantity,
       product_image: e.product.images,
-      product_category: e.product.category.ancestors.pluck(:id).last
+      product_category: e.product.category.ancestors.pluck(:id).last,
+      category_name: e.product.category.ancestors.pluck(:name).last
     }
     $redis.set(e.id, hash_tmp.to_json)
   end

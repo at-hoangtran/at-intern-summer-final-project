@@ -6,14 +6,12 @@ class OrdersController < ApplicationController
   before_action :correct_line_item, only: %i[destroy]
   before_action :total_price, only: %i[index edit update]
 
-  def index
-  end
+  def index; end
 
   def edit; end
 
   def update
     if update_status
-      byebug
       redirect_to root_path, flash: { success: 'Đặt hàng thành công!' }
     else
       render 'edit', flash: { danger: 'Vui lòng xem lại thông tin!' }

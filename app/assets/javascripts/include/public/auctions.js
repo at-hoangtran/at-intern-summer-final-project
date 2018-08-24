@@ -16,16 +16,6 @@ var auctions = {
       });
       $('.load-data').html(html);
     }
-  },
-  conntected: function() {
-    swal.close()
-  },
-  disconnected: function() {
-    swal(
-      'Đã mất kết nối!',
-      'Vui lòng kiểm tra lại!',
-      'warning'
-    )
   }
 }
 

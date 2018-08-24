@@ -15,6 +15,7 @@ class Admin::OrdersController < ApplicationAdminController
       search_price
       search_day
       search_status
+      search_type_payment
       @orders = @orders.not_cart.paginate(page: params[:page], per_page: 5)
     end
   end
@@ -88,6 +89,16 @@ class Admin::OrdersController < ApplicationAdminController
                   @orders.search_status 2
                 elsif status == 'cancel'
                   @orders.search_status 3
+                end
+    end
+
+    def search_type_payment
+      return unless params[:search][:type_payment].present?
+      status = params[:search][:type_payment]
+      @orders = if status == 'default'
+                  @orders.search_type_payment 0
+                elsif status == 'online'
+                  @orders.search_type_payment 1
                 end
     end
 end
