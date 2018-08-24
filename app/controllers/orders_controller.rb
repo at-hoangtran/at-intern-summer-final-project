@@ -6,12 +6,14 @@ class OrdersController < ApplicationController
   before_action :correct_line_item, only: %i[destroy]
   before_action :total_price, only: %i[index edit update]
 
-  def index; end
+  def index
+  end
 
   def edit; end
 
   def update
     if update_status
+      byebug
       redirect_to root_path, flash: { success: 'Đặt hàng thành công!' }
     else
       render 'edit', flash: { danger: 'Vui lòng xem lại thông tin!' }
@@ -37,11 +39,14 @@ class OrdersController < ApplicationController
   private
 
     def order_params
-      params.require(:order).permit(:user_name, :phone, :address)
+      params.require(:order).permit(:user_name, :phone, :address, :type_payment)
     end
 
     def correct_order
       @order = Order.find_by(user_id: current_user.id)
+      unless @order.status == 'cart'
+        redirect_to root_path, flash: { danger: 'Đơn hàng đang được xử lý !' }
+      end
     end
 
     def correct_line_item

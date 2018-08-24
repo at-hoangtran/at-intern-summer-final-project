@@ -6,6 +6,7 @@ class Order < ApplicationRecord
   belongs_to :user
 
   enum status: %i[cart notdefined defined cancel]
+  enum typpe: %i[default online]
 
   default_scope -> { order(created_at: :desc) }
   scope :search_name, ->(search) { where 'name iLIKE ?', "%#{search}%" }

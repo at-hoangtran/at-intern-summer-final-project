@@ -17,10 +17,10 @@
             = f.email_field :email, { id: "email", class: "form-control", placeholder: "Nhập email...", disabled: true }
           .control-group
             = f.label :password, "Mật khẩu", { class: "control-label", for: "password" }
-            = f.password_field :password, { id: "password", class: "form-control", placeholder: "Nhập mật khẩu..." }
+            = f.password_field :password, { id: "password", class: "form-control", placeholder: "Nhập mật khẩu...", disabled: true }
           .control-group
             = f.label :password_confirmation, "Nhập lại mật khẩu", { class: "control-label", for: "password_confirmation" }
-            = f.password_field :password_confirmation, { id: "password_confirmation", class: "form-control", placeholder: "Nhập lại mật khẩu..." }
+            = f.password_field :password_confirmation, { id: "password_confirmation", class: "form-control", placeholder: "Nhập lại mật khẩu...", disabled: true }
           .control-group
             = f.label :address, "Địa chỉ", { class: "control-label", for: "advanced-placepicker" }
             = f.text_field :address, { id: "advanced-placepicker", class: "form-control", 'data-map-container-id': "collapseTwo", placeholder: "Nhập địa chỉ...", disabled: true }
