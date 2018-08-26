@@ -58,7 +58,7 @@ var auction = {
       }
       data = {
         price: auction.tmp_price,
-        user_id: auction.load_id_current_user()
+        user_id: conntected_disconnected.load_id_current_user()
       };
       App.auction.send(data)
     });
@@ -68,23 +68,6 @@ var auction = {
       $('.loadbid').children().remove();
       $('.user-win').html("");
     }
-  },
-  load_id_current_user: function () {
-    user_id = null;
-    $.ajax({
-      url: '/current_user',
-      type: 'GET',
-      contentType: 'application/json; charset=utf-8',
-      dataType: 'JSON',
-      async: false,
-      success: function (response) {
-        user_id = response;
-      },
-      error: function (err) {
-        console.log(err);
-      }
-    });
-    return user_id;
   }
 }
 

@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   resources :categories, only: %(show)
   resources :auctions, only: %(index)
   resources :history_orders, only: %(index)
+  resources :chat_rooms
   namespace :admin do
     root to: 'homes#index'
     resources :users

@@ -7,7 +7,7 @@ class PublicPagesController < ApplicationController
 
   def show
     redirect_to root_url unless @timer.run? || @timer.product.quantity.positive?
-    # redirect_to root_url unless check_time(@timer.start_at, @timer.end_at)
+    redirect_to root_url unless check_time(@timer.start_at, @timer.end_at)
     product = @timer.product
     auction = Auction.timer_product(@timer.id, product.id).first
     @bid    = auction.auction_details
