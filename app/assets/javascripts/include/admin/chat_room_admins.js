@@ -1,25 +1,22 @@
-var box_chat_admin = {
+var box_chat_admins = {
+  user_id: null,
   initOnLoad: function() {
-    box_chat_admin.event_load_messages();
-    box_chat_admin.event_sent();
+    box_chat_admins.event_load_messages();
+    box_chat_admins.event_sent();
   },
   tokenForm: function() {
     var token = $('meta[name="csrf-token"]').attr('content');
     return token;
   },
   event_load_messages: function() {
-    $('.nav-tabs a').on('shown.bs.tab', function (e) {
-      var target = $(e.target).attr("href");
-      if (target === '#chat_admin') {
-        box_chat_admin.load_messages();
-      } else {
-        box_chat_member.load_messages();
-      }
+    $('.box-messages').on('click', function(){
+      user_id = $(this).attr('user-id');
+      box_chat_admins.load_messages(user_id);
     });
   },
-  load_messages: function() {
+  load_messages: function(user_id) {
     $('input.message_input.admin').val('');
-    messages = box_chat_admin.request_message();
+    messages = box_chat_admins.request_message(user_id);
     html = '';
     image_default = '/assets/no-avatar-4ace913041f8df740dfa0e760b1bf90a7e90f0ecc973cc86d5ed1c8799a469ae.png';
     image_admin = '/assets/avart-admin-01ecef1eec00559d671b50e3425beb5264f4090961ce2dcaca549414f672c84b.png'
@@ -37,21 +34,23 @@ var box_chat_admin = {
           NAME: name,
           IMAGE: avatar,
           MESSAGE: item.message,
-          DATETIME: box_chat_admin.formatDateTime(item.created_at)
+          DATETIME: box_chat_admins.formatDateTime(item.created_at)
         });
       });
       $('.message_template.admin').html(html);
+      setTimeout(function(){
+        box_chat_admins.scroll_top();
+      }, 300);
     }
-    box_chat_admin.scroll_top();
   },
   event_sent: function() {
     $('.send_message.admin').on('click', function(){
-      box_chat_admin.sent();
+      box_chat_admins.sent();
     });
 
     $('input.message_input.admin').keypress(function(e){
       if (e.which == 13) {
-        box_chat_admin.sent();
+        box_chat_admins.sent();
       }
     });
   },
@@ -59,7 +58,7 @@ var box_chat_admin = {
     value = $('input.message_input.admin').val();
     if (value) {
       if (value.length < 47) {
-        box_chat_admin.request_sent();
+        box_chat_admins.request_sent();
         $('input.message_input.admin').val('');
       } else {
         swal({
@@ -69,10 +68,10 @@ var box_chat_admin = {
       }
     }
   },
-  request_message: function() {
+  request_message: function(user_id) {
     messages = null;
     $.ajax({
-      url: '/chat_room_admins',
+      url: '/admin/request_messages_user/' + user_id,
       method: 'get',
       async: false,
       success: function(res){
@@ -80,7 +79,7 @@ var box_chat_admin = {
       },
       statusCode: {
         400: function(){
-          box_chat_member.not_enough_notify();
+          box_chat_admins.not_enough_notify();
         }
       }
     });
@@ -88,11 +87,11 @@ var box_chat_admin = {
   },
   request_sent:function() {
     $.ajax({
-      url: '/chat_room_admins',
+      url: '/admin/chat_room_admins',
       method: 'post',
-      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', box_chat_admin.tokenForm())},
+      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', box_chat_admins.tokenForm())},
       data: {
-        user_id: conntected_disconnected.load_id_current_user(),
+        user_id: user_id,
         message: $('input.message_input.admin').val()
       },
       success: function(res){
@@ -100,7 +99,7 @@ var box_chat_admin = {
       },
       statusCode: {
         400: function(){
-          box_chat_admin.not_enough_notify();
+          box_chat_admins.not_enough_notify();
         }
       }
     });
@@ -122,5 +121,5 @@ var box_chat_admin = {
 }
 
 $(document).on('turbolinks:load', function() {
-  box_chat_admin.initOnLoad();
+  box_chat_admins.initOnLoad();
 });

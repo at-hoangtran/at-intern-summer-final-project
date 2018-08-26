@@ -53,7 +53,6 @@ var box_chat_member = {
       if (value.length < 47) {
         box_chat_member.request_sent();
         $('input.message_input.member').val('');
-        box_chat_member.scroll_top();
       } else {
         swal({
           text: 'Nội dung không quá 47 ký tự !',

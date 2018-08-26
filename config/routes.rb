@@ -46,6 +46,9 @@ Rails.application.routes.draw do
     resources :timers
     resources :auctions
     resources :auction_details, only: %i[destroy]
+    resources :chat_room_admins
+    get 'request_all_user_id', to: 'chat_room_admins#request_all_id_user'
+    get 'request_messages_user/:id', to: 'chat_room_admins#request_messages_user'
     get 'chart_order', to: 'homes#chart_order'
     get 'request_order', to: 'homes#request_order'
     get 'request_auction', to: 'homes#request_auction'

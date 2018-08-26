@@ -1,6 +1,6 @@
 class ChatRoomAdminsController < ApplicationController
   def index
-    @chat_room = ChatRoomAdmin.all
+    @chat_room = ChatRoomAdmin.where(user_id: current_user.id)
     respond_to do |format|
       format.json do
         render json: @chat_room.as_json(

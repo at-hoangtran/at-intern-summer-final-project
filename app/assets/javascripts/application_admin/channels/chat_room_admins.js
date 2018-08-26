@@ -1,10 +1,10 @@
 $(document).on('turbolinks:load', function() {
-  user_login = conntected_disconnected.load_id_current_user();
-  if (user_login) {
-    App.chat_room_admins = App.cable.subscriptions.create(
+  user_id = all_user_id();
+  for (var i = 0; i < user_id.length; i++) {
+    App.auction = App.cable.subscriptions.create(
       {
         channel: 'ChatRoomAdminsChannel',
-        user_id: user_login,
+        user_id: user_id[i],
       },
       {
         received: function(data) {
@@ -29,9 +29,28 @@ $(document).on('turbolinks:load', function() {
           html += '<span class="name">'+ name +'</span>';
           html += '</div>';
           $('.message_template.admin').append(html);
-          box_chat_admin.scroll_top();
+          height = $('.message_template.admin').height();
+          $('.messages.admin').animate({scrollTop: height});
         }
       }
     );
+  }
+
+  function all_user_id() {
+    user_id = null;
+    $.ajax({
+      url: '/admin/request_all_user_id',
+      type: 'GET',
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'JSON',
+      async: false,
+      success: function (response) {
+        user_id = response;
+      },
+      error: function (err) {
+        console.log(err);
+      }
+    });
+    return user_id;
   }
 });

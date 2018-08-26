@@ -1,0 +1,33 @@
+#ChatModal.modal.fade.bs-example-modal-lg[tabindex="-1" role="dialog" aria-labelledby="myModalLabel"]
+  .modal-dialog.modal-md[role="document"]
+    .modal-content
+      .modal-body
+        .chat_window
+          .top_menu
+            .buttons.pull-right
+              .button.close[type="button" data-dismiss="modal"]
+                = content_tag(:i, nil, class: "fa fa-times")
+            .title
+              | Xem tin nhắn
+          ul.messages.admin
+            .message_template.admin
+          .bottom_wrapper.clearfix
+            .message_input_wrapper
+              input.message_input.admin[placeholder="Nhập nội dùng tin nhắn ..."]
+            .send_message.admin
+              .icon
+              .text
+                | Gửi
+
+script#data-chat-admin[type="x-tmpl-mustache"]
+  li.message
+    .avatar
+      img.no-avatar[src="{{IMAGE}}"]
+    .text_wrapper
+      .text
+        | {{MESSAGE}}
+      .text_details
+        span
+          | {{DATETIME}}
+      span.name
+        | {{NAME}}
