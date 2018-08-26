@@ -6,7 +6,7 @@
       = f.text_field :user_name, { class: "form-control order-field", placeholder: 'Nhập tên người nhận' }
     .control-group
       = f.label :address, "Địa chỉ", { class: "control-label order-label" }
-      = f.text_field :address, { class: "form-control order-field", placeholder: "Nhập địa chỉ giao hàng" }
+      = f.text_field :address, { id: "advanced-placepicker", class: "form-control order-field", 'data-map-container-id': "collapseTwo", placeholder: "Nhập địa chỉ giao hàng" }
     #collapseTwo.collapse
       .another-map-class.thumbnail
     .control-group

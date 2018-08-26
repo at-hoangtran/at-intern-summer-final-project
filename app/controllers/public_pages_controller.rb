@@ -1,4 +1,5 @@
 class PublicPagesController < ApplicationController
+  include TimersHelper
   before_action :load_timer, only: %i[show]
 
   def index

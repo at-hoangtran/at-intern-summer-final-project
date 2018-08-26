@@ -13,6 +13,8 @@ class Admin::HomesController < ApplicationAdminController
     wday     = DateTime.now.wday
     daytime  = DateTime.now
 
+    wday = 7 if wday.zero?
+
     if wday == 1
       chart << Order.where(created_at: daytime).size
     else

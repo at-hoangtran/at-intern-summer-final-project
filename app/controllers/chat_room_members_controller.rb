@@ -1,4 +1,4 @@
-class ChatRoomsController < ApplicationController
+class ChatRoomMembersController < ApplicationController
   def index
     keys = $redis_chat.keys
     arr = []
@@ -22,7 +22,7 @@ class ChatRoomsController < ApplicationController
     }
 
     $redis_chat.set(datetime, value.to_json, ex: 10 * 60)
-    ActionCable.server.broadcast('chat_rooms',
+    ActionCable.server.broadcast('chat_room_members',
                                  obj: value)
     respond_to do |format|
       format.json { render json: true }
