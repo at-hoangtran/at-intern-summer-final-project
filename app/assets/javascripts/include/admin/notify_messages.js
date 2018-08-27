@@ -34,6 +34,7 @@ var notify_messages = {
         $('.drop-content-notify').append(html);
         count = parseInt($('.count-notify').html());
         $('.count-notify').html(count += 1);
+        notify_messages.show_popup_message(data);
       }
     }
   },
@@ -50,6 +51,21 @@ var notify_messages = {
         console.log(err);
       }
     });
+  },
+  show_popup_message: function(data) {
+    var options = {
+      title: data.name,
+      options: {
+        body: data.message,
+        icon: data.avatar.thumb.url,
+        lang: 'en-US',
+        onClick: onclick_popup
+      }
+    };
+    $("#easyNotify").easyNotify(options);
   }
 }
 
+var onclick_popup = function() {
+  document.location.href = '/admin/chat_room_admins'
+};
