@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(document).ready(function(){
   user_id = all_user_id();
   for (var i = 0; i < user_id.length; i++) {
     App.auction = App.cable.subscriptions.create(

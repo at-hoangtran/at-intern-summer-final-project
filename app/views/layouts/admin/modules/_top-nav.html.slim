@@ -29,6 +29,9 @@ nav.navbar.navbar-inverse.navbar-fixed-top[role="navigation"]
             = content_tag(:span, @notifys.size, class: "count-notify") + ")"
           ul.dropdown-menu.notify-drop.notify-change-width
             .drop-content.drop-content-notify
-              = render partial: "layouts/admin/modules/notify_li", collection: @notifys, as: "list"
+              - if @notifys.size.zero?
+                = content_tag(:span, "Không có tin nhắn mới", class: "not-message")
+              - else
+                = render partial: "layouts/admin/modules/notify_li", collection: @notifys, as: "list"
             .notify-drop-footer.text-center
               = link_to content_tag(:i, "Xem tất cả", class: "fa fa-eye"), admin_chat_room_admins_path

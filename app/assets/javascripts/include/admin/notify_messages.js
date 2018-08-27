@@ -35,6 +35,7 @@ var notify_messages = {
         count = parseInt($('.count-notify').html());
         $('.count-notify').html(count += 1);
         notify_messages.show_popup_message(data);
+        $('.not-message').remove();
       }
     }
   },
