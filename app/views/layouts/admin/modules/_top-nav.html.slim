@@ -22,3 +22,13 @@ nav.navbar.navbar-inverse.navbar-fixed-top[role="navigation"]
               = link_to content_tag(:i, "Thông tin cá nhân", class: "fa fa-btn fa-sign-out"), edit_user_path(current_user.id)
             li
               = link_to content_tag(:i, "Đăng xuất", class: "fa fa-btn fa-sign-out"), logout_path, method: :delete
+      ul.nav.navbar-nav.navbar-right
+        li.dropdown
+          a.dropdown-toggle.notify-button[aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"]
+            = content_tag(:i, nil, class: "fa fa-comments") + " ("
+            = content_tag(:span, @notifys.size, class: "count-notify") + ")"
+          ul.dropdown-menu.notify-drop.notify-change-width
+            .drop-content.drop-content-notify
+              = render partial: "layouts/admin/modules/notify_li", collection: @notifys, as: "list"
+            .notify-drop-footer.text-center
+              = link_to content_tag(:i, "Xem tất cả", class: "fa fa-eye"), admin_chat_room_admins_path

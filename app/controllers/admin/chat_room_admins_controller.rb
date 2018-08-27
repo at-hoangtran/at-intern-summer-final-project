@@ -7,7 +7,17 @@ class Admin::ChatRoomAdminsController < ApplicationAdminController
     user = User.find_by(id: params[:user_id])
     datetime = format_day_time(DateTime.now)
 
+    @chat = user.chat_room_admins.build(
+      message: params[:message],
+      admin: 1,
+      view: 1
+    )
+
+    @chat.save
+
     value = {
+      chat_id: @chat.id,
+      user_id: user.id,
       name: user.name,
       avatar: user.avatar,
       message: params[:message],
@@ -15,12 +25,6 @@ class Admin::ChatRoomAdminsController < ApplicationAdminController
       admin: 1,
       view: 1
     }
-
-    user.chat_room_admins.create!(
-      message: params[:message],
-      admin: 1,
-      view: 1
-    )
 
     ActionCable.server.broadcast("chat_room_admin_#{user.id}",
                                  obj: value)
