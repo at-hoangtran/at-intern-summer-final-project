@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180824012722) do
+ActiveRecord::Schema.define(version: 20180826064232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,18 @@ ActiveRecord::Schema.define(version: 20180824012722) do
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_categories_on_deleted_at", using: :btree
+  end
+
+  create_table "chat_room_admins", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "message"
+    t.integer  "admin",      default: 0
+    t.integer  "view",       default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_chat_room_admins_on_deleted_at", using: :btree
+    t.index ["user_id"], name: "index_chat_room_admins_on_user_id", using: :btree
   end
 
   create_table "ckeditor_assets", force: :cascade do |t|
@@ -146,6 +158,7 @@ ActiveRecord::Schema.define(version: 20180824012722) do
   add_foreign_key "auction_details", "users"
   add_foreign_key "auctions", "products"
   add_foreign_key "auctions", "timers"
+  add_foreign_key "chat_room_admins", "users"
   add_foreign_key "line_items", "orders"
   add_foreign_key "line_items", "products"
   add_foreign_key "orders", "users"

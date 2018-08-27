@@ -20,7 +20,7 @@ $(document).ready(function() {
       },
       "product[description]": {
         required: true,
-        minlength: 70
+        minlength: 20
       },
       "product[images][]": {
         required: true,
@@ -48,7 +48,7 @@ $(document).ready(function() {
       },
       "product[description]": {
         required: "Vui lòng nhập mô tả !",
-        minlength: "Mô tả tối thiểu 70 ký tự !"
+        minlength: "Mô tả tối thiểu 20 ký tự !"
       },
       "product[images][]": {
         required: "Vui lòng chọn ảnh !",
@@ -72,6 +72,10 @@ $(document).ready(function() {
           error.insertAfter(element);
       }
     }
+  });
+
+  $('.submit-ckediter').on('click', function() {
+    CKEDITOR.instances.description.updateElement();
   });
 });
 

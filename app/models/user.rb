@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :products, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :auction_details, dependent: :destroy
+  has_many :chat_room_admins, dependent: :destroy
   attr_accessor :remember_token, :activation_token, :reset_token
 
   before_save { email.downcase! }
@@ -106,6 +107,10 @@ class User < ApplicationRecord
 
   def password_reset_expired?
     reset_send_at < 2.hours.ago
+  end
+
+  def online?
+    $redis_onlines.exists( "user:#{self.id}" )
   end
 
   private

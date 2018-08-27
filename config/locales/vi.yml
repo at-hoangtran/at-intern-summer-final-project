@@ -339,15 +339,7 @@ vi:
         history_orders:
           history_orders:
             total_price: 'Tổng tiền'
-        auction:
-          disconnected: 'Đã mất kết nối'
-          please-check-again: 'Xin vui lòng kiểm tra lại'
-          warning: 'Cảnh báo'
-        auctions:
-          disconnected: 'Đã mất kết nối'
-          please-check-again: 'Xin vui lòng kiểm tra lại'
-          warning: 'Cảnh báo'
-        loading_icon:
+        connected_disconnected:
           disconnected: 'Đã mất kết nối'
           please-check-again: 'Xin vui lòng kiểm tra lại'
           warning: 'Cảnh báo'

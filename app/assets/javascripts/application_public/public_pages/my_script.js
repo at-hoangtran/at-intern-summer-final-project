@@ -63,11 +63,10 @@ $('.carousel').carousel({
   interval: false
 });
 
-
 $(document).on('turbolinks:load', function() {
   $(".payment-live").on('click', function() {
-    $(".check-off").prop("checked", true);
-    $(".check-onl").prop("checked", false);
+    $(".cbb_offline").prop("checked", true);
+    $(".cbb_online").prop("checked", false);
     // $(".pay-live").show();
     $(".pay-live-info").show();
     $(".pay-online").hide();
@@ -76,8 +75,8 @@ $(document).on('turbolinks:load', function() {
     $(".btn-pay").show();
   });
   $(".payment-onl").on('click', function() {
-    $(".check-onl").prop("checked", true);
-    $(".check-off").prop("checked", false);
+    $(".cbb_online").prop("checked", true);
+    $(".cbb_offline").prop("checked", false);
     $(".pay-info").hide();
     $(".btn-pay").hide();
     $(".bank-payment").show();

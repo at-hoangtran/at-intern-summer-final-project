@@ -12,15 +12,5 @@ var loading_icon = {
       $('[load-id="'+ id +'"] .price-time').show();
       $('[load-id="'+ id +'"] .price-refresh').hide();
     }
-  },
-  conntected: function() {
-    swal.close()
-  },
-  disconnected: function() {
-    swal(
-      I18n.t("javascripts.include.public.auction.disconnected"),
-      I18n.t("javascripts.include.public.auction.please-check-again"),
-      I18n.t("javascripts.include.public.auction.warning")
-    )
   }
 }

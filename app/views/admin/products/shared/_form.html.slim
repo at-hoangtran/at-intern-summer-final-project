@@ -11,9 +11,11 @@
 .control-group
   = f.label :quantity, t(".quantity"), { class: "control-label", for: "quantity" }
   = f.number_field :quantity, { id: "quantity", class: "form-control",   placeholder: t(".add-quantity") }
-.control-group
+.control-group.description-product
   = f.label :description, t(".description"), { class: "control-label", for: "description" }
-  = f.text_area :description, { id: "description", class: "form-control ckeditor", rows: 6, placeholder: t(".add-description") }
+  .description-input
+    = f.text_area :description, { id: "description", class: "form-control ckeditor", rows: 6, placeholder: t(".add-description") }
+br
 .padding-image.control-group
   - if f.object.images?
     = label_tag :review_image, "Xem Ảnh", { class: "control-label" }
@@ -27,4 +29,4 @@
   = f.label :images, t(".image")
   = f.file_field :images, multiple: true, class: "form-control", id: "upload-image"
 br
-= f.submit yield(:button_text), class: "btn btn-primary"
+= f.submit yield(:button_text), class: "btn btn-primary submit-ckediter"

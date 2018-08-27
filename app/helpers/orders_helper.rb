@@ -29,6 +29,12 @@ module OrdersHelper
     end
   end
 
+  def set_type_payment
+    if params[:search].present?
+      params[:search][:type_payment] if params[:search][:type_payment].present?
+    end
+  end
+
   def set_name
     if params[:search].present?
       params[:search][:name] if params[:search][:name].present?

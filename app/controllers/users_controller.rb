@@ -37,8 +37,9 @@ class UsersController < ApplicationController
   end
 
   def current_user_id
+    id = current_user.id if current_user
     respond_to do |format|
-      format.json { render json: current_user.id }
+      format.json { render json: id }
     end
   end
 

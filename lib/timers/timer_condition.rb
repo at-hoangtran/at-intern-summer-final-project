@@ -11,8 +11,8 @@ class TimerCondition
     if timer['status'] == 'run'
       timer_ctr = HelpersRb.check_time(timer['start_at'],
                                        timer['end_at'])
-      status_auction = timer['status_auction'] == 0
-      if timer_ctr || status_auction
+
+      if timer_ctr || (timer['status_auction']).zero?
         if timer['product_quantity'].positive?
           timer_auction_db.create_auction(timer)
           timer_action.sub_timer(timer)

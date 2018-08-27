@@ -14,15 +14,13 @@ module ApplicationHelper
     @size_cart = @orders.line_items.size if @orders
   end
 
-  def set_interval(delay)
-    mutex = Mutex.new
-    Thread.new do
-      mutex.synchronize do
-        loop do
-          sleep delay
-          yield
-        end
-      end
-    end
+  def ctr_access
+    $redis_counter_access.keys.length
+  end
+
+  def user_online
+    ids = []
+    $redis_onlines.scan_each(match: 'user*') { |u| ids << u.gsub('user:', '') }
+    ids.length
   end
 end

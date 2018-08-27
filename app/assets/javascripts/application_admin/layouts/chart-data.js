@@ -5,7 +5,6 @@ var chart_data = {
 	},
 	set_data_chart: function() {
 		chars = chart_data.request_order().reverse();
-		console.log(chars);
 		var lineChartData = {
 			labels: [
 				I18n.t("javascripts.application_admin.layouts.chart-data.monday"),

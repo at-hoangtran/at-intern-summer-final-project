@@ -8,7 +8,7 @@ $(document).on('turbolinks:load', function() {
       },
       {
         received: function(data) {
-          current_id = auction.load_id_current_user();
+          current_id = conntected_disconnected.load_id_current_user();
           if (current_id === data.obj) {
             swal({
               html: '<img src="/assets/surprise-827a3d035ae' +
@@ -18,7 +18,7 @@ $(document).on('turbolinks:load', function() {
                     'giá thành công sản phẩm này !<br>'+
                     'Hãy nhập vào phía dưới' +
                     ' để kiểm tra giỏ hàng !' +
-                    '<br><a href="/orders">Giỏ hàng</a><br>' +
+                    '<br><a href="/orders" data-turbolinks="false">Giỏ hàng</a><br>' +
                     'Thông báo này sẽ được đóng trong 10 giây' +
                     ', chuyển bạn sang phiên đấu giá mới !',
               timer: 10000

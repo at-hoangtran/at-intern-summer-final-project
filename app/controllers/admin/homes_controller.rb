@@ -11,8 +11,9 @@ class Admin::HomesController < ApplicationAdminController
   def chart_order
     chart    = []
     wday     = DateTime.now.wday
-    crt_wday = wday
-    daytime = DateTime.now
+    daytime  = DateTime.now
+
+    wday = 7 if wday.zero?
 
     if wday == 1
       chart << Order.where(created_at: daytime).size
@@ -26,6 +27,39 @@ class Admin::HomesController < ApplicationAdminController
 
     respond_to do |format|
       format.json { render json: chart }
+    end
+  end
+
+  def request_order
+    daytime = DateTime.now
+    order   = Order.not_cart.where('DATE(created_at) = ?', daytime).size
+    respond_to do |format|
+      format.json { render json: order }
+    end
+  end
+
+  def request_auction
+    daytime = DateTime.now
+    auction = Auction.search_status(1).where('DATE(created_at) = ?', daytime).size
+    respond_to do |format|
+      format.json { render json: auction }
+    end
+  end
+
+  def request_member
+    daytime = DateTime.now
+    member  = User.where('DATE(created_at) = ?', daytime).size
+    respond_to do |format|
+      format.json { render json: member }
+    end
+  end
+
+  def request_online
+    ids = []
+    $redis_onlines.scan_each(match: 'user*') { |u| ids << u.gsub('user:', '') }
+
+    respond_to do |format|
+      format.json { render json: ids.length }
     end
   end
 end

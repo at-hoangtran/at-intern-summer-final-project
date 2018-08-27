@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   resources :categories, only: %(show)
   resources :auctions, only: %(index)
   resources :history_orders, only: %(index)
+  resources :chat_room_members
+  resources :chat_room_admins
   namespace :admin do
     scope '(:locale)', locale: /en|vi/ do
       root to: 'homes#index'
@@ -46,7 +48,14 @@ Rails.application.routes.draw do
     resources :timers
     resources :auctions
     resources :auction_details, only: %i[destroy]
+    resources :chat_room_admins
+    get 'request_all_user_id', to: 'chat_room_admins#request_all_id_user'
+    get 'request_messages_user/:id', to: 'chat_room_admins#request_messages_user'
     get 'chart_order', to: 'homes#chart_order'
+    get 'request_order', to: 'homes#request_order'
+    get 'request_auction', to: 'homes#request_auction'
+    get 'request_member', to: 'homes#request_member'
+    get 'request_online', to: 'homes#request_online'
     get 'product/import', to: 'products#import'
     post 'product/import_file', to: 'products#import_file'
     get 'product/export_file', to: 'products#export_file'

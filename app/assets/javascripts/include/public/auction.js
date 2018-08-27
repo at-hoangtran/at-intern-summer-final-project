@@ -3,16 +3,17 @@ var auction = {
   tmp_price: 0,
   step: 0,
   loadElementToHtml: function(data) {
-    data         = data.obj;
-    period       = fmtMSS(data['period']);
-    price        = formatPrice(data['product_price']);
-    images       = data.product_image;
-    description  = data['product_description'];
-    product_name = data['product_name'];
-    step         = data['step'];
+    data          = data.obj;
+    period        = fmtMSS(data['period']);
+    price         = formatPrice(data['product_price']);
+    images        = data.product_image;
+    description   = data['product_description'];
+    product_name  = data['product_name'];
+    step          = data['step'];
+    category_name = data['category_name'];
     $('.clock-time-show').html(period);
     $('.price-crt').html(price);
-    $('.title-product').html(product_name);
+    $('.title-product').html(category_name);
     images.forEach(function(item, index) {
       $('.item img:eq('+ index +')').attr('src', item.url);
       $('.carousel-indicators li img:eq('+ index +')').attr('src', item.url);
@@ -57,7 +58,7 @@ var auction = {
       }
       data = {
         price: auction.tmp_price,
-        user_id: auction.load_id_current_user()
+        user_id: conntected_disconnected.load_id_current_user()
       };
       App.auction.send(data)
     });
@@ -67,33 +68,6 @@ var auction = {
       $('.loadbid').children().remove();
       $('.user-win').html("");
     }
-  },
-  load_id_current_user: function () {
-    user_id = null;
-    $.ajax({
-      url: '/current_user',
-      type: 'GET',
-      contentType: 'application/json; charset=utf-8',
-      dataType: 'JSON',
-      async: false,
-      success: function (response) {
-        user_id = response;
-      },
-      error: function (err) {
-        console.log(err);
-      }
-    });
-    return user_id;
-  },
-  conntected: function() {
-    swal.close()
-  },
-  disconnected: function() {
-    swal(
-      I18n.t("javascripts.include.public.auction.disconnected"),
-      I18n.t("javascripts.include.public.auction.please-check-again"),
-      I18n.t("javascripts.include.public.auction.warning")
-    )
   }
 }
 
