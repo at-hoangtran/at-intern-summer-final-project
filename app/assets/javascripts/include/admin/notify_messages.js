@@ -8,7 +8,7 @@ var notify_messages = {
     if (data.admin == 0) {
       if (user_id !== null) {
         if (user_id == data.user_id) {
-          // console.log('ok');
+          notify_messages.check_message(data.chat_id);
         }
       }
     }
@@ -36,6 +36,20 @@ var notify_messages = {
         $('.count-notify').html(count += 1);
       }
     }
+  },
+  check_message: function(id) {
+    $.ajax({
+      url: '/admin/check_message_view/' + id,
+      type: 'GET',
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'JSON',
+      success: function (response) {
+        console.log(response);
+      },
+      error: function (err) {
+        console.log(err);
+      }
+    });
   }
 }
 

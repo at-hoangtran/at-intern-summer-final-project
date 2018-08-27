@@ -34,7 +34,7 @@ class Admin::ChatRoomAdminsController < ApplicationAdminController
   end
 
   def request_all_id_user
-    user_id = ChatRoomAdmin.group(:user_id).pluck(:user_id)
+    user_id = User.all.pluck(:id)
     respond_to do |format|
       format.json { render json: user_id }
     end
@@ -52,6 +52,14 @@ class Admin::ChatRoomAdminsController < ApplicationAdminController
           ]
         )
       end
+    end
+  end
+
+  def check_message_view
+    chat_room = ChatRoomAdmin.find_by(id: params[:id])
+    chat_room.update_attribute(:view, 1)
+    respond_to do |format|
+      format.json { render json: true }
     end
   end
 
