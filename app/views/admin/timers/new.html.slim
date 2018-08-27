@@ -1,0 +1,23 @@
+- provide :title, t(".title")
+- provide :button_text, t(".add")
+= javascript_include_tag "include/validation/admin/timer/form"
+.col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
+  .row
+    ol.breadcrumb
+      li
+        = link_to content_tag(:i, " " + t(".home"), class: "fa fa-home"), admin_root_path
+      li.active
+        = t(".add-time")
+  .row
+    .col-lg-12
+      h1.page-header
+        small
+          = t(".add-time")
+  .row
+    .col-lg-12
+      .panel.panel-default
+        .panel-body
+          .col-lg-5
+            = form_for @timer, url:  admin_timers_path, html: { id: "frmTimer", class: "form-horizontal" } do |f|
+              = render partial: "admin/timers/shared/form", locals: {f: f}
+= javascript_include_tag "include/lib/simple.money.format"

@@ -1,0 +1,42 @@
+- provide :title, t(".title")
+- provide :search_text, admin_products_path
+.col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
+  .row
+    ol.breadcrumb
+      li
+        = link_to content_tag(:i, " " + t(".home"), class: "fa fa-home"), admin_root_path
+      li.active
+        = t(".products")
+  .row
+    .col-lg-12
+      .panel-heading
+        = t(".products")
+      .panel.panel-default
+        .panel-body
+          .table-responsive
+            table.table.table-hover
+              thead
+                tr
+                  th
+                    | ID
+                  th
+                    = t(".name")
+                  th
+                    = t(".price")
+                  th
+                    = t(".quantity")
+                  th
+                    = t(".image")
+                  th
+                    = t(".category")
+                  th
+                    = t(".storage-status")
+                  th[colspan="2"]
+                    = t(".action")
+              tbody
+                = render partial: "admin/products/shared/listtable", collection: @products, as: "product"
+            = will_paginate
+            br
+            = link_to content_tag(:i, nil, class: "fa fa-plus-square fa-1x"), new_admin_product_url, class: "btn btn-primary"
+            = link_to content_tag(:span, nil, class: "glyphicon glyphicon-open-file"), admin_product_import_path, class: "import-file btn btn-primary pull-right"
+            = link_to content_tag(:span, nil, class: "glyphicon glyphicon-save-file"), admin_product_export_file_path(format: :xlsx), class: "btn btn-primary pull-right"

@@ -1,0 +1,49 @@
+- provide :title, t(".title")
+= javascript_include_tag "include/admin/auction_details"
+.col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
+  .row
+    ol.breadcrumb
+      li
+        = link_to content_tag(:i, " " + t(".home"), class: "fa fa-home"), admin_root_path
+      li.active
+        = t(".auction-list")
+  .row
+    .col-lg-12
+      .panel-heading
+        .col-lg-3
+          = t(".auction-list")
+        = form_for :search, url: admin_auctions_path, method: :get do |f|
+          = render partial: "admin/auctions/shared/search", locals: {f: f}
+      br
+      br
+      .panel.panel-default
+        .panel-body
+          .table-responsive
+            table.table.table-hover
+              thead
+                tr
+                  th
+                    = t(".date")
+                  th
+                    = t(".start-time")
+                  th
+                    = t(".end-time")
+                  th
+                    = t(".countdown-time")
+                  th
+                    = t(".step-up-money")
+                  th
+                    = t(".product")
+                  th
+                    = t(".status")
+                  th
+                    | Action
+              tbody
+                = render partial: "admin/auctions/shared/listtable", collection: @auctions, as: "list"
+            div.col-md-5.pull-right.statistics
+              span.label.label-primary.pull-left
+                = t(".total-auction") + ": " + "#{@auctions.size}"
+              span.label.label-default.pull-right
+                = t(".total-money") + ": " + "#{out_price(@total_price.to_s)}" + "đ"
+            = will_paginate
+            = render "admin/auctions/shared/modal"

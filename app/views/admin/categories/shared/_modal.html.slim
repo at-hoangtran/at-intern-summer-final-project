@@ -1,0 +1,55 @@
+#detailsModal.modal.fade.bs-example-modal-lg[tabindex="-1" role="dialog" aria-labelledby="myModalLabel"]
+  .modal-dialog.modal-lg[role="document"]
+    .modal-content
+      .modal-header
+        button.close[type="button" data-dismiss="modal" aria-label="Close"]
+          span[aria-hidden="true"]
+            | ×
+        h4#myModalLabel.modal-title
+          = t(".products-dependent")
+      .modal-body
+        table#table-scl.table.table-hover
+          thead
+            tr
+              th
+                | ID
+              th
+                = t(".image")
+              th
+                = t(".product-name")
+              th
+                = t(".quantity")
+              th
+                = t(".price")
+              th
+                = t(".category")
+              th
+                = t(".status")
+          tbody#viewLoad
+      .modal-footer
+        button.btn.btn-default[type="button" data-dismiss="modal"]
+          = t(".close")
+        = link_to t(".delete-products-dependent"), admin_category_path(@category), class: "btn btn-danger", id: "btn-remove-category", method: :delete, data: {confirm: "Bạn có chắc không?"}
+
+  script#data-template[type="x-tmpl-mustache"]
+    tr
+      td
+        | {{ID}}
+      td
+        img.img-thumbnail[src="{{IMAGE}}"]
+      td
+        | {{NAME}}
+      td
+        | {{QUANTITY}}
+      td
+        | {{PRICE}}
+      td
+        | {{CATEGORY}}
+      td
+        | {{#STATUS}}
+        span.label.label-warning
+          | Đã hết hàng
+        | {{/STATUS}} {{#STATUS1}}
+        span.label.label-info
+          | Vẩn còn hàng
+        | {{/STATUS1}}

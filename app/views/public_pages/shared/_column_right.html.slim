@@ -1,0 +1,46 @@
+.col-xs-12.col-sm-4.col-md-4.col-lg-4.no-padding
+  br
+  .panel
+    .panel-heading.pn-heading
+      h3.panel-title.text-center
+        | Sản phẩm khác
+    .panel-body.no-padding.spm.load-data
+
+  .panel
+    .panel-heading.pn-heading
+      h3.panel-title
+        | Thống kê
+    .panel-body
+      p
+        | Số bài viết: 124556
+      p
+        | Số Thành Viên : 12435
+      p
+        | Số Thành Viên Online: 2435
+      p
+        | Số Người Đang Xem : 435
+  .panel
+    .panel-heading.pn-heading
+      h3.panel-title
+        | Fans Pages
+    .panel-body
+      |  Hãy
+      a[href="#" title=""]
+        = " Like "
+      =  "và chia sẽ trang của  AuctionHouse để cập nhật tin mới nhất "
+      .fb-share-button data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-mobile-iframe="true" data-size="small"
+      a.fb-xfbml-parse-ignore href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&src=sdkpreparse" target="_blank"
+
+script#data-template[type="x-tmpl-mustache"]
+  a[href="/public_pages/{{ID}}" data-turbolinks="false"]
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12.no-padding
+      .thumbnail.mobile
+        .bt
+          .image-m
+            img[src="{{IMAGE}}"]
+        br
+        span.btn.col-xs-12.label-warning.price-btn-submit[load-id="{{ID}}"]
+          strong
+            = content_tag(:i, " {{PRICE}}" + " đ", class: "fa fa-gavel price-time")
+            = content_tag(:i, nil, class: "fa fa-refresh fa-spin price-refresh")
+        = content_tag(:i, "{{TIMER}}", class: "glyphicon glyphicon-time clock-time")

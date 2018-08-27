@@ -1,89 +1,62 @@
-var randomScalingFactor = function() {
-	return Math.round(Math.random() * 1000)
-};
-var lineChartData = {
-	labels: ["January", "February", "March", "April", "May", "June", "July"],
-	datasets: [{
-		label: "My First dataset",
-		fillColor: "rgba(220,220,220,0.2)",
-		strokeColor: "rgba(220,220,220,1)",
-		pointColor: "rgba(220,220,220,1)",
-		pointStrokeColor: "#fff",
-		pointHighlightFill: "#fff",
-		pointHighlightStroke: "rgba(220,220,220,1)",
-		data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
-	}, {
-		label: "My Second dataset",
-		fillColor: "rgba(48, 164, 255, 0.2)",
-		strokeColor: "rgba(48, 164, 255, 1)",
-		pointColor: "rgba(48, 164, 255, 1)",
-		pointStrokeColor: "#fff",
-		pointHighlightFill: "#fff",
-		pointHighlightStroke: "rgba(48, 164, 255, 1)",
-		data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
-	}]
+var chart_data = {
+	initOnLoad: function() {
+		chart_data.set_data_chart();
+		chart_data.request_order();
+	},
+	set_data_chart: function() {
+		chars = chart_data.request_order().reverse();
+		console.log(chars);
+		var lineChartData = {
+			labels: [
+				I18n.t("javascripts.application_admin.layouts.chart-data.monday"),
+				I18n.t("javascripts.application_admin.layouts.chart-data.tuesday"),
+				I18n.t("javascripts.application_admin.layouts.chart-data.wednesday"),
+				I18n.t("javascripts.application_admin.layouts.chart-data.thursday"),
+				I18n.t("javascripts.application_admin.layouts.chart-data.friday"),
+				I18n.t("javascripts.application_admin.layouts.chart-data.saturday"),
+				I18n.t("javascripts.application_admin.layouts.chart-data.sunday")
+			],
+			datasets: [{
+				label: "My Second dataset",
+				fillColor: "rgba(48, 164, 255, 0.2)",
+				strokeColor: "rgba(48, 164, 255, 1)",
+				pointColor: "rgba(48, 164, 255, 1)",
+				pointStrokeColor: "#fff",
+				pointHighlightFill: "#fff",
+				pointHighlightStroke: "rgba(48, 164, 255, 1)",
+				data: chars
+			}]
+		}
+		chart_data.render_chart(lineChartData);
+	},
+	render_chart: function(lineChartData) {
+		var chart = document.getElementById("line-chart")
+		if (chart !== null) {
+			chart = chart.getContext("2d");
+			window.myLine = new Chart(chart).Line(lineChartData, {
+				responsive: true
+			});
+		}
+	},
+	request_order: function(){
+		charts = null
+    $.ajax({
+      url: '/admin/chart_order',
+      type: 'GET',
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'JSON',
+      async: false,
+      success: function (response) {
+      	charts = response
+      },
+      error: function (err) {
+        console.log(err);
+      }
+    });
+    return charts;
+	}
 }
-var barChartData = {
-	labels: ["January", "February", "March", "April", "May", "June", "July"],
-	datasets: [{
-		fillColor: "rgba(220,220,220,0.5)",
-		strokeColor: "rgba(220,220,220,0.8)",
-		highlightFill: "rgba(220,220,220,0.75)",
-		highlightStroke: "rgba(220,220,220,1)",
-		data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
-	}, {
-		fillColor: "rgba(48, 164, 255, 0.2)",
-		strokeColor: "rgba(48, 164, 255, 0.8)",
-		highlightFill: "rgba(48, 164, 255, 0.75)",
-		highlightStroke: "rgba(48, 164, 255, 1)",
-		data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
-	}]
-}
-var pieData = [{
-	value: 300,
-	color: "#30a5ff",
-	highlight: "#62b9fb",
-	label: "Blue"
-}, {
-	value: 50,
-	color: "#ffb53e",
-	highlight: "#fac878",
-	label: "Orange"
-}, {
-	value: 100,
-	color: "#1ebfae",
-	highlight: "#3cdfce",
-	label: "Teal"
-}, {
-	value: 120,
-	color: "#f9243f",
-	highlight: "#f6495f",
-	label: "Red"
-}];
-var doughnutData = [{
-	value: 300,
-	color: "#30a5ff",
-	highlight: "#62b9fb",
-	label: "Blue"
-}, {
-	value: 50,
-	color: "#ffb53e",
-	highlight: "#fac878",
-	label: "Orange"
-}, {
-	value: 100,
-	color: "#1ebfae",
-	highlight: "#3cdfce",
-	label: "Teal"
-}, {
-	value: 120,
-	color: "#f9243f",
-	highlight: "#f6495f",
-	label: "Red"
-}];
-document.addEventListener("turbolinks:load", function() {
-	var chart1 = document.getElementById("line-chart").getContext("2d");
-	window.myLine = new Chart(chart1).Line(lineChartData, {
-		responsive: true
-	});
+
+$(document).on('turbolinks:load', function() {
+	chart_data.initOnLoad();
 });
