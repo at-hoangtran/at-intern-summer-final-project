@@ -37,7 +37,8 @@ var order = {
           totalPri += item.amount;
         });
         $('tbody#viewLoad').html(html);
-        $('strong#totalPri').html('Tổng tiền: '
+        $('strong#totalPri').html(
+          I18n.t("javascripts.include.admin.line_item.total_price") + ": "
           + order.formatPrice(totalPri) + ' đ');
         if (response[0].order.status === 'notdefined') {
           $('a#btn-xn, a#btn-h').attr('disabled', false);

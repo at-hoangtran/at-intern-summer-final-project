@@ -1,18 +1,17 @@
-- provide :title, "Trang quản trị - Quản lý phiên đấu giá"
+- provide :title, t(".title")
 = javascript_include_tag "include/admin/auction_details"
 .col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
   .row
     ol.breadcrumb
       li
-        a[href="#"]
-          i.fa.fa-home
+        = link_to content_tag(:i, " " + t(".home"), class: "fa fa-home"), admin_root_path
       li.active
-        | Danh Sách Phiên Đấu Giá
+        = t(".auction-list")
   .row
     .col-lg-12
       .panel-heading
         .col-lg-3
-          | Danh Sách Phiên Đấu Giá
+          = t(".auction-list")
         = form_for :search, url: admin_auctions_path, method: :get do |f|
           = render partial: "admin/auctions/shared/search", locals: {f: f}
       br
@@ -24,27 +23,27 @@
               thead
                 tr
                   th
-                    | Ngày đấu giá
+                    = t(".date")
                   th
-                    | Thời gian bắt đầu
+                    = t(".start-time")
                   th
-                    | Thời gian kết thúc
+                    = t(".end-time")
                   th
-                    | Thời gian đếm ngược
+                    = t(".countdown-time")
                   th
-                    | Bước tăng tiền
+                    = t(".step-up-money")
                   th
-                    | Tên sản phẩm
+                    = t(".product")
                   th
-                    | Trạng thái
+                    = t(".status")
                   th
                     | Action
               tbody
                 = render partial: "admin/auctions/shared/listtable", collection: @auctions, as: "list"
             div.col-md-5.pull-right.statistics
               span.label.label-primary.pull-left
-                | Tổng phiên đấu giá : #{@auctions.size}
+                = t(".total-auction") + ": " + "#{@auctions.size}"
               span.label.label-default.pull-right
-                | Tổng tiền bán được : #{out_price(@total_price.to_s)} đ
+                = t(".total-money") + ": " + "#{out_price(@total_price.to_s)}" + "đ"
             = will_paginate
             = render "admin/auctions/shared/modal"

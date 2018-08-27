@@ -13,10 +13,10 @@ tr
     = product.category.name
   td
     - if product.quantity < 1
-      = content_tag(:span, "Đã Hết Hàng", class: "label label-warning")
+      = content_tag(:span, t(".out-of-stock"), class: "label label-warning")
     - else
-      = content_tag(:span, "Vẩn Còn Hàng", class: "label label-info")
+      = content_tag(:span, t(".still-in-stock"), class: "label label-info")
   td
     = link_to content_tag(:i, nil, class: "fa fa-edit fa-1x"), edit_admin_product_path(product.id), class: "btn btn-warning"
   td
-    = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_product_path(product.id), class: "btn btn-danger", method: :delete, data: { confirm: "Bạn có chắc không?" }, remote: true
+    = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_product_path(product.id), class: "btn btn-danger", method: :delete, data: { confirm: t(".are-u-sure") }, remote: true

@@ -31,7 +31,9 @@ Rails.application.routes.draw do
   resources :auctions, only: %(index)
   resources :history_orders, only: %(index)
   namespace :admin do
-    root to: 'homes#index'
+    scope '(:locale)', locale: /en|vi/ do
+      root to: 'homes#index'
+    end
     resources :users
     resources :categories
     resources :products

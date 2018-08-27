@@ -1,19 +1,19 @@
-- provide :title, "Trang quản trị - Sủa danh mục"
+- provide :title, t(".title")
 = javascript_include_tag "include/validation/admin/category/form"
 = javascript_include_tag "include/admin/category"
-- provide :button_text, "Cập nhật"
+- provide :button_text, t(".update")
 .col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
   .row
     ol.breadcrumb
       li
-        = link_to content_tag(:i, "Home", class: "fa fa-home"), admin_categories_path
+        = link_to content_tag(:i, " " + t(".home"), class: "fa fa-home"), admin_categories_path
       li.active
-        | Cập Nhật Danh Mục
+        = t(".update-category")
   .row
     .col-lg-12
       h1.page-header
         small
-          | Cập Nhật Danh Mục
+          = t(".update-category")
   .row
     .col-lg-12
       .panel.panel-default

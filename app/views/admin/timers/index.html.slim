@@ -1,17 +1,16 @@
-- provide :title, "Trang quản trị - Quản lý thời gian"
+- provide :title, t(".title")
 .col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
   .row
     ol.breadcrumb
       li
-        a[href="#"]
-          i.fa.fa-home
+        = link_to content_tag(:i, " " + t(".home"), class: "fa fa-home"), admin_root_path
       li.active
-        | Danh Sách Thời Gian
+        = t(".timers")
   .row
     .col-lg-12
       .panel-heading
         .col-lg-3
-          | Danh Sách Thời Gian
+          = t(".timers")
         = form_for :search, url: admin_timers_path, method: :get do |f|
           = render partial: "admin/timers/shared/search", locals: {f: f}
       br
@@ -23,17 +22,17 @@
               thead
                 tr
                   th
-                    | Thời gian bất đầu
+                    = t(".start-time")
                   th
-                    | Thời gian kết thúc
+                    = t(".end-time")
                   th
-                    | Thời gian đếm ngược
+                    = t(".countdown-time")
                   th
-                    | Bước tăng tiền
+                    = t(".step-up-money")
                   th
-                    | Tên sản phẩm
+                    = t(".product-name")
                   th
-                    | Trạng thái
+                    = t(".status")
                   th
                     | Action
               tbody

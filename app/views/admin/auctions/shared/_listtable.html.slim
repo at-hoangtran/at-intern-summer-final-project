@@ -2,21 +2,21 @@ tr
   td
     = format_day list.created_at
   td
-    = format_time(list.timer.start_at) + " giờ"
+    = format_time(list.timer.start_at) + " " + t(".hour")
   td
-    = format_time(list.timer.end_at) + " giờ"
+    = format_time(list.timer.end_at) + " " + t(".hour")
   td
     = format_time_sounds(list.timer.period)
-    = print_period(list.timer.period) ? " phút" : " giây"
+    = print_period(list.timer.period) ? + " " + t(".minute") : + " " + t(".second")
   td
-    = out_price(list.timer.step.to_s) + " đ"
+    = out_price(list.timer.step.to_s) + t(".currency")
   td
     = list.product.name
   td
-    = content_tag(:span, "Đang đấu giá", class: "label label-warning") if list.running?
-    = content_tag(:span, "Đã kết thúc", class: "label label-info") if list.finished?
+    = content_tag(:span, t(".auctioning"), class: "label label-warning") if list.running?
+    = content_tag(:span, t(".finished"), class: "label label-info") if list.finished?
   td
     = button_tag(type: "button", class: "show-details btn btn-primary", "data-toggle": "modal", "data-target": "#detailsModal", "details-id": list.id) do
       = content_tag(:i, nil, class: "fa fa-eye")
   td
-    = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_timer_path(list.id), class: "btn btn-danger", method: :delete, data: { confirm: "Bạn có chắc không?" }, remote: true
+    = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_timer_path(list.id), class: "btn btn-danger", method: :delete, data: { confirm: t(".are-u-sure") }, remote: true

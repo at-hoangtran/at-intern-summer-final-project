@@ -1,19 +1,19 @@
 tr
   td
-    = format_time(list.start_at) + " giờ"
+    = format_time(list.start_at) + " " + t(".hour")
   td
-    = format_time(list.end_at) + " giờ"
+    = format_time(list.end_at) + " " + t(".hour")
   td
     = format_time_sounds(list.period)
-    = print_period(list.period) ? " phút" : " giây"
+    = print_period(list.period) ? t(".minute") : t(".second")
   td
-    = out_price(list.step.to_s) + " đ"
+    = out_price(list.step.to_s) + " " + t(".currency")
   td
     = list.product.name
   td
-    = content_tag(:span, "Chưa bán", class: "label label-warning") if list.waiting?
-    = content_tag(:span, "Đang bán", class: "label label-info") if list.run?
+    = content_tag(:span, t(".unsold"), class: "label label-warning") if list.waiting?
+    = content_tag(:span, t(".solding"), class: "label label-info") if list.run?
   td
     = link_to content_tag(:i, nil, class: "fa fa-edit fa-1x"), edit_admin_timer_path(list.id), class: "btn btn-warning"
   td
-    = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_timer_path(list.id), class: "btn btn-danger", method: :delete, data: { confirm: "Bạn có chắc chắn muốn xóa" }, remote: true
+    = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_timer_path(list.id), class: "btn btn-danger", method: :delete, data: { confirm: t(".are-u-sure") }, remote: true

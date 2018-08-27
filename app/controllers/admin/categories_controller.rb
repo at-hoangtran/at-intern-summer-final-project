@@ -41,14 +41,14 @@ class Admin::CategoriesController < ApplicationAdminController
       respond_to do |format|
         format.html do
           redirect_to admin_categories_url,
-                      flash: { success: 'Tạo danh mục thành công !' }
+                      flash: { success: t('.create-success') }
         end
       end
     else
       respond_to do |format|
         format.html do
           redirect_to admin_categories_url,
-                      flash: { danger: 'Tạo danh mục thất bại !' }
+                      flash: { danger: t('.create-error') }
         end
       end
     end
@@ -61,14 +61,14 @@ class Admin::CategoriesController < ApplicationAdminController
       respond_to do |format|
         format.html do
           redirect_to admin_categories_url,
-                      flash: { success: 'Cập nhật thành công !' }
+                      flash: { success: t('.update-success') }
         end
       end
     else
       respond_to do |format|
         format.html do
           redirect_to admin_categories_url,
-                      flash: { danger: 'Cập nhật thất bại !' }
+                      flash: { danger: t('.update-error') }
         end
       end
     end
@@ -79,14 +79,14 @@ class Admin::CategoriesController < ApplicationAdminController
       respond_to do |format|
         format.html do
           redirect_to admin_categories_url,
-                      flash: { success: 'Xóa thành công !' }
+                      flash: { success: t('.delete-success') }
         end
       end
     else
       respond_to do |format|
         format.html do
           redirect_to admin_categories_url,
-                      flash: { danger: 'Xóa thất bại !' }
+                      flash: { danger: t('.delete-error') }
         end
       end
     end

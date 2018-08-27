@@ -4,25 +4,25 @@
       = render "layouts/admin/modules/search"
   ul.nav.menu
     li.active
-      = link_to content_tag(:i, " Home", class: "fa fa-home"), admin_root_path
+      = link_to content_tag(:i, " " + t(".home"), class: "fa fa-home"), admin_root_path
     li#danhmuc
-      = link_to content_tag(:i, " Danh mục", class: "fa fa-list"), admin_categories_path
+      = link_to content_tag(:i, " " + t(".categories"), class: "fa fa-list"), admin_categories_path
     li#sanpham
-      = link_to content_tag(:i, " Sản phẩm", class: "fa fa-archive"), admin_products_path
+      = link_to content_tag(:i, " " + t(".products"), class: "fa fa-archive"), admin_products_path
     li#dondathang
-      = link_to content_tag(:i, " Đơn đặt hàng", class: "fa fa-calendar"), admin_orders_path
+      = link_to content_tag(:i, " " + t(".orders"), class: "fa fa-calendar"), admin_orders_path
     li
-      = link_to content_tag(:i, " Thành viên", class: "fa fa-user"), admin_users_path
+      = link_to content_tag(:i, " " + t(".members"), class: "fa fa-user"), admin_users_path
     li
-      = link_to content_tag(:i, " Thời gian đấu giá", class: "fa fa-clock-o"), admin_timers_path
+      = link_to content_tag(:i, " " + t(".timer"), class: "fa fa-clock-o"), admin_timers_path
     li
-      = link_to content_tag(:i, " Phiên đấu giá", class: "fa fa-gavel"), admin_auctions_path
+      = link_to content_tag(:i, " " + t(".auctions"), class: "fa fa-gavel"), admin_auctions_path
     li.divider[role="presentation"]
     li
       a[href="#"]
         i.fa.fa-question
-        |  Thông tin kho hàng
+        = " " + t(".storage-info")
     li
       a[href="#"]
         i.fa.fa-history
-        |  Lịch sử mua hàng
+        = " " + t(".history-orders")

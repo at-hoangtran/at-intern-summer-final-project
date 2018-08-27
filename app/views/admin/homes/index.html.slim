@@ -6,11 +6,11 @@
         a[href="#"]
           i.fa.fa-home
       li.active
-        | Trang chủ
+        = t ".home"
   .row
     .col-lg-12
       h2.page-header
-        | Bảng điều khiển
+        = t ".control-panel"
   .row
     .col-xs-12.col-md-6.col-lg-3
       .panel.panel-blue.panel-widget
@@ -21,7 +21,7 @@
             .large
               = content_tag(:span, @orders)
             .text-muted
-              |  Tổng đơn hàng
+              = t(".orders")
     .col-xs-12.col-md-6.col-lg-3
       .panel.panel-red.panel-widget
         .row.no-padding
@@ -31,7 +31,7 @@
             .large
               = content_tag(:span, @auctions)
             .text-muted
-              |  Phiên đấu gía
+              = t(".auctions")
     .col-xs-12.col-md-6.col-lg-3
       .panel.panel-orange.panel-widget
         .row.no-padding
@@ -41,7 +41,7 @@
             .large
               = content_tag(:span, @products)
             .text-muted
-              |  Sản phẩm
+              = t(".products")
     .col-xs-12.col-md-6.col-lg-3
       .panel.panel-teal.panel-widget
         .row.no-padding
@@ -51,12 +51,12 @@
             .large
               = content_tag(:span,  @users)
             .text-muted
-              |  Thành viên
+              = t(".members")
   .row
     .col-lg-12
       .panel.panel-default
         .panel-heading
-          |  Tổng quan đặt hàng trong tuần
+          = t(".chart-orders")
         .panel-body
           .canvas-wrapper
             canvas#line-chart.main-chart[height="100" width="600"]
@@ -65,7 +65,7 @@
       .panel.panel-default
         .panel-body.easypiechart-panel
           h4
-            | Đơn hàng mới
+            = t(".new-orders")
           #easypiechart-blue.easypiechart[data-percent="92"]
             span.percent
               | 92%
@@ -73,7 +73,7 @@
       .panel.panel-default
         .panel-body.easypiechart-panel
           h4
-            | Đán giá mới
+            = t(".new-auctions")
           #easypiechart-orange.easypiechart[data-percent="65"]
             span.percent
               | 65%
@@ -81,7 +81,7 @@
       .panel.panel-default
         .panel-body.easypiechart-panel
           h4
-            | Khách hàng mới
+            = t(".new-users")
           #easypiechart-teal.easypiechart[data-percent="56"]
             span.percent
               | 56%
@@ -89,7 +89,7 @@
       .panel.panel-default
         .panel-body.easypiechart-panel
           h4
-            | Lượt truy cập
+            = t(".access-times")
           #easypiechart-red.easypiechart[data-percent="27"]
             span.percent
               | 27%

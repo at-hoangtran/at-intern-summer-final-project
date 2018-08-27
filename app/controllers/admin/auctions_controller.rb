@@ -37,14 +37,14 @@ class Admin::AuctionsController < ApplicationAdminController
       respond_to do |format|
         format.html do
           redirect_to admin_auctions_url,
-                      flash: { success: 'Xóa thành công !' }
+                      flash: { success: t('.delete-success') }
         end
       end
     else
       respond_to do |format|
         format.html do
           redirect_to admin_auctions_url,
-                      flash: { danger: 'Xóa thất bại !' }
+                      flash: { danger: t('.delete-error') }
         end
       end
     end

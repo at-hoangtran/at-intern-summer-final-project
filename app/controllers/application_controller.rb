@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :set_locale
   include StringFormatsHelper
   include SessionsHelper
 
@@ -23,7 +24,17 @@ class ApplicationController < ActionController::Base
     redirect_to(root_url) unless @user == current_user
   end
 
+  def default_url_options
+    { locale: I18n.locale }
+  end
+
   def menu_categories
     @categories = Category.all.by_parent_id_status
   end
+
+  private
+
+    def set_locale
+      I18n.locale = params[:locale] || I18n.default_locale
+    end
 end

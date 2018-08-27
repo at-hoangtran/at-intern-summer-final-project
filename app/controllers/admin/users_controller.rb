@@ -27,7 +27,7 @@ class Admin::UsersController < ApplicationAdminController
         respond_to do |format|
           format.html do
             redirect_to admin_users_url,
-                        flash: { success: 'Tạo mới thành công !' }
+                        flash: { success: t('.create-success') }
           end
         end
       end
@@ -35,7 +35,7 @@ class Admin::UsersController < ApplicationAdminController
       respond_to do |format|
         format.html do
           redirect_to admin_users_url,
-                      flash: { danger: 'Tạo mới thất bại !' }
+                      flash: { danger: t('.create-error') }
         end
       end
     end
@@ -53,7 +53,7 @@ class Admin::UsersController < ApplicationAdminController
         respond_to do |format|
           format.html do
             redirect_to admin_users_url,
-                        flash: { success: 'Cập nhật thành công !' }
+                        flash: { success: t('.update-success') }
           end
         end
       end
@@ -61,7 +61,7 @@ class Admin::UsersController < ApplicationAdminController
       respond_to do |format|
         format.html do
           redirect_to admin_users_url,
-                      flash: { danger: 'Cập nhật thất bại !' }
+                      flash: { danger: t('.update-error') }
         end
       end
     end
@@ -72,14 +72,14 @@ class Admin::UsersController < ApplicationAdminController
       respond_to do |format|
         format.html do
           redirect_to admin_users_url,
-                      flash: { success: 'Xóa thành công !' }
+                      flash: { success: t('.delete-success') }
         end
       end
     else
       respond_to do |format|
         format.html do
           redirect_to admin_users_url,
-                      flash: { danger: 'Xóa thất bại !' }
+                      flash: { danger: t('.delete-error') }
         end
       end
     end

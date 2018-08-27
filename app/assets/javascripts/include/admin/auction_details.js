@@ -48,13 +48,13 @@ var auction_details = {
   },
   confirmDelete: function (id_load, id, self) {
     swal({
-      title: 'Bạn có chắc không?',
+      title: I18n.t("javascripts.include.admin.auction_detail.are-u-sure"),
       type: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Có, xóa nó',
-      cancelButtonText: 'Không'
+      confirmButtonText: I18n.t("javascripts.include.admin.auction_detail.delete"),
+      cancelButtonText: I18n.t("javascripts.include.admin.auction_detail.cancel")
     }).then((result) => {
       auction_details.requestAjaxDelete(id_load, id, self);
     });
@@ -81,7 +81,7 @@ var auction_details = {
   },
   not_enough_notify: function() {
     $('.top-right').notify({
-      message: { text: 'Thao tác thất bại !' }
+      message: { text: I18n.t("javascripts.include.admin.auction_detail.action-failed") }
     }).show();
   },
   formatPrice: function (price){

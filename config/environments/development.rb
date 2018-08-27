@@ -66,4 +66,5 @@ Rails.application.configure do
 
   config.action_cable.url = "ws://localhost:3000/cable"
   config.consider_all_requests_local = false
+  config.middleware.use I18n::JS::Middleware
 end

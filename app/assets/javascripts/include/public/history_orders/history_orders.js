@@ -120,7 +120,9 @@ var history_orders = {
           totalPri += item.amount;
         });
         $('tbody#viewLoadLineItem').html(html);
-        $('strong#totalPri').html('Tổng tiền: '
+        $('strong#totalPri').html(
+          I18n.t("javascripts.include.public.history_orders.history_orders.total_price")
+          + ': '
           + formatPrice(totalPri) + ' đ');
       },
       error: function (err) {

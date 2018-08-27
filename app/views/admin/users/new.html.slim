@@ -1,4 +1,4 @@
-- provide :button_text, "Tạo mới"
+- provide :button_text, t(".add")
 = javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=true&libraries=places"
 = javascript_include_tag "include/lib/jquery.placepicker"
 = javascript_include_tag "include/lib/placepicker-my"
@@ -7,14 +7,14 @@
   .row
     ol.breadcrumb
       li
-        = link_to content_tag(:i, " Home", class: "fa fa-home"), admin_users_path
+        = link_to content_tag(:i, " " + t(".home"), class: "fa fa-home"), admin_root_path
       li.active
-        | Tạo thành viên
+        = t(".add-user")
   .row
     .col-lg-12
       h1.page-header
         small
-          | Tạo thành viên
+          = t(".add-user")
   .row
     .col-lg-12
       .panel.panel-default

@@ -26,14 +26,14 @@ class Admin::ProductsController < ApplicationAdminController
       respond_to do |format|
         format.html do
           redirect_to admin_products_url,
-                      flash: { success: 'Thêm sản phẩm thành công !' }
+                      flash: { success: t('.create-success') }
         end
       end
     else
       respond_to do |format|
         format.html do
           redirect_to admin_products_url,
-                      flash: { danger: 'Thêm sản phẩm thất bại !' }
+                      flash: { danger: t('.create-error') }
         end
       end
     end
@@ -50,14 +50,14 @@ class Admin::ProductsController < ApplicationAdminController
       respond_to do |format|
         format.html do
           redirect_to edit_admin_product_url(@product.id),
-                      flash: { success: 'Cập nhật thành công !' }
+                      flash: { success: t('.update-success') }
         end
       end
     else
       respond_to do |format|
         format.html do
           redirect_to admin_products_url,
-                      flash: { danger: 'Cập nhật thất bại !' }
+                      flash: { danger: t('.update-error') }
         end
       end
     end
@@ -88,14 +88,14 @@ class Admin::ProductsController < ApplicationAdminController
       respond_to do |format|
         format.html do
           redirect_to admin_products_url,
-                      flash: { success: 'Xóa sản phẩm thành công !' }
+                      flash: { success: t('delete-success') }
         end
       end
     else
       respond_to do |format|
         format.html do
           redirect_to admin_products_url,
-                      flash: { danger: 'Xóa sản phẩm thất bại !' }
+                      flash: { danger: t('.delete-error') }
         end
       end
     end
@@ -108,14 +108,14 @@ class Admin::ProductsController < ApplicationAdminController
         respond_to do |format|
           format.html do
             redirect_to edit_admin_product_url(@product.id),
-                        flash: { danger: 'Bạn không thể xóa tất cả ảnh !' }
+                        flash: { danger: t('.delete-error-all') }
           end
         end
       else
         respond_to do |format|
           format.html do
             redirect_to edit_admin_product_url(@product.id),
-                        flash: { success: 'Xóa ảnh thành công !' }
+                        flash: { success: t('.delete-success') }
           end
         end
       end
@@ -123,7 +123,7 @@ class Admin::ProductsController < ApplicationAdminController
       respond_to do |format|
         format.html do
           redirect_to edit_admin_product_url(@product.id),
-                      flash: { danger: 'Xóa ảnh thất bại !' }
+                      flash: { danger: t('.delete-error') }
         end
       end
     end
@@ -145,7 +145,7 @@ class Admin::ProductsController < ApplicationAdminController
     respond_to do |format|
       format.html do
         redirect_to admin_products_url,
-                    flash: { success: 'Import file thành công !' }
+                    flash: { success: t('.import-success') }
       end
     end
   end

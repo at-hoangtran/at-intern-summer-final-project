@@ -32,14 +32,14 @@ class Admin::TimersController < ApplicationAdminController
       respond_to do |format|
         format.html do
           redirect_to admin_timers_url,
-                      flash: { success: 'Tạo mới thành công !' }
+                      flash: { success: t('.create-success') }
         end
       end
     else
       respond_to do |format|
         format.html do
           redirect_to admin_timers_url,
-                      flash: { danger: 'Tạo mới thất bại !' }
+                      flash: { danger: t('.create-error') }
         end
       end
     end
@@ -60,14 +60,14 @@ class Admin::TimersController < ApplicationAdminController
       respond_to do |format|
         format.html do
           redirect_to edit_admin_timer_url(@timer.id),
-                      flash: { success: 'Cập nhật thành công !' }
+                      flash: { success: t('.update-success') }
         end
       end
     else
       respond_to do |format|
         format.html do
           redirect_to admin_timers_url,
-                      flash: { danger: 'Cập nhật thất bại !' }
+                      flash: { danger: t('.update-error') }
         end
       end
     end
@@ -105,14 +105,14 @@ class Admin::TimersController < ApplicationAdminController
       respond_to do |format|
         format.html do
           redirect_to admin_timers_url,
-                      flash: { success: 'Xóa thành công !' }
+                      flash: { success: t('.delete-success') }
         end
       end
     else
       respond_to do |format|
         format.html do
           redirect_to admin_timers_url,
-                      flash: { danger: 'Xóa thất bại !' }
+                      flash: { danger: t('.delete-error') }
         end
       end
     end
@@ -123,7 +123,7 @@ class Admin::TimersController < ApplicationAdminController
     respond_to do |format|
       format.html do
         redirect_to admin_timers_url,
-                    flash: { success: 'Xóa cache thành công !' }
+                    flash: { success: t('.delete-success') }
       end
     end
   end

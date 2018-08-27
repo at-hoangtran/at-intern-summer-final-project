@@ -18,9 +18,9 @@ var loading_icon = {
   },
   disconnected: function() {
     swal(
-      'Đã mất kết nối!',
-      'Vui lòng kiểm tra lại!',
-      'warning'
+      I18n.t("javascripts.include.public.auction.disconnected"),
+      I18n.t("javascripts.include.public.auction.please-check-again"),
+      I18n.t("javascripts.include.public.auction.warning")
     )
   }
 }

@@ -2,14 +2,14 @@
   .row
     ol.breadcrumb
       li
-        = link_to content_tag(:i, " Home", class: "fa fa-home"), admin_users_path
+        = link_to content_tag(:i, " " + t(".home"), class: "fa fa-home"), admin_root_path
       li.active
-        = "Chỉnh sửa ảnh"
+        = t(".edit-image")
   .row
     .col-lg-12
       h1.page-header
         small
-          = "Chỉnh sửa ảnh"
+          = t(".edit-image")
   .row
     .col-lg-12
       .panel.panel-default

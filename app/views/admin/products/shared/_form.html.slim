@@ -1,19 +1,19 @@
 = f.hidden_field :id
 .control-group
-  = f.label :category_id, "Danh mục", { class: "control-label", for: "category_id" }
+  = f.label :category_id, t(".category"), { class: "control-label", for: "category_id" }
   = select_categories f
 .control-group
-  = f.label :name, "Tên sản phẩm", { class: "control-label", for: "name" }
-  = f.text_field :name, { id: "name", class: "form-control", placeholder: "Nhập tên sản phẩm..." }
+  = f.label :name, t('.name'), { class: "control-label", for: "name" }
+  = f.text_field :name, { id: "name", class: "form-control", placeholder: t(".add-name") }
 .control-group
-  = f.label :price, "Giá", { class: "control-label", for: "price" }
-  = f.text_field :price, { id: "price", class: "price form-control", placeholder: "Nhập gía sản phẩm..." }
+  = f.label :price, t(".price"), { class: "control-label", for: "price" }
+  = f.text_field :price, { id: "price", class: "price form-control", placeholder: t(".add-price") }
 .control-group
-  = f.label :quantity, "Số lượng", { class: "control-label", for: "quantity" }
-  = f.number_field :quantity, { id: "quantity", class: "form-control",   placeholder: "Nhập số lượng sản phẩm..." }
+  = f.label :quantity, t(".quantity"), { class: "control-label", for: "quantity" }
+  = f.number_field :quantity, { id: "quantity", class: "form-control",   placeholder: t(".add-quantity") }
 .control-group
-  = f.label :description, "Mô tả", { class: "control-label", for: "description" }
-  = f.text_area :description, { id: "description", class: "form-control ckeditor", rows: 6, placeholder: "Nhập mô tả sản phẩm..." }
+  = f.label :description, t(".description"), { class: "control-label", for: "description" }
+  = f.text_area :description, { id: "description", class: "form-control ckeditor", rows: 6, placeholder: t(".add-description") }
 .padding-image.control-group
   - if f.object.images?
     = label_tag :review_image, "Xem Ảnh", { class: "control-label" }
@@ -24,7 +24,7 @@
       = label_tag :review_image, "Xem Ảnh", { id: "rvimg", class: "control-label" }
       #preview
 .control-group
-  = f.label :images, "Ảnh sản phẩm"
+  = f.label :images, t(".image")
   = f.file_field :images, multiple: true, class: "form-control", id: "upload-image"
 br
 = f.submit yield(:button_text), class: "btn btn-primary"

@@ -6,7 +6,7 @@
           span[aria-hidden="true"]
             | ×
         h4#myModalLabel.modal-title
-          | Các sản phẩm còn phụ thuộc
+          = t(".products-dependent")
       .modal-body
         table#table-scl.table.table-hover
           thead
@@ -14,22 +14,22 @@
               th
                 | ID
               th
-                | Hình ảnh
+                = t(".image")
               th
-                | Tên sản phẩm
+                = t(".product-name")
               th
-                | Số lượng
+                = t(".quantity")
               th
-                | Giá bán
+                = t(".price")
               th
-                | Danh mục
+                = t(".category")
               th
-                | Trạng thái
+                = t(".status")
           tbody#viewLoad
       .modal-footer
         button.btn.btn-default[type="button" data-dismiss="modal"]
-          | Close
-        = link_to "Xóa danh sách và tất cả các sản phẩm phụ thuộc", admin_category_path(@category), class: "btn btn-danger", id: "btn-remove-category", method: :delete, data: {confirm: "Bạn có chắc không?"}
+          = t(".close")
+        = link_to t(".delete-products-dependent"), admin_category_path(@category), class: "btn btn-danger", id: "btn-remove-category", method: :delete, data: {confirm: "Bạn có chắc không?"}
 
   script#data-template[type="x-tmpl-mustache"]
     tr

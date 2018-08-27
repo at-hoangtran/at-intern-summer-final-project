@@ -1,17 +1,15 @@
-- provide :title, "Trang quản trị - Quản lý người dùng"
+- provide :title, t(".title")
 - provide :search_text, admin_users_path
 .col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
   .row
     ol.breadcrumb
       li
-        a[href="#"]
-          i.fa.fa-home
+        = link_to content_tag(:i, " " + t(".home"), class: "fa fa-home"), admin_root_path
       li.active
-        | Danh Sách Người Dùng
-  .row
+        = t(".users")
     .col-lg-12
       .panel-heading
-        |  Danh Sách Người Dùng
+        = t(".users")
       .panel.panel-default
         .panel-body
           div
@@ -21,19 +19,19 @@
                   th
                     | ID
                   th
-                    | Tên Thành Viên
+                    = t(".name")
                   th
-                    | Địa chỉ
+                    = t(".address")
                   th
-                    | Điện thoại
+                    = t(".phone")
                   th
-                    | Email
+                    = t(".email")
                   th
-                    | Ngày đăng ký
+                    = t(".date")
                   th
-                    | Quyền
+                    = t(".role")
                   th
-                    | Trạng thái
+                    = t(".status")
                   th[colspan="2"]
                     | Action
               tbody

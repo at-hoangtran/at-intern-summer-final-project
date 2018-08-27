@@ -27,7 +27,7 @@ module TimersHelper
 
   def select_status(obj)
     obj.select :status,
-               options_for_select([['Chưa bán', :waiting], ['Đang bán', :run]],
+               options_for_select([[t('.unsold'), :waiting], [t('.solding'), :run]],
                                   selected: (obj.object.waiting? == true ? :waiting : :run)),
                {},
                id: 'status',

@@ -6,7 +6,7 @@
           span[aria-hidden="true"]
             | ×
         h4#myModalLabel.modal-title
-          | Chi tiết phiên đấu gía
+          = t(".auction-detail")
       .modal-body
         table#table-scl.table.table-hover
           thead
@@ -14,17 +14,17 @@
               th
                 | ID
               th
-                | Tên người mua
+                = t(".user")
               th
-                | Số tiền mua
+                = t(".money")
               th
-                | Trạng thái
+                = t(".status")
               th
                 | Action
           tbody#viewLoad
       .modal-footer
         button.btn.btn-default[type="button" data-dismiss="modal"]
-          | Close
+          = t(".close")
 
   script#data-template[type="x-tmpl-mustache"]
     tr
@@ -37,10 +37,10 @@
       td
         | {{#STATUS}}
         span.label.label-warning
-          | Người thua
+          = t(".loser")
         | {{/STATUS}} {{#STATUS1}}
         span.label.label-info
-          | Người thắng
+          = t(".winer")
         | {{/STATUS1}}
       td
         = button_tag(type: "button", class: "remove-item btn btn-danger", "remove-id": "{{ID}}") do

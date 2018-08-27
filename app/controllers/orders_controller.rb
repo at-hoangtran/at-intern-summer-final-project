@@ -6,14 +6,12 @@ class OrdersController < ApplicationController
   before_action :correct_line_item, only: %i[destroy]
   before_action :total_price, only: %i[index edit update]
 
-  def index
-  end
+  def index; end
 
   def edit; end
 
   def update
     if update_status
-      byebug
       redirect_to root_path, flash: { success: 'Đặt hàng thành công!' }
     else
       render 'edit', flash: { danger: 'Vui lòng xem lại thông tin!' }
@@ -32,7 +30,7 @@ class OrdersController < ApplicationController
       TimerData.add_quantity(product.id)
       redirect_to orders_path, flash: { success: 'Xóa sản phẩm thành công!' }
     else
-      redirect_to orders_path, flash: { success: 'Xóa sản phẩm thất bại!' }
+      redirect_to orders_path, flash: { danger: 'Xóa sản phẩm thất bại!' }
     end
   end
 
