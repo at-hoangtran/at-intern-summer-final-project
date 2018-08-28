@@ -47,13 +47,13 @@
                       | Action
                 tbody
                   = render partial: "admin/auctions/shared/listtable", collection: @auctions, as: "list"
-              div.col-md-5.pull-right.statistics
-                span.label.label-primary.pull-left
-                  | Tổng phiên đấu giá : #{@auctions.size}
-                span.label.label-default.pull-right
-                  | Tổng tiền bán được : #{out_price(@total_price.to_s)} đ
-              = will_paginate
-              br
-              = button_tag(type: "submit", class: "btn btn-danger") do
-                = content_tag(:i, nil, class: "fa fa-trash fa-1x")
-              = render "admin/auctions/shared/modal"
+            div.col-md-5.pull-right.statistics
+              span.label.label-primary.pull-left
+                | Tổng phiên đấu giá : #{@auctions.size}
+              span.label.label-default.pull-right
+                | Tổng tiền bán được : #{out_price(@total_price.to_s)} đ
+            = will_paginate
+            br
+            = button_tag(type: "submit", class: "btn btn-danger") do
+              = content_tag(:i, nil, class: "fa fa-trash fa-1x")
+            = render "admin/auctions/shared/modal"
