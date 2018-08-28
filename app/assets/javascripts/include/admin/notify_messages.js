@@ -59,7 +59,7 @@ var notify_messages = {
       options: {
         body: data.message,
         icon: data.avatar.thumb.url,
-        lang: 'en-US',
+        lang: 'vi-VN',
         onClick: onclick_popup
       }
     };

@@ -30,7 +30,8 @@ nav.navbar.navbar-inverse.navbar-fixed-top[role="navigation"]
           ul.dropdown-menu.notify-drop.notify-change-width
             .drop-content.drop-content-notify
               - if @notifys.size.zero?
-                = content_tag(:span, "Không có tin nhắn mới", class: "not-message")
+                .col-md-12.text-center
+                  = content_tag(:span, "Không có tin nhắn mới", class: "not-message")
               - else
                 = render partial: "layouts/admin/modules/notify_li", collection: @notifys, as: "list"
             .notify-drop-footer.text-center

@@ -14,5 +14,9 @@
         |  Tin Nhắn Thành Viên
       .panel.panel-default
         .panel-body
-          = render partial: "admin/chat_room_admins/shared/box_user", collection: @chat_room, as: "id"
+          - if @chat_room.size.zero?
+            .col-md-12.text-center
+              = content_tag(:span, "Không có tin nhắn nào")
+          - else
+            = render partial: "admin/chat_room_admins/shared/box_user", collection: @chat_room, as: "id"
 = render "admin/chat_room_admins/shared/chat_room"
