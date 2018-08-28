@@ -1,4 +1,4 @@
-- unless list == current_user
+- unless (list == current_user && list.admin?)
   tr
     td
       .form-check
@@ -22,4 +22,7 @@
     td
       = link_to raw('<i class="fa fa-edit fa-1x"></i>'), edit_admin_user_path(list.id), class: "btn btn-warning"
     td
-      = link_to(content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_user_path(list.id), class: "btn btn-danger", method: :delete, data: {confirm: "Bạn có chắc không?"}, remote: true, authenticity_token: true)
+      - if list.deleted?
+        = link_to(content_tag(:i, nil, class: "fa fa-unlock fa-1x"), admin_user_path(list.id), class: "btn btn-danger", method: :delete, data: {confirm: "Bạn có chắc không?"}, remote: true, authenticity_token: true)
+      - else
+        = link_to(content_tag(:i, nil, class: "fa fa-lock fa-1x"), admin_user_path(list.id), class: "btn btn-danger", method: :delete, data: {confirm: "Bạn có chắc không?"}, remote: true, authenticity_token: true)
