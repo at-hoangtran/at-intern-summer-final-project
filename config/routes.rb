@@ -63,6 +63,11 @@ Rails.application.routes.draw do
     end
     resources :auction_details, only: %i[destroy]
     resources :chat_room_admins
+    resources :history_products do
+      collection do
+        patch 'restore_multiple'
+      end
+    end
     get 'request_all_id_user', to: 'chat_room_admins#request_all_id_user'
     get 'request_messages_user/:id', to: 'chat_room_admins#request_messages_user'
     get 'check_message_view/:id', to: 'chat_room_admins#check_message_view'
