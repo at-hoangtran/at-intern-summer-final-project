@@ -1,0 +1,18 @@
+- provide :title, "Tin nhắn thành viên"
+= javascript_include_tag "include/admin/chat_room_admins"
+.col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
+  .row
+    ol.breadcrumb
+      li
+        a[href="#"]
+          i.fa.fa-home
+      li.active
+        | Tin Nhắn Thành Viên
+  .row
+    .col-lg-12
+      .panel-heading
+        |  Tin Nhắn Thành Viên
+      .panel.panel-default
+        .panel-body
+          = render partial: "admin/chat_room_admins/shared/box_user", collection: @chat_room, as: "id"
+= render "admin/chat_room_admins/shared/chat_room"
