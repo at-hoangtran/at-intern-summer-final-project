@@ -7,7 +7,17 @@ class Admin::ChatRoomAdminsController < ApplicationAdminController
     user = User.find_by(id: params[:user_id])
     datetime = format_day_time(DateTime.now)
 
+    @chat = user.chat_room_admins.build(
+      message: params[:message],
+      admin: 1,
+      view: 1
+    )
+
+    @chat.save
+
     value = {
+      chat_id: @chat.id,
+      user_id: user.id,
       name: user.name,
       avatar: user.avatar,
       message: params[:message],
@@ -15,12 +25,6 @@ class Admin::ChatRoomAdminsController < ApplicationAdminController
       admin: 1,
       view: 1
     }
-
-    user.chat_room_admins.create!(
-      message: params[:message],
-      admin: 1,
-      view: 1
-    )
 
     ActionCable.server.broadcast("chat_room_admin_#{user.id}",
                                  obj: value)
@@ -30,7 +34,7 @@ class Admin::ChatRoomAdminsController < ApplicationAdminController
   end
 
   def request_all_id_user
-    user_id = ChatRoomAdmin.group(:user_id).pluck(:user_id)
+    user_id = User.all.pluck(:id)
     respond_to do |format|
       format.json { render json: user_id }
     end
@@ -48,6 +52,14 @@ class Admin::ChatRoomAdminsController < ApplicationAdminController
           ]
         )
       end
+    end
+  end
+
+  def check_message_view
+    chat_room = ChatRoomAdmin.find_by(id: params[:id])
+    chat_room.update_attribute(:view, 1)
+    respond_to do |format|
+      format.json { render json: true }
     end
   end
 

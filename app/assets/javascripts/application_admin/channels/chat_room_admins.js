@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(document).ready(function(){
   user_id = all_user_id();
   for (var i = 0; i < user_id.length; i++) {
     App.auction = App.cable.subscriptions.create(
@@ -31,6 +31,7 @@ $(document).on('turbolinks:load', function() {
           $('.message_template.admin').append(html);
           height = $('.message_template.admin').height();
           $('.messages.admin').animate({scrollTop: height});
+          notify_messages.initOnLoad(data);
         }
       }
     );
@@ -39,7 +40,7 @@ $(document).on('turbolinks:load', function() {
   function all_user_id() {
     user_id = null;
     $.ajax({
-      url: '/admin/request_all_user_id',
+      url: '/admin/request_all_id_user',
       type: 'GET',
       contentType: 'application/json; charset=utf-8',
       dataType: 'JSON',
