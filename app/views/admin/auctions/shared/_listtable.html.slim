@@ -2,7 +2,7 @@ tr
   td
     .form-check
       label
-        = check_box_tag "auctions[]", list.id
+        = check_box_tag "auctions[]", list.id, false, class: "checkbox"
         = content_tag(:span, nil, class: "label-text")
   td
     = format_day list.created_at

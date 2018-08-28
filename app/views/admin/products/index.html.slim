@@ -22,7 +22,7 @@
                     th
                       .form-check
                         label
-                          = check_box_tag "check_all"
+                          = check_box_tag "select_all"
                           = content_tag(:span, nil, class: "label-text")
                     th
                       | Tên Sản Phẩm
@@ -46,5 +46,5 @@
             = link_to content_tag(:span, nil, class: "glyphicon glyphicon-open-file"), admin_product_import_path, class: "import-file btn btn-primary pull-right"
             = link_to content_tag(:span, nil, class: "glyphicon glyphicon-save-file"), admin_product_export_file_path(format: :xlsx), class: "btn btn-primary pull-right"
             - unless @products.size.zero?
-              = button_tag(type: "submit", class: "btn btn-danger delete-all") do
+              = button_tag(type: "submit", class: "btn btn-danger delete-all-show delete-all") do
                 = content_tag(:i, nil, class: "fa fa-trash fa-1x")

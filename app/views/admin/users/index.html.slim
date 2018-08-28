@@ -25,7 +25,7 @@
                     th
                       .form-check
                         label
-                          = check_box_tag "check_all"
+                          = check_box_tag "select_all"
                           = content_tag(:span, nil, class: "label-text")
                     th
                       | Tên Thành Viên
@@ -49,7 +49,7 @@
             br
             = link_to content_tag(:i, nil, class: "fa fa-plus-square fa-1x"), new_admin_user_url, class: "btn btn-primary"
             - unless @users.size.zero?
-              = button_tag(type: "submit", class: "btn btn-danger delete-all") do
+              = button_tag(type: "submit", class: "btn btn-danger delete-all-show delete-all") do
                 - if @users.first.deleted?
                   = hidden_field_tag "deleted", 0
                   = content_tag(:i, nil, class: "fa fa-unlock fa-1x")

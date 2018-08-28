@@ -8,9 +8,9 @@ class Admin::UsersController < ApplicationAdminController
       @users = User.paginate(page: params[:page], per_page: 5)
     else
       @users = User.all
+      search_status_active
       search_status_lock
       search_name
-      search_status_active
       @users = @users.paginate(page: params[:page], per_page: 5)
     end
   end
@@ -160,20 +160,22 @@ class Admin::UsersController < ApplicationAdminController
     def search_status_active
       return unless params[:search][:status_active].present?
       status = params[:search][:status_active]
-      @users = if status == 'notactive'
-                 User.where(activated: nil)
-               elsif status == 'active'
-                 User.where(activated: true)
-                end
+      @users =
+        if status == 'notactive'
+          User.where(activated: nil)
+        else
+          User.where(activated: true)
+        end
     end
 
     def search_status_lock
       return unless params[:search][:status_lock].present?
       status = params[:search][:status_lock]
-      @users = if status == 'lock'
-                 User.only_deleted
-               elsif status == 'unlock'
-                 User.all
-                end
+      @users =
+        if status == 'lock'
+          User.only_deleted
+        else
+          User.all
+        end
     end
 end

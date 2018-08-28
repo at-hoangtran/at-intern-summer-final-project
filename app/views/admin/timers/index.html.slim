@@ -26,7 +26,7 @@
                     th
                       .form-check
                         label
-                          = check_box_tag "check_all"
+                          = check_box_tag "select_all"
                           = content_tag(:span, nil, class: "label-text")
                     th
                       | Thời gian bất đầu
@@ -48,6 +48,6 @@
             br
             = link_to content_tag(:i, nil, class: "fa fa-plus-square fa-1x"), new_admin_timer_url, class: "btn btn-primary"
             - unless @timers.size.zero?
-              = button_tag(type: "submit", class: "btn btn-danger delete-all") do
+              = button_tag(type: "submit", class: "btn btn-danger delete-all-show delete-all") do
                 = content_tag(:i, nil, class: "fa fa-trash fa-1x")
             = link_to content_tag(:span, nil, class: "glyphicon glyphicon-retweet"), admin_timer_destroy_cache_path, class: "btn btn-danger pull-right", method: :delete, data: { confirm: "Hãy cân nhắc khi xóa cache !" }

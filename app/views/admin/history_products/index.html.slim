@@ -22,7 +22,7 @@
                     th
                       .form-check
                         label
-                          = check_box_tag "check_all"
+                          = check_box_tag "select_all"
                           = content_tag(:span, nil, class: "label-text")
                     th
                       | Tên Sản Phẩm
@@ -43,5 +43,5 @@
             = will_paginate
             br
             - unless @history_products.size.zero?
-              = button_tag(type: "submit", class: "btn btn-info") do
+              = button_tag(type: "submit", class: "btn btn-info delete-all-show") do
                 = content_tag(:i, nil, class: "fa fa-upload fa-1x")

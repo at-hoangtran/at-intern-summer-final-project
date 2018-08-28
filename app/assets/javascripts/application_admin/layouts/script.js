@@ -69,6 +69,33 @@ $(document).on('turbolinks:load', function() {
       CKEDITOR.replace(data[i].id)
     });
   }
+
+  $("#select_all").change(function(){
+    checked = $(this).prop("checked");
+    $(".checkbox").prop('checked', checked);
+
+    if(checked) {
+      $('.delete-all-show').show();
+    } else {
+      $('.delete-all-show').hide();
+    }
+  });
+
+  $('.checkbox').change(function(){
+    if(false == $(this).prop("checked")){
+      $("#select_all").prop('checked', false);
+    }
+
+    if($('.checkbox:checked').length == $('.checkbox').length ){
+      $("#select_all").prop('checked', true);
+    }
+
+    if ($('.checkbox:checked').length == 0){
+      $('.delete-all-show').hide();
+    } else {
+      $('.delete-all-show').show();
+    }
+  });
 });
 
 
