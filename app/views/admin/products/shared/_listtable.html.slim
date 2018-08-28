@@ -1,5 +1,10 @@
 tr
   td
+    .form-check
+      label
+        = check_box_tag "products[]", product.id
+        = content_tag(:span, nil, class: "label-text")
+  td
     = product.name
   td
     = (out_price product.price.to_s) + " đ"

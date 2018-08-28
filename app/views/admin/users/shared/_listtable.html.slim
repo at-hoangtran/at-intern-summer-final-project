@@ -3,7 +3,7 @@
     td
       .form-check
         label
-          = check_box_tag "users[]"
+          = check_box_tag "users[]", list.id
           = content_tag(:span, nil, class: "label-text")
     td
       = list.name

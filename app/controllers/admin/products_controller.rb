@@ -101,6 +101,24 @@ class Admin::ProductsController < ApplicationAdminController
     end
   end
 
+  def destroy_multiple
+    if Product.destroy(params[:products])
+      respond_to do |format|
+        format.html do
+          redirect_to admin_products_url,
+                      flash: { success: 'Xóa thành công !' }
+        end
+      end
+    else
+      respond_to do |format|
+        format.html do
+          redirect_to admin_products_url,
+                      flash: { danger: 'Xóa thất bại !' }
+        end
+      end
+    end
+  end
+
   def destroy_image
     remove_image_at_index(params[:index].to_i)
     if @product.save

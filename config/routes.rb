@@ -40,7 +40,11 @@ Rails.application.routes.draw do
       end
     end
     resources :categories
-    resources :products
+    resources :products do
+      collection do
+        delete 'destroy_multiple'
+      end
+    end
     resources :orders do
       member do
         patch :approve
