@@ -1,5 +1,10 @@
 tr
   td
+    .form-check
+      label
+        = check_box_tag "timers[]", list.id
+        = content_tag(:span, nil, class: "label-text")
+  td
     = format_time(list.start_at) + " giờ"
   td
     = format_time(list.end_at) + " giờ"

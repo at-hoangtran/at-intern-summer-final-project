@@ -118,6 +118,24 @@ class Admin::TimersController < ApplicationAdminController
     end
   end
 
+  def destroy_multiple
+    if Timer.destroy(params[:timers])
+      respond_to do |format|
+        format.html do
+          redirect_to admin_timers_url,
+                      flash: { success: 'Xóa thành công !' }
+        end
+      end
+    else
+      respond_to do |format|
+        format.html do
+          redirect_to admin_timers_url,
+                      flash: { danger: 'Xóa thất bại !' }
+        end
+      end
+    end
+  end
+
   def destroy_cache
     TimerData.delete_all
     respond_to do |format|

@@ -51,8 +51,16 @@ Rails.application.routes.draw do
         patch :reject
       end
     end
-    resources :timers
-    resources :auctions
+    resources :timers do
+      collection do
+        delete 'destroy_multiple'
+      end
+    end
+    resources :auctions do
+      collection do
+        delete 'destroy_multiple'
+      end
+    end
     resources :auction_details, only: %i[destroy]
     resources :chat_room_admins
     get 'request_all_id_user', to: 'chat_room_admins#request_all_id_user'

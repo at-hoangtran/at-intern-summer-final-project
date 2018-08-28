@@ -18,27 +18,35 @@
       br
       .panel.panel-default
         .panel-body
-          .table-responsive
-            table.table.table-hover
-              thead
-                tr
-                  th
-                    | Thời gian bất đầu
-                  th
-                    | Thời gian kết thúc
-                  th
-                    | Thời gian đếm ngược
-                  th
-                    | Bước tăng tiền
-                  th
-                    | Tên sản phẩm
-                  th
-                    | Trạng thái
-                  th
-                    | Action
-              tbody
-                = render partial: "admin/timers/shared/listtable", collection: @timers, as: "list"
-            = will_paginate
-            br
-            = link_to content_tag(:i, nil, class: "fa fa-plus-square fa-1x"), new_admin_timer_url, class: "btn btn-primary"
-            = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_timer_destroy_cache_path, class: "btn btn-danger pull-right", method: :delete, data: { confirm: "Hãy cân nhắc khi xóa cache !" }
+           = form_tag destroy_multiple_admin_timers_path, method: :delete do
+            .table-responsive.checkbox-style
+              table.table.table-hover
+                thead
+                  tr
+                    th
+                      .form-check
+                        label
+                          = check_box_tag "check_all"
+                          = content_tag(:span, nil, class: "label-text")
+                    th
+                      | Thời gian bất đầu
+                    th
+                      | Thời gian kết thúc
+                    th
+                      | Thời gian đếm ngược
+                    th
+                      | Bước tăng tiền
+                    th
+                      | Tên sản phẩm
+                    th
+                      | Trạng thái
+                    th
+                      | Action
+                tbody
+                  = render partial: "admin/timers/shared/listtable", collection: @timers, as: "list"
+              = will_paginate
+              br
+              = link_to content_tag(:i, nil, class: "fa fa-plus-square fa-1x"), new_admin_timer_url, class: "btn btn-primary"
+              = button_tag(type: "submit", class: "btn btn-danger delete-all") do
+                = content_tag(:i, nil, class: "fa fa-trash fa-1x")
+              = link_to content_tag(:span, nil, class: "glyphicon glyphicon-retweet"), admin_timer_destroy_cache_path, class: "btn btn-danger pull-right", method: :delete, data: { confirm: "Hãy cân nhắc khi xóa cache !" }

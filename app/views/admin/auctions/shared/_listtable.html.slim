@@ -1,5 +1,10 @@
 tr
   td
+    .form-check
+      label
+        = check_box_tag "auctions[]", list.id
+        = content_tag(:span, nil, class: "label-text")
+  td
     = format_day list.created_at
   td
     = format_time(list.timer.start_at) + " giờ"

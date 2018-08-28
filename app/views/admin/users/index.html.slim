@@ -15,7 +15,7 @@
       .panel.panel-default
         .panel-body
           = form_tag destroy_multiple_admin_users_path, method: :delete do
-            div.table-responsive.checkbox-style
+            .table-responsive.checkbox-style
               table.table.table-hover
                 thead
                   tr
@@ -45,5 +45,5 @@
             = will_paginate
             br
             = link_to content_tag(:i, nil, class: "fa fa-plus-square fa-1x"), new_admin_user_url, class: "btn btn-primary"
-            = button_tag(type: "submit", class: "btn btn-danger pull-right") do
+            = button_tag(type: "submit", class: "btn btn-danger delete-all") do
               = content_tag(:i, nil, class: "fa fa-trash fa-1x")
