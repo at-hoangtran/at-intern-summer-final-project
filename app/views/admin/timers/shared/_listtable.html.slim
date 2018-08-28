@@ -1,0 +1,19 @@
+tr
+  td
+    = format_time(list.start_at) + " giờ"
+  td
+    = format_time(list.end_at) + " giờ"
+  td
+    = format_time_sounds(list.period)
+    = print_period(list.period) ? " phút" : " giây"
+  td
+    = out_price(list.step.to_s) + " đ"
+  td
+    = list.product.name
+  td
+    = content_tag(:span, "Chưa bán", class: "label label-warning") if list.waiting?
+    = content_tag(:span, "Đang bán", class: "label label-info") if list.run?
+  td
+    = link_to content_tag(:i, nil, class: "fa fa-edit fa-1x"), edit_admin_timer_path(list.id), class: "btn btn-warning"
+  td
+    = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_timer_path(list.id), class: "btn btn-danger", method: :delete, data: { confirm: "Bạn có chắc chắn muốn xóa" }, remote: true

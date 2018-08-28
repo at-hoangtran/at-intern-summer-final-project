@@ -1,0 +1,26 @@
+- provide :title, "Đấu giá của tôi"
+= javascript_include_tag "include/public/history_orders/history_orders"
+.col-xs-12.col-sm-12.col-md-12.col-lg-12
+  .container
+    .row
+      .col-xs-12.col-sm-9.col-md-9.col-lg-9.col-md-offset-1
+        h1.auction-my
+          | Lịch sử mua hàng
+        ul.nav.nav-tabs
+          li.active
+            a[data-toggle="tab" href="#order_notdefined"]
+              | Đơn hàng chờ
+          li
+            a[data-toggle="tab" href="#order_defined"]
+              | Đơn hàng đã chuyển giao
+          li
+            a[data-toggle="tab" href="#order_cancel"]
+              | Đơn hàng đã hủy
+        .tab-content.tab-auction
+          #order_notdefined.tab-pane.fade.in.active
+            = render 'history_orders/shared/order_notdefined'
+          #order_defined.tab-pane.fade
+            = render 'history_orders/shared/order_defined'
+          #order_cancel.tab-pane.fade
+            = render 'history_orders/shared/order_cancel'
+      = render "history_orders/shared/modal"
