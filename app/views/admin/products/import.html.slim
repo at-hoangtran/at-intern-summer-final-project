@@ -1,0 +1,24 @@
+- provide :title, "Trang quản trị - Thêm sản phẩm"
+= javascript_include_tag "include/validation/admin/product/import"
+.col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
+  .row
+    ol.breadcrumb
+      li
+        = link_to content_tag(:i, "Home", class: "fa fa-home"), admin_products_path
+      li.active
+        | Import sản phẩm
+  .row
+    .col-lg-12
+      h1.page-header
+        small
+          | Import sản phẩm
+  .row
+    .col-lg-12
+      .panel.panel-default
+        .panel-body
+          .col-lg-5
+            = form_tag admin_product_import_file_path, multipart: true, id: "frmImportProduct", class: "form-horizontal" do
+              .control-group
+                = file_field_tag :file, class: "form-control"
+                br
+                = submit_tag "Import", class: "btn btn-primary"
