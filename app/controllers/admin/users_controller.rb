@@ -85,6 +85,24 @@ class Admin::UsersController < ApplicationAdminController
     end
   end
 
+  def destroy_multiple
+    if User.destroy(params[:users])
+      respond_to do |format|
+        format.html do
+          redirect_to admin_users_url,
+                      flash: { success: 'Xóa thành công !' }
+        end
+      end
+    else
+      respond_to do |format|
+        format.html do
+          redirect_to admin_users_url,
+                      flash: { danger: 'Xóa thất bại !' }
+        end
+      end
+    end
+  end
+
   private
 
     def load_user_id

@@ -34,7 +34,11 @@ Rails.application.routes.draw do
   resources :chat_room_admins
   namespace :admin do
     root to: 'homes#index'
-    resources :users
+    resources :users do
+      collection do
+        delete 'destroy_multiple'
+      end
+    end
     resources :categories
     resources :products
     resources :orders do
