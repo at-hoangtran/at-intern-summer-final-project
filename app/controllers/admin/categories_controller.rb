@@ -23,15 +23,24 @@ class Admin::CategoriesController < ApplicationAdminController
   end
 
   def show
-    @subcategories = Category.find_by(id: params[:id]).branch_ids
-    @product_details = Product.all.by_category_id @subcategories
+    subcategories   = Category.find_by(id: params[:id]).branch_ids
+    product_details = Product.all.by_category_id subcategories
+    line_item       = LineItem.where(product_id: product_details.pluck(:id))
+    order_id        = line_item.pluck(:order_id).uniq
+    orders          = Order.where(id: order_id).where(status: 1)
+
+    products = product_details.as_json(
+      only: %i[id images name quantity price],
+      include: [{ category: { only: %i[id name] } }]
+    )
+
+    orders = orders.as_json(
+      only: %i[id user_name address phone total_price status created_at],
+      include: [{ user: { only: %i[id email] } }]
+    )
+
     respond_to do |format|
-      format.json do
-        render json: @product_details.as_json(
-          only: %i[id images name quantity price],
-          include: [{ category: { only: %i[id name] } }]
-        )
-      end
+      format.json { render json: { products: products, orders: orders } }
     end
   end
 

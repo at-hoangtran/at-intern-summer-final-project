@@ -14,8 +14,10 @@ var category = {
         async: false,
         success: function (response) {
           var html = '';
-          var template = $('#data-template').html();
-          $.each(response, function (i, item) {
+          var html_order = '';
+          var template   = $('#data-template').html();
+          var template_order = $('#data-template-order').html();
+          $.each(response.products, function (i, item) {
             images = item.images.length
             images = images > 0 ? item.images[0].url : null;
             html += Mustache.render(template, {
@@ -25,11 +27,24 @@ var category = {
               QUANTITY: item.quantity + ' cái',
               PRICE: category.formatPrice(item.price) + ' đ',
               CATEGORY: item.category.name,
-              STATUS: (item.quantity) < 1 ? true : false,
-              STATUS1: (item.quantity) >= 1 ? true : false
+              STATUS: (item.quantity < 1),
+              STATUS1: (item.quantity >= 1)
+            });
+          });
+
+          $.each(response.orders, function (i, item) {
+            html_order += Mustache.render(template_order, {
+              ID: item.id,
+              NAME: item.user_name,
+              ADDRESS: item.address,
+              PHONE: item.phone,
+              EMAIL: item.user.email,
+              DATETIME: category.formatDateTime(item.created_at),
+              PRICE: category.formatPrice(item.total_price) + ' đ'
             });
           });
           $("tbody#viewLoad").html(html);
+          $("tbody#viewLoadOrder").html(html_order);
         },
         error: function (err) {
           console.log(err);
@@ -39,6 +54,11 @@ var category = {
   },
   formatPrice: function (price){
     return price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+  },
+  formatDateTime: function(datetime) {
+    var date = new Date(datetime);
+    dateTime = moment(date).format("DD/MM/YYYY");
+    return dateTime;
   }
 }
 $(document).ready(function(){

@@ -6,8 +6,10 @@
           span[aria-hidden="true"]
             | ×
         h4#myModalLabel.modal-title
-          | Các sản phẩm còn phụ thuộc
+          | Các sản phẩm và đơn hàng còn phụ thuộc
       .modal-body
+        h4.text-center
+          | Các sản phẩm còn phụ thuộc
         table#table-scl.table.table-hover
           thead
             tr
@@ -24,10 +26,31 @@
               th
                 | Trạng thái
           tbody#viewLoad
+        hr
+        h4.text-center
+          | Các đơn hàng còn phụ thuộc
+        table#table-scl.table.table-hover
+          thead
+            tr
+              th
+                | Tên tài khoản
+              th
+                | Địa chỉ
+              th
+                | Điện thoại
+              th
+                | Email
+              th
+                | Ngày đặt
+              th
+                | Thành tiền
+              th
+                | Trạng thái
+          tbody#viewLoadOrder
       .modal-footer
         button.btn.btn-default[type="button" data-dismiss="modal"]
           | Close
-        = link_to "Xóa danh sách và tất cả các sản phẩm phụ thuộc", admin_category_path(@category), class: "btn btn-danger", id: "btn-remove-category", method: :delete, data: {confirm: "Bạn có chắc không?"}
+        = link_to "Xóa danh sách và tất cả sản phẩm , đơn hàng phụ thuộc", admin_category_path(@category), class: "btn btn-danger", id: "btn-remove-category", method: :delete, data: {confirm: "Bạn có chắc không?"}
 
   script#data-template[type="x-tmpl-mustache"]
     tr
@@ -49,3 +72,21 @@
         span.label.label-info
           | Vẩn còn hàng
         | {{/STATUS1}}
+
+  script#data-template-order[type="x-tmpl-mustache"]
+    tr
+      td
+        | {{NAME}}
+      td
+        | {{ADDRESS}}
+      td
+        | {{PHONE}}
+      td[style="width: 200px;"]
+        | {{EMAIL}}
+      td
+        | {{DATETIME}}
+      td
+        | {{PRICE}}
+      td
+        span.label.label-info
+          | Đang chờ
