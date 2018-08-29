@@ -12,7 +12,17 @@ class AuctionsController < ApplicationController
       .select('products.name,
               auction_details.bid,
               auction_details.created_at,
-              timers.id')
+              timers.id,
+              auctions.id as au_id')
+
+    auctions = auctions.all
+    auctions = auctions.to_a.map(&:serializable_hash)
+
+    auctions = auctions.each do |e|
+      auction = Auction.find_by(id: e['au_id'])
+      tmp = { "bidmax": auction.auction_details.first.bid }
+      e.merge!(tmp)
+    end
 
     respond_to do |format|
       format.json { render json: auctions }

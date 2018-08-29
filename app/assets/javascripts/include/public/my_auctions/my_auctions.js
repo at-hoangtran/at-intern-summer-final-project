@@ -25,8 +25,11 @@ var my_auctions = {
         html += Mustache.render(template, {
           ID: item.id,
           NAME: item.name,
+          BIXMAX: formatPrice(item.bidmax) + " đ",
           PRICE: formatPrice(item.bid) + " đ",
-          DATETIME: my_auctions.formatDateTime(item.created_at)
+          DATETIME: my_auctions.formatDateTime(item.created_at),
+          STATUS: (item.bid == item.bidmax),
+          STATUS1: (item.bid < item.bidmax)
         });
       });
     }
