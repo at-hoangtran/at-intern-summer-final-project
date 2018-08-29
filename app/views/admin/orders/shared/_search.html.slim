@@ -10,4 +10,5 @@
   .col-lg-2
     = f.select :status, options_for_select([[t(".select"), nil], [t(".waiting-confirm"), :notdefined], [t(".delivered"), :defined], [t(".cancel"), :cancel]], selected: set_status), {}, { id: "status", class: "form-control" }
     = f.select :type_payment, options_for_select([["Chọn", nil], ["Trả sau", :default], ["Trả trước", :online]], selected: set_type_payment), {}, { id: "status", class: "form-control" }
+  .col-lg-2
     = f.submit t(".search"), class: "form-control btn btn-primary"

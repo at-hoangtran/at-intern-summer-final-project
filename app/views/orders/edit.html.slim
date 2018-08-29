@@ -1,4 +1,4 @@
-- provide :title, "Nhập thông tin đơn hàng"
+- provide :title, t(".checkout")
 = javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=true&libraries=places"
 = javascript_include_tag "include/lib/jquery.placepicker"
 = javascript_include_tag "include/lib/placepicker-my"
@@ -7,52 +7,52 @@
     .col-xs-12.col-sm-8.col-md-8.col-lg-8
       h3.panel-title
           span.glyphicon.glyphicon-home
-            = link_to "Home", root_path
+            = link_to t(".home"), root_path
           span.chevright.glyphicon.glyphicon-chevron-right
           span
-            | Thanh toán
+            = t(".checkout")
       .col-xs-12.col-sm-12.col-md-12.col-lg-12.no-padding
         .row
           .col-xs-12.col-sm-12.col-md-12.col-lg-12
             .panel.panel-success
               .panel-body
                 h3
-                  | Thông tin gửi hàng
+                  = t(".information")
                 = render 'form'
                 br
     .col-xs-12.col-sm-4.col-md-4.col-lg-4.no-padding
       .panel
         .panel-heading.pn-heading
           h3.panel-title.text-center
-            | Liên hệ hỗ trợ
+            = t(".contact-support")
         .panel-body.no-padding
           br
           p.panel-content
-            | Nếu có thắc mắc hoặc câu hỏi vui lòng liên hệ:
+            = t(".question")
           p.panel-content.phone-support
-            | 01664419659
+            = t(".phone-us")
       .panel
         .panel-heading.pn-heading
           h3.panel-title.text-center
-            | Tổng kết đơn hàng
+            = t(".order-summary")
         .panel-body
           p.panel-content
-            | Số mặt hàng
+            = t(".product-number")
             span.order-info
               | #{size_cart}
           hr
           p.panel-content
-            | Tổng tiền
+            = t(".total-money")
             span.order-info
               = out_price(@total_price.to_s) + " đ"
           hr
           p.panel-content
-            | Phí giao hàng
+            = t(".delivery-charges")
             span.order-info
               = out_price(29000.to_s) + " đ"
           hr
           p.panel-content.sum-pay
-            | Tổng tiền thanh toán
+            = t(".total-money-amount")
             span.order-info
               = out_price((@total_price + 29000).to_s) + " đ"
 

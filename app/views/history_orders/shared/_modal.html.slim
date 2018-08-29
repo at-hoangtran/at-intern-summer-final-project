@@ -6,17 +6,17 @@
           span[aria-hidden="true"]
             | ×
         h4#myModalLabel.modal-title
-          | Chi Tiết Đơn Hàng
+          = t(".order-detail")
       .modal-body
         table#table-scl.table.table-hover
           thead
             tr
               th
-                | Hình ảnh
+                = t(".image")
               th
-                | Tên sản phẩm
+                = t(".product")
               th
-                | Giá bán
+                = t(".your-bid")
           tbody#viewLoadLineItem
         .row
           .col-md-12
@@ -27,7 +27,7 @@
         = button_tag(type: "button", class: "btn btn-primary", id: "btn-export") do
           = content_tag(:span, nil, class: "glyphicon glyphicon-save-file")
         button.btn.btn-default[type="button" data-dismiss="modal"]
-          | Close
+          = t(".close")
 
   script#data-template-modal-line-item[type="x-tmpl-mustache"]
     tr

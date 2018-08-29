@@ -4,7 +4,7 @@ tr
   td
     = line_item.product.name
   td
-    | Số lượng: 1
+    = t(".quantity") + ": 1"
   td.product-price
     = out_price(line_item.amount.to_s) + " đ"
   td

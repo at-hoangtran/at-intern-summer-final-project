@@ -1,4 +1,76 @@
 vi:
+  auctions:
+    index:
+      my-auctions: 'Đấu giá của tôi'
+      current-active-bids: 'Giá thầu hiện tại'
+      auctions-won: 'Đấu giá đã thắng'
+      auctions-lost: 'Đấu giá thua'
+    shared:
+      auction_current:
+        status: 'Trạng thái'
+        product: 'Sản phẩm đấu giá'
+        your-current-bid: 'Giá hiện tại của bạn'
+        bids: 'Giá thầu'
+        completed: 'Hoàn thành'
+      auction_loser:
+        status: 'Trạng thái'
+        product: 'Sản phẩm đấu giá'
+        your-max-bid: 'Giá thầu tối đa của bạn'
+        highest-bid: 'Giá thầù cao nhất'
+        bids: 'Giá thầu'
+        completed: 'Hoàn thành'
+      auction_win:
+        status: 'Trạng thái'
+        product: 'Sản phẩm đấu giá'
+        your-winning-bid: 'Giá thắng thầu của bạn'
+        bids: 'Giá thầu'
+        completed: 'Hoàn thành'
+
+  categories:
+    show:
+      title: 'Danh mục'
+
+  history_orders:
+    index:
+      title: 'Đơn hàng của tôi'
+      my-orders: 'Đơn hàng của tôi'
+      orders-waiting: 'Đơn hàng chờ'
+      orders-delivered: 'Đơn hàng đã chuyển giao'
+      orders-cancel: 'Đơn hàng đã hủy'
+    shared:
+      modal:
+        order-detail: 'Chi tiết đơn hàng'
+        image: 'Hình ảnh'
+        product: 'Sản phẩm'
+        your-bid: 'Giá thầù của bạn'
+        close: 'Đóng'
+      order_cancel:
+        status: 'Trạng thái'
+        user-name: 'Tên khách hàng'
+        address: 'Địa chỉ'
+        phone: 'Điện thoại'
+        email: 'Email'
+        date: 'Ngày đặt'
+        money: 'Thành tiền'
+      order_defined:
+        status: 'Trạng thái'
+        user-name: 'Tên khách hàng'
+        address: 'Địa chỉ'
+        phone: 'Điện thoại'
+        email: 'Email'
+        date: 'Ngày đặt'
+        money: 'Thành tiền'
+      order_notdefined:
+        status: 'Trạng thái'
+        user-name: 'Tên khách hàng'
+        address: 'Địa chỉ'
+        phone: 'Điện thoại'
+        email: 'Email'
+        date: 'Ngày đặt'
+        money: 'Thành tiền'
+
+        
+
   admin:
     homes:
       index: 
@@ -306,6 +378,24 @@ vi:
           search: 'Tìm kiếm'
   
   layouts:
+    modules:
+      chat_room:
+        chat_all: 'Chat all' 
+        chat_admin: 'Chat admin'
+        send: 'Gửi'
+      header:
+        cart: 'Giỏ hàng'
+        my-auctions: 'Đấu giá của tôi'
+        welcome: 'Xin chào'
+        admin-page: 'Trang quản lý'
+        profile: 'Thông tin cá nhân'
+        orders: 'Đơn hàng'
+        logout: 'Đăng xuất'
+        login: 'Đăng nhập'
+        search: 'Tìm kiếm'
+      modal_auth:
+        login: 'Đăng nhập'
+        register: 'Đăng ký'
     admin:
       modules:
         left-nav:
@@ -324,7 +414,45 @@ vi:
           admin-page: 'Trang quản trị'
           my-profile: 'Thông tin cá nhân'
           logout: 'Đăng xuất'
-  
+  orders:
+    carts:
+      quantity: 'Số lượng'
+    form:
+      name: 'Tên người nhận'
+      address: 'Địa chỉ'
+      phone: 'Số điện thoại'
+      payment: 'Hình thức thanh toán'
+      cash-on-delivery: 'Nhận hàng thanh toán'
+      atm-bank-transfer: 'ATM/Chuyển khoản'
+      stander-delivery: 'Giao Hàng Tiêu Chuẩn - giao hàng tận nơi.'
+      cash-delivery: 'Thanh Toán Khi Nhận Hàng - thanh toán tiền mặt khi nhận hàng.'
+      order-24h: 'Chúng tôi sẽ gửi đơn hàng của bạn đi trong 24 giờ.'
+      next-to-confirm: 'Chọn đặt hàng để xác nhận đơn hàng.'
+      select-your-bank: 'Chọn ngân hàng'
+      next: 'Tiếp theo'
+    edit:
+      home: 'Trang chủ'
+      checkout: 'Thanh toán'
+      information: 'Thông tin gửi hàng'
+      contact-support: 'Liên hệ - Hỗ trợ'
+      question: 'Nếu có thắc mắc hoặc câu hỏi, vui lòng liên hệ'
+      phone-us: 01664419659
+      order-summary: 'Tổng kết đơn hàng'
+      product-number: 'Số sản phẩm'
+      total-money: 'Tổng tiền'
+      delivery-charges: 'Phí giao hàng'
+      total-money-amount: 'Tổng tiền thanh toán'
+    index:
+      cart: 'Giỏ hàng'
+      home: 'Trang chủ'
+      product: 'Sản phẩm'
+      quantity: 'Số lượng'
+      price: 'Giá'
+      total-prie: 'Tổng tiền'
+      not-cart: 'Bạn không có sản phẩm nào trong giỏ hàng'
+      checkout: 'Thanh toán'
+      info: 'Giao hàng từ 1 - 3 ngày | Chỉ từ 29.000đ'
+
   javascripts:
     include:
       admin:
@@ -342,7 +470,6 @@ vi:
         connected_disconnected:
           disconnected: 'Đã mất kết nối'
           please-check-again: 'Xin vui lòng kiểm tra lại'
-          warning: 'Cảnh báo'
     application_admin:
       layouts:
         chart-data:

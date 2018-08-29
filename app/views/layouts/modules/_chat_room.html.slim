@@ -5,10 +5,10 @@
         ul.nav.nav-tabs
           li.active
             a[data-toggle="tab" href="#chat_member"]
-              | Kênh chat thế giới
+              = t(".chat_all")
           li
             a[data-toggle="tab" href="#chat_admin"]
-              | Kênh chat với quản trị
+              = t(".chat-admin")
         .tab-content.tab-chat
           #chat_member.tab-pane.fade.in.active
             .chat_window
@@ -17,7 +17,7 @@
                   .button.close[type="button" data-dismiss="modal"]
                     = content_tag(:i, nil, class: "fa fa-times")
                 .title
-                  | Kênh chat thế giới
+                  = t(".chat_all")
               ul.messages.member
                 .message_template.member
               .bottom_wrapper.clearfix
@@ -26,7 +26,7 @@
                 .send_message.member
                   .icon
                   .text
-                    | Gửi
+                    = t(".send")
           #chat_admin.tab-pane.fade.in
             .chat_window
               .top_menu
@@ -34,7 +34,7 @@
                   .button.close[type="button" data-dismiss="modal"]
                     = content_tag(:i, nil, class: "fa fa-times")
                 .title
-                  | Kênh chat với quản trị
+                  = t(".chat_admin")
               ul.messages.admin
                 .message_template.admin
               .bottom_wrapper.clearfix
@@ -43,7 +43,7 @@
                 .send_message.admin
                   .icon
                   .text
-                    | Gửi
+                    = t(".send")
 
 script#data-chat-member[type="x-tmpl-mustache"]
   li.message

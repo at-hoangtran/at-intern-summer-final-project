@@ -23,7 +23,32 @@ en:
   recaptcha:
     errors:
       verification_failed: 'Please choose captcha.'
-  
+  auctions:
+    index:
+      my-auctions: 'My Auctions'
+      current-active-bids: 'Current Active Bids'
+      auctions-won: 'Auctions Won'
+      auctions-lost: 'Auctions Lost'
+    shared:
+      auction_current:
+        status: 'Status'
+        product: 'Product'
+        your-current-bid: 'Your current bid'
+        bids: 'Bids'
+        completed: 'Completed'
+      auction_loser:
+        status: 'Status'
+        product: 'Product'
+        your-max-bid: 'Your Maximum Bid'
+        highest-bid: 'Highes Bid'
+        bids: 'Bids'
+        completed: 'Completed'
+      auction_win:
+        status: 'Status'
+        product: 'Product'
+        your-winning-bid: 'Your Winning Bid'
+        bids: 'Bids'
+        completed: 'Completed'
   admin:
     homes:
       index:
@@ -302,8 +327,68 @@ en:
           auctioning: 'Auctioning'
           finished: 'Finished'
           search: 'Search'
+  categories:
+    show:
+      title: 'Category'
+
+  history_orders:
+    index:
+      title: 'My Orders'
+      my-orders: 'My Orders'
+      orders-waiting: 'Orders Waiting'
+      orders-delivered: 'Orders Delivered'
+      orders-cancel: 'Orders Cancel'
+    shared:
+      modal:
+        order-detail: 'Order Detail'
+        image: 'Image'
+        product: 'Product'
+        your-bid: 'Your Bid'
+        close: 'Close'
+      order_cancel:
+        status: 'Status'
+        user-name: 'User Name'
+        address: 'Address'
+        phone: 'Phone'
+        email: 'Email'
+        date: 'Date'
+        money: 'Money'
+      order_defined:
+        status: 'Status'
+        user-name: 'User Name'
+        address: 'Address'
+        phone: 'Phone'
+        email: 'Email'
+        date: 'Date'
+        money: 'Money'
+      order_notdefined:
+        status: 'Status'
+        user-name: 'User Name'
+        address: 'Address'
+        phone: 'Phone'
+        email: 'Email'
+        date: 'Date'
+        money: 'Money'
 
   layouts:
+    modules:
+      chat_room:
+        chat_all: 'Chat all' 
+        chat_admin: 'Chat admin'
+        send: 'Send'
+      header:
+        cart: 'Cart'
+        my-auctions: 'My Auctions'
+        welcome: 'Welcome'
+        admin-page: 'Admin Page'
+        profile: 'My Profile'
+        orders: 'My Orders'
+        logout: 'Logout'
+        login: 'Login'
+        search: 'Search'
+      modal_auth:
+        login: 'Login'
+        register: 'Logout'
     admin:
       modules:
         left-nav:
@@ -322,6 +407,44 @@ en:
           admin-page: 'Admin Page'
           my-profile: 'My Profile'
           logout: 'Log Out'
+  orders:
+    carts:
+      quantity: 'Quantity'
+    form:
+      name: 'Name'
+      address: 'Address'
+      phone: 'Phone'
+      payment: 'Payments'
+      cash-on-delivery: 'Cash on Delivery'
+      atm-bank-transfer: 'ATM/Bank Transfer'
+      stander-delivery: 'Standard Delivery - delivered to your door step.'
+      cash-delivery: 'Cash On Delivery - pay by cash when the order is delivered.'
+      order-24h: 'We will ship your order within 24 hours.'
+      next-to-confirm: 'Click next to confirm the order.'
+      select-your-bank: 'Select your bank'
+      next: 'Next'
+    edit:
+      home: 'Home'
+      checkout: 'Checkout'
+      information: 'Information billings'
+      contact-support: 'Contact - Support'
+      question: 'You have question, please contact us'
+      phone-us: 01664419659
+      order-summary: 'Order Summary'
+      product-number: 'Product Number'
+      total-money: 'Total money'
+      delivery-charges: 'Delivery charges'
+      total-money-amount: 'Total money amount'
+    index:
+      cart: 'Cart'
+      home: 'Home'
+      product: 'Product'
+      quantity: 'Quantity'
+      price: 'Price'
+      total-prie: 'Total money'
+      not-cart: 'You have not product in cart'
+      checkout: 'Checkout'
+      info: 'Nationwide delivery | from 29.000 ₫'
 
   javascripts:
     include:
@@ -337,6 +460,9 @@ en:
         history_orders:
           history_orders:
             total_price: 'Total money'
+        connected_disconnected:
+          disconnected: 'Disconnected'
+          please-check-again: 'Please check again'
     application_admin:
       layouts:
         chart-data:

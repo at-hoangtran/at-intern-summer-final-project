@@ -4,9 +4,10 @@ var conntected_disconnected = {
   },
   disconnected: function() {
     swal(
-      I18n.t("javascripts.include.public.auction.disconnected"),
-      I18n.t("javascripts.include.public.auction.please-check-again"),
-      I18n.t("javascripts.include.public.auction.warning")
+      // I18n.t("javascripts.include.public.connected_disconnected.disconnected"),
+      'Mất kết nối',
+      'Vui lòng kiểm tra lại',
+      'warning'
     )
   },
   load_id_current_user: function () {

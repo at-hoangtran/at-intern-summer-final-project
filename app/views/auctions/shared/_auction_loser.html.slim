@@ -3,17 +3,17 @@ div.table-responsive
     thead
       tr
         th
-          | Trạng thái
+          = t(".status")
         th
-          | Sản phẩm đấu giá
+          = t(".product")
         th
-          | Giá thầu tối đa của bạn
+          = t(".your-max-bid")
         th
-          | Giá thầu cao nhất
+          = t(".highest-bid")
         th
-          | Giá thầu
+          = t(".bids")
         th
-          | Hoàn thành
+          = t(".completed")
     tbody.table-auction.load-loser-auction
 
 script#data-loser-auction[type="x-tmpl-mustache"]

@@ -10,11 +10,8 @@ nav.navbar.navbar-inverse.navbar-fixed-top[role="navigation"]
       a.navbar-brand[href="#"]
         span
           = t(".admin-page")
-        li
-          = link_to "English", locale:"en"
-        li
-          = link_to "Vietnamese", locale:"vi"
       ul.user-menu
+        li.dropdown.pull-right
           a.dropdown-toggle[data-toggle="dropdown" href="#"]
             svg.glyph.stroked.male-user
               use[xlink:href="#stroked-male-user"]
@@ -24,6 +21,10 @@ nav.navbar.navbar-inverse.navbar-fixed-top[role="navigation"]
               = link_to content_tag(:i, " " + t(".my-profile"), class: "fa fa-btn fa-user"), edit_user_path(current_user.id)
             li
               = link_to content_tag(:i, " " + t(".logout"), class: "fa fa-btn fa-sign-out"), logout_path, method: :delete
+            li
+              = link_to "Vietnamese", locale:"vi"
+            li
+              = link_to "English", locale:"en"
       ul.nav.navbar-nav.navbar-right
         li.dropdown
           a.dropdown-toggle.notify-button[aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"]

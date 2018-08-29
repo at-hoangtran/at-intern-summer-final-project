@@ -10,35 +10,38 @@ nav#main-Nav.navbar.navbar-top.banner-menu[role="navigation"]
         ul.nav.navbar-nav
           li
             = link_to content_tag(:b, nil, class: "glyphicon glyphicon-home") + " AuctionHouse", root_url, :id => "mlinkhome", data: { turbolinks: false }
-
         ul.nav.navbar-nav.pull-right
           - if size_cart.nil?
             li
-              = link_to content_tag(:i, " (0) ", id: "count-order", class: "fa fa-cart-plus") + " Giỏ hàng", "/orders", data: { turbolinks: false }
+              = link_to content_tag(:i, " (0) ", id: "count-order", class: "fa fa-cart-plus") + " " + t(".cart"), "/orders", data: { turbolinks: false }
           - else
             li
-              = link_to content_tag(:i, " (#{size_cart}) ", id: "count-order", class: "fa fa-cart-plus") + " Giỏ hàng", "/orders", data: { turbolinks: false }
+              = link_to content_tag(:i, " (#{size_cart}) ", id: "count-order", class: "fa fa-cart-plus") + " " + t(".cart"), "/orders", data: { turbolinks: false }
           li
-            = link_to content_tag(:i, nil, class: "fa fa-gavel") + " Đấu giá của tôi", auctions_path, data: { turbolinks: false }
+            = link_to content_tag(:i, nil, class: "fa fa-gavel") + " " + t(".my-auctions"), auctions_path, data: { turbolinks: false }
           - if logged_in?
             li.dropdown
               a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-expanded="false"]
                 span
-                  = "Welcome #{current_user.name}"
+                  = t(".welcome") + " " + "#{current_user.name}"
                 span.caret
               ul.dropdown-menu[role="menu"]
                 - if admin?
                   li
-                    = link_to "Trang quản trị", admin_root_path, data: { turbolinks: false }
+                    = link_to t(".admin-page"), admin_root_path, data: { turbolinks: false }
                 li
-                  = link_to "Thông tin cá nhân", edit_user_path(current_user), data: { turbolinks: false }
+                  = link_to t(".profile"), edit_user_path(current_user), data: { turbolinks: false }
                 li
-                  = link_to "Lịch sử mua hàng", history_orders_path,data: { turbolinks: false }
+                  = link_to t(".orders"), history_orders_path,data: { turbolinks: false }
                 li
-                  = link_to content_tag(:i, " Đăng xuất", class: "fa fa-btn fa-sign-out"), logout_path, method: :delete, data: { turbolinks: false }
+                  = link_to content_tag(:i," " + t(".logout"), class: "fa fa-btn fa-sign-out"), logout_path, method: :delete, data: { turbolinks: false }
+                li
+                  = link_to "Vietnamese", locale:"vi"
+                li
+                  = link_to "English", locale:"en"
           - else
             li
-              = link_to "Đăng nhập"
+              = link_to t(".login")
 nav#main-Nav.navbar.navbar-top.category-menu[role="navigation"]
   .container
     .row
@@ -47,19 +50,19 @@ nav#main-Nav.navbar.navbar-top.category-menu[role="navigation"]
           = render partial: "layouts/modules/category", collection: @categories, as: "category"
         - if @search
           .pull-right
-            input.form-control[type="text" class="input-search" placeholder="Tìm kiếm" aria-label="Search"]
+            input.form-control[type="text" class="input-search" placeholder="#{t(".search")}" aria-label="Search"]
 
 #mySidenav.sidenav
   a.closebtn[href="javascript:void(0)" onclick="closeNav()"]
     | ×
-    = t ".close"
+    = t(".close")
   a[href="#"]
-    = t ".phone"
+    = t(".phone")
   a[href="#"]
-    = t ".laptop"
+    = t(".laptop")
   a[href="#"]
-    = t ".pc"
+    = t(".pc")
   a[href="#"]
     span.glyphicon.glyphicon-shopping-cart
       span.badge
-    = t ".cart"
+    = t(".cart")
