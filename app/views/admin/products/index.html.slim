@@ -1,5 +1,6 @@
 - provide :title, "Trang quản trị - Danh sách sản phẩm"
 - provide :search_text, admin_products_path
+= javascript_include_tag "include/admin/product"
 .col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
   .row
     ol.breadcrumb
@@ -48,3 +49,4 @@
             - unless @products.size.zero?
               = button_tag(type: "submit", class: "btn btn-danger delete-all-show delete-all") do
                 = content_tag(:i, nil, class: "fa fa-trash fa-1x")
+            = render "admin/products/shared/modal"

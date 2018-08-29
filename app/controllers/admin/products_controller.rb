@@ -2,7 +2,7 @@ class Admin::ProductsController < ApplicationAdminController
   include ProductsHelper
   before_action :logged_in_user
   before_action :check_admin
-  before_action :get_product, only: %i[edit update destroy destroy_image]
+  before_action :get_product, only: %i[show edit update destroy destroy_image]
   before_action :get_categorys, only: %i[new create edit update]
 
   def index
@@ -12,6 +12,19 @@ class Admin::ProductsController < ApplicationAdminController
       else
         Product.search_name(params[:term]).paginate(page: params[:page], per_page: 5)
       end
+  end
+
+  def show
+    orders = @product.product_line_items
+
+    respond_to do |format|
+      format.json do
+        render json: orders.as_json(
+          only: %i[id user_name address phone total_price status created_at],
+          include: [{ user: { only: %i[id email] } }]
+        )
+      end
+    end
   end
 
   def new
@@ -40,8 +53,6 @@ class Admin::ProductsController < ApplicationAdminController
   end
 
   def edit; end
-
-  def show; end
 
   def update
     update_more_images(product_params[:images])

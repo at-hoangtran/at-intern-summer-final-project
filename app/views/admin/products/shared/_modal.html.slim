@@ -1,0 +1,50 @@
+#detailsModal.modal.fade.bs-example-modal-lg[tabindex="-1" role="dialog" aria-labelledby="myModalLabel"]
+  .modal-dialog.modal-lg[role="document"]
+    .modal-content
+      .modal-header
+        button.close[type="button" data-dismiss="modal" aria-label="Close"]
+          span[aria-hidden="true"]
+            | ×
+        h4#myModalLabel.modal-title
+          | Các đơn hàng còn phụ thuộc
+      .modal-body
+        table#table-scl.table.table-hover
+          thead
+            tr
+              th
+                | Tên tài khoản
+              th
+                | Địa chỉ
+              th
+                | Điện thoại
+              th
+                | Email
+              th
+                | Ngày đặt
+              th
+                | Thành tiền
+              th
+                | Trạng thái
+          tbody#viewLoadOrder
+      .modal-footer
+        button.btn.btn-default[type="button" data-dismiss="modal"]
+          | Close
+        = link_to "Xóa sản phẩm , đơn hàng phụ thuộc", admin_product_path(@products), class: "btn btn-danger", id: "btn-remove-category", method: :delete, data: {confirm: "Bạn có chắc không?"}
+
+  script#data-template-order[type="x-tmpl-mustache"]
+    tr
+      td
+        | {{NAME}}
+      td
+        | {{ADDRESS}}
+      td
+        | {{PHONE}}
+      td[style="width: 200px;"]
+        | {{EMAIL}}
+      td
+        | {{DATETIME}}
+      td
+        | {{PRICE}}
+      td
+        span.label.label-info
+          | Đang chờ

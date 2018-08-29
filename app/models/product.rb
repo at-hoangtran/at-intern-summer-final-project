@@ -5,6 +5,7 @@ class Product < ApplicationRecord
   belongs_to :category
   has_many :timers, dependent: :destroy
   has_many :auctions, dependent: :destroy
+  has_many :line_items, dependent: :destroy
 
   default_scope -> { order(created_at: :desc) }
   scope :search_name, ->(search) { where 'name iLIKE ?', "%#{search}%" }
@@ -37,5 +38,10 @@ class Product < ApplicationRecord
     when '.xlsx' then Roo::Excelx.new(file.path)
     else raise "Unknown file type: #{file.original_filename}"
     end
+  end
+
+  def product_line_items
+    order_id = self.line_items.pluck(:order_id).uniq
+    Order.where(id: order_id).where(status: 1)
   end
 end
