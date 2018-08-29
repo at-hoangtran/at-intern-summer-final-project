@@ -1,0 +1,50 @@
+- provide :title, "Trang quản trị - Quản lý đơn đặt hàng"
+= javascript_include_tag "include/admin/line_item"
+.col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
+  .row
+    ol.breadcrumb
+      li
+        a[href="#"]
+          i.fa.fa-home
+      li.active
+        | Danh Sách Đơn Đặt Hàng
+  .row
+    .col-lg-12
+      .panel-heading
+        .col-lg-3
+          |  Danh Sách Đơn Đặt Hàng
+        = form_for :search, url: admin_orders_path, method: :get do |f|
+          = render partial: "admin/orders/shared/search", locals: {f: f}
+      br
+      br
+      .panel.panel-default
+        .panel-body
+          .table-responsive
+            table.table.table-hover
+              thead
+                tr
+                  th
+                    | Tên khách hàng
+                  th
+                    | Người nhận
+                  th
+                    | Địa chỉ
+                  th
+                    | Điện thoại
+                  th
+                    | Email
+                  th
+                    | Ngày đặt
+                  th
+                    | Thành tiền
+                  th
+                    | Loại thanh toán
+                  th
+                    | Trạng thái
+                  th
+                    | Action
+              tbody
+                = render partial: "admin/orders/shared/listtable", collection: @orders, as: "list"
+            = render "admin/orders/shared/modal"
+          = will_paginate
+= javascript_include_tag "include/lib/simple.money.format"

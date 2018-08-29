@@ -1,0 +1,27 @@
+- provide :title, "Trang quản trị - Danh sách danh mục"
+- provide :search_text, admin_categories_url
+.col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
+  .row
+    ol.breadcrumb
+      li
+        a[href="#"]
+          i.fa.fa-home
+      li.active
+        | Danh Sách Danh Mục
+  .row
+    .col-lg-12
+      .panel-heading
+        | Danh Sách Danh Mục
+      .panel.panel-default
+        .panel-body
+          #sub.table-responsive
+            br
+            .panel.panel-info
+              .panel-heading
+                | Hiện thị danh mục
+              .panel-body
+                ul.tree
+                  = render partial: "admin/categories/shared/category", collection: @categories, as: "category"
+            = will_paginate
+            br
+            = link_to content_tag(:i, nil, class: "fa fa-plus-square fa-1x"), new_admin_category_url, class: "btn btn-primary"
