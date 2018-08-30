@@ -11,7 +11,10 @@ tr
   td
     = product.quantity.to_s + " cái"
   td
-    = image_tag(product.images.first.url, class: "img-thumbnail", width: 100)
+    - if product.images.first
+      = image_tag(product.images.first.url, class: "img-thumbnail", width: 100)
+    - else
+      = image_tag("no-product-image.jpg", alt: "No Image Product", width: 100)
   td
     = product.category.name
   td
