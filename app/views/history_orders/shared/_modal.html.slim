@@ -1,0 +1,39 @@
+#detailsModal.modal.fade.bs-example-modal-lg[tabindex="-1" role="dialog" aria-labelledby="myModalLabel"]
+  .modal-dialog.modal-md[role="document"]
+    .modal-content
+      .modal-header
+        button.close[type="button" data-dismiss="modal" aria-label="Close"]
+          span[aria-hidden="true"]
+            | ×
+        h4#myModalLabel.modal-title
+          | Chi Tiết Đơn Hàng
+      .modal-body
+        table#table-scl.table.table-hover
+          thead
+            tr
+              th
+                | Hình ảnh
+              th
+                | Tên sản phẩm
+              th
+                | Giá bán
+          tbody#viewLoadLineItem
+        .row
+          .col-md-12
+            .col-md-6.pull-right
+              span.label.label-danger.pull-right
+                strong#totalPri
+      .modal-footer
+        = button_tag(type: "button", class: "btn btn-primary", id: "btn-export") do
+          = content_tag(:span, nil, class: "glyphicon glyphicon-save-file")
+        button.btn.btn-default[type="button" data-dismiss="modal"]
+          | Close
+
+  script#data-template-modal-line-item[type="x-tmpl-mustache"]
+    tr
+      td.images
+        img.images[src="{{IMAGE}}"]
+      td
+        | {{NAME}}
+      td
+        | {{PRICE}}
