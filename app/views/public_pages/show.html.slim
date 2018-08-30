@@ -77,8 +77,10 @@
                               label.control-label
                                 | Người thắng hiện tại:
                               br
+                                - user_win = nil
+                                - user_win = @bid.first.user.name if @bid.first
                                 = content_tag(:i, nil, class: "fa fa-trophy") + " "
-                                = content_tag(:span, nil, class: "user-win")
+                                = content_tag(:span, user_win, class: "user-win")
 
                     .row
                       .col-xs-12.col-sm-12.col-md-12.col-lg-12
