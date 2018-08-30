@@ -1,0 +1,60 @@
+- provide :title, "Trang quản trị - Quản lý phiên đấu giá"
+= javascript_include_tag "include/admin/auction_details"
+.col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
+  .row
+    ol.breadcrumb
+      li
+        a[href="#"]
+          i.fa.fa-home
+      li.active
+        | Danh Sách Phiên Đấu Giá
+  .row
+    .col-lg-12
+      .panel-heading
+        .col-lg-3
+          | Danh Sách Phiên Đấu Giá
+        = form_for :search, url: admin_auctions_path, method: :get do |f|
+          = render partial: "admin/auctions/shared/search", locals: {f: f}
+      br
+      br
+      .panel.panel-default
+        .panel-body
+          = form_tag destroy_multiple_admin_auctions_path, method: :delete do
+            .table-responsive.checkbox-style
+              table.table.table-hover
+                thead
+                  tr
+                    th
+                      .form-check
+                        label
+                          = check_box_tag "select_all"
+                          = content_tag(:span, nil, class: "label-text")
+                    th
+                      | Ngày đấu giá
+                    th
+                      | Thời gian bắt đầu
+                    th
+                      | Thời gian kết thúc
+                    th
+                      | Thời gian đếm ngược
+                    th
+                      | Bước tăng tiền
+                    th
+                      | Tên sản phẩm
+                    th
+                      | Trạng thái
+                    th
+                      | Action
+                tbody
+                  = render partial: "admin/auctions/shared/listtable", collection: @auctions, as: "list"
+            div.col-md-5.pull-right.statistics
+              span.label.label-primary.pull-left
+                | Tổng phiên đấu giá : #{@auctions.size}
+              span.label.label-default.pull-right
+                | Tổng tiền bán được : #{out_price(@total_price.to_s)} đ
+            = will_paginate
+            br
+            - unless @auctions.size.zero?
+              = button_tag(type: "submit", class: "btn btn-danger delete-all-show") do
+                = content_tag(:i, nil, class: "fa fa-trash fa-1x")
+            = render "admin/auctions/shared/modal"
