@@ -9,11 +9,17 @@ class ExportProduct < ActiveRecord::Base
     sheet1.add_cell(0, 2, 'Quantity')
     sheet1.add_cell(0, 3, 'Price')
 
+    sheet1.change_column_width(2, 'Quantity'.to_s.length + 2)
+
     products.each_with_index do |product, num|
       sheet1.add_cell(num + 1, 0, product.id)
       sheet1.add_cell(num + 1, 1, product.name)
       sheet1.add_cell(num + 1, 2, product.quantity)
       sheet1.add_cell(num + 1, 3, product.price)
+
+      sheet1.change_column_width(0, product.id.to_s.length + 2)
+      sheet1.change_column_width(1, product.name.to_s.length + 2)
+      sheet1.change_column_width(3, product.price.to_s.length + 2)
     end
 
     last = products.count + 1
