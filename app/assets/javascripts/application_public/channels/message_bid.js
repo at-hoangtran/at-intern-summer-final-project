@@ -5,6 +5,7 @@ $(document).on('turbolinks:load', function() {
       {
         channel: 'MessageBidChannel',
         timer_id: head_timer.dataset.timerId,
+        user_id: conntected_disconnected.load_id_current_user()
       },
       {
         received: function(data) {
