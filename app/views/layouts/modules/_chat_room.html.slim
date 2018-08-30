@@ -1,0 +1,72 @@
+#ChatModal.modal.fade.bs-example-modal-lg[tabindex="-1" role="dialog" aria-labelledby="myModalLabel"]
+  .modal-dialog.modal-md[role="document"]
+    .modal-content
+      .modal-body
+        ul.nav.nav-tabs
+          li.active
+            a[data-toggle="tab" href="#chat_member"]
+              | Kênh chat thế giới
+          li
+            a[data-toggle="tab" href="#chat_admin"]
+              | Kênh chat với quản trị
+        .tab-content.tab-chat
+          #chat_member.tab-pane.fade.in.active
+            .chat_window
+              .top_menu
+                .buttons.pull-right
+                  .button.close[type="button" data-dismiss="modal"]
+                    = content_tag(:i, nil, class: "fa fa-times")
+                .title
+                  | Kênh chat thế giới
+              ul.messages.member
+                .message_template.member
+              .bottom_wrapper.clearfix
+                .message_input_wrapper
+                  input.message_input.member[placeholder="Nhập nội dùng tin nhắn ..."]
+                .send_message.member
+                  .icon
+                  .text
+                    | Gửi
+          #chat_admin.tab-pane.fade.in
+            .chat_window
+              .top_menu
+                .buttons.pull-right
+                  .button.close[type="button" data-dismiss="modal"]
+                    = content_tag(:i, nil, class: "fa fa-times")
+                .title
+                  | Kênh chat với quản trị
+              ul.messages.admin
+                .message_template.admin
+              .bottom_wrapper.clearfix
+                .message_input_wrapper
+                  input.message_input.admin[placeholder="Nhập nội dùng tin nhắn ..."]
+                .send_message.admin
+                  .icon
+                  .text
+                    | Gửi
+
+script#data-chat-member[type="x-tmpl-mustache"]
+  li.message
+    .avatar
+      img.no-avatar[src="{{IMAGE}}"]
+    .text_wrapper
+      .text
+        | {{MESSAGE}}
+      .text_details
+        span
+          | {{DATETIME}}
+      span.name
+        | {{NAME}}
+
+script#data-chat-admin[type="x-tmpl-mustache"]
+  li.message
+    .avatar
+      img.no-avatar[src="{{IMAGE}}"]
+    .text_wrapper
+      .text
+        | {{MESSAGE}}
+      .text_details
+        span
+          | {{DATETIME}}
+      span.name
+        | {{NAME}}

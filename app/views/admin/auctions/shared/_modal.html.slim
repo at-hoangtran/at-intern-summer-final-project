@@ -1,0 +1,43 @@
+#detailsModal.modal.fade.bs-example-modal-lg[tabindex="-1" role="dialog" aria-labelledby="myModalLabel"]
+  .modal-dialog.modal-lg[role="document"]
+    .modal-content
+      .modal-header
+        button.close[type="button" data-dismiss="modal" aria-label="Close"]
+          span[aria-hidden="true"]
+            | ×
+        h4#myModalLabel.modal-title
+          | Chi tiết phiên đấu gía
+      .modal-body
+        table#table-scl.table.table-hover
+          thead
+            tr
+              th
+                | Tên người mua
+              th
+                | Số tiền mua
+              th
+                | Trạng thái
+              th
+                | Action
+          tbody#viewLoad
+      .modal-footer
+        button.btn.btn-default[type="button" data-dismiss="modal"]
+          | Close
+
+  script#data-template[type="x-tmpl-mustache"]
+    tr
+      td
+        | {{NAME}}
+      td
+        | {{BID}}
+      td
+        | {{#STATUS}}
+        span.label.label-warning
+          | Người thua
+        | {{/STATUS}} {{#STATUS1}}
+        span.label.label-info
+          | Người thắng
+        | {{/STATUS1}}
+      td
+        = button_tag(type: "button", class: "remove-item btn btn-danger", "remove-id": "{{ID}}") do
+            = content_tag(:i, nil, class: "fa fa-trash fa-1x")
