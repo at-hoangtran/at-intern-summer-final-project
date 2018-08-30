@@ -189,6 +189,23 @@ class Admin::ProductsController < ApplicationAdminController
     end
   end
 
+  def multiple_check
+    ids = params[:ids].split(',').map(&:to_i)
+
+    line_item = LineItem.where(product_id: ids)
+    order_id  = line_item.pluck(:order_id).uniq
+    orders    = Order.where(id: order_id).where(status: 1)
+
+    respond_to do |format|
+      format.json do
+        render json: orders.as_json(
+          only: %i[id user_name address phone total_price status created_at],
+          include: [{ user: { only: %i[id email] } }]
+        )
+      end
+    end
+  end
+
   private
 
     def load_products

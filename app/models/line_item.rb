@@ -2,7 +2,7 @@ class LineItem < ApplicationRecord
   acts_as_paranoid
 
   belongs_to :product
-  belongs_to :order
+  belongs_to :order, dependent: :destroy
 
   validates :amount, presence: true
 

@@ -1,13 +1,16 @@
-var product = {
+var product_mutil = {
   initController: function (){
-    product.showDetails();
+    product_mutil.showDetails();
   },
   showDetails: function () {
-    $('.show-details').on('click', function (){
-      var self = $(this);
-      var id = self.attr("details-id");
+    $('.delete-all-show').on('click', function (){
+      var ids = [];
+      $('.checkbox:checked').each(function(){
+        ids.push($(this).val());
+      });
+
       $.ajax({
-        url: '/admin/products/' + id,
+        url: '/admin/product/multiple/' + ids,
         type: 'GET',
         contentType: 'application/json; charset=utf-8',
         dataType: 'JSON',
@@ -22,12 +25,11 @@ var product = {
               ADDRESS: item.address,
               PHONE: item.phone,
               EMAIL: item.user.email,
-              DATETIME: product.formatDateTime(item.created_at),
-              PRICE: product.formatPrice(item.total_price) + ' đ'
+              DATETIME: product_mutil.formatDateTime(item.created_at),
+              PRICE: product_mutil.formatPrice(item.total_price) + ' đ'
             });
           });
           $("tbody#viewLoadOrder").html(html_order);
-          $('#btn-remove-product').attr('href', '/admin/products/' + id);
         },
         error: function (err) {
           console.log(err);
@@ -45,5 +47,5 @@ var product = {
   }
 }
 $(document).ready(function(){
-  product.initController();
+  product_mutil.initController();
 });
