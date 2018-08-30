@@ -81,4 +81,45 @@ $(document).on('turbolinks:load', function() {
     $(".btn-pay").hide();
     $(".bank-payment").show();
   });
+
+  $(".info_billing").on('click', function(){
+    $(this).find('input[type="radio"]').prop("checked", true);
+    $("#order_user_name").val($(this).find(".info_item_name").text());
+    $("#advanced-placepicker").val($(this).find(".info_item_address").text());
+    $("#order_phone").val($(this).find(".info_item_phone").text());
+  });
+
+  $(".new_billing").on('click', function(){
+    $(".billing-information").hide();
+    $(".form_orders").show();
+    $(this).hide();
+  });
+  $(".return_billing").on('click', function(){
+    $(".billing-information").show();
+    $(".form_orders").hide();
+    $(".new_billing").show();
+    $(this).hide();
+  });
+  $(".edit_info").on('click', function(){
+    $(".billing-information").hide();
+    $(".form_orders").show();
+    $(".new_billing").hide();
+    $(".return_billing").show();
+  });
+  $(".next-order").on('click', function(){
+    $(".form_checkout").hide();
+    $(".billing-information").hide();
+    $(".new_billing").hide();
+    $(".add_info").hide();
+    $(".form_orders").show();
+    $(".return_billing").hide();
+    $(".payment_information").show();
+    $(".progress_first").css("background-color", "#eee");
+    $(".progress_second").css("background-color", "#16a085");
+    $(".progress_second a").css("color", "white");
+    $(".progress_first a").css("color", "#16a085");
+    $(this).hide();
+  });
+
+
 });

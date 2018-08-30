@@ -34,7 +34,6 @@ class ApplicationController < ActionController::Base
     @categories = Category.all.by_parent_id_status
   end
 
-  
   def set_online
     if !!current_user
       $redis_onlines.set( "user:#{current_user.id}", nil, ex: 10 * 60 )

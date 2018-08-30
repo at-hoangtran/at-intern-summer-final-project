@@ -212,6 +212,9 @@ li.nopassword {
 .btn-pay {
   float: right;
   margin-right: 2%;
+  width: 130px;
+  height: 50px;
+  font-size: 20px;
 }
 
 .product-price {
@@ -712,3 +715,116 @@ span.name {
   right: 8px;
   color: #fff;
 }
+
+//===========Order===========//
+.progress_bar {
+  float: left;
+  border: 1px solid #eee;
+  margin: 1px;
+  width: 31%;
+  background-color: #eee;
+  text-align: center;
+  height: 45px;
+  padding-top: 12px;
+  font-weight: bold;
+  color: #16a085;
+  a {
+    text-decoration: none;
+  }
+}
+
+.progress_first {
+  background-color: #16a085;
+  a {
+    color: white;
+  }
+}
+.info_billing {
+  margin-left: 50px; 
+  height: 75px;
+  border: 1px solid #eee;
+  margin-bottom: 10px; 
+  
+  input[type= "radio"] {
+    margin: 20px 30px 0px 20px;
+    height: 15px;
+    width: 15px;
+    float: left;
+  }
+  .info_address {
+    margin-top: 8px;
+    float: left;
+  }
+
+  .info_item_name {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  .edit_info {
+    float: right;
+    margin-right: 5px;
+    cursor: pointer;
+    color: #16a085;
+    font-weight: bold;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+.next-order {
+  float: right;
+  height: 50px;
+  width: 130px;
+  font-size: 20px;
+}
+
+.info_billing:hover {
+  border: 1px solid #375cb7;
+}
+
+.return_billing {
+  margin: 50px 0 0 50px;
+}
+
+.new_billing {
+  margin: 20px 0 10px 50px;
+}
+
+.billing-information {
+  margin-top: 85px;
+  width: 90%;
+  h4 {
+    margin: 0 0 20px 50px;
+  }
+}
+
+.form_orders {
+  display: none;
+  margin-top: 100px;
+}
+
+.payment_information {
+  display: none;
+}
+
+.delivery_type {
+  height: 80px;
+  border: 1px solid #eee;
+  margin: 30px 10px;
+  input[type="radio"] {
+    float: left;
+    margin: 25px 20px;
+    height: 15px;
+    width: 15px;
+  }
+  .info_delivery {
+    float: left;
+    margin-top: 10px;
+    font-size: 15px;
+  }
+  .deliver_first {
+    font-weight: bold;
+    color: #16a085;
+  }
+} 

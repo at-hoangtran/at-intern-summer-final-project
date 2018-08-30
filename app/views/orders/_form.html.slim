@@ -1,9 +1,16 @@
 = javascript_include_tag "include/validation/order/order"
 = form_for @order, url: order_path(@order.id), html: { id: "formOrder", class: "form-horizontal", :method => :patch } do |f|
-  div.form_checkout.checkbox-style
+
+  .form_checkout
+    h4.add_info
+      | Nhập thông tin giao hàng
     .control-group
       = f.label t(".name"), { class: "control-label" }
       = f.text_field :user_name, { class: "form-control order-field", placeholder: t(".name") }
+    .control-group
+      .control-group
+      = f.label "Email", { class: "control-label" }
+      = f.email_field :email, { class: "form-control order-field", placeholder: "Email", value: current_user.email, disabled: true }
     .control-group
       = f.label :address, t(".address"), { class: "control-label order-label" }
       = f.text_field :address, { id: "advanced-placepicker", class: "form-control order-field", 'data-map-container-id': "collapseTwo", placeholder: t(".address") }
@@ -12,6 +19,19 @@
     .control-group
       = f.label :phone, t(".phone"), { class: "control-label order-label" }
       = f.text_field :phone, { class: "form-control order-field",placeholder: t(".phone") }
+  .payment_information
+    .control-group
+      = f.label nil, "Hình thức giao hàng", { class: "control-label order-label" }
+      .delivery_type
+        = radio_button_tag 'type-delivery', 'default', checked: true
+        span.info_delivery
+          .delivery-item.deliver_first
+            | Giao hàng tiêu chuẩn - giao hàng tận nơi.
+          .delivery-item
+            | giao hàng 1-3 ngày | từ 29.000 ₫
+          .delivery-item
+            = content_tag(:i, nil, class: "fa fa-money" ) + "  "
+            = content_tag(:i, nil, class: "fa fa-university")
     .control-group
       = f.label nil, t(".payment"), { class: "control-label order-label" }
     ul.control-group.payment-list
@@ -53,3 +73,5 @@
       .control-group
         = button_tag(type: "submit", class: "btn btn-warning btn-lg btn-pay") do
           =content_tag(:i, t(".next"), class: "fa fa-shopping-cart")
+  span.btn.btn-info.return_billing
+    | Chọn địa chỉ đã có

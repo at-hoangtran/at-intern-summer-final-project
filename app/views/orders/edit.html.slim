@@ -16,9 +16,28 @@
           .col-xs-12.col-sm-12.col-md-12.col-lg-12
             .panel.panel-success
               .panel-body
-                h3
-                  = t(".information")
-                = render 'form'
+                .payment-progress
+                  .progress_bar.progress_first
+                    span.progress-bar-first
+                      = link_to  "Thông tin thanh toán", nil
+                  .progress_bar.progress_second
+                    span.progress-bar-second
+                      = link_to "Hình thức giao hàng", nil
+                  .progress_bar.progress_third
+                    span.progress-bar-third
+                      = link_to  "Tình trạng đơn hàng", nil 
+                .billing-information
+                  h4
+                    | Chọn địa chỉ của bạn
+                  = render 'info_billings'
+                .add_new_info_billing
+                  label.btn.btn-info.new_billing
+                    | Thêm địa chỉ mới
+                .form_orders
+                  = render 'form'
+                br
+                = button_tag(type: "button", class: "btn btn-warning next-order") do 
+                  =content_tag(:i," Tiếp theo", class: "fa fa-shopping-cart")
                 br
     .col-xs-12.col-sm-4.col-md-4.col-lg-4.no-padding
       .panel
