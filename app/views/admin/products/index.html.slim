@@ -2,6 +2,7 @@
 - provide :search_text, admin_products_path
 = javascript_include_tag "include/admin/product"
 = javascript_include_tag "include/admin/product_mutil"
+= javascript_include_tag "include/admin/confirm_delete_mutil"
 .col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
   .row
     ol.breadcrumb
@@ -47,7 +48,7 @@
             = link_to content_tag(:span, nil, class: "glyphicon glyphicon-open-file"), admin_product_import_path, class: "import-file btn btn-primary pull-right", 'data-toggle-tooltip': 'tooltip', 'data-placement': 'left', 'title': 'Import tệp'
             = link_to content_tag(:span, nil, class: "glyphicon glyphicon-save-file"), admin_product_export_file_path(format: :xlsx), class: "btn btn-primary pull-right", 'data-toggle-tooltip': 'tooltip', 'data-placement': 'left', 'title': 'Xuất tệp'
             - unless @products.size.zero?
-              = button_tag(type: "button", class: "btn btn-danger delete-all-show delete-all", "data-toggle": "modal", "data-target": "#detailsModalMutil") do
+              = button_tag(type: "button", class: "btn btn-danger delete-all-show delete-all", "data-toggle": "modal", "data-target": "#detailsModalMutil", 'data-toggle-tooltip': 'tooltip', 'data-placement': 'right', 'title': 'Xóa sản phẩm') do
                 = content_tag(:i, nil, class: "fa fa-trash fa-1x")
             = render "admin/products/shared/modal"
             = render "admin/products/shared/modal_mutil"

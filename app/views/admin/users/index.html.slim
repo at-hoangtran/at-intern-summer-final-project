@@ -1,5 +1,6 @@
 - provide :title, t(".title")
 - provide :search_text, admin_users_path
+= javascript_include_tag "include/admin/confirm_delete_mutil"
 .col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
   .row
     ol.breadcrumb
@@ -47,7 +48,7 @@
             br
             = link_to content_tag(:i, nil, class: "fa fa-plus-square fa-1x"), new_admin_user_url, class: "btn btn-primary", 'data-toggle-tooltip': 'tooltip', 'data-placement': 'right', 'title': 'Thêm thành viên'
             - unless @users.size.zero?
-              = button_tag(type: "submit", class: "btn btn-danger delete-all-show delete-all") do
+              = button_tag(type: "button", class: "btn btn-danger delete-all-show confirm_delete delete-all", 'data-toggle-tooltip': 'tooltip', 'data-placement': 'right', 'title': 'Xóa tài khoản') do
                 - if @users.first.deleted?
                   = hidden_field_tag "deleted", 0
                   = content_tag(:i, nil, class: "fa fa-unlock fa-1x")

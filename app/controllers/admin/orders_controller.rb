@@ -66,8 +66,8 @@ class Admin::OrdersController < ApplicationAdminController
 
     def search_price
       if params[:search][:min].present? && params[:search][:max].present?
-        min = addPrice params[:search][:min]
-        max = addPrice params[:search][:max]
+        min = add_price params[:search][:min]
+        max = add_price params[:search][:max]
         @orders = @orders.search_price min, max
       end
     end

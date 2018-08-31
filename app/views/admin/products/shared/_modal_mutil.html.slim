@@ -29,7 +29,7 @@
       .modal-footer
         button.btn.btn-default[type="button" data-dismiss="modal"]
           | Close
-        = button_tag(type: "submit", class: "btn btn-danger delete-all-show delete-all") do
+        = button_tag(type: "button", class: "btn btn-danger delete-all-show confirm_delete delete-all") do
             | Xóa các sản phẩm chọn và đơn hàng của nó
 
   script#data-template-order[type="x-tmpl-mustache"]

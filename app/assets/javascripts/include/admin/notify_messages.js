@@ -1,7 +1,7 @@
 var notify_messages = {
-  initOnLoad: function(data){
+  initOnLoad: function(data, avatar){
     notify_messages.check_view_message(data);
-    notify_messages.add_messages_append_box(data);
+    notify_messages.add_messages_append_box(data, avatar);
   },
   check_view_message: function(data) {
     user_id = $('#ChatModal').attr('user-id');
@@ -13,7 +13,7 @@ var notify_messages = {
       }
     }
   },
-  add_messages_append_box: function(data) {
+  add_messages_append_box: function(data, avatar) {
     html = '';
     user_id = $('#ChatModal').attr('user-id');
     if (data.admin == 0) {
@@ -21,7 +21,7 @@ var notify_messages = {
         html += '<li>';
         html += '<div class="col-md-3 col-sm-3 col-xs-3">';
         html += '<div class="notify-img">';
-        html += '<img class="size-avatar" src="'+ data.avatar.thumb.url +'">';
+        html += '<img class="size-avatar" src="'+ avatar +'">';
         html += '</div>';
         html += '</div>';
         html += '<div class="col-md-9 col-sm-9 col-xs-9 pd-l0">';
@@ -34,7 +34,7 @@ var notify_messages = {
         $('.drop-content-notify').append(html);
         count = parseInt($('.count-notify').html());
         $('.count-notify').html(count += 1);
-        notify_messages.show_popup_message(data);
+        notify_messages.show_popup_message(data, avatar);
         $('.not-message').remove();
       }
     }
@@ -53,12 +53,12 @@ var notify_messages = {
       }
     });
   },
-  show_popup_message: function(data) {
+  show_popup_message: function(data, avatar) {
     var options = {
       title: data.name,
       options: {
         body: data.message,
-        icon: data.avatar.thumb.url,
+        icon: avatar,
         lang: 'vi-VN',
         onClick: onclick_popup
       }

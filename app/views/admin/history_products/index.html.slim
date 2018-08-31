@@ -1,5 +1,6 @@
 - provide :title, "Trang quản trị - Danh sách sản phẩm củ"
 - provide :search_text, admin_history_products_path
+= javascript_include_tag "include/admin/confirm_delete_mutil"
 .col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
   .row
     ol.breadcrumb
@@ -43,5 +44,5 @@
             = will_paginate
             br
             - unless @history_products.size.zero?
-              = button_tag(type: "submit", class: "btn btn-info delete-all-show") do
+              = button_tag(type: "submit", class: "btn btn-info delete-all-show confirm_delete", 'data-toggle-tooltip': 'tooltip', 'data-placement': 'right', 'title': 'Khôi phục sản phẩm') do
                 = content_tag(:i, nil, class: "fa fa-upload fa-1x")
