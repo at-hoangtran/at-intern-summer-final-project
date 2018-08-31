@@ -1,0 +1,7 @@
+.col-lg-9
+  .col-lg-2.pull-right
+    = f.select :status, options_for_select([[t(".select"), nil], [t(".unsold"), :waiting], [t(".solding"), :run]], selected: set_status), {}, { id: "status", class: "form-control" }
+    = f.submit t(".search"), class: "form-control btn btn-primary"
+  .col-lg-3.pull-right
+    = f.text_field :mintime, { type: "time", id: "mintime", class: "form-control", value: set_mintime}
+    = f.text_field :maxtime, { type: "time", id: "maxtime", class: "form-control", value: set_maxtime}

@@ -1,0 +1,60 @@
+- provide :title, t(".title")
+= javascript_include_tag "include/admin/auction_details"
+= javascript_include_tag "include/admin/confirm_delete_mutil"
+.col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
+  .row
+    ol.breadcrumb
+      li
+        = link_to content_tag(:i, " " + t(".home"), class: "fa fa-home"), admin_root_path
+      li.active
+        = t(".auction-list")
+  .row
+    .col-lg-12
+      .panel-heading
+        .col-lg-3
+          = t(".auction-list")
+        = form_for :search, url: admin_auctions_path, method: :get do |f|
+          = render partial: "admin/auctions/shared/search", locals: {f: f}
+      br
+      br
+      .panel.panel-default
+        .panel-body
+          = form_tag destroy_multiple_admin_auctions_path, method: :delete do
+            .table-responsive.checkbox-style
+              table.table.table-hover
+                thead
+                  tr
+                    th
+                      .form-check
+                        label
+                          = check_box_tag "select_all"
+                          = content_tag(:span, nil, class: "label-text")
+                    th
+                      = t(".date")
+                    th
+                      = t(".start-time")
+                    th
+                      = t(".end-time")
+                    th
+                      = t(".countdown-time")
+                    th
+                      = t(".step-up-money")
+                    th
+                      = t(".product")
+                    th
+                      = t(".status")
+                    th
+                      | Action
+                tbody
+                  = render partial: "admin/auctions/shared/listtable", collection: @auctions, as: "list"
+            div.col-md-5.pull-right.statistics
+              span.label.label-primary.pull-left
+                = t(".total-auction") + ": " + "#{@auctions.size}"
+              span.label.label-default.pull-right
+                = t(".total-money") + ": " + "#{out_price(@total_price.to_s)}" + "đ"
+            = will_paginate
+            br
+            - unless @auctions.size.zero?
+              = button_tag(type: "button", class: "btn btn-danger delete-all-show confirm_delete", 'data-toggle-tooltip': 'tooltip', 'data-placement': 'right', 'title': 'Xóa phiên') do
+                = content_tag(:i, nil, class: "fa fa-trash fa-1x")
+            = render "admin/auctions/shared/modal"
