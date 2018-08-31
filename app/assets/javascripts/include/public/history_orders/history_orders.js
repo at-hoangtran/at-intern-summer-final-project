@@ -111,19 +111,20 @@ var history_orders = {
         var html = '';
         var template = $('#data-template-modal-line-item').html();
         var totalPri = 0;
+        var image_default = '/assets/no-product-image-0f35e2b34a82f17cac95766bab3727091fc29403eeb8c3241290ba8a086b600d.png';
         $.each(response, function (i, item) {
+          images = item.product.images.length
+          images = images > 0
+            ? item.product.images[0].url : image_default;
           html += Mustache.render(template, {
-            IMAGE: item.product.images[0].url,
+            IMAGE: images,
             NAME: item.product.name,
             PRICE: formatPrice(item.amount) + ' đ'
           });
           totalPri += item.amount;
         });
         $('tbody#viewLoadLineItem').html(html);
-        $('strong#totalPri').html(
-          I18n.t("javascripts.include.public.history_orders.history_orders.total_price")
-          + ': '
-          + formatPrice(totalPri) + ' đ');
+        $('strong#totalPri').html('Tổng tiền: ' + formatPrice(totalPri) + ' đ');
       },
       error: function (err) {
         console.log(err);
@@ -143,6 +144,6 @@ var history_orders = {
   }
 }
 
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
   history_orders.initOnLoad();
 });

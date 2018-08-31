@@ -21,7 +21,7 @@ var auction = {
         $('.carousel-indicators li img:eq('+ index +')').attr('src', item.url);
       });
     } else {
-      var image_default = '/assets/no-product-image-c2f6e0867a2bfea159b171fd3e6d6c1ea49aa8362682254f2a945ad0fcee188c.jpg';
+      var image_default = '/assets/no-product-image-0f35e2b34a82f17cac95766bab3727091fc29403eeb8c3241290ba8a086b600d.png';
       $('.item img:eq(0)').attr('src', image_default);
       $('.carousel-indicators li img:eq(0)').attr('src', image_default);
     }
@@ -79,6 +79,6 @@ var auction = {
   }
 }
 
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
   auction.event_submit_price();
 });

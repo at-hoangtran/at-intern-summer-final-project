@@ -121,6 +121,6 @@ var box_chat_admin = {
   }
 }
 
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
   box_chat_admin.initOnLoad();
 });

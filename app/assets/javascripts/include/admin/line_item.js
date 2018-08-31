@@ -24,7 +24,7 @@ var orders = {
         var html = '';
         var template = $('#data-template').html();
         var totalPri = 0;
-        var image_default = '/assets/no-product-image-c2f6e0867a2bfea159b171fd3e6d6c1ea49aa8362682254f2a945ad0fcee188c.jpg';
+        var image_default = '/assets/no-product-image-0f35e2b34a82f17cac95766bab3727091fc29403eeb8c3241290ba8a086b600d.png';
         $.each(response, function (i, item) {
           images = item.product.images.length
           images = images > 0

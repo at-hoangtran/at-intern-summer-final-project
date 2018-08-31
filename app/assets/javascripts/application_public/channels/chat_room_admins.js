@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
   user_login = conntected_disconnected.load_id_current_user();
   if (user_login) {
     App.chat_room_admins = App.cable.subscriptions.create(

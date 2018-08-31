@@ -60,6 +60,6 @@ var search_index = {
   }
 }
 
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
   search_index.submit_search();
 });

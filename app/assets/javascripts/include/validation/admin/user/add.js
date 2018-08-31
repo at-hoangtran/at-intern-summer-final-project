@@ -10,8 +10,8 @@ $(document).ready(function() {
         required: true,
         maxlength: 50,
         minlength: 6,
-        email: true
-        // remote:"/users/check_email"
+        email: true,
+        remote:"/users/check_email"
       },
       "user[password]": {
         required: true,
@@ -44,8 +44,8 @@ $(document).ready(function() {
         required: "Vui lòng nhập email !",
         email: "Email không đúng định dạng !",
         maxlength: "Email không quá 50 ký tự !",
-        minlength: "Email tối thiểu 6 ký tự !"
-        // remote: "Email đã tồn tại !"
+        minlength: "Email tối thiểu 6 ký tự !",
+        remote: "Email đã tồn tại !"
       },
       "user[password]": {
         required: "Vui lòng nhập mật khẩu !",

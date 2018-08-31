@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
   App.count_order = App.cable.subscriptions.create(
     {
       channel: 'CountOrderChannel',

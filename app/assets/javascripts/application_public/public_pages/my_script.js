@@ -14,7 +14,8 @@ function updateUserForm() {
     $('.edit-left').show();
   });
 }
-$(document).on('turbolinks:load', function() {
+
+$(document).ready(function() {
   $(".dropdown").hover(function() {
     $('.dropdown-menu', this).stop(true, true).fadeIn("fast");
     $(this).toggleClass('open');
@@ -26,7 +27,7 @@ $(document).on('turbolinks:load', function() {
   });
 });
 
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
   updateUserForm();
   backToTop();
 });
@@ -63,17 +64,17 @@ $('.carousel').carousel({
   interval: false
 });
 
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
   $(".payment-live").on('click', function() {
     $(".cbb_offline").prop("checked", true);
     $(".cbb_online").prop("checked", false);
-    // $(".pay-live").show();
     $(".pay-live-info").show();
     $(".pay-online").hide();
     $(".bank-payment").hide();
     $(".pay-onl-info").hide();
     $(".btn-pay").show();
   });
+
   $(".payment-onl").on('click', function() {
     $(".cbb_online").prop("checked", true);
     $(".cbb_offline").prop("checked", false);
@@ -94,18 +95,21 @@ $(document).on('turbolinks:load', function() {
     $(".form_orders").show();
     $(this).hide();
   });
+
   $(".return_billing").on('click', function(){
     $(".billing-information").show();
     $(".form_orders").hide();
     $(".new_billing").show();
     $(this).hide();
   });
+
   $(".edit_info").on('click', function(){
     $(".billing-information").hide();
     $(".form_orders").show();
     $(".new_billing").hide();
     $(".return_billing").show();
   });
+
   $(".next-order").on('click', function(){
     $(".form_checkout").hide();
     $(".billing-information").hide();
@@ -120,6 +124,4 @@ $(document).on('turbolinks:load', function() {
     $(".progress_first a").css("color", "#16a085");
     $(this).hide();
   });
-
-
 });

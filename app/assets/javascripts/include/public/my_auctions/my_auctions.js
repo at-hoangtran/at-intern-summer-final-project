@@ -126,6 +126,6 @@ var my_auctions = {
   }
 }
 
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
   my_auctions.initOnLoad();
 });

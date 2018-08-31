@@ -52,7 +52,7 @@ $(document).ready(function() {
       "product[images][]": {
         accept: "Kiểu tệp không hợp lệ !",
         filesize: "File dung lượng tối đa không quá 3mb !",
-        mximg: "Vui lòng chọn tối thiểu 2 hình ảnh, tối đa 4 hình ảnh !"
+        mximg: "Vui lòng chọn tối đa 4 hình ảnh !"
       }
     },
     highlight: function (element) {
@@ -94,7 +94,7 @@ $.validator.addMethod("mximg", function (value, element) {
       console.log(err);
     }
   });
-  if (count >= 2 && count <= 4) return true;
+  if (count <= 4) return true;
   return false;
 });
 

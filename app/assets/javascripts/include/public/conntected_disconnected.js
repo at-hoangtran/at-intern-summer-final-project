@@ -4,7 +4,6 @@ var conntected_disconnected = {
   },
   disconnected: function() {
     swal(
-      // I18n.t("javascripts.include.public.connected_disconnected.disconnected"),
       'Mất kết nối',
       'Vui lòng kiểm tra lại',
       'warning'
