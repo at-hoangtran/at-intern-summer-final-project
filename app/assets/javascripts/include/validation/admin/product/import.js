@@ -4,13 +4,13 @@ $(document).ready(function() {
     rules: {
       "file": {
         required: true,
-        accept:"xls, xlsx"
+        extension: "xlsx|xls|xlsm"
       }
     },
     messages: {
       "file":{
         required: "Vui lòng chọn file !",
-        accept: "Vui lòng chọn file (.xls, .xlsx)."
+        extension: "Vui lòng chọn file (.xls, .xlsx)."
       }
     },
     highlight: function (element) {

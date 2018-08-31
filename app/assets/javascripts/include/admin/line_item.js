@@ -24,10 +24,14 @@ var orders = {
         var html = '';
         var template = $('#data-template').html();
         var totalPri = 0;
+        var image_default = '/assets/no-product-image-c2f6e0867a2bfea159b171fd3e6d6c1ea49aa8362682254f2a945ad0fcee188c.jpg';
         $.each(response, function (i, item) {
+          images = item.product.images.length
+          images = images > 0
+            ? item.product.images[0].url : image_default;
           html += Mustache.render(template, {
             ID: item.id,
-            IMAGE: item.product.images[0].url,
+            IMAGE: images,
             NAME: item.product.name,
             PRICE: orders.formatPrice(item.amount) + ' đ',
             STATUS: (item.product.quantity) < 1 ? true : false,

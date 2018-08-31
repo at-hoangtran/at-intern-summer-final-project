@@ -1,13 +1,13 @@
 (function($) {
 
   $.fn.easyNotify = function(options) {
-  
+
     var settings = $.extend({
       title: "Notification",
       options: {
         body: "",
         icon: "",
-        lang: 'pt-BR',
+        lang: 'vi-VN',
         onClose: "",
         onClick: "",
         onError: ""
@@ -21,21 +21,21 @@
       } else if (Notification.permission === "granted") {
 
         var notification = new Notification(settings.title, settings.options);
-        
+
         notification.onclose = function() {
-            if (typeof settings.options.onClose == 'function') { 
+            if (typeof settings.options.onClose == 'function') {
                 settings.options.onClose();
             }
         };
 
         notification.onclick = function(){
-            if (typeof settings.options.onClick == 'function') { 
+            if (typeof settings.options.onClick == 'function') {
                 settings.options.onClick();
             }
         };
 
         notification.onerror  = function(){
-            if (typeof settings.options.onError  == 'function') { 
+            if (typeof settings.options.onError  == 'function') {
                 settings.options.onError();
             }
         };

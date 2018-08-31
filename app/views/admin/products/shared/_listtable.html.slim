@@ -1,6 +1,9 @@
 tr
   td
-    = product.id
+    .form-check
+      label
+        = check_box_tag "products[]", product.id, false, class: "checkbox"
+        = content_tag(:span, nil, class: "label-text")
   td
     = product.name
   td
@@ -8,7 +11,10 @@ tr
   td
     = product.quantity.to_s + " cái"
   td
-    = image_tag(product.images.first.url, class: "img-thumbnail", width: 100)
+    - if product.images.first
+      = image_tag(product.images.first.url, class: "img-thumbnail", width: 100)
+    - else
+      = image_tag("no-product-image.jpg", alt: "No Image Product", width: 100)
   td
     = product.category.name
   td
@@ -19,4 +25,8 @@ tr
   td
     = link_to content_tag(:i, nil, class: "fa fa-edit fa-1x"), edit_admin_product_path(product.id), class: "btn btn-warning"
   td
-    = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_product_path(product.id), class: "btn btn-danger", method: :delete, data: { confirm: t(".are-u-sure") }, remote: true
+    - if product.product_line_items.size.zero?
+      = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_product_path(product.id), class: "btn btn-danger", method: :delete, data: { confirm: t(".are-u-sure") }, remote: true
+    - else
+      = button_tag(type: "button", class: "show-details btn btn-danger delete-product", "data-toggle": "modal", "data-target": "#detailsModal", "details-id": product.id) do
+        = content_tag(:i, nil, class: "fa fa-trash fa-1x")

@@ -50,6 +50,24 @@ class Admin::AuctionsController < ApplicationAdminController
     end
   end
 
+  def destroy_multiple
+    if Auction.destroy(params[:auctions])
+      respond_to do |format|
+        format.html do
+          redirect_to admin_auctions_url,
+                      flash: { success: 'Xóa thành công !' }
+        end
+      end
+    else
+      respond_to do |format|
+        format.html do
+          redirect_to admin_auctions_url,
+                      flash: { danger: 'Xóa thất bại !' }
+        end
+      end
+    end
+  end
+
   private
 
     def load_auction_id

@@ -18,10 +18,16 @@ div.table-responsive
 script#data-current-auction[type="x-tmpl-mustache"]
   tr
     td
-      = content_tag(:i, nil, class: "fa fa-check fa-2x icon-win")
+      | {{#STATUS}}
+      span.label
+        = content_tag(:i, nil, class: "fa fa-check fa-2x icon-win")
+      | {{/STATUS}} {{#STATUS1}}
+      span.label
+        = content_tag(:i, nil, class: "fa fa-times fa-2x icon-loser")
+      | {{/STATUS1}}
     td
       a[href="/public_pages/{{ID}}" data-turbolinks="false"]
-        | {{NAME}}
+        | {{NAME}}[{{BIXMAX}}]
     td
       | {{PRICE}}
     td

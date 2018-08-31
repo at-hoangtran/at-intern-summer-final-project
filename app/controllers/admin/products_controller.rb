@@ -2,7 +2,7 @@ class Admin::ProductsController < ApplicationAdminController
   include ProductsHelper
   before_action :logged_in_user
   before_action :check_admin
-  before_action :get_product, only: %i[edit update destroy destroy_image]
+  before_action :get_product, only: %i[show edit update destroy destroy_image]
   before_action :get_categorys, only: %i[new create edit update]
 
   def index
@@ -12,6 +12,19 @@ class Admin::ProductsController < ApplicationAdminController
       else
         Product.search_name(params[:term]).paginate(page: params[:page], per_page: 5)
       end
+  end
+
+  def show
+    orders = @product.product_line_items
+
+    respond_to do |format|
+      format.json do
+        render json: orders.as_json(
+          only: %i[id user_name address phone total_price status created_at],
+          include: [{ user: { only: %i[id email] } }]
+        )
+      end
+    end
   end
 
   def new
@@ -40,8 +53,6 @@ class Admin::ProductsController < ApplicationAdminController
   end
 
   def edit; end
-
-  def show; end
 
   def update
     update_more_images(product_params[:images])
@@ -96,6 +107,24 @@ class Admin::ProductsController < ApplicationAdminController
         format.html do
           redirect_to admin_products_url,
                       flash: { danger: t('.delete-error') }
+        end
+      end
+    end
+  end
+
+  def destroy_multiple
+    if Product.destroy(params[:products])
+      respond_to do |format|
+        format.html do
+          redirect_to admin_products_url,
+                      flash: { success: 'Xóa thành công !' }
+        end
+      end
+    else
+      respond_to do |format|
+        format.html do
+          redirect_to admin_products_url,
+                      flash: { danger: 'Xóa thất bại !' }
         end
       end
     end
@@ -156,6 +185,23 @@ class Admin::ProductsController < ApplicationAdminController
     respond_to do |format|
       format.xlsx do
         send_data ExportProduct.export_file @products
+      end
+    end
+  end
+
+  def multiple_check
+    ids = params[:ids].split(',').map(&:to_i)
+
+    line_item = LineItem.where(product_id: ids)
+    order_id  = line_item.pluck(:order_id).uniq
+    orders    = Order.where(id: order_id).where(status: 1)
+
+    respond_to do |format|
+      format.json do
+        render json: orders.as_json(
+          only: %i[id user_name address phone total_price status created_at],
+          include: [{ user: { only: %i[id email] } }]
+        )
       end
     end
   end

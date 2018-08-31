@@ -1,6 +1,6 @@
 require 'helpers_rb/helpers_rb'
 
-class Auction_sk
+class AuctionResponseBid
   def self.bid(data, key)
     timer   = JSON.load($redis.get(key))
     auction = Auction.timer_product(key, timer['product_id'])
@@ -13,15 +13,15 @@ class Auction_sk
           user_id: user_id,
           bid: data['price']
         )
-        Auction_sk.append_bid(key, auction)
-        Auction_sk.set_auction(timer, data, key)
+        AuctionResponseBid.append_bid(key, auction)
+        AuctionResponseBid.set_auction(timer, data, key)
       else
         if auction_dls.user_id == user_id
-          ActionCable.server.broadcast("message_bid_#{key}",
-                                       obj: auction_dls.bid)
+          ActionCable.server.broadcast("message_bid_#{key}_user_#{auction_dls.user_id}", obj: auction_dls.bid)
         else
-          auction_dls = auction.auction_details
-          user = auction_dls.find_by(user_id: user_id)
+          auction_dl = auction.auction_details
+          user = auction_dl.find_by(user_id: user_id)
+          user_name = User.find_by(id: user_id)
           if user.nil?
             auction.auction_details.create!(
               user_id: user_id,
@@ -30,8 +30,10 @@ class Auction_sk
           else
             user.update_attributes(bid: data['price'], created_at: DateTime.now)
           end
-          Auction_sk.append_bid(key, auction)
-          Auction_sk.set_auction(timer, data, key)
+          AuctionResponseBid.loser_bid(auction_dls.user_id,
+                                       user_id, key, auction, data['price'])
+          AuctionResponseBid.append_bid(key, auction)
+          AuctionResponseBid.set_auction(timer, data, key)
         end
       end
     end
@@ -55,5 +57,16 @@ class Auction_sk
       arr << hash_tmp
     end
     ActionCable.server.broadcast("bid_#{key}", obj: arr)
+  end
+
+  def self.loser_bid(*obj)
+    user = User.find_by(id: obj[1])
+    ActionCable.server.broadcast("loser_bid_#{obj[0]}",
+                                 obj: {
+                                   id: obj[2],
+                                   pro_n: obj[3].product.name,
+                                   name: user.name,
+                                   price: obj[4]
+                                 })
   end
 end

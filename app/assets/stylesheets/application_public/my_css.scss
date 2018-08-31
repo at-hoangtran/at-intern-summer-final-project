@@ -184,6 +184,7 @@ li.nopassword {
 .clock-time-show {
   font-size: 3em;
   color: #EA4335;
+  margin-top: 10%;
 }
 
 .price-box {
@@ -828,3 +829,6 @@ span.name {
     color: #16a085;
   }
 } 
+#table-scl tr th {
+  text-align: center;
+}

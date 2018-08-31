@@ -1,7 +1,5 @@
 tr
   td
-    = list.id
-  td
     = list.user.name
   td
     = list.user_name
@@ -16,11 +14,12 @@ tr
   td
     = (out_price list.total_price.to_s) + " đ"
   td
+    = content_tag(:span, "Trả sau", class: "label label-warning") if list.default?
+    = content_tag(:span, "Trả trước", class: "label label-success") if list.online?
+  td
     = content_tag(:span, t(".waiting-confirm"), class: "label label-warning") if list.notdefined?
     = content_tag(:span, t(".delivered"), class: "label label-success") if list.defined?
     = content_tag(:span, t(".cancel"), class: "label label-danger") if list.cancel?
-    = content_tag(:span, "Trả sau", class: "label label-warning") if list.default?
-    = content_tag(:span, "Trả trước", class: "label label-success") if list.online?
   td
     = button_tag(type: "button", class: "show-details btn btn-primary", "data-toggle": "modal", "data-target": "#detailsModal", "details-id": list.id) do
       = content_tag(:i, nil, class: "fa fa-eye")

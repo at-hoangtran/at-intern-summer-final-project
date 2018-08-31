@@ -12,8 +12,6 @@
           thead
             tr
               th
-                | ID
-              th
                 = t(".image")
               th
                 = t(".product-name")
@@ -37,8 +35,6 @@
 
   script#data-template[type="x-tmpl-mustache"]
     tr
-      td
-        | {{ID}}
       td
         img.img-thumbnail.col-md-10[src="{{IMAGE}}"]
       td
