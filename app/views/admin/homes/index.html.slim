@@ -6,11 +6,11 @@
         a[href="#"]
           i.fa.fa-home
       li.active
-        = t ".home"
+        = t(".home")
   .row
     .col-lg-12
       h2.page-header
-        = t ".control-panel"
+        = t(".control-panel")
   .row
     .col-xs-12.col-md-6.col-lg-3
       .panel.panel-blue.panel-widget
@@ -66,33 +66,29 @@
         .panel-body.easypiechart-panel
           h4
             = t(".new-orders")
-          #easypiechart-blue.easypiechart[data-percent="92"]
-            span.percent
-              | 92%
+          #easypiechart-blue.easypiechart[data-percent="100"]
+            span.percent#order-eas
     .col-xs-6.col-md-3
       .panel.panel-default
         .panel-body.easypiechart-panel
           h4
             = t(".new-auctions")
-          #easypiechart-orange.easypiechart[data-percent="65"]
-            span.percent
-              | 65%
+          #easypiechart-orange.easypiechart[data-percent="100"]
+            span.percent#auction-eas
     .col-xs-6.col-md-3
       .panel.panel-default
         .panel-body.easypiechart-panel
           h4
-            = t(".new-users")
-          #easypiechart-teal.easypiechart[data-percent="56"]
-            span.percent
-              | 56%
+            = t(".new-members")
+          #easypiechart-teal.easypiechart[data-percent="100"]
+            span.percent#member-eas
     .col-xs-6.col-md-3
       .panel.panel-default
         .panel-body.easypiechart-panel
           h4
-            = t (".access-times")
-          #easypiechart-red.easypiechart[data-percent="27"]
-            span.percent
-              | 27%
+            | Số người đang online
+          #easypiechart-red.easypiechart[data-percent="100"]
+            span.percent#online-eas
   .row
     .col-md-8
       small
