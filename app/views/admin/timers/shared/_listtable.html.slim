@@ -19,6 +19,6 @@ tr
     = content_tag(:span, t(".unsold"), class: "label label-warning") if list.waiting?
     = content_tag(:span, t(".solding"), class: "label label-info") if list.run?
   td
-    = link_to content_tag(:i, nil, class: "fa fa-edit fa-1x"), edit_admin_timer_path(list.id), class: "btn btn-warning"
+    = link_to content_tag(:i, nil, class: "fa fa-edit fa-1x"), edit_admin_timer_path(list.id), class: "btn btn-warning", 'data-toggle-tooltip': 'tooltip', 'data-placement': 'left', 'title': 'Cập nhật thời gian'
   td
-    = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_timer_path(list.id), class: "btn btn-danger", method: :delete, data: { confirm: t(".are-u-sure") }
+    = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_timer_path(list.id), class: "btn btn-danger", method: :delete, data: { confirm: t(".are-u-sure") }, 'data-toggle-tooltip': 'tooltip', 'data-placement': 'left', 'title': 'Xóa thời gian'

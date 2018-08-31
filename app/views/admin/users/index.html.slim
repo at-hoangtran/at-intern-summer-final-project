@@ -45,7 +45,7 @@
                   = render partial: "admin/users/shared/listtable", collection: @users, as: "list"
             = will_paginate
             br
-            = link_to content_tag(:i, nil, class: "fa fa-plus-square fa-1x"), new_admin_user_url, class: "btn btn-primary"
+            = link_to content_tag(:i, nil, class: "fa fa-plus-square fa-1x"), new_admin_user_url, class: "btn btn-primary", 'data-toggle-tooltip': 'tooltip', 'data-placement': 'right', 'title': 'Thêm thành viên'
             - unless @users.size.zero?
               = button_tag(type: "submit", class: "btn btn-danger delete-all-show delete-all") do
                 - if @users.first.deleted?

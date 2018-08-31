@@ -20,9 +20,9 @@
     td
       = list.activated? ? content_tag(:span, t(".activated"), class: "label label-info") : content_tag(:span, t(".not-activated"), class: "label label-warning")
     td
-      = link_to raw('<i class="fa fa-edit fa-1x"></i>'), edit_admin_user_path(list.id), class: "btn btn-warning"
+      = link_to raw('<i class="fa fa-edit fa-1x"></i>'), edit_admin_user_path(list.id), class: "btn btn-warning", 'data-toggle-tooltip': 'tooltip', 'data-placement': 'left', 'title': 'Khóa tài khoản'
     td
       - if list.deleted?
-        = link_to(content_tag(:i, nil, class: "fa fa-unlock fa-1x"), admin_user_path(list.id), class: "btn btn-danger", method: :delete, data: { confirm: t(".are-u-sure") })
+        = link_to(content_tag(:i, nil, class: "fa fa-unlock fa-1x"), admin_user_path(list.id), class: "btn btn-danger", method: :delete, data: { confirm: t(".are-u-sure") }, 'data-toggle-tooltip': 'tooltip', 'data-placement': 'left', 'title': 'Mở tài khoản')
       - else
-        = link_to(content_tag(:i, nil, class: "fa fa-lock fa-1x"), admin_user_path(list.id), class: "btn btn-danger", method: :delete, data: { confirm: t(".are-u-sure") })
+        = link_to(content_tag(:i, nil, class: "fa fa-lock fa-1x"), admin_user_path(list.id), class: "btn btn-danger", method: :delete, data: { confirm: t(".are-u-sure") }, 'data-toggle-tooltip': 'tooltip', 'data-placement': 'left', 'title': 'Khóa tài khoản')

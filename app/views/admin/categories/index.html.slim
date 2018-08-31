@@ -23,4 +23,4 @@
                   = render partial: "admin/categories/shared/category", collection: @categories, as: "category"
             = will_paginate
             br
-            = link_to content_tag(:i, nil, class: "fa fa-plus-square fa-1x"), new_admin_category_url, class: "btn btn-primary"
+            = link_to content_tag(:i, nil, class: "fa fa-plus-square fa-1x"), new_admin_category_url, class: "btn btn-primary", 'data-toggle-tooltip': 'tooltip', 'data-placement': 'right', 'title': 'Thêm danh mục'

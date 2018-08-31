@@ -23,10 +23,10 @@ tr
     - else
       = content_tag(:span, t(".still-in-stock"), class: "label label-info")
   td
-    = link_to content_tag(:i, nil, class: "fa fa-edit fa-1x"), edit_admin_product_path(product.id), class: "btn btn-warning"
+    = link_to content_tag(:i, nil, class: "fa fa-edit fa-1x"), edit_admin_product_path(product.id), class: "btn btn-warning", 'data-toggle-tooltip': 'tooltip', 'data-placement': 'left', 'title': 'Chỉnh sửa sản phẩm'
   td
     - if product.product_line_items.size.zero?
-      = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_product_path(product.id), class: "btn btn-danger", method: :delete, data: { confirm: t(".are-u-sure") }
+      = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_product_path(product.id), class: "btn btn-danger", method: :delete, data: { confirm: t(".are-u-sure") }, 'data-toggle-tooltip': 'tooltip', 'data-placement': 'left', 'title': 'Xóa sản phẩm'
     - else
-      = button_tag(type: "button", class: "show-details btn btn-danger delete-product", "data-toggle": "modal", "data-target": "#detailsModal", "details-id": product.id) do
+      = button_tag(type: "button", class: "show-details btn btn-danger delete-product", "data-toggle": "modal", "data-target": "#detailsModal", "details-id": product.id, 'data-toggle-tooltip': 'tooltip', 'data-placement': 'left', 'title': 'Xóa sản phẩm') do
         = content_tag(:i, nil, class: "fa fa-trash fa-1x")

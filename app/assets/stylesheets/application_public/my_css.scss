@@ -741,11 +741,11 @@ span.name {
   }
 }
 .info_billing {
-  margin-left: 50px; 
+  margin-left: 50px;
   height: 75px;
   border: 1px solid #eee;
-  margin-bottom: 10px; 
-  
+  margin-bottom: 10px;
+
   input[type= "radio"] {
     margin: 20px 30px 0px 20px;
     height: 15px;
@@ -828,7 +828,17 @@ span.name {
     font-weight: bold;
     color: #16a085;
   }
-} 
+}
+
 #table-scl tr th {
   text-align: center;
+}
+
+.color-link {
+  text-decoration: none!important;
+  color: #333333!important;
+}
+
+.color-link:hover {
+  opacity: 0.8;
 }

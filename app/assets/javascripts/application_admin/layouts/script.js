@@ -96,6 +96,8 @@ $(document).ready(function() {
       $('.delete-all-show').show();
     }
   });
+
+  $('[data-toggle-tooltip="tooltip"]').tooltip();
 });
 
 

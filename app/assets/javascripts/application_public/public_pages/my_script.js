@@ -124,4 +124,6 @@ $(document).ready(function() {
     $(".progress_first a").css("color", "#16a085");
     $(this).hide();
   });
+
+  $('[data-toggle-tooltip="tooltip"]').tooltip();
 });

@@ -43,9 +43,9 @@
                   = render partial: "admin/products/shared/listtable", collection: @products, as: "product"
             = will_paginate
             br
-            = link_to content_tag(:i, nil, class: "fa fa-plus-square fa-1x"), new_admin_product_url, class: "btn btn-primary"
-            = link_to content_tag(:span, nil, class: "glyphicon glyphicon-open-file"), admin_product_import_path, class: "import-file btn btn-primary pull-right"
-            = link_to content_tag(:span, nil, class: "glyphicon glyphicon-save-file"), admin_product_export_file_path(format: :xlsx), class: "btn btn-primary pull-right"
+            = link_to content_tag(:i, nil, class: "fa fa-plus-square fa-1x"), new_admin_product_url, class: "btn btn-primary", 'data-toggle-tooltip': 'tooltip', 'data-placement': 'right', 'title': 'Thêm sản phẩm'
+            = link_to content_tag(:span, nil, class: "glyphicon glyphicon-open-file"), admin_product_import_path, class: "import-file btn btn-primary pull-right", 'data-toggle-tooltip': 'tooltip', 'data-placement': 'left', 'title': 'Import tệp'
+            = link_to content_tag(:span, nil, class: "glyphicon glyphicon-save-file"), admin_product_export_file_path(format: :xlsx), class: "btn btn-primary pull-right", 'data-toggle-tooltip': 'tooltip', 'data-placement': 'left', 'title': 'Xuất tệp'
             - unless @products.size.zero?
               = button_tag(type: "button", class: "btn btn-danger delete-all-show delete-all", "data-toggle": "modal", "data-target": "#detailsModalMutil") do
                 = content_tag(:i, nil, class: "fa fa-trash fa-1x")
