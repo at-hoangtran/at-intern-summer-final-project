@@ -5,26 +5,34 @@ class SessionsController < ApplicationController
   def new; end
 
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
+    user = User.with_deleted.find_by(email: params[:session][:email].downcase)
     if user&.authenticate(params[:session][:password])
       if user.activated?
-        log_in user
-        params[:session][:remember_me] == Settings.remember_me ? remember(user) : forget(user)
+        if user.deleted?
+          flash[:warning] = 'Tài khoản bạn đã bị khóa'
+        else
+          log_in user
+          params[:session][:remember_me] == Settings.remember_me ? remember(user) : forget(user)
+        end
       else
-        message  = 'Account not activated. '
-        message += 'Check your email for the activation link.'
+        message  = 'Tài khoản chưa kích hoạt. '
+        message += 'kiểm tra email để thấy đường dẫn kích hoạt.'
         flash[:warning] = message
       end
     else
-      flash[:danger] = 'Invalid email/password combination'
+      flash[:danger] = 'Email hoặc mật khẩu sai!'
     end
     redirect_to root_path
   end
 
   def login_google
-    @user = User.find_or_create_from_auth_hash(request.env['omniauth.auth'])
-    log_in @user
-    session[:user_id] = @user.id
+    @user = User.with_deleted.find_or_create_from_auth_hash(request.env['omniauth.auth'])
+    if @user.deleted?
+      flash[:warning] = 'Tài khoản bạn đã bị khóa'
+    else
+      log_in @user
+      session[:user_id] = @user.id
+    end
     redirect_to root_path
   end
 
