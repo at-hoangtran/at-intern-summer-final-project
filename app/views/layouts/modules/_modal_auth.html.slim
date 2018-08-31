@@ -25,6 +25,5 @@
           button.btn.btn-primary.pull-left[type="button"]
             i.fa.fa-facebook.pr-1
             |  Facebook
-          button.btn.btn-danger.pull-right[type="button"]
-            i.fa.fa-google-plus.pr-1
-            |  Google +
+          = link_to content_tag(:i, " Google +", class: "fa fa-google-plus pr-1"), google_path, class: "btn btn-danger pull-right"
+

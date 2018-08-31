@@ -1,0 +1,34 @@
+div.table-responsive
+  table#table-scl.table.table-striped.table-auction
+    thead
+      tr
+        th
+          | Trạng thái
+        th
+          | Sản phẩm đấu giá
+        th
+          | Giá thầu tối đa của bạn
+        th
+          | Giá thầu cao nhất
+        th
+          | Giá thầu
+        th
+          | Hoàn thành
+    tbody.table-auction.load-loser-auction
+
+script#data-loser-auction[type="x-tmpl-mustache"]
+  tr
+    td
+      = content_tag(:i, nil, class: "fa fa-times fa-2x icon-loser")
+    td
+      a[href="/public_pages/{{ID}}" data-turbolinks="false"]
+        | {{NAME}}
+    td
+      | {{MINPRICE}}
+    td
+      | {{MAXPRICE}}
+    td
+      | 1
+    td
+      | {{DATETIME}}
+
