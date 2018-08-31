@@ -60,7 +60,7 @@ class Admin::OrdersController < ApplicationAdminController
 
     def search_name
       if params[:search][:name].present?
-        @orders = Order.joins(:user).search_name params[:search][:name]
+        @orders = @orders.joins(:user).search_name params[:search][:name]
       end
     end
 

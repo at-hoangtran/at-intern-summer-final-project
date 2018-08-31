@@ -13,7 +13,12 @@
   .row
     .col-lg-12
       .panel-heading
-        = t(".products")
+        .col-lg-3
+          = t(".products")
+        = form_for :search, url: admin_products_path, method: :get do |f|
+          = render partial: "admin/products/shared/search", locals: {f: f }
+      br
+      br
       .panel.panel-default
         .panel-body
           = form_tag destroy_multiple_admin_products_path, method: :delete do
