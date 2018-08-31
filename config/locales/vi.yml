@@ -156,7 +156,7 @@ vi:
         delete-success: 'Xóa ảnh thành công'
         delete-error-all: 'Bạn không thể xóa tất cả ảnh'
         delete-error: 'Xóa ảnh thất bại'
-      import-file:
+      import_file:
         import-success: 'Import file thành công'
       edit:
         title: 'Trang quản trị - Cập nhật sản phẩm'

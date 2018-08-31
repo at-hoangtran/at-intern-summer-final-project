@@ -21,4 +21,4 @@ tr
   td
     = link_to content_tag(:i, nil, class: "fa fa-edit fa-1x"), edit_admin_timer_path(list.id), class: "btn btn-warning"
   td
-    = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_timer_path(list.id), class: "btn btn-danger", method: :delete, data: { confirm: t(".are-u-sure") }, remote: true
+    = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_timer_path(list.id), class: "btn btn-danger", method: :delete, data: { confirm: t(".are-u-sure") }

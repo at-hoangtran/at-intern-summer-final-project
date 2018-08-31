@@ -24,4 +24,4 @@
       - else
         = content_tag(:span, "Vẩn Còn Hàng", class: "label label-info")
     td
-      = link_to content_tag(:i, nil, class: "fa fa-upload fa-1x"), admin_history_product_path(product.id), class: "btn btn-info", method: :delete, data: { confirm: "Bạn có chắc không?" }, remote: true
+      = link_to content_tag(:i, nil, class: "fa fa-upload fa-1x"), admin_history_product_path(product.id), class: "btn btn-info", method: :delete, data: { confirm: "Bạn có chắc không?" }

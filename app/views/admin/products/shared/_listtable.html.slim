@@ -26,7 +26,7 @@ tr
     = link_to content_tag(:i, nil, class: "fa fa-edit fa-1x"), edit_admin_product_path(product.id), class: "btn btn-warning"
   td
     - if product.product_line_items.size.zero?
-      = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_product_path(product.id), class: "btn btn-danger", method: :delete, data: { confirm: t(".are-u-sure") }, remote: true
+      = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_product_path(product.id), class: "btn btn-danger", method: :delete, data: { confirm: t(".are-u-sure") }
     - else
       = button_tag(type: "button", class: "show-details btn btn-danger delete-product", "data-toggle": "modal", "data-target": "#detailsModal", "details-id": product.id) do
         = content_tag(:i, nil, class: "fa fa-trash fa-1x")

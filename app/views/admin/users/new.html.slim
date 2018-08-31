@@ -20,5 +20,5 @@
       .panel.panel-default
         .panel-body
           .col-lg-5
-            = form_for @user, url:  admin_users_path, html: { id: "frmAddUser", class: "form-horizontal" }, remote: true do |f|
+            = form_for @user, url:  admin_users_path, html: { id: "frmAddUser", class: "form-horizontal" } do |f|
               = render partial: "admin/users/shared/form", locals: {f: f}
