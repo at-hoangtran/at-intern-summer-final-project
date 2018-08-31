@@ -1,6 +1,9 @@
 tr
   td
-    = image_tag(line_item.product.images.first.url, class: "img-thumbnail img-cart")
+    - if line_item.product.images.first
+      = image_tag(line_item.product.images.first.url, class: "img-thumbnail", width: 100)
+    - else
+      = image_tag("no-product-image.jpg", alt: "No Image Product", width: 100)
   td
     = line_item.product.name
   td

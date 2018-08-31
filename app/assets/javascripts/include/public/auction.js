@@ -14,10 +14,18 @@ var auction = {
     $('.clock-time-show').html(period);
     $('.price-crt').html(price);
     $('.title-product').html(category_name);
-    images.forEach(function(item, index) {
-      $('.item img:eq('+ index +')').attr('src', item.url);
-      $('.carousel-indicators li img:eq('+ index +')').attr('src', item.url);
-    });
+
+    if (images.length > 0) {
+      images.forEach(function(item, index) {
+        $('.item img:eq('+ index +')').attr('src', item.url);
+        $('.carousel-indicators li img:eq('+ index +')').attr('src', item.url);
+      });
+    } else {
+      var image_default = '/assets/no-product-image-c2f6e0867a2bfea159b171fd3e6d6c1ea49aa8362682254f2a945ad0fcee188c.jpg';
+      $('.item img:eq(0)').attr('src', image_default);
+      $('.carousel-indicators li img:eq(0)').attr('src', image_default);
+    }
+
     $('.description').html(description);
     $('.description').html(description);
     $('.btn-price-timer').attr("load-id", data['id']);

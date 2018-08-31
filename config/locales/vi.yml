@@ -69,11 +69,11 @@ vi:
         date: 'Ngày đặt'
         money: 'Thành tiền'
 
-        
+
 
   admin:
     homes:
-      index: 
+      index:
         home: 'Trang chủ'
         control-panel: 'Bảng điều khiển'
         orders: 'Đơn hàng'
@@ -219,7 +219,7 @@ vi:
           cancel: 'Hủy'
           search: 'Tìm kiếm'
           select: 'Chọn'
-    
+
     users:
       index:
         title: 'Trang quản trị - Quản lí người dùng'
@@ -369,19 +369,19 @@ vi:
           close: 'Đóng'
           winer: 'Người thắng'
           loser: 'Người thua'
-        search: 
+        search:
           product: 'Sản phẩm'
           add-product: 'Nhập tên sản phẩm...'
           select: 'Chọn'
           auctioning: 'Đang đấu giá'
           finished: 'Đã kết thúc'
           search: 'Tìm kiếm'
-  
+
   layouts:
     modules:
       chat_room:
-        chat_all: 'Chat all' 
-        chat_admin: 'Chat admin'
+        chat_all: 'Kênh chat thế giới'
+        chat-admin: 'Kênh chat với quản trị'
         send: 'Gửi'
       header:
         cart: 'Giỏ hàng'
