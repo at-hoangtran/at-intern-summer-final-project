@@ -1,0 +1,48 @@
+- provide :title, "Trang quản trị - Danh sách sản phẩm củ"
+- provide :search_text, admin_history_products_path
+= javascript_include_tag "include/admin/confirm_delete_mutil"
+.col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
+  .row
+    ol.breadcrumb
+      li
+        a[href="#"]
+          i.fa.fa-home
+      li.active
+        | Danh Sách Sản Phẩm củ
+  .row
+    .col-lg-12
+      .panel-heading
+        |  Danh Sách Sản Phẩm củ
+      .panel.panel-default
+        .panel-body
+          = form_tag restore_multiple_admin_history_products_path, method: :patch do
+            .table-responsive.checkbox-style
+              table.table.table-hover
+                thead
+                  tr
+                    th
+                      .form-check
+                        label
+                          = check_box_tag "select_all"
+                          = content_tag(:span, nil, class: "label-text")
+                    th
+                      | Tên Sản Phẩm
+                    th
+                      | Giá
+                    th
+                      | Số Lượng
+                    th
+                      | Ảnh Sản Phẩm
+                    th
+                      | Danh Mục
+                    th
+                      | Trạng thái kho
+                    th
+                      | Action
+                tbody
+                  = render partial: "admin/history_products/shared/listtable", collection: @history_products, as: "product"
+            = will_paginate
+            br
+            - unless @history_products.size.zero?
+              = button_tag(type: "submit", class: "btn btn-info delete-all-show confirm_delete", 'data-toggle-tooltip': 'tooltip', 'data-placement': 'right', 'title': 'Khôi phục sản phẩm') do
+                = content_tag(:i, nil, class: "fa fa-upload fa-1x")
