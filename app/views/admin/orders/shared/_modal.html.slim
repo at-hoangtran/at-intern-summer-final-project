@@ -1,0 +1,51 @@
+#detailsModal.modal.fade.bs-example-modal-lg[tabindex="-1" role="dialog" aria-labelledby="myModalLabel"]
+  .modal-dialog.modal-lg[role="document"]
+    .modal-content
+      .modal-header
+        button.close[type="button" data-dismiss="modal" aria-label="Close"]
+          span[aria-hidden="true"]
+            | ×
+        h4#myModalLabel.modal-title
+          = t(".order-detail")
+      .modal-body
+        table#table-scl.table.table-hover
+          thead
+            tr
+              th
+                = t(".image")
+              th
+                = t(".product-name")
+              th
+                = t(".price")
+              th
+                = t(".status")
+          tbody#viewLoad
+        .row
+          .col-md-12
+            .col-md-6.pull-right
+              span.label.label-danger.pull-right
+                strong#totalPri
+      .modal-footer
+        button.btn.btn-default[type="button" data-dismiss="modal"]
+          = t(".close")
+        = button_tag(type: "button", class: "btn btn-primary", id: "btn-xn") do
+          = t(".confirm")
+        = button_tag(type: "button", class: "btn btn-danger", id: "btn-h") do
+          = t(".cancel")
+
+  script#data-template[type="x-tmpl-mustache"]
+    tr
+      td
+        img.img-thumbnail.col-md-10[src="{{IMAGE}}"]
+      td
+        | {{NAME}}
+      td
+        | {{PRICE}}
+      td
+        | {{#STATUS}}
+        span.label.label-warning
+          = t(".out-of-stock")
+        | {{/STATUS}} {{#STATUS1}}
+        span.label.label-info
+          = t(".still-in-stock")
+        | {{/STATUS1}}

@@ -1,0 +1,32 @@
+tr
+  td
+    .form-check
+      label
+        = check_box_tag "products[]", product.id, false, class: "checkbox"
+        = content_tag(:span, nil, class: "label-text")
+  td
+    = product.name
+  td
+    = (out_price product.price.to_s) + " đ"
+  td
+    = product.quantity.to_s + " cái"
+  td
+    - if product.images.first
+      = image_tag(product.images.first.url, class: "img-thumbnail", width: 100)
+    - else
+      = image_tag("no-product-image.png", alt: "No Image Product", width: 100)
+  td
+    = product.category.name
+  td
+    - if product.quantity < 1
+      = content_tag(:span, t(".out-of-stock"), class: "label label-warning")
+    - else
+      = content_tag(:span, t(".still-in-stock"), class: "label label-info")
+  td
+    = link_to content_tag(:i, nil, class: "fa fa-edit fa-1x"), edit_admin_product_path(product.id), class: "btn btn-warning", 'data-toggle-tooltip': 'tooltip', 'data-placement': 'left', 'title': 'Chỉnh sửa sản phẩm'
+  td
+    - if product.product_line_items.size.zero?
+      = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_product_path(product.id), class: "btn btn-danger", method: :delete, data: { confirm: t(".are-u-sure") }, 'data-toggle-tooltip': 'tooltip', 'data-placement': 'left', 'title': 'Xóa sản phẩm'
+    - else
+      = button_tag(type: "button", class: "show-details btn btn-danger delete-product", "data-toggle": "modal", "data-target": "#detailsModal", "details-id": product.id, 'data-toggle-tooltip': 'tooltip', 'data-placement': 'left', 'title': 'Xóa sản phẩm') do
+        = content_tag(:i, nil, class: "fa fa-trash fa-1x")

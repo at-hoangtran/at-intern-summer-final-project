@@ -1,0 +1,10 @@
+.col-xs-12.col-md-6.col-lg-4.box-messages[data-toggle="modal" data-target="#ChatModal" user-id="#{id}"]
+  .panel.panel-blue.panel-widget
+    .row.no-padding
+      .col-sm-3.col-lg-5.widget-left
+        i.fa.fa-comments.fa-4x
+      .col-sm-9.col-lg-7.widget-right.user-message-right
+        .large
+          | #{ChatRoomAdmin.where(user_id: id).by_not_view_admin.size}
+        .text-muted
+          | #{ChatRoomAdmin.where(user_id: id).first.user.name}
