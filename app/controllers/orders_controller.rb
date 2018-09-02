@@ -9,7 +9,6 @@ class OrdersController < ApplicationController
   def index; end
 
   def edit
-    # byebug
     @info = User.find(current_user.id).orders.not_cart.pluck(:user_name, :address, :phone).uniq
   end
 
