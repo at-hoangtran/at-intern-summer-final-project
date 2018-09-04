@@ -1,0 +1,16 @@
+li
+  .col-md-3.col-sm-3.col-xs-3
+    .notify-img
+      td
+        - if list.user.avatar.thumb.url
+          = image_tag(list.user.avatar.thumb.url, class: "size-avatar")
+        - else
+          = image_tag("no-avatar.png", class: "size-avatar")
+  .col-md-9.col-sm-9.col-xs-9.pd-l0
+    span.name-user-ms
+      | #{list.user.name}
+    p.message-notify
+      | #{list.message}
+    p.time
+      | #{format_day_time(list.created_at)}
+    hr.notify

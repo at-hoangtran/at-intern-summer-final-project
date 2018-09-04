@@ -1,0 +1,38 @@
+.control-group
+  = f.label :role, t(".role"), { class: "control-label", for: "role" }
+  = f.select :role,
+  - options_for_select([[t(".member"), :member], [t(".admin"), :admin]],
+    :selected => (f.object.admin? == true ? :admin : :member)), {}, { :id => "role", :class => "form-control" }
+.control-group
+  = f.label :name, t(".full-name"), { class: "control-label", for: "name" }
+  = f.text_field :name, { id: "name", class: "form-control", placeholder: t(".add-full-name") }
+.control-group
+  = f.label :email, t(".email"), { class: "control-label", for: "email" }
+  - if f.object.id?
+    = f.email_field :email, { id: "email", class: "form-control", placeholder: t(".add-email"), disabled: true }
+  - else
+    = f.email_field :email, { id: "email", class: "form-control", placeholder: t(".add-email") }
+.control-group
+  = f.label :password, t(".password"), { class: "control-label", for: "password" }
+  = f.password_field :password, { id: "password", class: "form-control", placeholder: t(".add-password") }
+.control-group
+  = f.label :password_confirmation, t(".password-confirm"), { class: "control-label", for: "password_confirmation" }
+  = f.password_field :password_confirmation, { id: "password_confirmation", class: "form-control", placeholder: t(".password-confirm") }
+.control-group
+  = f.label :address, t(".address"), { class: "control-label", for: "advanced-placepicker" }
+  = f.text_field :address, { id: "advanced-placepicker", class: "form-control", 'data-map-container-id': "collapseTwo", placeholder: t(".add-address") }
+#collapseTwo.collapse
+  .another-map-class.thumbnail
+.control-group
+  = f.label :phone, t(".phone"), { class: "control-label", for: "phone" }
+  = f.text_field :phone, { id: "phone", class: "form-control", placeholder: t(".add-phone") }
+.control-group
+  = f.label :avatar, t(".avatar"), { class: "control-label", for: "avatar" }
+  br
+  - if f.object.avatar?
+    = image_tag(f.object.avatar_url(:thumb), :id => "img", :class => "img-thumbnail", width: 150)
+  - else
+    = image_tag("", :class => "img img-add img-thumbnail")
+  = f.file_field :avatar, accept: "image/jpeg,image/gif,image/png",  :id => "avatar", :class => "form-control"
+br
+= f.submit yield(:button_text), class: "btn btn-primary"

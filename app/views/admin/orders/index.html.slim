@@ -1,0 +1,49 @@
+- provide :title, t(".title")
+= javascript_include_tag "include/admin/line_item"
+.col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
+  .row
+    ol.breadcrumb
+      li
+        = link_to content_tag(:i, " " + t(".home"), class: "fa fa-home"), admin_root_path
+      li.active
+        = t(".orders")
+  .row
+    .col-lg-12
+      .panel-heading
+        .col-lg-3
+          = t(".orders")
+        = form_for :search, url: admin_orders_path, method: :get do |f|
+          = render partial: "admin/orders/shared/search", locals: {f: f}
+      br
+      br
+      .panel.panel-default
+        .panel-body
+          .table-responsive
+            table.table.table-hover
+              thead
+                tr
+                  th
+                    = t(".user-name")
+                  th
+                    = t(".receiver")
+                  th
+                    = t(".address")
+                  th
+                    = t(".phone")
+                  th
+                    = t(".email")
+                  th
+                    = t(".date")
+                  th
+                    = t(".total-money")
+                  th
+                    | Loại thanh toán
+                  th
+                    = t(".status")
+                  th
+                    | Action
+              tbody
+                = render partial: "admin/orders/shared/listtable", collection: @orders, as: "list"
+            = render "admin/orders/shared/modal"
+          = will_paginate
+= javascript_include_tag "include/lib/simple.money.format"

@@ -1,0 +1,38 @@
+div.table-responsive
+  table#table-scl.table.table-striped.table-auction
+    thead
+      tr
+        th
+          = t(".status")
+        th
+          = t(".user-name")
+        th
+          = t(".address")
+        th
+          = t(".phone")
+        th
+          = t(".email")
+        th
+          = t(".date")
+        th
+          = t(".money")
+    tbody.table-auction.load-cancel-order
+
+
+script#data-cancel-order[type="x-tmpl-mustache"]
+  tr
+    td
+      = content_tag(:i, nil, class: "fa fa-times fa-2x icon-loser")
+    td
+      | {{KNAME}}
+    td
+      | {{ADDRESS}}
+    td
+      | {{PHONENUMBER}}
+    td
+      | {{EMAIL}}
+    td
+      | {{DATETIME}}
+    td
+      | {{PRICE}}
+

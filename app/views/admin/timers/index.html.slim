@@ -1,0 +1,53 @@
+- provide :title, t(".title")
+= javascript_include_tag "include/admin/confirm_delete_mutil"
+.col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
+  .row
+    ol.breadcrumb
+      li
+        = link_to content_tag(:i, " " + t(".home"), class: "fa fa-home"), admin_root_path
+      li.active
+        = t(".timers")
+  .row
+    .col-lg-12
+      .panel-heading
+        .col-lg-3
+          = t(".timers")
+        = form_for :search, url: admin_timers_path, method: :get do |f|
+          = render partial: "admin/timers/shared/search", locals: {f: f}
+      br
+      br
+      .panel.panel-default
+        .panel-body
+          = form_tag destroy_multiple_admin_timers_path, method: :delete do
+            .table-responsive.checkbox-style
+              table.table.table-hover
+                thead
+                  tr
+                    th
+                      .form-check
+                        label
+                          = check_box_tag "select_all"
+                          = content_tag(:span, nil, class: "label-text")
+                    th
+                      = t(".start-time")
+                    th
+                      = t(".end-time")
+                    th
+                      = t(".countdown-time")
+                    th
+                      = t(".step-up-money")
+                    th
+                      = t(".product-name")
+                    th
+                      = t(".status")
+                    th
+                      | Action
+                tbody
+                  = render partial: "admin/timers/shared/listtable", collection: @timers, as: "list"
+            = will_paginate
+            br
+            = link_to content_tag(:i, nil, class: "fa fa-plus-square fa-1x"), new_admin_timer_url, class: "btn btn-primary", 'data-toggle-tooltip': 'tooltip', 'data-placement': 'right', 'title': 'Thêm thời gian'
+            - unless @timers.size.zero?
+              = button_tag(type: "button", class: "btn btn-danger delete-all-show confirm_delete delete-all", 'data-toggle-tooltip': 'tooltip', 'data-placement': 'right', 'title': 'Xóa thời gian') do
+                = content_tag(:i, nil, class: "fa fa-trash fa-1x")
+            = link_to content_tag(:span, nil, class: "glyphicon glyphicon-retweet"), admin_timer_destroy_cache_path, class: "btn btn-danger pull-right", method: :delete, data: { confirm: "Hãy cân nhắc khi xóa cache !" }, 'data-toggle-tooltip': 'tooltip', 'data-placement': 'left', 'title': 'Xóa cache'

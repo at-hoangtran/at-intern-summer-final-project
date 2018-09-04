@@ -1,0 +1,9 @@
+.col-lg-9
+  .col-lg-2.pull-right
+    = f.submit "Tìm kiếm", class: "btn btn-primary"
+  .col-lg-3.pull-right
+    = f.select :status_active, options_for_select([["Chọn", nil], ["Chưa kích hoạt", :notactive], ["Đã kích hoạt", :active]], selected: set_status_active), {}, { id: "status_active", class: "form-control" }
+  .col-lg-3.pull-right
+    = f.select :status_lock, options_for_select([["Hoạt động", :unlock], ["Bị khóa", :lock]], selected: set_status_lock), {}, { id: "status_lock", class: "form-control" }
+  .col-lg-3.pull-right
+    = f.text_field :name, { id: "name", class: "form-control", placeholder: "Nhập tên tài khoản", value: set_name }
