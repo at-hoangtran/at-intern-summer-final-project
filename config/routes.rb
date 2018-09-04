@@ -107,7 +107,7 @@ Rails.application.routes.draw do
       get 'product/import', to: 'products#import'
       post 'product/import_file', to: 'products#import_file'
       get 'product/export_file', to: 'products#export_file'
-      delete 'delete_image/:id/:index/:size', to: 'products#destroy_image'
+      delete 'product/delete_image/:id/:index/:size', to: 'products#destroy_image', as: :delete_image_product
       get 'product/count_images/:id', to: 'products#count_image'
       delete 'timer/destroy_cache', to: 'timers#destroy_cache'
     end
