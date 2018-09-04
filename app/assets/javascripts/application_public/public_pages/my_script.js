@@ -1,5 +1,5 @@
 function openNav() {
-  document.getElementById("mySidenav").style.width = "55%";
+  document.getElementById("mySidenav").style.width = "45%";
 }
 
 function closeNav() {
@@ -73,6 +73,7 @@ $(document).ready(function() {
     $(".bank-payment").hide();
     $(".pay-onl-info").hide();
     $(".next-order-3").show();
+    
   });
 
   $(".payment-onl").on('click', function() {
@@ -80,7 +81,7 @@ $(document).ready(function() {
     $(".cbb_offline").prop("checked", false);
     $(".pay-info").hide();
     $(".bank-payment").show();
-    $(".next-order-3").hide();
+    // $(".next-order-3").hide();
   });
 
   $(".info_billing").on('click', function(){
@@ -116,18 +117,21 @@ $(document).ready(function() {
   $('.payment_progress_bar li').not('.active').find('a').removeAttr("data-toggle");
 
   $(".next-order-1").on('click', function(){
-    activaTab('type_payment');
+    
+    validateOrder();
   });
 
   $(".next-order-3").on('click', function(){
     $("#order_user_name").val($("#user_name").val());
-    $("#order_address").val($("#address").val());
+    $("#order_address").val($("#advanced-placepicker").val());
     $("#order_phone").val($("#phone").val());
-    activaTab('summary_order');
+    
     $(".sum_name_o").html($("#user_name").val());
-    $(".sum_address_o").html($("#address").val());
+    $(".sum_address_o").html($("#advanced-placepicker").val());
     $(".sum_phone_o").html($("#phone").val());
     $('.payment_progress_bar li.active').next('li').find('a').attr("data-toggle","tab");
+    validateCheckbox();
+    checkPayment();
   });
 
   $('[data-toggle-tooltip="tooltip"]').tooltip();
@@ -137,4 +141,53 @@ $(document).ready(function() {
 function activaTab(tab){
   $('.nav-tabs a[href="#' + tab + '"]').tab('show');
 };
+
+function checkPayment() {
+  if ($(".cbb_offline").is(':checked')){
+    $("#order_type_payment").val($(".cbb_offline").val());
+    $(".type_payment_o").html("Nhận hàng thanh toán")
+  }
+  else{
+    $("#order_type_payment").val($(".cbb_online").val());
+    $(".type_payment_o").html("ATM/Chuyển khoản")
+  }
+}
+
+function validateOrder() {
+  var phoneno = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g;
+  if ($(".info_billing input[type=radio]:checked").length == 0) {
+    alert("Vui lòng chọn địa chỉ !");
+  }
+  else if ($("#user_name").val() == "") {
+    alert("Vui lòng nhập tên người nhận!");
+  }
+  else if ($("#advanced-placepicker").val() == ""){
+    alert("Vui lòng nhập địa chỉ!");
+  }
+  else if ($("#phone").val() == "") {
+    alert("Vui lòng nhập số điện thoại!");
+  }
+  else if (!$("#phone").val().match(phoneno)) {
+    alert("Vui lòng nhập đúng số điện thoại");
+  }
+  else {
+    activaTab('type_payment');
+  };
+}
+
+function validateCheckbox() {
+  if ($(".form-check input[type = checkbox]:checked").length == 0) {
+    alert("Vui lòng chọn hình thức thanh toán !");
+  }
+  else {
+    activaTab('summary_order');
+  }
+}
+
+function validateRadio() {
+  if ($(".info_billing input[type=radio]:checked").length == 0) {
+    alert("Vui lòng chọn địa chỉ !");
+
+  }
+}
 

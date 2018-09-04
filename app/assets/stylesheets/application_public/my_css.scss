@@ -893,7 +893,7 @@ span.name {
 }
 
 .form_order_hidden {
-  /*display: none;*/
+  display: none;
 }
 
 #formOrder {
@@ -921,5 +921,24 @@ span.name {
   .active a {
     background-color: #16a085 !important;
     color: white !important;
+  }
+}
+.box-input-search {
+  float: right;
+}
+
+@media only screen and (max-width: 767px) {
+  .box-input-search {
+    float: none;
+    width: 100%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+}
+
+@media only screen and (max-width: 399px) {
+  .box-input-search {
+    margin-top: 5%;
+    margin-bottom: 5%;
   }
 }

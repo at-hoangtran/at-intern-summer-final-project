@@ -34,7 +34,7 @@ nav#main-Nav.navbar.navbar-top.banner-menu[role="navigation"]
                 li
                   = link_to t(".orders"), history_orders_path
                 li
-                  = link_to content_tag(:i," " + t(".logout"), class: "fa fa-btn fa-sign-out"), logout_path, method: :delete
+                  = link_to t(".logout"), logout_path, method: :delete
                 li.divider
                 li
                   = link_to content_tag(:span, nil,class: "flag-icon flag-icon-vn") + content_tag(:span, " Việt nam"), locale:"vi"
@@ -50,20 +50,32 @@ nav#main-Nav.navbar.navbar-top.category-menu[role="navigation"]
         ul.nav.navbar-nav
           = render partial: "layouts/modules/category", collection: @categories, as: "category"
         - if @search
-          .pull-right
+          .box-input-search
             input.form-control[type="text" class="input-search" placeholder="#{t(".search")}" aria-label="Search"]
 
 #mySidenav.sidenav
   a.closebtn[href="javascript:void(0)" onclick="closeNav()"]
     | ×
     = t(".close")
-  a[href="#"]
-    = t(".phone")
-  a[href="#"]
-    = t(".laptop")
-  a[href="#"]
-    = t(".pc")
-  a[href="#"]
-    span.glyphicon.glyphicon-shopping-cart
-      span.badge
-    = t(".cart")
+  br
+  br
+  - if logged_in?
+    a[href="#"]
+      = t(".welcome") + " " + "#{current_user.name}"
+  br
+  hr
+  - if size_cart.nil?
+      = link_to content_tag(:i, " (0) ", id: "count-order", class: "fa fa-cart-plus") + " " + t(".cart"), "/orders"
+  - else
+    = link_to content_tag(:i, " (#{size_cart}) ", id: "count-order", class: "fa fa-cart-plus") + " " + t(".cart"), "/orders"
+  = link_to content_tag(:i, nil, class: "fa fa-gavel") + " " + t(".my-auctions"), auctions_path
+  = link_to content_tag(:i, nil, class: "fa fa-list-alt") + " " + t(".orders"), history_orders_path
+  hr
+  - if logged_in?
+    - if admin?
+      = link_to content_tag(:i, nil, class: "fa fa-male") + " " + t(".admin-page"), admin_root_path
+    = link_to content_tag(:i, nil, class: "fa fa-address-book-o") + " " + t(".profile"), edit_user_path(current_user)
+    = link_to content_tag(:i," " + t(".logout"), class: "fa fa-btn fa-sign-out"), logout_path, method: :delete
+    hr
+    = link_to content_tag(:span, nil,class: "flag-icon flag-icon-vn") + content_tag(:span, " Việt nam"), locale:"vi"
+    = link_to content_tag(:span, nil,class: "flag-icon flag-icon-us") + content_tag(:span, " English"), locale:"en"

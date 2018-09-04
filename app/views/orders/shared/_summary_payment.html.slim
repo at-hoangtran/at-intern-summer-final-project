@@ -29,6 +29,10 @@
     .sum_type_payment
       h4
         | Hình thức thanh toán
+      .sum_info_item
+        label
+          | Kiểu thanh toán
+        span.type_payment_o
 
     = button_tag(type: "submit", class: "btn btn-warning btn-lg btn-pay") do
       = content_tag(:i, "Đặt hàng", class: "fa fa-shopping-cart")
