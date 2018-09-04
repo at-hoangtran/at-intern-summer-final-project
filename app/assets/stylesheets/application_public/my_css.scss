@@ -520,6 +520,29 @@ div.button-chat {
   border-radius: 10px 0 0 10px;
 }
 
+div.border-cm-nt {
+  position: relative;
+}
+
+span.notify-admin {
+  position: absolute;
+  top: -3px;
+  right: -2px;
+  width: 18px;
+  height: 18px;
+  background-color: #ff0000;
+  border: 2px solid #ff0000;
+  border-radius: 25px;
+  text-align: center;
+  vertical-align: top;
+}
+
+span.notify-admin-text {
+  position: absolute;
+  top: -3px;
+  right: 2px;
+}
+
 .chat_window {
   width: 100%;
   border-radius: 10px;

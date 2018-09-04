@@ -30,6 +30,7 @@ $(document).ready(function() {
           html += '</div>';
           $('.message_template.admin').append(html);
           box_chat_admin.scroll_top();
+          notify_messages.initOnLoad(data);
         }
       }
     );
