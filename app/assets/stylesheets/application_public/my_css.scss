@@ -842,3 +842,23 @@ span.name {
 .color-link:hover {
   opacity: 0.8;
 }
+
+.box-input-search {
+  float: right;
+}
+
+@media only screen and (max-width: 767px) {
+  .box-input-search {
+    float: none;
+    width: 100%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+}
+
+@media only screen and (max-width: 399px) {
+  .box-input-search {
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+}
