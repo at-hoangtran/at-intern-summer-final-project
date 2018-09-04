@@ -1,0 +1,8 @@
+.form_order_hidden
+  = form_for @order, url: order_path(@order.id), html: { id: "formOrder", class: "form-horizontal", :method => :patch } do |f|
+    = f.text_field :user_name
+    = f.email_field :email, { value: current_user.email }
+    = f.text_field :address
+    = f.telephone_field :phone
+    = button_tag(type: "submit", class: "btn btn-warning btn-lg btn-pay") do
+          = content_tag(:i, "asd", class: "fa fa-shopping-cart")

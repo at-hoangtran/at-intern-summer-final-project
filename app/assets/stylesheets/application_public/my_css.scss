@@ -715,9 +715,7 @@ span.name {
   bottom: 2px;
   right: 8px;
   color: #fff;
-}
-
-//===========Order===========//
+}//===========Order===========//
 .progress_bar {
   float: left;
   border: 1px solid #eee;
@@ -740,8 +738,14 @@ span.name {
     color: white;
   }
 }
+.information_payment {
+  width: 90%;
+  margin: auto;
+  h4 {
+    margin: 20px 0;
+  }
+}
 .info_billing {
-  margin-left: 50px; 
   height: 75px;
   border: 1px solid #eee;
   margin-bottom: 10px; 
@@ -764,7 +768,8 @@ span.name {
 
   .edit_info {
     float: right;
-    margin-right: 5px;
+    margin-right: 10px;
+    margin-top: 10px;
     cursor: pointer;
     color: #16a085;
     font-weight: bold;
@@ -773,11 +778,21 @@ span.name {
     text-decoration: none;
   }
 }
-.next-order {
+.next-order-1, .next-order-2, .next-order-3 {
   float: right;
   height: 50px;
   width: 130px;
   font-size: 20px;
+  margin-top: 14px;
+}
+
+.next-order-2 {
+  margin-right: 40px;
+}
+
+.next-order-3 {
+  margin-top: 50px;
+  margin-right: 40px;
 }
 
 .info_billing:hover {
@@ -789,7 +804,7 @@ span.name {
 }
 
 .new_billing {
-  margin: 20px 0 10px 50px;
+  margin: 20px 0 20px 0px;
 }
 
 .billing-information {
@@ -831,4 +846,44 @@ span.name {
 } 
 #table-scl tr th {
   text-align: center;
+}
+
+.order_summary {
+  width: 85%;
+  margin: auto;
+  margin-top: 85px;
+}
+
+.form_info_payment {
+  .form_info_item {
+    margin: 20px 10px;
+  }
+  input[type="text"] {
+    float: right;
+    width: 65%;
+    padding: 0 10px;
+  }
+  input[type="email"] {
+    float: right;
+    width: 65%;
+    padding: 0 10px;
+  }
+   input[type="tel"] {
+    float: right;
+    width: 65%;
+    padding: 0 10px;
+  }
+  h4 {
+    margin: 30px 10px; 
+  }
+  display: none;
+}
+
+.payment_type_information {
+  width: 90%;
+  margin: auto;
+}
+
+#type_payment {
+  /*height: 660px;*/
 }

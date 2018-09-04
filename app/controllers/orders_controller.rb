@@ -9,13 +9,13 @@ class OrdersController < ApplicationController
   def index; end
 
   def edit
-    # byebug
     @info = User.find(current_user.id).orders.not_cart.pluck(:user_name, :address, :phone).uniq
+    @info_order = Order.find_by(user_id: current_user.id)
   end
 
   def update
     if update_status
-      redirect_to root_path, flash: { success: 'Đặt hàng thành công!' }
+      redirect_to order_detail_path
     else
       render 'edit', flash: { danger: 'Vui lòng xem lại thông tin!' }
     end

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'auction_current', to: 'auctions#auction_current'
   get 'auction_win', to: 'auctions#auction_win'
   get 'auction_loser', to: 'auctions#auction_loser'
+  get 'order_detail', to: 'orders#show_detail'
   get 'request_history_order/:status',
       to: 'history_orders#request_order'
   get 'history_orders/:id/export_file', to: 'history_orders#export_file'

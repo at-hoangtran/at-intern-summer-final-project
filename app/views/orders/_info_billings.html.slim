@@ -1,3 +1,5 @@
+h4
+  | Chọn địa chỉ của bạn
 - @info.each_with_index do |info, index|
   .info_billing
     = radio_button_tag 'info', index, checked: true
@@ -10,3 +12,9 @@
         = info[1]
     span.edit_info
       | Edit
+.add_new_info_billing
+  label.btn.btn-info.new_billing
+    | Thêm địa chỉ mới
+br
+= button_tag(type: "button", class: "btn btn-warning next-order-1") do 
+  =content_tag(:i," Tiếp theo", class: "fa fa-shopping-cart")

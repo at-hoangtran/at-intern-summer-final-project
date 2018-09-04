@@ -73,6 +73,7 @@ $(document).on('turbolinks:load', function() {
     $(".bank-payment").hide();
     $(".pay-onl-info").hide();
     $(".btn-pay").show();
+    $(".next-order-3").show();
   });
   $(".payment-onl").on('click', function() {
     $(".cbb_online").prop("checked", true);
@@ -84,42 +85,37 @@ $(document).on('turbolinks:load', function() {
 
   $(".info_billing").on('click', function(){
     $(this).find('input[type="radio"]').prop("checked", true);
-    $("#order_user_name").val($(this).find(".info_item_name").text());
-    $("#advanced-placepicker").val($(this).find(".info_item_address").text());
-    $("#order_phone").val($(this).find(".info_item_phone").text());
+    $("#user_name").val($(this).find(".info_item_name").text());
+    $("#address").val($(this).find(".info_item_address").text());
+    $("#phone").val($(this).find(".info_item_phone").text());
   });
 
   $(".new_billing").on('click', function(){
-    $(".billing-information").hide();
-    $(".form_orders").show();
     $(this).hide();
+    $(".info_billing").hide();
+    $(".form_info_payment").show();
+    $("#user_name").val("");
+    $("#address").val("");
+    $("#phone").val("");
   });
-  $(".return_billing").on('click', function(){
-    $(".billing-information").show();
-    $(".form_orders").hide();
+
+  $(".return_info").on('click', function(){
+    $(".info_billing").show();
+    $(".form_info_payment").hide();
     $(".new_billing").show();
-    $(this).hide();
   });
+
   $(".edit_info").on('click', function(){
-    $(".billing-information").hide();
-    $(".form_orders").show();
+    $(".info_billing").hide();
+    $(".form_info_payment").show();
     $(".new_billing").hide();
     $(".return_billing").show();
   });
-  $(".next-order").on('click', function(){
-    $(".form_checkout").hide();
-    $(".billing-information").hide();
-    $(".new_billing").hide();
-    $(".add_info").hide();
-    $(".form_orders").show();
-    $(".return_billing").hide();
-    $(".payment_information").show();
-    $(".progress_first").css("background-color", "#eee");
-    $(".progress_second").css("background-color", "#16a085");
-    $(".progress_second a").css("color", "white");
-    $(".progress_first a").css("color", "#16a085");
-    $(this).hide();
-  });
 
+  $(".next-order-3").on('click', function(){
+    $("#order_user_name").val($("#user_name").val());
+    $("#order_address").val($("#address").val());
+    $("#order_phone").val($("#phone").val());
+  })
 
 });
