@@ -1,15 +1,15 @@
 $(document).ready(function() {
-  $(".form_info_item").validate({
+  $("#formOrder").validate({
     ignore: [],
     rules: {
-      "user_name": {
+      "order[user_name]": {
         required: true,
         maxlength: 30
       },
-      "address": {
+      "order[address]": {
         required: true
       },
-      "phone": {
+      "order[phone]": {
         required: true,
         number: true,
         maxlength: 15,
@@ -17,14 +17,14 @@ $(document).ready(function() {
       }
     },
     messages: {
-      "user_name": {
+      "order[user_name]": {
         required: "Vui lòng nhập họ tên!",
         maxlength: "Họ tên không quá 30 kí tự!"
       },
-      "address": {
+      "order[address]": {
         required: "Vui lòng nhập địa chỉ!"
       },
-      "phone": {
+      "order[phone]": {
         required: "Vui lòng nhập số điện thoại!",
         number: "Sai đinh dạng, vui lòng nhập số",
         maxlength: "Số điện thoại không quá 15 kí tự!",

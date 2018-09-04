@@ -21,16 +21,16 @@
                         | Loading
                     hr
                     .row
-                      .col-xs-12.col-sm-7.col-md-7.col-lg-7
-                        #article-photo-carousel.carousel.slide.article-slide
+                      .col-xs-12.col-sm-12.col-md-7.col-lg-7
+                        #article-photo-carousel.carousel.slide.article-slide.col-md-12
                           .carousel-inner.cont-slider
                           ol.carousel-indicators
-                      .col-xs-12.col-sm-5.col-md-5.col-lg-5.details-timer
+                      .col-xs-12.col-sm-12.col-md-5.col-lg-5.details-timer
                         .row
-                          .col-md-12
+                          .col-xs-12.col-sm-12.col-md-12
                             = content_tag(:i, "20:00", class: "glyphicon glyphicon-time clock-time-show")
                         .row
-                          .col-md-12
+                          .col-xs-12.col-sm-12.col-md-12
                             .form-group.price-box
                               label.control-label
                                 | Giá thầu hiện tại:
@@ -38,7 +38,7 @@
                               div.price-center
                                 = raw('<i class="fa fa-gavel price-crt-text"> <span class="price-crt"></span> đ</i>')
                         .row
-                          .col-md-12
+                          .col-xs-12.col-sm-12.col-md-12
                             .form-group.price-box
                               label.control-label
                                 | Đấu giá ngay:
@@ -51,12 +51,12 @@
                                   button.btn.btn-default.btn-add[type="button"]
                                     | +
                         .row
-                          .col-md-12.price-box.btn-price-timer[load-id=""]
+                          .col-xs-12.col-sm-12.col-md-12.price-box.btn-price-timer[load-id=""]
                             span.btn.col-xs-12.label-warning.price-btn-submit
                               = content_tag(:i, " Đấu giá ngay", class: "fa fa-gavel price-time")
                               = content_tag(:i, nil, class: "fa fa-refresh price-refresh fa-spin")
                         .row
-                          .col-md-12
+                          .col-xs-12.col-sm-12.col-md-12
                             .form-group.price-box
                               label.control-label
                                 | Người thắng hiện tại:
@@ -81,7 +81,6 @@
                                 | Thời gian đấu giá
                           tbody.loadbid
                             = render partial: "public_pages/shared/bid", collection: @bid, as: "bid"
-
                 hr
                 .row
                   .col-xs-12.col-sm-12.col-md-12.col-lg-12

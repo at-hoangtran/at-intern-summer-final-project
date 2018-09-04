@@ -1,8 +1,12 @@
 /* Main carousel style */
 .carousel {
-  margin-left: 2%;
-  width: 350px;
-  height: 380px;
+  padding-bottom: 20%;
+}
+
+.carousel * {
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 /* Indicators list style */
@@ -17,21 +21,22 @@
   border: medium none;
   border-radius: 0;
   float: left;
-  height: 54px;
+  height: auto;
   margin-bottom: 5px;
   margin-left: 0;
   margin-right: 5px !important;
   margin-top: 0;
-  width: 81px;
+  width: 100%;
 }
 /* Indicators images style */
 .article-slide .carousel-indicators img {
   border: 2px solid #FFFFFF;
   float: left;
-  height: 54px;
+  height: auto;
   left: 0;
-  width: 81px;
+  width: 100%;
 }
+
 /* Indicators active image style */
 .article-slide .carousel-indicators .active img {
   border: 2px solid #428BCA;
