@@ -3,15 +3,17 @@ class Admin::ProductsController < ApplicationAdminController
   before_action :logged_in_user
   before_action :check_admin
   before_action :get_product, only: %i[show edit update destroy destroy_image]
-  before_action :get_categorys, only: %i[new create edit update]
+  before_action :get_categorys, only: %i[index new create edit update]
 
   def index
-    @products =
-      if params[:term].nil?
-        Product.paginate(page: params[:page], per_page: 5)
-      else
-        Product.search_name(params[:term]).paginate(page: params[:page], per_page: 5)
-      end
+    if params[:search].blank?
+      @products = Product.paginate(page: params[:page], per_page: 5)
+    else
+      @products = Product.all
+      search_name
+      search_category
+      @products = @products.paginate(page: params[:page], per_page: 5)
+    end
   end
 
   def show
@@ -248,5 +250,16 @@ class Admin::ProductsController < ApplicationAdminController
       remain_images = @product.images
       remain_images.delete_at(index)
       @product.assign_attributes images: remain_images
+    end
+
+    def search_name
+      @products = @products.search_name params[:search][:name] if params[:search][:name].present?
+    end
+
+    def search_category
+      return unless params[:search][:category].present?
+      category  = params[:search][:category]
+      category  = Category.find_by(id: category).branch_ids
+      @products = @products.by_category_id(category)
     end
 end

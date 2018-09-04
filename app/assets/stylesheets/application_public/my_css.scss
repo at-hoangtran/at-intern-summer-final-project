@@ -211,11 +211,11 @@ li.nopassword {
 }
 
 .btn-pay {
-  float: right;
   margin-right: 2%;
   width: 130px;
   height: 50px;
   font-size: 20px;
+  float: right;
 }
 
 .product-price {
@@ -424,11 +424,6 @@ tr.show_modal {
   margin: 10% 0;
 }
 
-.btn-pay {
-  float: right;
-  margin: 10% 0;
-  display: none;
-}
 .pay-info-item {
   margin: 5px;
   color :#16a085;
@@ -746,10 +741,11 @@ span.name {
   }
 }
 .info_billing {
+  margin-left: 50px;
   height: 75px;
   border: 1px solid #eee;
-  margin-bottom: 10px; 
-  
+  margin-bottom: 10px;
+
   input[type= "radio"] {
     margin: 20px 30px 0px 20px;
     height: 15px;
@@ -843,7 +839,8 @@ span.name {
     font-weight: bold;
     color: #16a085;
   }
-} 
+}
+
 #table-scl tr th {
   text-align: center;
 }
@@ -856,25 +853,25 @@ span.name {
 
 .form_info_payment {
   .form_info_item {
-    margin: 20px 10px;
+    margin: 20px 20px;
   }
   input[type="text"] {
     float: right;
     width: 65%;
-    padding: 0 10px;
+    padding: 0 20px;
   }
   input[type="email"] {
     float: right;
     width: 65%;
-    padding: 0 10px;
+    padding: 0 20px;
   }
    input[type="tel"] {
     float: right;
     width: 65%;
-    padding: 0 10px;
+    padding: 0 20px;
   }
   h4 {
-    margin: 30px 10px; 
+    margin: 30px 20px; 
   }
   display: none;
 }
@@ -885,5 +882,44 @@ span.name {
 }
 
 #type_payment {
-  /*height: 660px;*/
+  .color-link {
+    text-decoration: none!important;
+    color: #333333!important;
+  }
+}
+
+.color-link:hover {
+  opacity: 0.8;
+}
+
+.form_order_hidden {
+  /*display: none;*/
+}
+
+#formOrder {
+  width: 80%;
+  margin: auto;
+  h4 {
+    font-weight: bold;
+  }
+}
+
+.sum_info_item {
+  width: 90%;
+  margin: 20px auto;
+  span {
+    float: right;
+    width: 250px;
+  }
+}
+
+.payment_progress_bar {
+  a {
+    font-weight: bold;
+    color: #16a085 !important;
+  }
+  .active a {
+    background-color: #16a085 !important;
+    color: white !important;
+  }
 }

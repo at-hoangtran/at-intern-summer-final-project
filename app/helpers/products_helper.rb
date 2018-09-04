@@ -9,4 +9,16 @@ module ProductsHelper
   def load_products
     (@products.collect { |u| [u.name, u.id] } << ['No parent', nil]).reverse
   end
+
+  def set_name
+    if params[:search].present?
+      params[:search][:name] if params[:search][:name].present?
+    end
+  end
+
+  def set_category
+    if params[:search].present?
+      params[:search][:category] if params[:search][:category].present?
+    end
+  end
 end

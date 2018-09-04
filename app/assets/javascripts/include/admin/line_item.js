@@ -1,6 +1,6 @@
-var orders = {
+var line_item = {
   initController: function(){
-    orders.eventShowDetails();
+    line_item.eventShowDetails();
   },
   tokenForm: function() {
     var token = $('meta[name="csrf-token"]').attr('content');
@@ -9,9 +9,9 @@ var orders = {
   eventShowDetails: function() {
     $('.show-details').on('click', function (){
       var id = $(this).attr('details-id');
-      orders.ajaxShowDetails(id);
-      orders.eventApprove(id);
-      orders.eventReject(id);
+      line_item.ajaxShowDetails(id);
+      line_item.eventApprove(id);
+      line_item.eventReject(id);
     });
   },
   ajaxShowDetails: function(id) {
@@ -24,7 +24,7 @@ var orders = {
         var html = '';
         var template = $('#data-template').html();
         var totalPri = 0;
-        var image_default = '/assets/no-product-image-c2f6e0867a2bfea159b171fd3e6d6c1ea49aa8362682254f2a945ad0fcee188c.jpg';
+        var image_default = '/assets/no-product-image-0f35e2b34a82f17cac95766bab3727091fc29403eeb8c3241290ba8a086b600d.png';
         $.each(response, function (i, item) {
           images = item.product.images.length
           images = images > 0
@@ -33,7 +33,7 @@ var orders = {
             ID: item.id,
             IMAGE: images,
             NAME: item.product.name,
-            PRICE: orders.formatPrice(item.amount) + ' đ',
+            PRICE: line_item.formatPrice(item.amount) + ' đ',
             STATUS: (item.product.quantity) < 1 ? true : false,
             STATUS1: (item.product.quantity) > 1 ? true : false
           });
@@ -42,7 +42,7 @@ var orders = {
         $('tbody#viewLoad').html(html);
         $('strong#totalPri').html(
           I18n.t("javascripts.include.admin.line_item.total_price") + ": "
-          + order.formatPrice(totalPri) + ' đ');
+          + line_item.formatPrice(totalPri) + ' đ');
         if (response[0].order.status === 'notdefined') {
           $('a#btn-xn, a#btn-h').attr('disabled', false);
         } else {
@@ -59,19 +59,19 @@ var orders = {
       $.ajax({
         url: '/admin/orders/'+ id +'/reject',
         method: 'patch',
-        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', orders.tokenForm())},
+        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', line_item.tokenForm())},
         data: {
           id: id
         },
         success: function(res){
           if (res) {
-            orders.ajaxShowDetails(id);
-            orders.reloadPage();
+            line_item.ajaxShowDetails(id);
+            line_item.reloadPage();
           }
         },
         statusCode: {
           400: function(){
-            orders.not_enough_notify();
+            line_item.not_enough_notify();
           }
         }
       });
@@ -82,19 +82,19 @@ var orders = {
       $.ajax({
         url: '/admin/orders/'+ id +'/approve',
         method: 'patch',
-        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', orders.tokenForm())},
+        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', line_item.tokenForm())},
         data: {
           id: id
         },
         success: function(res){
           if (res) {
-            orders.ajaxShowDetails(id);
-            orders.reloadPage();
+            line_item.ajaxShowDetails(id);
+            line_item.reloadPage();
           }
         },
         statusCode: {
           400: function(){
-            orders.not_enough_notify();
+            line_item.not_enough_notify();
           }
         }
       });
@@ -115,6 +115,6 @@ var orders = {
   }
 }
 $(document).ready(function(){
-  orders.initController();
+  line_item.initController();
 });
 

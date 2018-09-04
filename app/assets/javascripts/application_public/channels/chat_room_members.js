@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
   App.chat_room_members = App.cable.subscriptions.create('ChatRoomMembersChannel', {
     received: function(data) {
       data = data.obj;

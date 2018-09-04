@@ -6,52 +6,56 @@
         a[href="#"]
           i.fa.fa-home
       li.active
-        = t ".home"
+        = t(".home")
   .row
     .col-lg-12
       h2.page-header
-        = t ".control-panel"
+        = t(".control-panel")
   .row
-    .col-xs-12.col-md-6.col-lg-3
-      .panel.panel-blue.panel-widget
-        .row.no-padding
-          .col-sm-3.col-lg-5.widget-left
-            i.fa.fa-calendar.fa-4x
-          .col-sm-9.col-lg-7.widget-right
-            .large
-              = content_tag(:span, @orders)
-            .text-muted
-              = t(".orders")
-    .col-xs-12.col-md-6.col-lg-3
-      .panel.panel-red.panel-widget
-        .row.no-padding
-          .col-sm-3.col-lg-5.widget-left
-            i.fa.fa-gavel.fa-4x
-          .col-sm-9.col-lg-7.widget-right
-            .large
-              = content_tag(:span, @auctions)
-            .text-muted
-              = t(".auctions")
-    .col-xs-12.col-md-6.col-lg-3
-      .panel.panel-orange.panel-widget
-        .row.no-padding
-          .col-sm-3.col-lg-5.widget-left
-            i.fa.fa-shopping-basket.fa-4x
-          .col-sm-9.col-lg-7.widget-right
-            .large
-              = content_tag(:span, @products)
-            .text-muted
-              = t(".products")
-    .col-xs-12.col-md-6.col-lg-3
-      .panel.panel-teal.panel-widget
-        .row.no-padding
-          .col-sm-3.col-lg-5.widget-left
-            i.fa.fa-users.fa-4x
-          .col-sm-9.col-lg-7.widget-right
-            .large
-              = content_tag(:span,  @users)
-            .text-muted
-              = t(".members")
+    a[href="/admin/orders"]
+      .col-xs-12.col-md-6.col-lg-3
+        .panel.panel-blue.panel-widget
+          .row.no-padding
+            .col-sm-3.col-lg-5.widget-left
+              i.fa.fa-calendar.fa-4x
+            .col-sm-9.col-lg-7.widget-right
+              .large
+                = content_tag(:span, @orders)
+              .text-muted
+                = t(".orders")
+    a[href="/admin/auctions"]
+      .col-xs-12.col-md-6.col-lg-3
+        .panel.panel-red.panel-widget
+          .row.no-padding
+            .col-sm-3.col-lg-5.widget-left
+              i.fa.fa-gavel.fa-4x
+            .col-sm-9.col-lg-7.widget-right
+              .large
+                = content_tag(:span, @auctions)
+              .text-muted
+                = t(".auctions")
+    a[href="/admin/products"]
+      .col-xs-12.col-md-6.col-lg-3
+        .panel.panel-orange.panel-widget
+          .row.no-padding
+            .col-sm-3.col-lg-5.widget-left
+              i.fa.fa-shopping-basket.fa-4x
+            .col-sm-9.col-lg-7.widget-right
+              .large
+                = content_tag(:span, @products)
+              .text-muted
+                = t(".products")
+    a[href="/admin/users"]
+      .col-xs-12.col-md-6.col-lg-3
+        .panel.panel-teal.panel-widget
+          .row.no-padding
+            .col-sm-3.col-lg-5.widget-left
+              i.fa.fa-users.fa-4x
+            .col-sm-9.col-lg-7.widget-right
+              .large
+                = content_tag(:span,  @users)
+              .text-muted
+                = t(".members")
   .row
     .col-lg-12
       .panel.panel-default
@@ -66,33 +70,29 @@
         .panel-body.easypiechart-panel
           h4
             = t(".new-orders")
-          #easypiechart-blue.easypiechart[data-percent="92"]
-            span.percent
-              | 92%
+          #easypiechart-blue.easypiechart[data-percent="100"]
+            span.percent#order-eas
     .col-xs-6.col-md-3
       .panel.panel-default
         .panel-body.easypiechart-panel
           h4
             = t(".new-auctions")
-          #easypiechart-orange.easypiechart[data-percent="65"]
-            span.percent
-              | 65%
+          #easypiechart-orange.easypiechart[data-percent="100"]
+            span.percent#auction-eas
     .col-xs-6.col-md-3
       .panel.panel-default
         .panel-body.easypiechart-panel
           h4
-            = t(".new-users")
-          #easypiechart-teal.easypiechart[data-percent="56"]
-            span.percent
-              | 56%
+            = t(".new-members")
+          #easypiechart-teal.easypiechart[data-percent="100"]
+            span.percent#member-eas
     .col-xs-6.col-md-3
       .panel.panel-default
         .panel-body.easypiechart-panel
           h4
-            = t (".access-times")
-          #easypiechart-red.easypiechart[data-percent="27"]
-            span.percent
-              | 27%
+            | Số người đang online
+          #easypiechart-red.easypiechart[data-percent="100"]
+            span.percent#online-eas
   .row
     .col-md-8
       small

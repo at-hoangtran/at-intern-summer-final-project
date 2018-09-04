@@ -31,7 +31,7 @@ $(document).ready(function(){
           $('.message_template.admin').append(html);
           height = $('.message_template.admin').height();
           $('.messages.admin').animate({scrollTop: height});
-          notify_messages.initOnLoad(data);
+          notify_messages.initOnLoad(data, avatar);
         }
       }
     );

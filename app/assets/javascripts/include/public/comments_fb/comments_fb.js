@@ -7,6 +7,6 @@
   $(".fb-comments").attr("data-href", window.location.href)
 }(document, 'script', 'facebook-jssdk'));
 
-$(document).ready(function(){
+$(document).ready(function() {
   $('.fb-share-button').attr('data-href', window.location.href );
 });

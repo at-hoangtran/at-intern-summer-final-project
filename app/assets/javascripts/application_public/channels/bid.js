@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
   head_timer = document.querySelector('.head-timer');
   if (head_timer !== null) {
     App.bid = App.cable.subscriptions.create(

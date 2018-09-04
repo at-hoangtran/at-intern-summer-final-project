@@ -1,3 +1,4 @@
+/ = javascript_include_tag "include/validation/order/order"
 .information_payment
   h4
     | Địa chỉ của bạn
@@ -21,20 +22,21 @@
     .form_info_item.label_name
       label
         | Họ tên
-      = text_field_tag(:user_name)
+      = text_field_tag(:user_name, nil, class: "form-control")
     .form_info_item.label_email
       label
         | Email
-      = email_field_tag(:email, current_user.email, disabled: true)
+      = email_field_tag(:email, current_user.email, disabled: true, class: "form-control")
     .form_info_item.label_address
       label
         | Địa chỉ
-      = text_field_tag(:address)
+      = text_field_tag(:address, nil, { id: "advanced-placepicker", class: "form-control", placeholder: "" })
+      #collapseTwo.collapse
+        .another-map-class.thumbnail
     .form_info_item.label_phone
       label
         | Số điện thoại
-      = telephone_field_tag(:phone)
-    
+      = telephone_field_tag(:phone, nil, class: "form-control")
   .add_new_info_billing
     = button_tag("Thêm địa chỉ mới", type: "button", class: "btn btn-info new_billing")
     = button_tag(type: "button", class: "btn btn-warning next-order-1") do 

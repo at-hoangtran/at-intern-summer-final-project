@@ -108,6 +108,6 @@ var box_chat_member = {
   }
 }
 
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
   box_chat_member.initOnLoad();
 });

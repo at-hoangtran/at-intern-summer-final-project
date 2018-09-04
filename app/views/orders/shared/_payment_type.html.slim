@@ -23,7 +23,7 @@
           i.fa.fa-money.fa-3x.payment-center
         .form-check
           label
-            = check_box_tag :type, true, checked = false, class: "cbb_offline"
+            = check_box_tag :type, 1, nil, class: "cbb_offline"
             = content_tag(:span, nil, class: "label-text")
       li.payment-item.payment-onl
         div.payment-title
@@ -32,7 +32,7 @@
           i.fa.fa-university.fa-3x.payment-center
         .form-check
           label
-            = check_box_tag :type, true, checked = false, class: "cbb_online"
+            = check_box_tag :type, 2, checked = false, class: "cbb_online"
             = content_tag(:span, nil, class: "label-text")
   div.pay-info.pay-live-info
     p.pay-info-item.pay-live

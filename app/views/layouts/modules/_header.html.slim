@@ -9,16 +9,16 @@ nav#main-Nav.navbar.navbar-top.banner-menu[role="navigation"]
       #main-mav-top.collapse.navbar-collapse
         ul.nav.navbar-nav
           li
-            = link_to content_tag(:b, nil, class: "glyphicon glyphicon-home") + " AuctionHouse", root_url, :id => "mlinkhome", data: { turbolinks: false }
+            = link_to content_tag(:b, nil, class: "glyphicon glyphicon-home") + " AuctionHouse", root_url, :id => "mlinkhome"
         ul.nav.navbar-nav.pull-right
           - if size_cart.nil?
             li
-              = link_to content_tag(:i, " (0) ", id: "count-order", class: "fa fa-cart-plus") + " " + t(".cart"), "/orders", data: { turbolinks: false }
+              = link_to content_tag(:i, " (0) ", id: "count-order", class: "fa fa-cart-plus") + " " + t(".cart"), "/orders"
           - else
             li
-              = link_to content_tag(:i, " (#{size_cart}) ", id: "count-order", class: "fa fa-cart-plus") + " " + t(".cart"), "/orders", data: { turbolinks: false }
+              = link_to content_tag(:i, " (#{size_cart}) ", id: "count-order", class: "fa fa-cart-plus") + " " + t(".cart"), "/orders"
           li
-            = link_to content_tag(:i, nil, class: "fa fa-gavel") + " " + t(".my-auctions"), auctions_path, data: { turbolinks: false }
+            = link_to content_tag(:i, nil, class: "fa fa-gavel") + " " + t(".my-auctions"), auctions_path
           - if logged_in?
             li.dropdown
               a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-expanded="false"]
@@ -28,17 +28,18 @@ nav#main-Nav.navbar.navbar-top.banner-menu[role="navigation"]
               ul.dropdown-menu[role="menu"]
                 - if admin?
                   li
-                    = link_to t(".admin-page"), admin_root_path, data: { turbolinks: false }
+                    = link_to t(".admin-page"), admin_root_path
                 li
-                  = link_to t(".profile"), edit_user_path(current_user), data: { turbolinks: false }
+                  = link_to t(".profile"), edit_user_path(current_user)
                 li
-                  = link_to t(".orders"), history_orders_path,data: { turbolinks: false }
+                  = link_to t(".orders"), history_orders_path
                 li
-                  = link_to content_tag(:i," " + t(".logout"), class: "fa fa-btn fa-sign-out"), logout_path, method: :delete, data: { turbolinks: false }
+                  = link_to content_tag(:i," " + t(".logout"), class: "fa fa-btn fa-sign-out"), logout_path, method: :delete
+                li.divider
                 li
-                  = link_to "Vietnamese", locale:"vi"
+                  = link_to content_tag(:span, nil,class: "flag-icon flag-icon-vn") + content_tag(:span, " Việt nam"), locale:"vi"
                 li
-                  = link_to "English", locale:"en"
+                  = link_to content_tag(:span, nil,class: "flag-icon flag-icon-us") + content_tag(:span, " English"), locale:"en"
           - else
             li
               = link_to t(".login")

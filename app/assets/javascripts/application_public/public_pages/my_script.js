@@ -14,7 +14,8 @@ function updateUserForm() {
     $('.edit-left').show();
   });
 }
-$(document).on('turbolinks:load', function() {
+
+$(document).ready(function() {
   $(".dropdown").hover(function() {
     $('.dropdown-menu', this).stop(true, true).fadeIn("fast");
     $(this).toggleClass('open');
@@ -26,7 +27,7 @@ $(document).on('turbolinks:load', function() {
   });
 });
 
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
   updateUserForm();
   backToTop();
 });
@@ -63,30 +64,29 @@ $('.carousel').carousel({
   interval: false
 });
 
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
   $(".payment-live").on('click', function() {
     $(".cbb_offline").prop("checked", true);
     $(".cbb_online").prop("checked", false);
-    // $(".pay-live").show();
     $(".pay-live-info").show();
     $(".pay-online").hide();
     $(".bank-payment").hide();
     $(".pay-onl-info").hide();
-    $(".btn-pay").show();
     $(".next-order-3").show();
   });
+
   $(".payment-onl").on('click', function() {
     $(".cbb_online").prop("checked", true);
     $(".cbb_offline").prop("checked", false);
     $(".pay-info").hide();
-    $(".btn-pay").hide();
     $(".bank-payment").show();
+    $(".next-order-3").hide();
   });
 
   $(".info_billing").on('click', function(){
     $(this).find('input[type="radio"]').prop("checked", true);
     $("#user_name").val($(this).find(".info_item_name").text());
-    $("#address").val($(this).find(".info_item_address").text());
+    $("#advanced-placepicker").val($(this).find(".info_item_address").text());
     $("#phone").val($(this).find(".info_item_phone").text());
   });
 
@@ -95,7 +95,7 @@ $(document).on('turbolinks:load', function() {
     $(".info_billing").hide();
     $(".form_info_payment").show();
     $("#user_name").val("");
-    $("#address").val("");
+    $("#advanced-placepicker").val("");
     $("#phone").val("");
   });
 
@@ -112,10 +112,29 @@ $(document).on('turbolinks:load', function() {
     $(".return_billing").show();
   });
 
+  $('.payment_progress_bar li').not('.active').addClass('disabled');
+  $('.payment_progress_bar li').not('.active').find('a').removeAttr("data-toggle");
+
+  $(".next-order-1").on('click', function(){
+    activaTab('type_payment');
+  });
+
   $(".next-order-3").on('click', function(){
     $("#order_user_name").val($("#user_name").val());
     $("#order_address").val($("#address").val());
     $("#order_phone").val($("#phone").val());
-  })
+    activaTab('summary_order');
+    $(".sum_name_o").html($("#user_name").val());
+    $(".sum_address_o").html($("#address").val());
+    $(".sum_phone_o").html($("#phone").val());
+    $('.payment_progress_bar li.active').next('li').find('a').attr("data-toggle","tab");
+  });
+
+  $('[data-toggle-tooltip="tooltip"]').tooltip();
 
 });
+
+function activaTab(tab){
+  $('.nav-tabs a[href="#' + tab + '"]').tab('show');
+};
+

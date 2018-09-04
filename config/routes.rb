@@ -113,15 +113,15 @@ Rails.application.routes.draw do
       delete 'timer/destroy_cache', to: 'timers#destroy_cache'
     end
   end
-    get '/auth/google_oauth2', as: 'google'
-    get 'auth/:provider/callback', to: 'sessions#login_google'
-    get 'auth/failure', to: redirect('/')
-    resources :account_activations, only: [:edit]
-    resources :password_resets, only: %i[new create edit update]
+  get '/auth/google_oauth2', as: 'google'
+  get 'auth/:provider/callback', to: 'sessions#login_google'
+  get 'auth/failure', to: redirect('/')
+  resources :account_activations, only: [:edit]
+  resources :password_resets, only: %i[new create edit update]
 
-    match '/404', to: 'error/errors#not_found', via: :all
-    match '/500', to: 'error/errors#internal_server_error', via: :all
+  match '/404', to: 'error/errors#not_found', via: :all
+  match '/500', to: 'error/errors#internal_server_error', via: :all
 
-    # Serve websocket cable requests in-process
-    mount ActionCable.server => '/cable'
+  # Serve websocket cable requests in-process
+  mount ActionCable.server => '/cable'
 end

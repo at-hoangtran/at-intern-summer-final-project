@@ -23,7 +23,6 @@ $(document).ready(function() {
         minlength: 20
       },
       "product[images][]": {
-        required: true,
         accept:"jpg,png,jpeg,gif",
         filesize: 3024000,
         mximg: true
@@ -51,10 +50,9 @@ $(document).ready(function() {
         minlength: "Mô tả tối thiểu 20 ký tự !"
       },
       "product[images][]": {
-        required: "Vui lòng chọn ảnh !",
         accept: "Kiểu tệp không hợp lệ !",
         filesize: "File dung lượng tối đa không quá 3mb !",
-        mximg: "Vui lòng chọn tối thiểu 2 hình ảnh, tối đa 4 hình ảnh !"
+        mximg: "Vui lòng chọn tối đa 4 hình ảnh !"
       }
     },
     highlight: function (element) {
@@ -92,7 +90,7 @@ $.validator.addMethod("minprice", function (value, element, param) {
 
 $.validator.addMethod("mximg", function (value, element) {
   var file = element.files.length;
-  if (file >= 2 && file <= 4) return true;
+  if (file <= 4) return true;
   return false;
 });
 

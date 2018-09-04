@@ -1,6 +1,5 @@
 = javascript_include_tag "include/validation/order/order"
 = form_for @order, url: order_path(@order.id), html: { id: "formOrder", class: "form-horizontal", :method => :patch } do |f|
-
   .form_checkout
     h4.add_info
       | Nhập thông tin giao hàng

@@ -12,7 +12,10 @@
     td
       = product.quantity.to_s + " cái"
     td
-      = image_tag(product.images.first.url, class: "img-thumbnail", width: 100)
+      - if product.images.first
+        = image_tag(product.images.first.url, class: "img-thumbnail", width: 100)
+      - else
+        = image_tag("no-product-image.png", alt: "No Image Product", width: 100)
     td
       = product.category.name
     td
@@ -21,4 +24,4 @@
       - else
         = content_tag(:span, "Vẩn Còn Hàng", class: "label label-info")
     td
-      = link_to content_tag(:i, nil, class: "fa fa-upload fa-1x"), admin_history_product_path(product.id), class: "btn btn-info", method: :delete, data: { confirm: "Bạn có chắc không?" }, remote: true
+      = link_to content_tag(:i, nil, class: "fa fa-upload fa-1x"), admin_history_product_path(product.id), class: "btn btn-info", method: :delete, data: { confirm: "Bạn có chắc không?" }, 'data-toggle-tooltip': 'tooltip', 'data-placement': 'left', 'title': 'Khôi phục sản phẩm'

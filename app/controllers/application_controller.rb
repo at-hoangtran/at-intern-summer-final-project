@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
   include StringFormatsHelper
   include SessionsHelper
 
-  before_filter :set_online
+  before_action :set_online
   before_action :menu_categories
-  before_filter :counter_access
+  before_action :counter_access
 
   def logged_in_user
     unless logged_in?

@@ -1,11 +1,6 @@
 module ApplicationHelper
   def full_title(page_title)
-    base_title = 'Trang'
-    if page_title.blank?
-      base_title
-    else
-      base_title + ' : ' + page_title
-    end
+    page_title
   end
 
   def size_cart

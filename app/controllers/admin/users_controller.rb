@@ -154,7 +154,7 @@ class Admin::UsersController < ApplicationAdminController
     end
 
     def search_name
-      @users = User.search_name params[:search][:name] if params[:search][:name].present?
+      @users = @users.search_name params[:search][:name] if params[:search][:name].present?
     end
 
     def search_status_active
@@ -162,9 +162,9 @@ class Admin::UsersController < ApplicationAdminController
       status = params[:search][:status_active]
       @users =
         if status == 'notactive'
-          User.where(activated: nil)
+          @users.where(activated: nil)
         else
-          User.where(activated: true)
+          @users.where(activated: true)
         end
     end
 
@@ -173,9 +173,9 @@ class Admin::UsersController < ApplicationAdminController
       status = params[:search][:status_lock]
       @users =
         if status == 'lock'
-          User.only_deleted
+          @users.only_deleted
         else
-          User.all
+          @users.all
         end
     end
 end

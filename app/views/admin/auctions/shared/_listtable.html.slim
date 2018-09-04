@@ -21,7 +21,7 @@ tr
     = content_tag(:span, t(".auctioning"), class: "label label-warning") if list.running?
     = content_tag(:span, t(".finished"), class: "label label-info") if list.finished?
   td
-    = button_tag(type: "button", class: "show-details btn btn-primary", "data-toggle": "modal", "data-target": "#detailsModal", "details-id": list.id) do
+    = button_tag(type: "button", class: "show-details btn btn-primary", "data-toggle": "modal", "data-target": "#detailsModal", "details-id": list.id, 'data-toggle-tooltip': 'tooltip', 'data-placement': 'left', 'title': 'Xem chi tiết') do
       = content_tag(:i, nil, class: "fa fa-eye")
   td
-    = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_timer_path(list.id), class: "btn btn-danger", method: :delete, data: { confirm: t(".are-u-sure") }, remote: true
+    = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_auction_path(list.id), class: "btn btn-danger", method: :delete, data: { confirm: t(".are-u-sure") }, 'data-toggle-tooltip': 'tooltip', 'data-placement': 'left', 'title': 'Xóa phiên'

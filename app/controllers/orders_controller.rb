@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
 
   def update
     if update_status
-      redirect_to order_detail_path
+      redirect_to root_path, flash: { success: 'Đặt hàng thành công' }
     else
       render 'edit', flash: { danger: 'Vui lòng xem lại thông tin!' }
     end

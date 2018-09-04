@@ -11,11 +11,11 @@
         table#table-scl.table.table-hover
           thead
             tr
-              th
+              th.text-center
                 = t(".image")
-              th
+              th.text-center
                 = t(".product")
-              th
+              th.text-center
                 = t(".your-bid")
           tbody#viewLoadLineItem
         .row
@@ -24,16 +24,18 @@
               span.label.label-danger.pull-right
                 strong#totalPri
       .modal-footer
-        = button_tag(type: "button", class: "btn btn-primary", id: "btn-export") do
-          = content_tag(:span, nil, class: "glyphicon glyphicon-save-file")
-        button.btn.btn-default[type="button" data-dismiss="modal"]
-          = t(".close")
+        .col-md-2.pull-right
+          button.btn.btn-default[type="button" data-dismiss="modal"]
+            = t(".close")
+        .col-md-1.pull-right[data-toggle-tooltip='tooltip' data-placement='left' title='Xuất tệp']
+          = button_tag(type: "button", class: "btn btn-primary", id: "btn-export") do
+            = content_tag(:span, nil, class: "glyphicon glyphicon-save-file")
 
   script#data-template-modal-line-item[type="x-tmpl-mustache"]
     tr
       td.images
         img.images[src="{{IMAGE}}"]
-      td
+      td.text-center
         | {{NAME}}
-      td
+      td.text-center
         | {{PRICE}}

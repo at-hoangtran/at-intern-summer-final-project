@@ -6,15 +6,7 @@ var chart_data = {
 	set_data_chart: function() {
 		chars = chart_data.request_order().reverse();
 		var lineChartData = {
-			labels: [
-				I18n.t("javascripts.application_admin.layouts.chart-data.monday"),
-				I18n.t("javascripts.application_admin.layouts.chart-data.tuesday"),
-				I18n.t("javascripts.application_admin.layouts.chart-data.wednesday"),
-				I18n.t("javascripts.application_admin.layouts.chart-data.thursday"),
-				I18n.t("javascripts.application_admin.layouts.chart-data.friday"),
-				I18n.t("javascripts.application_admin.layouts.chart-data.saturday"),
-				I18n.t("javascripts.application_admin.layouts.chart-data.sunday")
-			],
+			labels: ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ nhật'],
 			datasets: [{
 				label: "My Second dataset",
 				fillColor: "rgba(48, 164, 255, 0.2)",
@@ -56,6 +48,6 @@ var chart_data = {
 	}
 }
 
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
 	chart_data.initOnLoad();
 });

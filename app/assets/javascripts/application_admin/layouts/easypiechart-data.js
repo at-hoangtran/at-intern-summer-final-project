@@ -113,6 +113,6 @@ var easypiechart_data = {
   }
 }
 
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
   easypiechart_data.initOnLoad();
 });

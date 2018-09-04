@@ -14,10 +14,33 @@ var auction = {
     $('.clock-time-show').html(period);
     $('.price-crt').html(price);
     $('.title-product').html(category_name);
-    images.forEach(function(item, index) {
-      $('.item img:eq('+ index +')').attr('src', item.url);
-      $('.carousel-indicators li img:eq('+ index +')').attr('src', item.url);
-    });
+    car_inner = $('.carousel-inner').html();
+    car_indicators = $('.carousel-indicators').html();
+    if (car_inner == '' && car_indicators == '') {
+      if (images.length > 0) {
+        images.forEach(function(item, index) {
+          active = index == 0 ? 'active' : ''
+          html_inner = '<div class="item '+ active +'">';
+          html_inner += '<img src="'+ item.url +'">';
+          html_inner += '</div>';
+          $('.carousel-inner').append(html_inner);
+          html_indi = '<li class="'+ active +'" data-slide-to="'+ index +'" data-target="#article-photo-carousel">';
+          html_indi += '<img src="'+ item.url +'">';
+          html_indi += '</li>';
+          $('.carousel-indicators').append(html_indi);
+        });
+      } else {
+        var image_default = '/assets/no-product-image-0f35e2b34a82f17cac95766bab3727091fc29403eeb8c3241290ba8a086b600d.png';
+        html_inner = '<div class="item active">';
+        html_inner += '<img src="'+ image_default +'">';
+        html_inner += '</div>';
+        html_indi = '<li class="active" data-slide-to="0" data-target="#article-photo-carousel">';
+        html_indi += '<img src="'+ image_default +'">';
+        html_indi += '</li>';
+        $('.carousel-inner').append(html_inner);
+        $('.carousel-indicators').append(html_indi);
+      }
+    }
     $('.description').html(description);
     $('.description').html(description);
     $('.btn-price-timer').attr("load-id", data['id']);
@@ -71,6 +94,6 @@ var auction = {
   }
 }
 
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
   auction.event_submit_price();
 });

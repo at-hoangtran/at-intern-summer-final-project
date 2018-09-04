@@ -71,7 +71,7 @@ class Admin::AuctionsController < ApplicationAdminController
   private
 
     def load_auction_id
-      @auction = Action.find_by id: params[:id]
+      @auction = Auction.find_by(id: params[:id])
       @auction || render(file: 'public/404.html', status: 404, layout: true)
     end
 
