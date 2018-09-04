@@ -1,0 +1,51 @@
+- provide :title, t(".cart")
+.col-xs-12.col-sm-12.col-md-12.col-lg-12
+  .col-xs-11.col-centered
+    .col-xs-12.col-sm-8.col-md-8.col-lg-8
+      h3.panel-title
+          span.glyphicon.glyphicon-home
+            = link_to t(".home"), root_path
+          span.chevright.glyphicon.glyphicon-chevron-right
+          span.title-product
+            = t(".cart")
+      .col-xs-12.col-sm-12.col-md-12.col-lg-12.no-padding
+        .row
+          .col-xs-12.col-sm-12.col-md-12.col-lg-12
+            .panel.panel-success
+            -if @line_items
+              -if @line_items.any?
+                .panel-body
+                  .table-responsive
+                    table.table.table-hover
+                      thead
+                        tr
+                          th
+                            = t(".product")
+                          th
+                          th
+                            = t(".quantity")
+                          th.list-product-price
+                            = t(".price") + " (VNĐ)"
+                          th[colspan="2"]
+                            |
+                      tbody
+                        = render partial: "carts", collection: @line_items, as: "line_item"
+                      tfoot
+                        tr
+                          th[colspan="3"]
+                            = t(".total-price")
+                          td.product-price
+                              = out_price(@total_price.to_s) + " VNĐ"
+                          td
+                  = content_tag(:i, nil, class: "fa fa-truck fa-2x") + t(".info")
+                  = link_to content_tag(:i, " " + t(".checkout"), class: "fa fa-shopping-cart"), edit_order_path(current_user.id), class: "btn btn-warning btn-lg btn-payment"
+                  div
+                    = content_tag(:i, nil, class: "fa fa-money fa-2x" ) + "  "
+                    = content_tag(:i, nil, class: "fa fa-university fa-2x")
+              - else
+                p
+                  = t(".not-cart")
+            - else
+              p
+                = t(".not-cart")
+    = render 'public_pages/shared/column_right'

@@ -1,0 +1,484 @@
+vi:
+  auctions:
+    index:
+      my-auctions: 'Đấu giá của tôi'
+      current-active-bids: 'Giá thầu hiện tại'
+      auctions-won: 'Đấu giá đã thắng'
+      auctions-lost: 'Đấu giá thua'
+    shared:
+      auction_current:
+        status: 'Trạng thái'
+        product: 'Sản phẩm đấu giá'
+        your-current-bid: 'Giá hiện tại của bạn'
+        bids: 'Giá thầu'
+        completed: 'Hoàn thành'
+      auction_loser:
+        status: 'Trạng thái'
+        product: 'Sản phẩm đấu giá'
+        your-max-bid: 'Giá thầu tối đa của bạn'
+        highest-bid: 'Giá thầù cao nhất'
+        bids: 'Giá thầu'
+        completed: 'Hoàn thành'
+      auction_win:
+        status: 'Trạng thái'
+        product: 'Sản phẩm đấu giá'
+        your-winning-bid: 'Giá thắng thầu của bạn'
+        bids: 'Giá thầu'
+        completed: 'Hoàn thành'
+
+  categories:
+    show:
+      title: 'Danh mục'
+
+  history_orders:
+    index:
+      title: 'Đơn hàng của tôi'
+      my-orders: 'Đơn hàng của tôi'
+      orders-waiting: 'Đơn hàng chờ'
+      orders-delivered: 'Đơn hàng đã chuyển giao'
+      orders-cancel: 'Đơn hàng đã hủy'
+    shared:
+      modal:
+        order-detail: 'Chi tiết đơn hàng'
+        image: 'Hình ảnh'
+        product: 'Sản phẩm'
+        your-bid: 'Giá thầù của bạn'
+        close: 'Đóng'
+      order_cancel:
+        status: 'Trạng thái'
+        user-name: 'Tên khách hàng'
+        address: 'Địa chỉ'
+        phone: 'Điện thoại'
+        email: 'Email'
+        date: 'Ngày đặt'
+        money: 'Thành tiền'
+      order_defined:
+        status: 'Trạng thái'
+        user-name: 'Tên khách hàng'
+        address: 'Địa chỉ'
+        phone: 'Điện thoại'
+        email: 'Email'
+        date: 'Ngày đặt'
+        money: 'Thành tiền'
+      order_notdefined:
+        status: 'Trạng thái'
+        user-name: 'Tên khách hàng'
+        address: 'Địa chỉ'
+        phone: 'Điện thoại'
+        email: 'Email'
+        date: 'Ngày đặt'
+        money: 'Thành tiền'
+
+        
+
+  admin:
+    homes:
+      index: 
+        home: 'Trang chủ'
+        control-panel: 'Bảng điều khiển'
+        orders: 'Đơn hàng'
+        auctions: 'Phiên đấu giá'
+        products: 'Sản phẩm'
+        members: 'Thành viên'
+        chart-orders: 'Biểu đồ đặt hàng trong tuần'
+        new-orders: 'Đơn hàng mới'
+        new-auctions: 'Đấu giá mới'
+        new-members: 'Khách hàng mới'
+        access-times: 'Lượt truy cập'
+    categories:
+      index:
+        title: 'Trang quản trị - Danh mục sản phẩm'
+        home: 'Trang chủ'
+        management-categories: 'Quản lý danh mục'
+        categories: 'Danh mục'
+      new:
+        title: 'Trang quản trị - Thêm danh mục'
+        add: 'Thêm mới'
+        home: 'Trang chủ'
+        add-category: 'Thêm danh mục'
+      create:
+        create-success: 'Thêm danh mục thành công'
+        create-error: 'Thêm danh mục thất bại'
+      update:
+        update-success: 'Cập nhật danh mục thành công'
+        update-error: 'Cập nhật danh mục thất bại'
+      destroy:
+        delete-success: 'Xóa danh mục thành công'
+        delete-error: 'Xóa danh mục thất bại'
+      edit:
+        title: 'Trang quản trị - Cập nhật danh mục'
+        update: 'Cập nhật'
+        home: 'Trang chủ'
+        update-category: 'Cập nhật danh mục'
+      shared:
+        form:
+          name: 'Tên'
+          add-name: 'Nhập tên...'
+          parent-category: 'Danh mục cha'
+          are-u-sure: 'Bạn có chắc chắn không?'
+        modal:
+          products-dependent: 'Các sản phẩm phụ thuộc'
+          image: 'Hình ảnh'
+          product-name: 'Tên sản phẩm'
+          quantity: 'Số lượng'
+          price: 'Giá bán'
+          category: 'Danh mục'
+          status: 'Trạng thái'
+          close: 'Đóng'
+          delete-products-dependent: 'Xóa các sản phẩm phụ thuộc'
+    products:
+      index:
+        title: 'Trang quản trị - Danh sách sản phẩm'
+        home: 'Trang chủ'
+        products: 'Danh sách sản phẩm'
+        name: 'Tên sản phẩm'
+        price: 'Giá'
+        quantity: 'Số lượng'
+        image: 'Ảnh sản phẩm'
+        category: 'Danh mục'
+        storage-status: 'Trạng thái kho'
+        action: 'Action'
+      new:
+        title: 'Trang quản trị - Thêm sản phẩm'
+        add: 'Thêm mới'
+        home: 'Trang chủ'
+        add-product: 'Thêm sản phẩm'
+      create:
+        create-success: 'Thêm sản phẩm thành công'
+        create-error: 'Thêm sản phẩm thất bại'
+      update:
+        update-success: 'Cập nhật sản phẩm thành công'
+        update-error: 'Cập nhật sản phẩm thất bại'
+      destroy:
+        delete-success: 'Xóa sản phẩm thành công'
+        delete-error: 'Xóa sản phẩm thất bại'
+      destroy-image:
+        delete-success: 'Xóa ảnh thành công'
+        delete-error-all: 'Bạn không thể xóa tất cả ảnh'
+        delete-error: 'Xóa ảnh thất bại'
+      import-file:
+        import-success: 'Import file thành công'
+      edit:
+        title: 'Trang quản trị - Cập nhật sản phẩm'
+        update: 'Cập nhật'
+        home: 'Trang chủ'
+        update-product: 'Cập nhật sản phẩm'
+      shared:
+        form:
+          category: 'Danh mục'
+          name: 'Tên sản phẩm'
+          add-name: 'Nhập tên sản phẩm..'
+          price: 'Giá sản phẩm'
+          add-price: 'Nhập giá sản phẩm'
+          quantity: 'Số lượng sản phẩm'
+          add-quantity: 'Nhập số lượng sản phẩm'
+          description: 'Mô tả'
+          add-description: 'Nhập mô tả'
+          image: 'Ảnh sản phẩm'
+        images:
+          are-u-sure: 'Bạn có chắc chắn không?'
+        listtable:
+          are-u-sure: 'Bạn có chắc chắn không?'
+          out-of-stock: 'Đã hết hàng'
+          still-in-stock: 'Vẫn còn hàng'
+    orders:
+      index:
+        title: 'Trang quản trị - Quản lý đơn đặt hàng'
+        home: 'Trang chủ'
+        orders: 'Danh sách đơn đặt hàng'
+        user-name: 'Tên khách hàng'
+        receiver: 'Người nhận'
+        address: 'Địa chỉ'
+        phone: 'Điện thoại'
+        email: 'Email'
+        date: 'Ngày đặt'
+        total-money: 'Thành tiền'
+        status: 'Trạng thái'
+      shared:
+        listtable:
+          waiting-confirm: 'Chờ xác nhận'
+          delivered: 'Đã giao hàng'
+          cancel: 'Đơn hàng hủy'
+        modal:
+          order-detail: 'Chi tiết đơn hàng'
+          image: 'Hình ảnh'
+          product-name: 'Tên sản phẩm'
+          price: 'Giá bán'
+          status: 'Trạng thái'
+          close: 'Đóng'
+          confirm: 'Xác nhận'
+          cancel: 'Hủy đơn'
+          out-of-stock: 'Đã hết hàng'
+          still-in-stock: 'Vẫn còn hàng'
+        search:
+          user-name: 'Nhập tên khách hàng'
+          min-money: 'Tiền tối thiểu'
+          max-money: 'Tiền tối đa'
+          waiting-confirm: 'Chờ xác nhận'
+          delivered: 'Đã giao hàng'
+          cancel: 'Hủy'
+          search: 'Tìm kiếm'
+          select: 'Chọn'
+    
+    users:
+      index:
+        title: 'Trang quản trị - Quản lí người dùng'
+        home: 'Trang chủ'
+        users: 'Danh sách người dùng'
+        name: 'Tên thành viên'
+        address: 'Địa chỉ'
+        phone: 'Điện thoại'
+        email: 'Email'
+        date: 'Ngày đăng ký'
+        role: 'Quyền'
+        status: 'Trạng thái'
+      edit:
+        title: 'Trang quản trị - Cập nhật người dùng'
+        home: 'Trang chủ'
+        update-user: 'Cập nhật thành viên'
+        update: 'Cập nhật'
+      create:
+        create-success: 'Thêm thành viên thành công'
+        create-error: 'Thêm thành viên thất bại'
+      update:
+        update-success: 'Cập nhật thành viên thành công'
+        update-error: 'Cập nhật thành viên thất bại'
+      destroy:
+        delete-success: 'Xóa thành viên thành công'
+        delete-error: 'Xóa thành viên thất bại'
+      new:
+        add: 'Thêm mới'
+        home: 'Trang chủ'
+        add-user: 'Thêm mới thành viên'
+      crop:
+        home: 'Trang chủ'
+        edit-image: 'Chỉnh sửa ảnh'
+      shared:
+        form:
+          role: 'Phân quyền'
+          member: 'Thành viên'
+          admin: 'Quản trị viên'
+          full-name: 'Họ và tên'
+          add-full-name: 'Nhập họ và tên'
+          email: 'Email'
+          add-email: 'Nhập email'
+          password: 'Mật khẩu'
+          add-password: 'Nhập mật khẩu'
+          password-confirm: 'Nhập lại mật khẩu'
+          address: 'Địa chỉ'
+          add-address: 'Nhập địa chỉ'
+          phone: 'Số điện thoại'
+          add-phone: 'Nhập số điện thoại'
+          avatar: 'Ảnh đại diện'
+        listtable:
+          admin: 'Quản trị viên'
+          member: 'Thành viên'
+          activated: 'Đã kích hoạt'
+          not-activated: 'Chưa kích hoạt'
+          are-u-sure: 'Bạn có chắc chắn không?'
+
+    timers:
+      index:
+        title: 'Trang quản trị - Quản lý thời gian'
+        timers: 'Danh sách thời gian'
+        home: 'Trang chủ'
+        start-time: 'Thời gian bắt đầu'
+        end-time: 'Thời gian kết thúc'
+        countdown-time: 'Thời gian đếm ngược'
+        step-up-money: 'Bước tăng tiền'
+        product-name: 'Tên sản phẩm'
+        status: 'Trạng thái'
+      new:
+        title: 'Thêm mới thời gian'
+        add: 'Thêm mới'
+        home: 'Trang chủ'
+        add-time: 'Thêm mới thời gian'
+      create:
+        create-success: 'Thêm thành công'
+        create-error: 'Thêm thất bại'
+      update:
+        update-success: 'Cập nhật thành công'
+        update-error: 'Cập nhật thất bại'
+      destroy:
+        delete-success: 'Xóa thành công'
+        delete-error: 'Xóa thất bại'
+      destroy_cache:
+        delete-success: 'Xóa cache thành công'
+      edit:
+        title: 'Cập nhật thời gian'
+        update: 'Cập nhật'
+        home: 'Trang chủ'
+        update-time: 'Cập nhật thời gian'
+      shared:
+        form:
+          product: 'Sản phẩm'
+          start-time: 'Thời gian bắt đầu'
+          end-time: 'Thời gian kết thúc'
+          countdown-time: 'Thời gian đếm ngược'
+          step-up-money: 'Bước tăng tiền'
+          add-step-up-money: 'Nhập bước tăng tiền'
+          status: 'Trạng thái'
+          unsold: 'Chưa bán'
+          solding: 'Đang bán'
+        listtable:
+          hour: 'giờ'
+          minute: 'phút'
+          second: 'giây'
+          currency: 'đ'
+          unsold: 'Chưa bán'
+          solding: 'Đang bán'
+          are-u-sure: 'Bạn có chắc chắn?'
+        search:
+          search: 'Tìm kiếm'
+          select: 'Chọn'
+          unsold: 'Chưa bán'
+          solding: 'Đang bán'
+
+    auctions:
+      index:
+        title: 'Trang quản trị - Quản lý phiên đấu giá'
+        auction-list: 'Danh sách phiên đấu giá'
+        home: 'Trang chủ'
+        date: 'Ngày đấu giá'
+        start-time: 'Thời gian bắt đầu'
+        end-time: 'Thời gian kết thúc'
+        countdown-time: 'Thời gian đếm ngược'
+        step-up-money: 'Bước tăng tiền'
+        product: 'Sản phẩm'
+        status: 'Trạng thái'
+        total-auction: 'Tổng phiên đấu giá'
+        total-money: 'Tổng tiền bán được'
+      destroy:
+        delete-success: 'Xóa thành công'
+        delete-error: 'Xóa thất bại'
+      shared:
+        listtable:
+          hour: 'giờ'
+          minute: 'phút'
+          second: 'giây'
+          currency: 'đ'
+          auctioning: 'Đang đấu giá'
+          finished: 'Đã kết thúc'
+          solding: 'Đang bán'
+          are-u-sure: 'Bạn có chắc chắn?'
+        modal:
+          auction-detail: 'Chi tiết phiên đấu giá'
+          user: 'Khách hàng'
+          money: 'Số tiền'
+          status: 'Trạng thái'
+          close: 'Đóng'
+          winer: 'Người thắng'
+          loser: 'Người thua'
+        search: 
+          product: 'Sản phẩm'
+          add-product: 'Nhập tên sản phẩm...'
+          select: 'Chọn'
+          auctioning: 'Đang đấu giá'
+          finished: 'Đã kết thúc'
+          search: 'Tìm kiếm'
+  
+  layouts:
+    modules:
+      chat_room:
+        chat_all: 'Chat all' 
+        chat_admin: 'Chat admin'
+        send: 'Gửi'
+      header:
+        cart: 'Giỏ hàng'
+        my-auctions: 'Đấu giá của tôi'
+        welcome: 'Xin chào'
+        admin-page: 'Trang quản lý'
+        profile: 'Thông tin cá nhân'
+        orders: 'Đơn hàng'
+        logout: 'Đăng xuất'
+        login: 'Đăng nhập'
+        search: 'Tìm kiếm'
+      modal_auth:
+        login: 'Đăng nhập'
+        register: 'Đăng ký'
+    admin:
+      modules:
+        left-nav:
+          home: 'Trang chủ'
+          categories: 'Danh mục'
+          products: 'Sản phẩm'
+          orders: 'Đơn đặt hàng'
+          members: 'Thành viên'
+          timer: 'Thời gian đấu giá'
+          auctions: 'Phiên đấu giá'
+          storage-info: 'Thông tin kho hàng'
+          history-orders: 'Lịch sử mua hàng'
+        search:
+          search: 'Tìm kiếm'
+        top-nav:
+          admin-page: 'Trang quản trị'
+          my-profile: 'Thông tin cá nhân'
+          logout: 'Đăng xuất'
+  orders:
+    carts:
+      quantity: 'Số lượng'
+    form:
+      name: 'Tên người nhận'
+      address: 'Địa chỉ'
+      phone: 'Số điện thoại'
+      payment: 'Hình thức thanh toán'
+      cash-on-delivery: 'Nhận hàng thanh toán'
+      atm-bank-transfer: 'ATM/Chuyển khoản'
+      stander-delivery: 'Giao Hàng Tiêu Chuẩn - giao hàng tận nơi.'
+      cash-delivery: 'Thanh Toán Khi Nhận Hàng - thanh toán tiền mặt khi nhận hàng.'
+      order-24h: 'Chúng tôi sẽ gửi đơn hàng của bạn đi trong 24 giờ.'
+      next-to-confirm: 'Chọn đặt hàng để xác nhận đơn hàng.'
+      select-your-bank: 'Chọn ngân hàng'
+      next: 'Tiếp theo'
+    edit:
+      home: 'Trang chủ'
+      checkout: 'Thanh toán'
+      information: 'Thông tin gửi hàng'
+      contact-support: 'Liên hệ - Hỗ trợ'
+      question: 'Nếu có thắc mắc hoặc câu hỏi, vui lòng liên hệ'
+      phone-us: 01664419659
+      order-summary: 'Tổng kết đơn hàng'
+      product-number: 'Số sản phẩm'
+      total-money: 'Tổng tiền'
+      delivery-charges: 'Phí giao hàng'
+      total-money-amount: 'Tổng tiền thanh toán'
+    index:
+      cart: 'Giỏ hàng'
+      home: 'Trang chủ'
+      product: 'Sản phẩm'
+      quantity: 'Số lượng'
+      price: 'Giá'
+      total-prie: 'Tổng tiền'
+      not-cart: 'Bạn không có sản phẩm nào trong giỏ hàng'
+      checkout: 'Thanh toán'
+      info: 'Giao hàng từ 1 - 3 ngày | Chỉ từ 29.000đ'
+
+  javascripts:
+    include:
+      admin:
+        auction_detail:
+          are-u-sure: 'Bạn có chắc không?'
+          delete: 'Xóa'
+          cancel: 'Hủy bỏ'
+          action-failed: 'Hành động thất bại'
+        line_item:
+          total_price: 'Tổng tiền'
+      public:
+        history_orders:
+          history_orders:
+            total_price: 'Tổng tiền'
+        connected_disconnected:
+          disconnected: 'Đã mất kết nối'
+          please-check-again: 'Xin vui lòng kiểm tra lại'
+    application_admin:
+      layouts:
+        chart-data:
+          monday: 'Thứ 2'
+          tuesday: 'Thứ 3'
+          wednesday: 'Thứ 4'
+          thursday: 'Thứ 5'
+          friday: 'Thứ 6'
+          saturday: 'Thứ 7'
+          sunday: 'Chủ nhật'
+
+

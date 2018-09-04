@@ -4,14 +4,13 @@
     ol.breadcrumb
       li
         a[href="#"]
-          svg.glyph.stroked.home
-            use[xlink:href="#stroked-home"]
+          i.fa.fa-home
       li.active
-        | Home
+        = t ".home"
   .row
     .col-lg-12
-      h1.page-header
-        | Dashboard
+      h2.page-header
+        = t ".control-panel"
   .row
     .col-xs-12.col-md-6.col-lg-3
       .panel.panel-blue.panel-widget
@@ -20,19 +19,19 @@
             i.fa.fa-calendar.fa-4x
           .col-sm-9.col-lg-7.widget-right
             .large
-              |  2
+              = content_tag(:span, @orders)
             .text-muted
-              |  tổng đơn hàng
+              = t(".orders")
     .col-xs-12.col-md-6.col-lg-3
       .panel.panel-red.panel-widget
         .row.no-padding
           .col-sm-3.col-lg-5.widget-left
-            i.fa.fa-cart-plus.fa-4x
+            i.fa.fa-gavel.fa-4x
           .col-sm-9.col-lg-7.widget-right
             .large
-              |  2
+              = content_tag(:span, @auctions)
             .text-muted
-              |  Đơn hàng mới
+              = t(".auctions")
     .col-xs-12.col-md-6.col-lg-3
       .panel.panel-orange.panel-widget
         .row.no-padding
@@ -40,9 +39,9 @@
             i.fa.fa-shopping-basket.fa-4x
           .col-sm-9.col-lg-7.widget-right
             .large
-              |  2
+              = content_tag(:span, @products)
             .text-muted
-              |  Sản phẩm
+              = t(".products")
     .col-xs-12.col-md-6.col-lg-3
       .panel.panel-teal.panel-widget
         .row.no-padding
@@ -50,14 +49,14 @@
             i.fa.fa-users.fa-4x
           .col-sm-9.col-lg-7.widget-right
             .large
-              |  2
+              = content_tag(:span,  @users)
             .text-muted
-              |  Khách hàng
+              = t(".members")
   .row
     .col-lg-12
       .panel.panel-default
         .panel-heading
-          |  Tổng quan trang cửa hàng
+          = t(".chart-orders")
         .panel-body
           .canvas-wrapper
             canvas#line-chart.main-chart[height="100" width="600"]
@@ -66,7 +65,7 @@
       .panel.panel-default
         .panel-body.easypiechart-panel
           h4
-            | Đơn hàng mới
+            = t(".new-orders")
           #easypiechart-blue.easypiechart[data-percent="92"]
             span.percent
               | 92%
@@ -74,7 +73,7 @@
       .panel.panel-default
         .panel-body.easypiechart-panel
           h4
-            | Đán giá mới
+            = t(".new-auctions")
           #easypiechart-orange.easypiechart[data-percent="65"]
             span.percent
               | 65%
@@ -82,7 +81,7 @@
       .panel.panel-default
         .panel-body.easypiechart-panel
           h4
-            | Khách hàng mới
+            = t(".new-users")
           #easypiechart-teal.easypiechart[data-percent="56"]
             span.percent
               | 56%
@@ -90,11 +89,11 @@
       .panel.panel-default
         .panel-body.easypiechart-panel
           h4
-            | Lượt truy cập
+            = t (".access-times")
           #easypiechart-red.easypiechart[data-percent="27"]
             span.percent
               | 27%
   .row
     .col-md-8
       small
-        | Coppyright 2017
+        | Coppyright 2018

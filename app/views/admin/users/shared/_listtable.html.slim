@@ -1,0 +1,28 @@
+- unless (list == current_user && list.admin?)
+  tr
+    td
+      .form-check
+        label
+          = check_box_tag "users[]", list.id, false, class: "checkbox"
+          = content_tag(:span, nil, class: "label-text")
+    td
+      = list.name
+    td
+      = list.email
+    td
+      = list.phone
+    td
+      = list.email
+    td
+      = format_day list.created_at
+    td
+      = list.admin? ? content_tag(:span, t(".admin"), class: "label label-primary") : content_tag(:span, t(".member"), class: "label label-default")
+    td
+      = list.activated? ? content_tag(:span, t(".activated"), class: "label label-info") : content_tag(:span, t(".not-activated"), class: "label label-warning")
+    td
+      = link_to raw('<i class="fa fa-edit fa-1x"></i>'), edit_admin_user_path(list.id), class: "btn btn-warning"
+    td
+      - if list.deleted?
+        = link_to(content_tag(:i, nil, class: "fa fa-unlock fa-1x"), admin_user_path(list.id), class: "btn btn-danger", method: :delete, data: { confirm: t(".are-u-sure") }, remote: true, authenticity_token: true)
+      - else
+        = link_to(content_tag(:i, nil, class: "fa fa-lock fa-1x"), admin_user_path(list.id), class: "btn btn-danger", method: :delete, data: { confirm: t(".are-u-sure") }, remote: true, authenticity_token: true)

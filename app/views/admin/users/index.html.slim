@@ -1,0 +1,56 @@
+- provide :title, t(".title")
+- provide :search_text, admin_users_path
+.col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
+  .row
+    ol.breadcrumb
+      li
+        = link_to content_tag(:i, " " + t(".home"), class: "fa fa-home"), admin_root_path
+      li.active
+        = t(".users")
+    .col-lg-12
+      .panel-heading
+        .col-lg-3
+          = t(".users")
+        = form_for :search, url: admin_users_path, method: :get do |f|
+          = render partial: "admin/users/shared/search", locals: {f: f}
+      .panel.panel-default
+        .panel-body
+          = form_tag destroy_multiple_admin_users_path, method: :delete do
+            .table-responsive.checkbox-style
+              table.table.table-hover
+                thead
+                  tr
+                    th
+                      .form-check
+                        label
+                          = check_box_tag "select_all"
+                          = content_tag(:span, nil, class: "label-text")
+                    th
+                      = t(".name")
+                    th
+                      = t(".address")
+                    th
+                      = t(".phone")
+                    th
+                      = t(".email")
+                    th
+                      = t(".date")
+                    th
+                      = t(".role")
+                    th
+                      = t(".status")
+                    th[colspan="2"]
+                      | Action
+                tbody
+                  = render partial: "admin/users/shared/listtable", collection: @users, as: "list"
+            = will_paginate
+            br
+            = link_to content_tag(:i, nil, class: "fa fa-plus-square fa-1x"), new_admin_user_url, class: "btn btn-primary"
+            - unless @users.size.zero?
+              = button_tag(type: "submit", class: "btn btn-danger delete-all-show delete-all") do
+                - if @users.first.deleted?
+                  = hidden_field_tag "deleted", 0
+                  = content_tag(:i, nil, class: "fa fa-unlock fa-1x")
+                - else
+                  = hidden_field_tag "deleted", 1
+                  = content_tag(:i, nil, class: "fa fa-lock fa-1x")

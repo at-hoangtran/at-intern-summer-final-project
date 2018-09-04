@@ -7,10 +7,9 @@ nav.navbar.navbar-inverse.navbar-fixed-top[role="navigation"]
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand[href="#"]
+      a.navbar-brand[href="/admin"]
         span
-          | Trang Quản Trị
-        |  SHOP
+          = t(".admin-page")
       ul.user-menu
         li.dropdown.pull-right
           a.dropdown-toggle[data-toggle="dropdown" href="#"]
@@ -19,8 +18,24 @@ nav.navbar.navbar-inverse.navbar-fixed-top[role="navigation"]
             span.caret
           ul.dropdown-menu[role="menu"]
             li
-              a[href="#"]
-                i.fa.fa-btn.fa-sign-out
-                | Thông tin
+              = link_to content_tag(:i, " " + t(".my-profile"), class: "fa fa-btn fa-user"), edit_user_path(current_user.id)
             li
-              = link_to raw('<i class="fa fa-btn fa-sign-out"></i> ' + t(".log_out")), "#", method: :delete
+              = link_to content_tag(:i, " " + t(".logout"), class: "fa fa-btn fa-sign-out"), logout_path, method: :delete
+            li
+              = link_to "Vietnamese", locale:"vi"
+            li
+              = link_to "English", locale:"en"
+      ul.nav.navbar-nav.navbar-right
+        li.dropdown
+          a.dropdown-toggle.notify-button[aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"]
+            = content_tag(:i, nil, class: "fa fa-comments") + " ("
+            = content_tag(:span, @notifys.size, class: "count-notify") + ")"
+          ul.dropdown-menu.notify-drop.notify-change-width
+            .drop-content.drop-content-notify
+              - if @notifys.size.zero?
+                .col-md-12.text-center
+                  = content_tag(:span, "Không có tin nhắn mới", class: "not-message")
+              - else
+                = render partial: "layouts/admin/modules/notify_li", collection: @notifys, as: "list"
+            .notify-drop-footer.text-center
+              = link_to content_tag(:i, "Xem tất cả", class: "fa fa-eye"), admin_chat_room_admins_path
