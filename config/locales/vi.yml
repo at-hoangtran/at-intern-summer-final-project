@@ -152,7 +152,7 @@ vi:
       destroy:
         delete-success: 'Xóa sản phẩm thành công'
         delete-error: 'Xóa sản phẩm thất bại'
-      destroy-image:
+      destroy_image:
         delete-success: 'Xóa ảnh thành công'
         delete-error-all: 'Bạn không thể xóa tất cả ảnh'
         delete-error: 'Xóa ảnh thất bại'

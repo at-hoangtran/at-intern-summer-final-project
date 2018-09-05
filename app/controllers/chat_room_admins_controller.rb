@@ -1,6 +1,7 @@
 class ChatRoomAdminsController < ApplicationController
   def index
     @chat_room = ChatRoomAdmin.where(user_id: current_user.id)
+    check_messages_view
     respond_to do |format|
       format.json do
         render json: @chat_room.as_json(
@@ -42,4 +43,13 @@ class ChatRoomAdminsController < ApplicationController
       format.json { render json: true }
     end
   end
+
+  private
+
+    def check_messages_view
+      chat_room = ChatRoomAdmin.where(user_id: current_user.id, admin: 1, view: 0)
+      chat_room.each do |e|
+        e.update_attribute(:view, 1)
+      end
+    end
 end

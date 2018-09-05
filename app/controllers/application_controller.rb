@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :set_online
   before_action :menu_categories
   before_action :counter_access
+  before_action :show_notifys
 
   def logged_in_user
     unless logged_in?
@@ -71,6 +72,11 @@ class ApplicationController < ActionController::Base
         $redis_counter_access.set(today, request.remote_ip)
       end
     end
+  end
+
+  def show_notifys
+    user_id = current_user ? current_user.id : nil
+    @notifys = ChatRoomAdmin.where(user_id: user_id, view: 0, admin: 1)
   end
 
   private

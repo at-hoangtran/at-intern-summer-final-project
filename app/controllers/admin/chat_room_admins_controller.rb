@@ -10,7 +10,7 @@ class Admin::ChatRoomAdminsController < ApplicationAdminController
     @chat = user.chat_room_admins.build(
       message: params[:message],
       admin: 1,
-      view: 1
+      view: 0
     )
 
     @chat.save
@@ -23,7 +23,7 @@ class Admin::ChatRoomAdminsController < ApplicationAdminController
       message: params[:message],
       datetime: datetime,
       admin: 1,
-      view: 1
+      view: 0
     }
 
     ActionCable.server.broadcast("chat_room_admin_#{user.id}",

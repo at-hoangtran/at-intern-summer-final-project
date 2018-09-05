@@ -2,6 +2,7 @@ var box_chat_admin = {
   initOnLoad: function() {
     box_chat_admin.event_load_messages();
     box_chat_admin.event_sent();
+    box_chat_admin.event_close();
   },
   tokenForm: function() {
     var token = $('meta[name="csrf-token"]').attr('content');
@@ -12,8 +13,11 @@ var box_chat_admin = {
       var target = $(e.target).attr("href");
       if (target === '#chat_admin') {
         box_chat_admin.load_messages();
+        $('#chat_admin').attr('user-id',
+          conntected_disconnected.load_id_current_user());
       } else {
         box_chat_member.load_messages();
+        $('#chat_admin').attr('user-id', '');
       }
     });
   },
@@ -43,6 +47,7 @@ var box_chat_admin = {
       $('.message_template.admin').html(html);
     }
     box_chat_admin.scroll_top();
+    $('.notify-admin-text').html(0);
   },
   event_sent: function() {
     $('.send_message.admin').on('click', function(){
@@ -113,6 +118,11 @@ var box_chat_admin = {
     $('.top-right').notify({
       message: { text: 'Thao tác thất bại !' }
     }).show();
+  },
+  event_close: function() {
+    $("#ChatModal").on('hide.bs.modal', function () {
+      $('#chat_admin').attr('user-id', '');
+    });
   },
   formatDateTime: function(datetime) {
     var date = new Date(datetime);
