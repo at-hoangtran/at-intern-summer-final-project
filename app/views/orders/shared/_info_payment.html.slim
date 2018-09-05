@@ -1,4 +1,3 @@
-/ = javascript_include_tag "include/validation/order/order"
 .information_payment
   h4
     | Địa chỉ của bạn
@@ -13,7 +12,7 @@
         .info_item_address
           = info[1]
       span.edit_info
-        | Edit
+        | Chỉnh sửa
   .form_info_payment
     h4
       | Thêm địa chỉ mới
@@ -22,42 +21,22 @@
     .form_info_item.label_name
       label
         | Họ tên
-      = text_field_tag(:user_name, nil, class: "form-control")
+      = text_field_tag(:user_name, nil, class: "form-control", placeholder: "Nhập họ tên")
     .form_info_item.label_email
       label
         | Email
-      = email_field_tag(:email, current_user.email, disabled: true, class: "form-control")
+      = email_field_tag(:email, current_user.email, disabled: true, class: "form-control", placeholder: "Nhập địa email")
     .form_info_item.label_address
       label
         | Địa chỉ
-      = text_field_tag(:address, nil, { id: "advanced-placepicker", class: "form-control", placeholder: "" })
+      = text_field_tag(:address, nil, { id: "advanced-placepicker", class: "form-control", placeholder: "Nhập địa chỉ" })
       #collapseTwo.collapse
         .another-map-class.thumbnail
     .form_info_item.label_phone
       label
         | Số điện thoại
-      = telephone_field_tag(:phone, nil, class: "form-control")
+      = telephone_field_tag(:phone, nil, class: "form-control", placeholder: "Nhập số điện thoại")
   .add_new_info_billing
     = button_tag("Thêm địa chỉ mới", type: "button", class: "btn btn-info new_billing")
-    = button_tag(type: "button", class: "btn btn-warning next-order-1") do 
+    = button_tag(type: "button", class: "btn btn-warning next-order-1") do
       = content_tag(:i," Tiếp theo", class: "fa fa-shopping-cart")
-    
-  / = form_for @order, url: order_path(@order.id), html: { id: "formOrder", class: "form-horizontal", :method => :patch } do |f|
-  /   .form_info_item.label_name
-  /     = f.label :user_name, 'Họ tên'
-  /     = f.text_field :user_name, class: "form-control"
-  /   .form_info_item.label_email
-  /     = f.label :email, 'Email'
-  /     = f.text_field :email, { class: "form-control", value: current_user.email }
-  /   .form_info_item.label_address
-  /     = f.label :address, "Địa chỉ giao hàng"
-  /     = f.text_field :address, { id: "advanced-placepicker",  class: "form-control", placeholder: "" }
-  /     #collapseTwo.collapse
-  /       .another-map-class.thumbnail
-  /   .form_info_item.label_phone
-  /     = f.label :phone, "Số điện thoại"
-  /     = f.telephone_field :phone, class: "form-control"
-  /   .add_new_info_billing
-  /     = button_tag("Thêm địa chỉ mới", type: "button", class: "btn btn-info new_billing")
-  /     = button_tag(type: "submit", class: "btn btn-warning next-order-1") do 
-  /       =content_tag(:i," Tiếp theo", class: "fa fa-shopping-cart")

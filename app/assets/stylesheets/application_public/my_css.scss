@@ -774,11 +774,13 @@ span.name {
   border: 1px solid #eee;
   margin-bottom: 10px;
   border-radius: 10px;
+  cursor: pointer;
   input[type= "radio"] {
     margin: 20px 30px 0px 20px;
     height: 15px;
     width: 15px;
     float: left;
+    cursor: pointer;
   }
   .info_address {
     margin-top: 8px;
