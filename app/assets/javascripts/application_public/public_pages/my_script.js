@@ -73,7 +73,6 @@ $(document).ready(function() {
     $(".bank-payment").hide();
     $(".pay-onl-info").hide();
     $(".next-order-3").show();
-    
   });
 
   $(".payment-onl").on('click', function() {
@@ -81,7 +80,6 @@ $(document).ready(function() {
     $(".cbb_offline").prop("checked", false);
     $(".pay-info").hide();
     $(".bank-payment").show();
-    // $(".next-order-3").hide();
   });
 
   $(".info_billing").on('click', function(){
@@ -117,7 +115,7 @@ $(document).ready(function() {
   $('.payment_progress_bar li').not('.active').find('a').removeAttr("data-toggle");
 
   $(".next-order-1").on('click', function(){
-    
+
     validateOrder();
   });
 
@@ -125,7 +123,6 @@ $(document).ready(function() {
     $("#order_user_name").val($("#user_name").val());
     $("#order_address").val($("#advanced-placepicker").val());
     $("#order_phone").val($("#phone").val());
-    
     $(".sum_name_o").html($("#user_name").val());
     $(".sum_address_o").html($("#advanced-placepicker").val());
     $(".sum_phone_o").html($("#phone").val());
@@ -135,7 +132,6 @@ $(document).ready(function() {
   });
 
   $('[data-toggle-tooltip="tooltip"]').tooltip();
-
 });
 
 function activaTab(tab){
@@ -155,9 +151,6 @@ function checkPayment() {
 
 function validateOrder() {
   var phoneno = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g;
-  // if ($(".info_billing input[type=radio]:checked").length == 0) {
-  //   alert("Vui lòng chọn địa chỉ !");
-  // }
   if ($("#user_name").val() == "") {
     alert("Vui lòng nhập tên người nhận!");
   }
