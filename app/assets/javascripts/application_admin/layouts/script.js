@@ -98,6 +98,13 @@ $(document).ready(function() {
   });
 
   $('[data-toggle-tooltip="tooltip"]').tooltip();
+
+  window.sweetAlertConfirmConfig = {
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: 'Đồng ý',
+    cancelButtonText: 'Hủy'
+  };
 });
 
 

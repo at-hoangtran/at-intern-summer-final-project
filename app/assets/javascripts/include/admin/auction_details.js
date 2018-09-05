@@ -48,13 +48,12 @@ var auction_details = {
   },
   confirmDelete: function (id_load, id, self) {
     swal({
-      title: I18n.t("javascripts.include.admin.auction_detail.are-u-sure"),
+      title: 'Bạn đã chắc chắn?',
       type: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: I18n.t("javascripts.include.admin.auction_detail.delete"),
-      cancelButtonText: I18n.t("javascripts.include.admin.auction_detail.cancel")
+      confirmButtonText: 'Đồng ý',
+      cancelButtonText: 'Hủy'
     }).then((result) => {
       auction_details.requestAjaxDelete(id_load, id, self);
     });

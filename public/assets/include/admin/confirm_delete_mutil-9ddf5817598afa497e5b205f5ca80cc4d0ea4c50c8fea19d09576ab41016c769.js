@@ -11,7 +11,6 @@ var confirm_delete_mutil = {
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
         confirmButtonText: 'Đồng ý',
         cancelButtonText: 'Hủy'
       }).then((result) => {

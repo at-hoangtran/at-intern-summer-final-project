@@ -115,7 +115,7 @@ vi:
           name: 'Tên'
           add-name: 'Nhập tên...'
           parent-category: 'Danh mục cha'
-          are-u-sure: 'Bạn có chắc chắn không?'
+          are-u-sure: 'Bạn đã chắc chắn?'
         modal:
           products-dependent: 'Các sản phẩm phụ thuộc'
           image: 'Hình ảnh'
@@ -176,9 +176,9 @@ vi:
           add-description: 'Nhập mô tả'
           image: 'Ảnh sản phẩm'
         images:
-          are-u-sure: 'Bạn có chắc chắn không?'
+          are-u-sure: 'Bạn đã chắc chắn?'
         listtable:
-          are-u-sure: 'Bạn có chắc chắn không?'
+          are-u-sure: 'Bạn đã chắc chắn?'
           out-of-stock: 'Đã hết hàng'
           still-in-stock: 'Vẫn còn hàng'
     orders:
@@ -275,7 +275,7 @@ vi:
           member: 'Thành viên'
           activated: 'Đã kích hoạt'
           not-activated: 'Chưa kích hoạt'
-          are-u-sure: 'Bạn có chắc chắn không?'
+          are-u-sure: 'Bạn đã chắc chắn?'
 
     timers:
       index:
@@ -327,7 +327,7 @@ vi:
           currency: 'đ'
           unsold: 'Chưa bán'
           solding: 'Đang bán'
-          are-u-sure: 'Bạn có chắc chắn?'
+          are-u-sure: 'Bạn đã chắc chắn?'
         search:
           search: 'Tìm kiếm'
           select: 'Chọn'
@@ -360,7 +360,7 @@ vi:
           auctioning: 'Đang đấu giá'
           finished: 'Đã kết thúc'
           solding: 'Đang bán'
-          are-u-sure: 'Bạn có chắc chắn?'
+          are-u-sure: 'Bạn đã chắc chắn?'
         modal:
           auction-detail: 'Chi tiết phiên đấu giá'
           user: 'Khách hàng'
@@ -459,7 +459,7 @@ vi:
     include:
       admin:
         auction_detail:
-          are-u-sure: 'Bạn có chắc không?'
+          are-u-sure: 'Bạn đã chắc chắn?'
           delete: 'Xóa'
           cancel: 'Hủy bỏ'
           action-failed: 'Hành động thất bại'

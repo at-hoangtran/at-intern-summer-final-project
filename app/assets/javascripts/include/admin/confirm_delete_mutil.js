@@ -7,11 +7,10 @@ var confirm_delete_mutil = {
       e.preventDefault();
       var form = $(this).parents('form');
       swal({
-        title: 'Bạn đã chắc chắn ?',
+        title: 'Bạn đã chắc chắn?',
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
         confirmButtonText: 'Đồng ý',
         cancelButtonText: 'Hủy'
       }).then((result) => {

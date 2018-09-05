@@ -34,11 +34,7 @@ var auction = {
         html_inner = '<div class="item active">';
         html_inner += '<img src="'+ image_default +'">';
         html_inner += '</div>';
-        html_indi = '<li class="active" data-slide-to="0" data-target="#article-photo-carousel">';
-        html_indi += '<img src="'+ image_default +'">';
-        html_indi += '</li>';
         $('.carousel-inner').append(html_inner);
-        $('.carousel-indicators').append(html_indi);
       }
     }
     $('.description').html(description);

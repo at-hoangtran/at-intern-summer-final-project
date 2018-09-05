@@ -52,7 +52,6 @@ var auction_details = {
       type: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
       confirmButtonText: I18n.t("javascripts.include.admin.auction_detail.delete"),
       cancelButtonText: I18n.t("javascripts.include.admin.auction_detail.cancel")
     }).then((result) => {

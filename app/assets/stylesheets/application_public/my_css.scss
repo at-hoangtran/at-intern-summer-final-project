@@ -913,7 +913,7 @@ span.name {
     padding: 0 20px;
   }
   h4 {
-    margin: 30px 20px; 
+    margin: 30px 20px;
   }
   display: none;
 }
@@ -924,11 +924,9 @@ span.name {
   overflow: auto;
 }
 
-#type_payment {
-  .color-link {
-    text-decoration: none!important;
-    color: #333333!important;
-  }
+.color-link {
+  text-decoration: none!important;
+  color: #333333!important;
 }
 
 .color-link:hover {
