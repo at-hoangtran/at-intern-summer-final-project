@@ -196,6 +196,10 @@ li.nopassword {
   text-align: center;
 }
 
+.add_new_info_billing {
+  overflow: auto;
+}
+
 .price-crt-text {
   font-size: 1.7em;
   color: #46a185;
@@ -211,11 +215,10 @@ li.nopassword {
 }
 
 .btn-pay {
-  margin-right: 2%;
   width: 130px;
   height: 50px;
   font-size: 20px;
-  float: right;
+  margin: 20px 0 20px 32%;
 }
 
 .product-price {
@@ -395,11 +398,13 @@ tr.show_modal {
   margin: 15px 10px;
   border: 1px solid #ccc;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .payment-item:hover {
   background-color: #e9e8fc;
+  border-radius: 10px;
+  border: 1px solid #16a085;
 }
 
 .check-box-payment {
@@ -426,7 +431,7 @@ tr.show_modal {
 
 .pay-info-item {
   margin: 5px;
-  color :#16a085;
+  color: #16a085;
 }
 
 .bank-payment {
@@ -448,7 +453,7 @@ tr.show_modal {
 
 .bank-item:hover {
   background-color: #e9e8fc;
-  border: 1px solid #375cb7;
+  border: 1px solid #16a085;
 }
 
 .title-product {
@@ -768,7 +773,7 @@ span.name {
   height: 75px;
   border: 1px solid #eee;
   margin-bottom: 10px;
-
+  border-radius: 10px;
   input[type= "radio"] {
     margin: 20px 30px 0px 20px;
     height: 15px;
@@ -805,17 +810,22 @@ span.name {
   margin-top: 14px;
 }
 
+.next-order-1 {
+  margin-bottom: 15px;
+}
+
 .next-order-2 {
   margin-right: 40px;
 }
 
 .next-order-3 {
-  margin-top: 50px;
-  margin-right: 40px;
+  margin: 50px 40px 20px 0;
+
 }
 
 .info_billing:hover {
-  border: 1px solid #375cb7;
+  border: 1px solid #16a085;
+  border-radius: 10px;
 }
 
 .return_billing {
@@ -847,6 +857,7 @@ span.name {
   height: 80px;
   border: 1px solid #eee;
   margin: 30px 10px;
+  border-radius: 10px;
   input[type="radio"] {
     float: left;
     margin: 25px 20px;
@@ -863,6 +874,10 @@ span.name {
     color: #16a085;
   }
 }
+.delivery_type:hover {
+  border: 1px solid #16a085;
+  border-radius: 10px;
+}
 
 #table-scl tr th {
   text-align: center;
@@ -872,6 +887,10 @@ span.name {
   width: 85%;
   margin: auto;
   margin-top: 85px;
+}
+
+#summary_order {
+  overflow: auto;
 }
 
 .form_info_payment {
@@ -902,6 +921,7 @@ span.name {
 .payment_type_information {
   width: 90%;
   margin: auto;
+  overflow: auto;
 }
 
 #type_payment {

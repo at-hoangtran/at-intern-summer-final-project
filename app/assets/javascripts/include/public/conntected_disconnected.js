@@ -9,6 +9,7 @@ var conntected_disconnected = {
       'warning'
     )
   },
+
   load_id_current_user: function () {
     user_id = null;
     $.ajax({

@@ -50,6 +50,7 @@ gem 'redis', '~> 3.0'
 gem 'redis-namespace'
 gem 'redis-rails'
 gem 'redis-rack-cache'
+gem 'fog-aws'
 
 gem 'ckeditor'
 

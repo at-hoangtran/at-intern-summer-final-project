@@ -187,7 +187,5 @@ function validateCheckbox() {
 function validateRadio() {
   if ($(".info_billing input[type=radio]:checked").length == 0) {
     alert("Vui lòng chọn địa chỉ !");
-
   }
 }
-

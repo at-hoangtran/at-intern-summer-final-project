@@ -3,6 +3,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   process resize_to_limit: [300, 300]
 
   if Rails.env.production?
+    # fog_provider = 'fog/aws'
     storage :fog
   else
     storage :file

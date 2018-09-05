@@ -22,6 +22,7 @@ module FinalProject
     config.i18n.load_path += Dir["#{Rails.root.to_s}/config/locales/**/*.yml"]
     config.active_record.default_timezone = :local # Or :utc
     config.exceptions_app = self.routes
+    config.assets.initialize_on_precompile = false
 
     if defined?(Rails::Server)
       config.after_initialize do

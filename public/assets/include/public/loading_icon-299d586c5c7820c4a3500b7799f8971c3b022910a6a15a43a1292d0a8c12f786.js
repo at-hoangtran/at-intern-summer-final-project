@@ -1,0 +1,1 @@
+var loading_icon={loadIcon:function(i){$.each(i.obj,function(i,o){loading_icon.loading_auction(o.id,o.period)})},loading_auction:function(i,o){o<1?($('[load-id="'+i+'"] .price-time').hide(),$('[load-id="'+i+'"] .price-refresh').show()):($('[load-id="'+i+'"] .price-time').show(),$('[load-id="'+i+'"] .price-refresh').hide())}};

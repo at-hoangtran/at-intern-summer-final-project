@@ -23,12 +23,12 @@ class OrdersController < ApplicationController
 
   def update_status
     @order.update_attributes(order_params)
-    @order.update_attributes(status: 1, total_price: @total_price)
+    @order.update_attributes(status: 1, total_price: @total_price + 29000)
   end
 
   def destroy
+    product = @line_item.product
     if @line_item.destroy
-      product = @line_item.product
       product.update_attribute(:quantity, product.quantity + 1)
       TimerData.add_quantity(product.id)
       redirect_to orders_path, flash: { success: 'Xóa sản phẩm thành công!' }

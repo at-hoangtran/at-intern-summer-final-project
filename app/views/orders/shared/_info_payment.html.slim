@@ -40,7 +40,7 @@
   .add_new_info_billing
     = button_tag("Thêm địa chỉ mới", type: "button", class: "btn btn-info new_billing")
     = button_tag(type: "button", class: "btn btn-warning next-order-1") do 
-      =content_tag(:i," Tiếp theo", class: "fa fa-shopping-cart")
+      = content_tag(:i," Tiếp theo", class: "fa fa-shopping-cart")
     
   / = form_for @order, url: order_path(@order.id), html: { id: "formOrder", class: "form-horizontal", :method => :patch } do |f|
   /   .form_info_item.label_name
