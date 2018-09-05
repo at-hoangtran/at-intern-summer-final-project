@@ -1,0 +1,24 @@
+tr
+  td
+    .form-check
+      label
+        = check_box_tag "timers[]", list.id, false, class: "checkbox"
+        = content_tag(:span, nil, class: "label-text")
+  td
+    = format_time(list.start_at) + " " + t(".hour")
+  td
+    = format_time(list.end_at) + " " + t(".hour")
+  td
+    = format_time_sounds(list.period)
+    = print_period(list.period) ? t(".minute") : t(".second")
+  td
+    = out_price(list.step.to_s) + " " + t(".currency")
+  td
+    = list.product.name
+  td
+    = content_tag(:span, t(".unsold"), class: "label label-warning") if list.waiting?
+    = content_tag(:span, t(".solding"), class: "label label-info") if list.run?
+  td
+    = link_to content_tag(:i, nil, class: "fa fa-edit fa-1x"), edit_admin_timer_path(list.id), class: "btn btn-warning", 'data-toggle-tooltip': 'tooltip', 'data-placement': 'left', 'title': 'Cập nhật thời gian'
+  td
+    = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_timer_path(list.id), class: "btn btn-danger", method: :delete, data: { confirm: t(".are-u-sure") }, 'data-toggle-tooltip': 'tooltip', 'data-placement': 'left', 'title': 'Xóa thời gian'
