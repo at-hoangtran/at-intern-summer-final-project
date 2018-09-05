@@ -13,7 +13,8 @@ var auction = {
     category_name = data['category_name'];
     $('.clock-time-show').html(period);
     $('.price-crt').html(price);
-    $('.title-product').html(category_name);
+    $('.title-category').html(category_name);
+    $('.title-product').html(product_name);
     car_inner = $('.carousel-inner').html();
     car_indicators = $('.carousel-indicators').html();
     if (car_inner == '' && car_indicators == '') {
