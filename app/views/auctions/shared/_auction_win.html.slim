@@ -1,0 +1,30 @@
+div.table-responsive
+  table#table-scl.table.table-striped.table-auction
+    thead
+      tr
+        th
+          = t(".status")
+        th
+          = t(".product")
+        th
+          = t(".your-winning-bid")
+        th
+          = t(".bids")
+        th
+          = t(".completed")
+    tbody.table-auction.load-win-auction
+
+
+script#data-win-auction[type="x-tmpl-mustache"]
+  tr
+    td
+      = content_tag(:i, nil, class: "fa fa-check fa-2x icon-win")
+    td
+      a[href="/public_pages/{{ID}}"]
+        | {{NAME}}
+    td
+      | {{PRICE}}
+    td
+      | 1
+    td
+      | {{DATETIME}}

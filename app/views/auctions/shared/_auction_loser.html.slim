@@ -1,0 +1,34 @@
+div.table-responsive
+  table#table-scl.table.table-striped.table-auction
+    thead
+      tr
+        th
+          = t(".status")
+        th
+          = t(".product")
+        th
+          = t(".your-max-bid")
+        th
+          = t(".highest-bid")
+        th
+          = t(".bids")
+        th
+          = t(".completed")
+    tbody.table-auction.load-loser-auction
+
+script#data-loser-auction[type="x-tmpl-mustache"]
+  tr
+    td
+      = content_tag(:i, nil, class: "fa fa-times fa-2x icon-loser")
+    td
+      a[href="/public_pages/{{ID}}"]
+        | {{NAME}}
+    td
+      | {{MINPRICE}}
+    td
+      | {{MAXPRICE}}
+    td
+      | 1
+    td
+      | {{DATETIME}}
+
