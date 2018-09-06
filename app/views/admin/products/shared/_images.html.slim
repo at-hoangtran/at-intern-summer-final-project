@@ -1,0 +1,5 @@
+#image_delete_id.col-md-3
+  .thumbnail
+    = image_tag(images.url)
+    .caption
+      = link_to content_tag(:i, nil, class: "fa fa-trash fa-1x"), admin_delete_image_product_path(id_product.id, images_counter, size), class: "btn btn-danger form-control", method: :delete, data: { confirm: t(".are-u-sure") }

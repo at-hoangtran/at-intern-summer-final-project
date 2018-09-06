@@ -1,0 +1,1 @@
+$(document).ready(function(){$("#advanced-placepicker").each(function(){var a=$(this).parents(".control-group").next(".collapse").find(".another-map-class");$(this).placepicker({map:a.get(0),placeChanged:function(a){console.log("place changed: ",a.formatted_address,this.getLocation())}}).data("placepicker")})});

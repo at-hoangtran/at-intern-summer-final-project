@@ -12,12 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.turbolinks
+//= require jquery.Jcrop
+//= require ckeditor/init
 //= require bootstrap
-//= require turbolinks
+//= require i18n
+//= require i18n.js
+//= require i18n/translations
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require sweetalert2
 //= require sweet-alert2-rails
 //= require bootstrap_notify
+//= require moment
+//= require bootstrap-datetimepicker
 //= require_tree .
