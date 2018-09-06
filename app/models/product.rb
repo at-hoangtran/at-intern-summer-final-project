@@ -1,6 +1,8 @@
 class Product < ApplicationRecord
   acts_as_paranoid
 
+  before_destroy :destroy_order
+
   belongs_to :user
   belongs_to :category
   has_many :timers, dependent: :destroy
@@ -43,5 +45,11 @@ class Product < ApplicationRecord
   def product_line_items
     order_id = self.line_items.pluck(:order_id).uniq
     Order.where(id: order_id).where(status: 1)
+  end
+
+  def destroy_order
+    line_item = LineItem.where(product_id: self.id)
+    orders_id = line_item.pluck(:order_id).uniq
+    Order.destroy(orders_id)
   end
 end
