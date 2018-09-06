@@ -10,8 +10,8 @@ html
     = asset_url("logo.png")
     | " alt="logo" width="50" height="20">
     = csrf_meta_tags
-    = stylesheet_link_tag "application_admin/application", media: "all", "data-turbolinks-track": "reload"
-    = javascript_include_tag "application_admin/application", "data-turbolinks-track": "reload"
+    = stylesheet_link_tag "application_admin/application", media: "all"
+    = javascript_include_tag "application_admin/application"
   body
     .notifications.top-right
     = render "layouts/admin/modules/top-nav"

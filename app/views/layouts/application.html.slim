@@ -9,8 +9,8 @@ html
     link[rel="icon" href="#{asset_url('logo.png')}" alt="logo" width="70" height="40"]
     = csrf_meta_tags
     = action_cable_meta_tag
-    = stylesheet_link_tag "application_public/application", media: "all", "data-turbolinks-track": "reload"
-    = javascript_include_tag "application_public/application", "data-turbolinks-track": "reload"
+    = stylesheet_link_tag "application_public/application", media: "all"
+    = javascript_include_tag "application_public/application"
   body
     .notifications.top-right
     = render "layouts/modules/header"

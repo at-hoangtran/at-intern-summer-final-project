@@ -1,19 +1,13 @@
 /* Main carousel style */
 .carousel {
-  padding-bottom: 20%;
-}
-
-.carousel * {
-  align-items: center;
-  display: flex;
-  justify-content: center;
+  padding-bottom: 35%;
 }
 
 /* Indicators list style */
 .article-slide .carousel-indicators {
   bottom: 0;
   left: 0;
-  margin-left: 5px;
+  margin-left: 5%;
   width: 100%;
 }
 /* Indicators list style */
@@ -21,12 +15,12 @@
   border: medium none;
   border-radius: 0;
   float: left;
-  height: auto;
   margin-bottom: 5px;
   margin-left: 0;
   margin-right: 5px !important;
   margin-top: 0;
-  width: 100%;
+  width: 80px;
+  height: 80px;
 }
 /* Indicators images style */
 .article-slide .carousel-indicators img {
@@ -41,4 +35,15 @@
 .article-slide .carousel-indicators .active img {
   border: 2px solid #428BCA;
   opacity: 0.7;
+}
+
+.cont-slider {
+  width: 300px;
+  height: 300px;
+  border: 1px solid #eee;
+  margin-top: 3%;
+}
+
+.cont-slider img {
+  padding: 5%;
 }
