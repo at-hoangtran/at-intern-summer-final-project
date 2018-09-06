@@ -102,6 +102,8 @@ $(document).ready(function() {
     $(".info_billing").show();
     $(".form_info_payment").hide();
     $(".new_billing").show();
+    infoPayment();
+
   });
 
   $(".edit_info").on('click', function(){
@@ -143,6 +145,7 @@ $(document).ready(function() {
   });
 
   $('[data-toggle-tooltip="tooltip"]').tooltip();
+  infoPayment();
 });
 
 function activaTab(tab){
@@ -154,7 +157,7 @@ function checkPayment() {
     $("#order_type_payment").val($(".cbb_offline").val());
     $(".type_payment_o").html("Nhận hàng thanh toán")
     $(".btn-pay").show();
-
+    $(".btn-pay-online").hide();
   }
   else{
     $("#order_type_payment").val($(".cbb_online").val());
@@ -164,25 +167,44 @@ function checkPayment() {
   }
 }
 
+function infoPayment() {
+  if($(".info_billing").find('input[type="radio"]').is(':checked')) {
+    $("#user_name").val($(".info_billing").find(".info_item_name").text());
+    $("#advanced-placepicker").val($(".info_billing").find(".info_item_address").text());
+    $("#phone").val($(".info_billing").find(".info_item_phone").text());
+  }
+}
+
 
 
 function validateOrder() {
   var phoneno = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g;
+
+  var check = true;
+
   if ($("#user_name").val() == "") {
     $(".error_name").html('Vui lòng nhập tên người nhận !');
-  }
-  else if ($("#advanced-placepicker").val() == ""){
-    $(".error_address").html(' Vui lòng nhập địa chỉ !');
-    $(".label_name").find("p").hide();
-  }
-  else if ($("#phone").val() == "") {
-    $(".error_phone").html('Vui lòng nhập số điện thoại !');
-    $(".label_address").find("p").hide();
-  }
-  else if (!$("#phone").val().match(phoneno)) {
-    $(".error_phone").html('Vui lòng nhập đúng số điện thoại !');
+    check = false;
   }
   else {
+    $(".label_name").find("p").hide();
+  }
+  if ($("#advanced-placepicker").val() == ""){
+    $(".error_address").html(' Vui lòng nhập địa chỉ !');
+    check = false;
+  }
+  else {
+    $(".label_address").find("p").hide();
+  }
+  if ($("#phone").val() == "") {
+    $(".error_phone").html('Vui lòng nhập số điện thoại !');
+    check = false;
+  }
+  if (!$("#phone").val().match(phoneno)) {
+    $(".error_phone").html('Vui lòng nhập đúng số điện thoại !');
+    check = false;
+  }
+  if(check) {
     activaTab('type_payment');
   };
 }

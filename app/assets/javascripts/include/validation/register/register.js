@@ -29,7 +29,6 @@ $(document).ready(function() {
         required: "Vui lòng nhập họ tên !",
         maxlength: "name quá 255 ký tự !",
         minlength: "name phải tối thiểu 6 ký tự !"
-        // remote: "Email này đã tồn tại !"
       },
       "user[email]":{
         required: "Vui lòng nhập email !",

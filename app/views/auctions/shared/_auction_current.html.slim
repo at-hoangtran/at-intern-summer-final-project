@@ -7,6 +7,8 @@ div.table-responsive
         th
           = t(".product")
         th
+          = t(".max-bid")
+        th
           = t(".your-current-bid")
         th
           = t(".bids")
@@ -27,7 +29,9 @@ script#data-current-auction[type="x-tmpl-mustache"]
       | {{/STATUS1}}
     td
       a[href="/public_pages/{{ID}}"]
-        | {{NAME}}[{{BIXMAX}}]
+        | {{NAME}}
+    td
+      | {{BIXMAX}}
     td
       | {{PRICE}}
     td

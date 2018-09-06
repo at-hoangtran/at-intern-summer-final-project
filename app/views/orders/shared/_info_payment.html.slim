@@ -3,7 +3,7 @@
     | Địa chỉ của bạn
   - @info.each_with_index do |info, index|
     .info_billing
-      = radio_button_tag 'info', index
+      = radio_button_tag 'info', index, checked: true
       span.info_address
         .info_item_name
           = info[0]

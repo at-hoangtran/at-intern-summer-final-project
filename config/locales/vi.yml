@@ -12,6 +12,7 @@ vi:
         your-current-bid: 'Giá hiện tại của bạn'
         bids: 'Giá thầu'
         completed: 'Hoàn thành'
+        max-bid: 'Giá thầu lớn nhất'
       auction_loser:
         status: 'Trạng thái'
         product: 'Sản phẩm đấu giá'

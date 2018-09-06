@@ -36,6 +36,7 @@ en:
         your-current-bid: 'Your current bid'
         bids: 'Bids'
         completed: 'Completed'
+        max-bid: 'Max bid'
       auction_loser:
         status: 'Status'
         product: 'Product'
