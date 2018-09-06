@@ -22,6 +22,7 @@
       label
         | Họ tên
       = text_field_tag(:user_name, nil, class: "form-control", placeholder: "Nhập họ tên")
+      p.has_error_order.error_name
     .form_info_item.label_email
       label
         | Email
@@ -30,12 +31,14 @@
       label
         | Địa chỉ
       = text_field_tag(:address, nil, { id: "advanced-placepicker", class: "form-control", placeholder: "Nhập địa chỉ" })
+      p.has_error_order.error_address
       #collapseTwo.collapse
         .another-map-class.thumbnail
     .form_info_item.label_phone
       label
         | Số điện thoại
       = telephone_field_tag(:phone, nil, class: "form-control", placeholder: "Nhập số điện thoại")
+      p.has_error_order.error_phone
   .add_new_info_billing
     = button_tag("Thêm địa chỉ mới", type: "button", class: "btn btn-info new_billing")
     = button_tag(type: "button", class: "btn btn-warning next-order-1") do

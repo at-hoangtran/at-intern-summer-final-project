@@ -115,7 +115,6 @@ $(document).ready(function() {
   $('.payment_progress_bar li').not('.active').find('a').removeAttr("data-toggle");
 
   $(".next-order-1").on('click', function(){
-
     validateOrder();
   });
 
@@ -131,6 +130,18 @@ $(document).ready(function() {
     checkPayment();
   });
 
+  $(".btn-pay-online").on('click', function(){
+    if ($(".cbb_online").is(':checked')) {
+      var order_id = $(".order_id").html();
+      var sum_pay = $(".sum_pay").html();
+      var urlNganluong = 'https://www.nganluong.vn/button_payment.php?receiver=tranhuyhoang1011@gmail.com&product_name=AU' + order_id +'&price=' + sum_pay + '&return_url=(URL thanh toán thành công)&comments=Giao Hàng Tiêu Chuẩn - giao hàng tận nơi.';
+      window.location.href = urlNganluong;
+      console.log(urlNganluong);
+      console.log(sum_pay);
+
+    }
+  });
+
   $('[data-toggle-tooltip="tooltip"]').tooltip();
 });
 
@@ -139,29 +150,37 @@ function activaTab(tab){
 };
 
 function checkPayment() {
-  if ($(".cbb_offline").is(':checked')){
+  if ($(".cbb_offline").is(':checked')) {
     $("#order_type_payment").val($(".cbb_offline").val());
     $(".type_payment_o").html("Nhận hàng thanh toán")
+    $(".btn-pay").show();
+
   }
   else{
     $("#order_type_payment").val($(".cbb_online").val());
+    $(".btn-pay").hide();
+    $(".btn-pay-online").show();
     $(".type_payment_o").html("ATM/Chuyển khoản")
   }
 }
 
+
+
 function validateOrder() {
   var phoneno = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g;
   if ($("#user_name").val() == "") {
-    alert("Vui lòng nhập tên người nhận!");
+    $(".error_name").html('Vui lòng nhập tên người nhận !');
   }
   else if ($("#advanced-placepicker").val() == ""){
-    alert("Vui lòng nhập địa chỉ!");
+    $(".error_address").html(' Vui lòng nhập địa chỉ !');
+    $(".label_name").find("p").hide();
   }
   else if ($("#phone").val() == "") {
-    alert("Vui lòng nhập số điện thoại!");
+    $(".error_phone").html('Vui lòng nhập số điện thoại !');
+    $(".label_address").find("p").hide();
   }
   else if (!$("#phone").val().match(phoneno)) {
-    alert("Vui lòng nhập đúng số điện thoại");
+    $(".error_phone").html('Vui lòng nhập đúng số điện thoại !');
   }
   else {
     activaTab('type_payment');

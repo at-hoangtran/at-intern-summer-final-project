@@ -228,6 +228,14 @@ li.nopassword {
   margin: 20px 0 20px 32%;
 }
 
+.btn-pay-online {
+  width: 130px;
+  height: 50px;
+  font-size: 20px;
+  margin: 20px 0 20px 32%;
+  display: none;
+}
+
 .product-price {
   font-weight: bold;
 }
@@ -433,7 +441,6 @@ tr.show_modal {
 
 .btn-payment {
   float: right;
-  margin: 10% 0;
 }
 
 .pay-info-item {
@@ -971,6 +978,7 @@ span.name {
   .active a {
     background-color: #16a085 !important;
     color: white !important;
+     
   }
 }
 .box-input-search {
@@ -991,4 +999,10 @@ span.name {
     margin-top: 5%;
     margin-bottom: 5%;
   }
+}
+
+.has_error_order {
+  margin-top: 10px;
+  margin-left: 175px;
+  color: red;
 }
