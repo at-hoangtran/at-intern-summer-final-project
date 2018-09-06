@@ -1,0 +1,26 @@
+- provide :title, t(".title")
+- provide :search_text, admin_categories_url
+.col-sm-9.col-sm-offset-3.col-lg-10.col-lg-offset-2.main
+  .row
+    ol.breadcrumb
+      li
+        = link_to content_tag(:i, " " + t(".home"), class: "fa fa-home"), admin_root_path
+      li.active
+        = t(".categories")
+  .row
+    .col-lg-12
+      .panel-heading
+        = t(".management-categories")
+      .panel.panel-default
+        .panel-body
+          #sub.table-responsive
+            br
+            .panel.panel-info
+              .panel-heading
+                = t(".categories")
+              .panel-body
+                ul.tree
+                  = render partial: "admin/categories/shared/category", collection: @categories, as: "category"
+            = will_paginate
+            br
+            = link_to content_tag(:i, nil, class: "fa fa-plus-square fa-1x"), new_admin_category_url, class: "btn btn-primary", 'data-toggle-tooltip': 'tooltip', 'data-placement': 'right', 'title': 'Thêm danh mục'

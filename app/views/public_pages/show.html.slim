@@ -1,0 +1,112 @@
+- provide :title, "Xem chi tiết đấu giá"
+= javascript_include_tag "include/public/comments_fb/comments_fb"
+.col-xs-12.col-sm-12.col-md-12.col-lg-12
+  .col-xs-11.col-centered.head-timer[data-timer-id="#{params[:id]}"]
+    .col-xs-12.col-sm-8.col-md-8.col-lg-8
+      h3.panel-title
+        span.glyphicon.glyphicon-home
+        = link_to "Trang chủ", root_path, class: "color-link"
+        span.chevright.glyphicon.glyphicon-chevron-right
+        span.title-link
+          | Loading
+      .col-xs-12.col-sm-12.col-md-12.col-lg-12.no-padding
+        .row
+          .col-xs-12.col-sm-12.col-md-12.col-lg-12
+            .panel.panel-success
+              .panel-body
+                .row
+                  .col-xs-12.col-sm-12.col-md-12.col-lg-12.no-padding
+                    h3.pro-detail-title
+                      a.title-product[href="#" title=""]
+                        | Loading
+                    hr
+                    .row
+                      .col-xs-12.col-sm-12.col-md-7.col-lg-7
+                        #article-photo-carousel.carousel.slide.article-slide.col-md-12
+                          .carousel-inner.cont-slider
+                          ol.carousel-indicators
+                      .col-xs-12.col-sm-12.col-md-5.col-lg-5.details-timer
+                        .row
+                          .col-xs-12.col-sm-12.col-md-12
+                            = content_tag(:i, "00:00", class: "glyphicon glyphicon-time clock-time-show")
+                        .row
+                          .col-xs-12.col-sm-12.col-md-12
+                            .form-group.price-box
+                              label.control-label
+                                | Giá thầu hiện tại:
+                              br
+                              div.price-center
+                                = raw('<i class="fa fa-gavel price-crt-text"> <span class="price-crt"></span> đ</i>')
+                        .row
+                          .col-xs-12.col-sm-12.col-md-12
+                            .form-group.price-box
+                              label.control-label
+                                | Đấu giá ngay:
+                              .input-group
+                                span.input-group-btn
+                                  button.btn.btn-default.btn-sub[type="button"]
+                                    | -
+                                input#price-input.form-control[min="1" type="text" value="" style="text-align: center;" readonly]
+                                span.input-group-btn
+                                  button.btn.btn-default.btn-add[type="button"]
+                                    | +
+                        .row
+                          .col-xs-12.col-sm-12.col-md-12.price-box.btn-price-timer[load-id=""]
+                            span.btn.col-xs-12.label-warning.price-btn-submit
+                              = content_tag(:i, " Đấu giá ngay", class: "fa fa-gavel price-time")
+                              = content_tag(:i, nil, class: "fa fa-refresh price-refresh fa-spin")
+                        .row
+                          .col-xs-12.col-sm-12.col-md-12
+                            .form-group.price-box
+                              label.control-label
+                                | Người thắng hiện tại:
+                              br
+                                - user_win = nil
+                                - user_win = @bid.first.user.name if @bid.first
+                                = content_tag(:i, nil, class: "fa fa-trophy") + " "
+                                = content_tag(:span, user_win, class: "user-win")
+
+                    .row
+                      .col-xs-12.col-sm-12.col-md-12.col-lg-12
+                        table.table
+                          thead
+                            tr
+                              th
+                                | Tài khoản
+                              th
+                                | Giá dự thầu
+                              th
+                                | Tổng giá thầu
+                              th
+                                | Thời gian đấu giá
+                          tbody.loadbid
+                            = render partial: "public_pages/shared/bid", collection: @bid, as: "bid"
+                hr
+                .row
+                  .col-xs-12.col-sm-12.col-md-12.col-lg-12
+                    .table-responsive
+                      table.table.table-hover
+                        thead
+                          tr
+                            th[colspan="2"]
+                              | CHI TIẾT SẢN PHẨM
+                        tbody
+                          tr
+                            td
+                              span.description
+                hr
+                .row
+                  .col-xs-12.col-sm-12.col-md-12.col-lg-12
+                    .fb-comments[data-num-posts="2" data-width="100%"]
+    = render 'public_pages/shared/column_right'
+script#data-template-details[type="x-tmpl-mustache"]
+  tr
+    td
+      | {{NAME}}
+    td
+      | {{BID}}
+    td
+      | 1
+    td
+      | {{DAYTIME}}
+

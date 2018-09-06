@@ -1,0 +1,38 @@
+
+  = form_for @order, url: order_path(@order.id), html: { id: "formOrder", class: "form-horizontal", :method => :patch } do |f|
+    .form_order_hidden
+      .control-group
+        = f.text_field :user_name
+      .control-group
+        = f.email_field :email, { value: current_user.email }
+      .control-group
+        = f.text_field :address
+      .control-group
+        = f.telephone_field :phone
+      .control-group
+        = f.text_field :type_payment
+    .sum_info
+      h4
+        | Thông tin giao hàng
+      .sum_info_item.sum_name
+        label
+          | Họ tên
+        span.sum_name_o
+      .sum_info_item.address
+        label
+          | Địa chỉ giao hàng
+        span.sum_address_o
+      .sum_info_item.phone
+        label
+          | Số điện thoại
+        span.sum_phone_o
+    .sum_type_payment
+      h4
+        | Hình thức thanh toán
+      .sum_info_item
+        label
+          | Kiểu thanh toán
+        span.type_payment_o
+
+    = button_tag(type: "submit", class: "btn btn-warning btn-lg btn-pay") do
+      = content_tag(:i, "Đặt hàng", class: "fa fa-shopping-cart")

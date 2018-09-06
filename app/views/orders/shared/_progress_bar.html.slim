@@ -1,0 +1,17 @@
+ul.nav.nav-tabs.payment_progress_bar
+  li.active
+    a[data-toggle="tab" href="#info_payment"]
+      | Thông tin thanh toán
+  li
+    a[data-toggle="tab" href="#type_payment"]
+      | Hình thức thanh toán
+  li.disabled
+    a[data-toggle="tab" href="#summary_order"]
+      | Tình trạng đơn hàng
+.tab-content.tab-auction
+  #info_payment.tab-pane.fade.in.active
+    = render 'orders/shared/info_payment'
+  #type_payment.tab-pane.fade
+    = render 'orders/shared/payment_type'
+  #summary_order.tab-pane.fade
+    = render 'orders/shared/summary_payment'

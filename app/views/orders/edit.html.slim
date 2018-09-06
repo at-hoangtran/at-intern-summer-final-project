@@ -1,0 +1,55 @@
+- provide :title, t(".checkout")
+= javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=true&libraries=places"
+= javascript_include_tag "include/lib/jquery.placepicker"
+= javascript_include_tag "include/lib/placepicker-my"
+.col-xs-12.col-sm-12.col-md-12.col-lg-12
+  .col-xs-11.col-centered
+    .col-xs-12.col-sm-8.col-md-8.col-lg-8
+      h3.panel-title
+        = link_to content_tag(:span, nil, class: "glyphicon glyphicon-home") + t(".home"), root_path
+        span.chevright.glyphicon.glyphicon-chevron-right
+        span
+          = t(".checkout")
+      .col-xs-12.col-sm-12.col-md-12.col-lg-12.no-padding
+        .row
+          .col-xs-12.col-sm-12.col-md-12.col-lg-12
+            .panel.panel-success
+              .panel-body
+                .payment-progress
+                  = render 'orders/shared/progress_bar'
+    .col-xs-12.col-sm-4.col-md-4.col-lg-4.no-padding
+      .panel
+        .panel-heading.pn-heading
+          h3.panel-title.text-center
+            = t(".contact-support")
+        .panel-body.no-padding
+          br
+          p.panel-content
+            = t(".question")
+          p.panel-content.phone-support
+            = t(".phone-us")
+      .panel
+        .panel-heading.pn-heading
+          h3.panel-title.text-center
+            = t(".order-summary")
+        .panel-body
+          p.panel-content
+            = t(".product-number")
+            span.order-info
+              | #{size_cart}
+          hr
+          p.panel-content
+            = t(".total-money")
+            span.order-info
+              = out_price(@total_price.to_s) + " đ"
+          hr
+          p.panel-content
+            = t(".delivery-charges")
+            span.order-info
+              = out_price(29000.to_s) + " đ"
+          hr
+          p.panel-content.sum-pay
+            = t(".total-money-amount")
+            span.order-info
+              = out_price((@total_price + 29000).to_s) + " đ"
+
