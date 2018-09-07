@@ -1,0 +1,42 @@
+div.table-responsive
+  table#table-scl.table.table-striped.table-auction
+    thead
+      tr
+        th
+          = t(".status")
+        th
+          = t(".product")
+        th
+          = t(".max-bid")
+        th
+          = t(".your-current-bid")
+        th
+          = t(".bids")
+        th
+          = t(".completed")
+    tbody.table-auction.load-current-auction
+
+
+script#data-current-auction[type="x-tmpl-mustache"]
+  tr
+    td
+      | {{#STATUS}}
+      span.label
+        = content_tag(:i, nil, class: "fa fa-check fa-2x icon-win")
+      | {{/STATUS}} {{#STATUS1}}
+      span.label
+        = content_tag(:i, nil, class: "fa fa-times fa-2x icon-loser")
+      | {{/STATUS1}}
+    td
+      a[href="/public_pages/{{ID}}"]
+        | {{NAME}}
+    td
+      | {{BIXMAX}}
+    td
+      | {{PRICE}}
+    td
+      | 1
+    td
+      | {{DATETIME}}
+
+

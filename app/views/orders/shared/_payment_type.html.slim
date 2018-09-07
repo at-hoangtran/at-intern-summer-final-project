@@ -1,0 +1,54 @@
+.payment_type_information
+  h4
+    | Hình thức giao hàng
+  .delivery_type
+    = radio_button_tag 'type-delivery', 'default', checked: true
+    span.info_delivery
+      .delivery-item.deliver_first
+        | Giao hàng tiêu chuẩn - giao hàng tận nơi.
+      .delivery-item
+        | giao hàng 1-3 ngày | từ 29.000 ₫
+      .delivery-item
+        = content_tag(:i, nil, class: "fa fa-money" ) + "  "
+        = content_tag(:i, nil, class: "fa fa-university")
+  .payment_type
+    h4
+      | Hình thức thanh toán
+    ul
+      = hidden_field_tag(:type_payment, value: :default)
+      li.payment-item.payment-live
+        div.payment-title
+          = t(".cash-on-delivery")
+        div
+          i.fa.fa-money.fa-3x.payment-center
+        .form-check
+          label
+            = check_box_tag :type, "default", nil, class: "cbb_offline"
+            = content_tag(:span, nil, class: "label-text")
+      li.payment-item.payment-onl
+        div.payment-title
+          = t(".atm-bank-transfer")
+        div
+          i.fa.fa-university.fa-3x.payment-center
+        .form-check
+          label
+            = check_box_tag :type, "online", nil, class: "cbb_online"
+            = content_tag(:span, nil, class: "label-text")
+  div.pay-info.pay-live-info
+    p.pay-info-item.pay-live
+      = t(".stander-delivery")
+      br
+      = t(".cash-delivery")
+      br
+      = t(".order-24h")
+      br
+      = t(".next-to-confirm")
+  div.bank-payment
+    h3.title-bank
+      = t(".select-your-bank")
+    div.bank-item.nganluong
+      img[src="https://www.nganluong.vn/css/newhome/img/button/safe-pay-3.png" border="0"]
+  br
+  = button_tag(type: "button", class: "btn btn-warning next-order-3") do 
+   =content_tag(:i," Tiếp theo", class: "fa fa-shopping-cart")
+  

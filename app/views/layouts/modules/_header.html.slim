@@ -1,4 +1,4 @@
-nav#main-Nav.navbar.navbar-default.navbar-top[role="navigation"]
+nav#main-Nav.navbar.navbar-top.banner-menu[role="navigation"]
   .container
     .row
       .navbar-header
@@ -9,43 +9,73 @@ nav#main-Nav.navbar.navbar-default.navbar-top[role="navigation"]
       #main-mav-top.collapse.navbar-collapse
         ul.nav.navbar-nav
           li
-            = link_to content_tag(:b, nil, class: "glyphicon glyphicon-home") + " Trang chủ", root_url, :id => "mlinkhome"
+            = link_to content_tag(:b, nil, class: "glyphicon glyphicon-home") + " AuctionHouse", root_url, :id => "mlinkhome"
         ul.nav.navbar-nav.pull-right
-          li.dropdown
-            a.dropdown-toggle[data-toggle="dropdown"]
-              span.glyphicon.glyphicon-shopping-cart
-                span.badge
-                  = "0"
-              = " Giỏ hàng"
-              b.caret
-            ul#cartview.dropdown-menu
-
-          - if true
-            li.dropdown
-              a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-expanded="false"]
-                span.caret
-              ul.dropdown-menu[role="menu"]
-                - if true
-                  li
-                    = link_to "Trang quản trị", "#"
-                li
-                  = link_to "Thông tin cá nhân", "#"
-                li
-                  = link_to content_tag(:i, " Đăng xuất", class: "fa fa-btn fa-sign-out"), logout_path, method: :delete
+          - if size_cart.nil?
+            li
+              = link_to content_tag(:i, " (0) ", id: "count-order", class: "fa fa-cart-plus") + " " + t(".cart"), "/orders"
           - else
             li
-              = link_to "Đăng nhập", "#"
+              = link_to content_tag(:i, " (#{size_cart}) ", id: "count-order", class: "fa fa-cart-plus") + " " + t(".cart"), "/orders"
+          li
+            = link_to content_tag(:i, nil, class: "fa fa-gavel") + " " + t(".my-auctions"), auctions_path
+          - if logged_in?
+            li.dropdown
+              a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-expanded="false"]
+                span
+                  = t(".welcome") + " " + "#{current_user.name}"
+                span.caret
+              ul.dropdown-menu[role="menu"]
+                - if admin?
+                  li
+                    = link_to t(".admin-page"), admin_root_path
+                li
+                  = link_to t(".profile"), edit_user_path(current_user)
+                li
+                  = link_to t(".orders"), history_orders_path
+                li
+                  = link_to t(".logout"), logout_path, method: :delete
+                li.divider
+                li
+                  = link_to content_tag(:span, nil,class: "flag-icon flag-icon-vn") + content_tag(:span, " Việt nam"), locale:"vi"
+                li
+                  = link_to content_tag(:span, nil,class: "flag-icon flag-icon-us") + content_tag(:span, " English"), locale:"en"
+          - else
+            li
+              = link_to t(".login")
+nav#main-Nav.navbar.navbar-top.category-menu[role="navigation"]
+  .container
+    .row
+      #main-mav-top.navbar-collapse
+        ul.nav.navbar-nav
+          = render partial: "layouts/modules/category", collection: @categories, as: "category"
+        - if @search
+          .box-input-search
+            input.form-control[type="text" class="input-search" placeholder="#{t(".search")}" aria-label="Search"]
+
 #mySidenav.sidenav
   a.closebtn[href="javascript:void(0)" onclick="closeNav()"]
     | ×
-    = t ".close"
-  a[href="#"]
-    = t ".phone"
-  a[href="#"]
-    = t ".laptop"
-  a[href="#"]
-    = t ".pc"
-  a[href="#"]
-    span.glyphicon.glyphicon-shopping-cart
-      span.badge
-    = t ".cart"
+    = t(".close")
+  br
+  br
+  - if logged_in?
+    a[href="#"]
+      = t(".welcome") + " " + "#{current_user.name}"
+  br
+  hr
+  - if size_cart.nil?
+      = link_to content_tag(:i, " (0) ", id: "count-order", class: "fa fa-cart-plus") + " " + t(".cart"), "/orders"
+  - else
+    = link_to content_tag(:i, " (#{size_cart}) ", id: "count-order", class: "fa fa-cart-plus") + " " + t(".cart"), "/orders"
+  = link_to content_tag(:i, nil, class: "fa fa-gavel") + " " + t(".my-auctions"), auctions_path
+  = link_to content_tag(:i, nil, class: "fa fa-list-alt") + " " + t(".orders"), history_orders_path
+  hr
+  - if logged_in?
+    - if admin?
+      = link_to content_tag(:i, nil, class: "fa fa-male") + " " + t(".admin-page"), admin_root_path
+    = link_to content_tag(:i, nil, class: "fa fa-address-book-o") + " " + t(".profile"), edit_user_path(current_user)
+    = link_to content_tag(:i," " + t(".logout"), class: "fa fa-btn fa-sign-out"), logout_path, method: :delete
+    hr
+    = link_to content_tag(:span, nil,class: "flag-icon flag-icon-vn") + content_tag(:span, " Việt nam"), locale:"vi"
+    = link_to content_tag(:span, nil,class: "flag-icon flag-icon-us") + content_tag(:span, " English"), locale:"en"
