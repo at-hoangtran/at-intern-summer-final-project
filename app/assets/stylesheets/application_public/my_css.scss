@@ -978,7 +978,10 @@ span.name {
   .active a {
     background-color: #16a085 !important;
     color: white !important;
-     
+
+  }
+  .disabled a {
+    pointer-events: none;
   }
 }
 .box-input-search {

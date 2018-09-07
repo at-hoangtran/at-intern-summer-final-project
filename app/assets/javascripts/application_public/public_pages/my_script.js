@@ -204,6 +204,9 @@ function validateOrder() {
     $(".error_phone").html('Vui lòng nhập đúng số điện thoại !');
     check = false;
   }
+  else {
+    $(".label_phone").find("p").hide();
+  }
   if(check) {
     activaTab('type_payment');
   };
