@@ -8,11 +8,25 @@ class TimerCondition
     timer_auction_db = TimerAuctionDb.new
     timer = JSON.load($redis.get(key))
 
+    check = true
+
     if timer['status'] == 'run'
       timer_ctr = HelpersRb.check_time(timer['start_at'],
                                        timer['end_at'])
 
-      if timer_ctr || (timer['status_auction']).zero?
+      unless (timer_ctr)
+        unless timer['status_auction'].nil?
+          if (timer['status_auction'].zero?)
+            check = true
+          else
+            check = false
+          end
+        else
+          check = false
+        end
+      end
+
+      if(check)
         if timer['product_quantity'].positive?
           timer_auction_db.create_auction(timer)
           timer_action.sub_timer(timer)
