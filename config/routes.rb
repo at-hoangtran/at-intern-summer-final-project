@@ -12,4 +12,8 @@ Rails.application.routes.draw do
     resources :products
     resources :orders
   end
+  get '/auth/google_oauth2', as: 'google'
+  get 'auth/:provider/callback', to: 'sessions#login_google'
+  get 'auth/failure', to: redirect('/')
+  resources :account_activations, only: [:edit]
 end
